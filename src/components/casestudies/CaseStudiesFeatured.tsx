@@ -73,9 +73,9 @@ const CaseStudiesFeatured = () => {
 
             <div>
               <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 h-9 text-[13px] font-semibold gap-1.5">
-                <Link to="/case-studies">
+                <a href="#case-studies-grid">
                   Read the full case study <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                </a>
               </Button>
             </div>
           </div>
