@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const AboutHero = () => {
   return (
@@ -12,8 +13,10 @@ const AboutHero = () => {
           Fog Bandit ANZ is built on one principle — security should stop crime, not just record it. For over two decades, we've helped businesses and homeowners move from passive systems to real protection.
         </p>
         <div className="flex items-center justify-center gap-3 md:gap-4 flex-wrap">
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 md:px-8 h-10 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2">
-            Our Story <ArrowDown className="h-4 w-4" />
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 md:px-8 h-10 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2">
+            <Link to="/products">
+              Explore The Products <ArrowRight className="h-4 w-4" />
+            </Link>
           </Button>
           <Button className="bg-[#021373] text-white hover:bg-[#021373]/90 rounded-lg px-6 md:px-8 h-10 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2">
             View Real Installations <ArrowDown className="h-4 w-4" />
