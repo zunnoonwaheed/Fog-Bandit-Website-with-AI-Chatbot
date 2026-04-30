@@ -51,7 +51,9 @@ const ProductsSection = () => {
                 className="snap-start shrink-0 rounded-2xl relative overflow-hidden"
                 style={{ width: "366px", height: "700px", maxWidth: "calc(100vw - 2rem)" }}
               >
-                <img src={p.img} alt={p.title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                <Link to="/products" className="absolute inset-0 z-0">
+                  <img src={p.img} alt={p.title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                </Link>
                 <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
                   <h3 className="text-primary-foreground font-heading font-bold text-lg leading-tight max-w-[200px]">{p.title}</h3>
                   <button
