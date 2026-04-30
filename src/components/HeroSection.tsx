@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroBg from "@/assets/hero-bg.png";
+import heroBg from "@/assets/hero-bg-clean.png";
 import heroBgMobile from "@/assets/hero-bg-mobile.png";
 import heroProduct from "@/assets/hero-product.png";
 import acclaimBadge from "@/assets/acclaim-badge.png";
@@ -8,20 +8,30 @@ import acclaimBadge from "@/assets/acclaim-badge.png";
 const HeroSection = () => {
   return (
     <section className="relative md:h-[750px] overflow-hidden bg-[#0a1525]">
-      {/* Desktop background: stretched edge-to-edge across viewport.
-          Product image (which is baked into heroBg) keeps its visual size because
-          the section height is fixed at 750px and we stretch width to 100%. */}
+      {/* Desktop room background: stretched edge-to-edge (no product in image). */}
       <div
         className="absolute inset-0 hidden md:block"
         style={{
           backgroundImage: `url(${heroBg})`,
-          backgroundSize: "cover",
+          backgroundSize: "100% 100%",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
         }}
       />
 
-
+      {/* Desktop product overlay: fixed size, never stretches, anchored to right edge */}
+      <img
+        src={heroProduct}
+        alt="Fog Bandit unit"
+        aria-hidden="true"
+        className="absolute hidden md:block pointer-events-none select-none z-[1]"
+        style={{
+          width: "300px",
+          height: "auto",
+          right: "60px",
+          bottom: "0px",
+        }}
+      />
 
       {/* Mobile background: scales with viewport width, product overlaid via vw units */}
       <div
