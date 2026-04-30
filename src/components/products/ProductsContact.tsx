@@ -28,26 +28,26 @@ const ProductsContact = () => {
             <div className="grid grid-cols-2 gap-3.5">
               <div>
                 <label className="text-[13px] font-bold text-foreground mb-1 block">First Name<span className="text-primary">*</span></label>
-                <Input placeholder="Enter your first name" className="rounded-lg h-12 text-[13px] bg-[hsl(220,15%,94%)] border-0 placeholder:text-muted-foreground" />
+                <Input placeholder="Enter your first name" className="rounded-lg h-12 text-[13px] bg-[#F9F9F9] border-0 placeholder:text-[#94A3B8]" />
               </div>
               <div>
                 <label className="text-[13px] font-bold text-foreground mb-1 block">Last Name<span className="text-primary">*</span></label>
-                <Input placeholder="Enter your last name" className="rounded-lg h-12 text-[13px] bg-[hsl(220,15%,94%)] border-0 placeholder:text-muted-foreground" />
+                <Input placeholder="Enter your last name" className="rounded-lg h-12 text-[13px] bg-[#F9F9F9] border-0 placeholder:text-[#94A3B8]" />
               </div>
             </div>
             <div className="grid grid-cols-2 gap-3.5">
               <div>
                 <label className="text-[13px] font-bold text-foreground mb-1 block">Company<span className="text-primary">*</span></label>
-                <Input placeholder="Enter your company name" className="rounded-lg h-12 text-[13px] bg-[hsl(220,15%,94%)] border-0 placeholder:text-muted-foreground" />
+                <Input placeholder="Enter your company name" className="rounded-lg h-12 text-[13px] bg-[#F9F9F9] border-0 placeholder:text-[#94A3B8]" />
               </div>
               <div>
                 <label className="text-[13px] font-bold text-foreground mb-1 block">Email<span className="text-primary">*</span></label>
-                <Input type="email" placeholder="Enter your email" className="rounded-lg h-12 text-[13px] bg-[hsl(220,15%,94%)] border-0 placeholder:text-muted-foreground" />
+                <Input type="email" placeholder="Enter your email" className="rounded-lg h-12 text-[13px] bg-[#F9F9F9] border-0 placeholder:text-[#94A3B8]" />
               </div>
             </div>
             <div>
               <label className="text-[13px] font-bold text-foreground mb-1 block">Requirements</label>
-              <Textarea placeholder="Tell us about your requirements" className="rounded-lg min-h-[120px] text-[13px] bg-[hsl(220,15%,94%)] border-0 placeholder:text-muted-foreground" />
+              <Textarea placeholder="Tell us about your requirements" className="rounded-lg min-h-[120px] text-[13px] bg-[#F9F9F9] border-0 placeholder:text-[#94A3B8]" />
             </div>
             <Button
               onClick={() => toast.success("Thanks! Our team will be in touch shortly.")}

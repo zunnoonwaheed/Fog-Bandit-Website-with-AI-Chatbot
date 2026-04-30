@@ -108,13 +108,13 @@ const Financing = () => {
                       <label className="text-[13px] font-bold text-foreground mb-2 block">
                         First Name<span className="text-primary">*</span>
                       </label>
-                      <Input placeholder="Enter your first name" className="h-12 rounded-lg border-0 bg-[hsl(220,15%,94%)] text-[13px] shadow-none placeholder:text-muted-foreground/60 focus-visible:ring-1" />
+                      <Input placeholder="Enter your first name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                     <div>
                       <label className="text-[13px] font-bold text-foreground mb-2 block">
                         Last Name<span className="text-primary">*</span>
                       </label>
-                      <Input placeholder="Enter your last name" className="h-12 rounded-lg border-0 bg-[hsl(220,15%,94%)] text-[13px] shadow-none placeholder:text-muted-foreground/60 focus-visible:ring-1" />
+                      <Input placeholder="Enter your last name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                   </div>
 
@@ -123,19 +123,19 @@ const Financing = () => {
                       <label className="text-[13px] font-bold text-foreground mb-2 block">
                         Company<span className="text-primary">*</span>
                       </label>
-                      <Input placeholder="Enter your company name" className="h-12 rounded-lg border-0 bg-[hsl(220,15%,94%)] text-[13px] shadow-none placeholder:text-muted-foreground/60 focus-visible:ring-1" />
+                      <Input placeholder="Enter your company name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                     <div>
                       <label className="text-[13px] font-bold text-foreground mb-2 block">
                         Email<span className="text-primary">*</span>
                       </label>
-                      <Input type="email" placeholder="Enter your email" className="h-12 rounded-lg border-0 bg-[hsl(220,15%,94%)] text-[13px] shadow-none placeholder:text-muted-foreground/60 focus-visible:ring-1" />
+                      <Input type="email" placeholder="Enter your email" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                   </div>
 
                   <div>
                     <label className="text-[13px] font-bold text-foreground mb-2 block">Financing Requirements</label>
-                    <Textarea placeholder="Tell us about your business, the system you're after, and your preferred monthly budget" className="min-h-[120px] rounded-lg border-0 bg-[hsl(220,15%,94%)] text-[13px] shadow-none placeholder:text-muted-foreground/60 focus-visible:ring-1" />
+                    <Textarea placeholder="Tell us about your business, the system you're after, and your preferred monthly budget" className="min-h-[120px] rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                   </div>
 
                   <Button className="w-full h-12 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 text-[14px] font-semibold">

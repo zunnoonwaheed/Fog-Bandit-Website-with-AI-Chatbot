@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import banditLogo from "@/assets/bandit-logo.svg";
 
-const inputClass = "mt-2 w-full h-12 px-4 rounded-lg border-0 bg-[hsl(220,15%,94%)] text-[13px] text-secondary placeholder:text-muted-foreground shadow-none focus:outline-none focus:ring-1 focus:ring-secondary transition-colors";
+const inputClass = "mt-2 w-full h-12 px-4 rounded-lg border-0 bg-[#F9F9F9] text-[13px] text-secondary placeholder:text-[#94A3B8] shadow-none focus:outline-none focus:ring-1 focus:ring-secondary transition-colors";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ firstName: "", lastName: "", company: "", email: "", requirements: "" });
@@ -81,7 +81,7 @@ const ContactSection = () => {
                 value={form.requirements}
                 onChange={e => setForm({...form, requirements: e.target.value})}
                 rows={4}
-                className="mt-2 w-full px-4 py-3 rounded-lg border-0 bg-[hsl(220,15%,94%)] text-[13px] text-secondary placeholder:text-muted-foreground shadow-none focus:outline-none focus:ring-1 focus:ring-secondary resize-none transition-colors min-h-[120px]"
+                className="mt-2 w-full px-4 py-3 rounded-lg border-0 bg-[#F9F9F9] text-[13px] text-secondary placeholder:text-[#94A3B8] shadow-none focus:outline-none focus:ring-1 focus:ring-secondary resize-none transition-colors min-h-[120px]"
               />
             </div>
             <button
