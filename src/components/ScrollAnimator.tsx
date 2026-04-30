@@ -11,14 +11,6 @@ const SELECTOR = [
   "main h1", "main h2", "main h3", "main h4",
   "section h1", "section h2", "section h3", "section h4",
   "section p",
-  'section img:not([aria-hidden="true"])',
-  "section video",
-  'section [class*="rounded-xl"]',
-  'section [class*="rounded-2xl"]',
-  'section [class*="rounded-lg"]',
-  'section [class*="border"][class*="rounded"]',
-  'section [class*="shadow"]',
-  ".lv-card",
 ].join(",");
 
 const isExcluded = (el: HTMLElement) => {
