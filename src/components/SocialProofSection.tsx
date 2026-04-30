@@ -1,4 +1,5 @@
 import { ArrowDown, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 import logoAmpol from "@/assets/logos/ampol.svg";
 import logoBrand02 from "@/assets/logos/brand02.svg";
 import logoBrand04 from "@/assets/logos/brand04.svg";
@@ -28,9 +29,9 @@ const SocialProofSection = () => {
             <span className="lg:block">Across Australia and New Zealand, retailers, warehouses, and high-risk facilities</span>
             <span className="lg:block">rely on Fog Bandit to stop theft in real time – not just record it after the damage is done.</span>
           </p>
-          <a href="#case-studies" className="btn-primary mt-6 inline-flex">
+          <Link to="/case-studies" className="btn-primary mt-6 inline-flex">
             See Customer Results <ArrowDown className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
 
       </div>

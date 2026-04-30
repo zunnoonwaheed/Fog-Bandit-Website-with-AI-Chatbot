@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const SolutionsHero = () => {
   return (
@@ -15,8 +16,10 @@ const SolutionsHero = () => {
             <span className="hidden md:inline">Fog Bandit gives your home more than alerts. The moment an intrusion is detected, dense security fog fills the space instantly, stopping intruders before they reach your family or valuables.</span>
           </p>
           <div className="hidden md:flex justify-center">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 h-11 text-[14px] font-semibold gap-2">
-              Request a home security assessment <ArrowRight className="h-4 w-4" />
+            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 h-11 text-[14px] font-semibold gap-2">
+              <Link to="/contact">
+                Request a home security assessment <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>
@@ -61,8 +64,10 @@ const SolutionsHero = () => {
         </div>
 
         <div className="md:hidden mt-6 flex justify-center">
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 h-10 text-[13px] font-semibold gap-2">
-            Request a home security assessment <ArrowRight className="h-4 w-4" />
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 h-10 text-[13px] font-semibold gap-2">
+            <Link to="/contact">
+              Request a home security assessment <ArrowRight className="h-4 w-4" />
+            </Link>
           </Button>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import alarmImg from "@/assets/alarm-integration.png";
 import policeImg from "@/assets/police-dispatch.png";
 import appImg from "@/assets/app-notifications.png";
@@ -38,8 +39,10 @@ const IntegrationSection = () => {
         <p className="font-dm-sans text-[14px] md:text-[20px] font-medium text-muted-foreground max-w-2xl mx-auto mb-7 md:mb-8 leading-relaxed">
           Fog Bandit integrates effortlessly into your existing security setup, enhancing your protection without replacing your infrastructure.
         </p>
-        <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 md:px-8 h-11 md:h-12 text-[14px] md:text-[15px] font-semibold gap-2 mb-10 md:mb-12">
-          See compatible systems <ArrowDown className="h-4 w-4" />
+        <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 md:px-8 h-11 md:h-12 text-[14px] md:text-[15px] font-semibold gap-2 mb-10 md:mb-12">
+          <Link to="/products">
+            See compatible systems <ArrowDown className="h-4 w-4" />
+          </Link>
         </Button>
 
         {/* Mobile: horizontal snap carousel — one card per view with L/R inset */}

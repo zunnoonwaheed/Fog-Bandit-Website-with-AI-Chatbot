@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import iconTick from "@/assets/icon-tick.svg";
 import iconBolt from "@/assets/icon-plug-bolt.png";
 import iconEdge from "@/assets/icon-plug-edge.png";
@@ -50,9 +51,9 @@ const PlugNSecureSection = () => {
               </div>
             </div>
           </div>
-          <a href="#" className="btn-primary">
+          <Link to="/contact" className="btn-primary">
             Start Rental Plan <ArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>
