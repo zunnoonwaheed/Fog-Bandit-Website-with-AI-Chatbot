@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const models = [
   {
@@ -118,8 +119,8 @@ const TechnicalComparison = () => {
               Our engineers can design multi-unit arrays for stadiums, airports, and extreme-scale logistics hubs.
             </p>
           </div>
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 md:px-8 h-11 md:h-12 text-[13px] md:text-[14px] font-semibold whitespace-nowrap flex-shrink-0 w-full md:w-auto">
-            Speak with a Consultant
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 md:px-8 h-11 md:h-12 text-[13px] md:text-[14px] font-semibold whitespace-nowrap flex-shrink-0 w-full md:w-auto">
+            <Link to="/contact">Speak with a Consultant</Link>
           </Button>
         </div>
       </div>
