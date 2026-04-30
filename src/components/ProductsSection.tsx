@@ -70,48 +70,48 @@ const ProductsSection = () => {
         {/* Desktop grid: no blue overlay, pixel-perfect bento */}
         <div className="mt-12 hidden md:grid md:grid-cols-3 gap-4 auto-rows-[280px]">
           {/* Left - tall */}
-          <div className="md:row-span-2 rounded-2xl relative overflow-hidden group">
+          <Link to="/products" className="md:row-span-2 rounded-2xl relative overflow-hidden group block">
             <img src={productVertical} alt="Fog Bandit 320 Vertical Mount" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
               <h3 className="text-primary-foreground font-heading font-bold text-lg leading-tight max-w-[180px]">Fog Bandit 320 Vertical Mount</h3>
-              <button aria-label="View product" className="w-12 h-11 rounded-lg bg-white/10 hover:bg-white/10 focus:bg-white/10 active:bg-white/10 border border-white/20 backdrop-blur-md transition-none flex items-center justify-center shrink-0 ml-3">
+              <span aria-label="View product" className="w-12 h-11 rounded-lg bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 ml-3">
                 <ArrowRight className="w-4 h-4 text-primary-foreground" />
-              </button>
+              </span>
             </div>
-          </div>
+          </Link>
 
           {/* Middle top */}
-          <div className="rounded-2xl relative overflow-hidden">
+          <Link to="/products" className="rounded-2xl relative overflow-hidden block">
             <img src={product240Ext} alt="Fog Bandit 240 DB Extended Nozzle" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div className="absolute bottom-4 left-4 right-4 z-10 flex items-end justify-between">
               <h3 className="text-primary-foreground font-heading font-bold text-base leading-tight max-w-[180px]">Fog Bandit 240 DB Extended Nozzle</h3>
-              <button aria-label="View product" className="w-10 h-9 rounded-lg bg-white/10 hover:bg-white/10 focus:bg-white/10 active:bg-white/10 border border-white/20 backdrop-blur-md transition-none flex items-center justify-center shrink-0 ml-2">
+              <span aria-label="View product" className="w-10 h-9 rounded-lg bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 ml-2">
                 <ArrowRight className="w-3.5 h-3.5 text-primary-foreground" />
-              </button>
+              </span>
             </div>
-          </div>
+          </Link>
 
           {/* Middle bottom */}
-          <div className="rounded-2xl relative overflow-hidden">
+          <Link to="/products" className="rounded-2xl relative overflow-hidden block">
             <img src={product240Narrow} alt="Fog Bandit 240 DB Narrow Nozzle" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div className="absolute bottom-4 left-4 right-4 z-10 flex items-end justify-between">
               <h3 className="text-primary-foreground font-heading font-bold text-base leading-tight max-w-[180px]">Fog Bandit 240 DB Narrow Nozzle</h3>
-              <button aria-label="View product" className="w-10 h-9 rounded-lg bg-white/10 hover:bg-white/10 focus:bg-white/10 active:bg-white/10 border border-white/20 backdrop-blur-md transition-none flex items-center justify-center shrink-0 ml-2">
+              <span aria-label="View product" className="w-10 h-9 rounded-lg bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 ml-2">
                 <ArrowRight className="w-3.5 h-3.5 text-primary-foreground" />
-              </button>
+              </span>
             </div>
-          </div>
+          </Link>
 
           {/* Right - tall */}
-          <div className="md:row-span-2 md:col-start-3 md:row-start-1 rounded-2xl relative overflow-hidden">
+          <Link to="/products" className="md:row-span-2 md:col-start-3 md:row-start-1 rounded-2xl relative overflow-hidden block">
             <img src={productCeiling} alt="Fog Bandit 320 Ceiling Mount" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
               <h3 className="text-primary-foreground font-heading font-bold text-lg leading-tight max-w-[180px]">Fog Bandit 320 Ceiling Mount</h3>
-              <button aria-label="View product" className="w-12 h-11 rounded-lg bg-white/10 hover:bg-white/10 focus:bg-white/10 active:bg-white/10 border border-white/20 backdrop-blur-md transition-none flex items-center justify-center shrink-0 ml-3">
+              <span aria-label="View product" className="w-12 h-11 rounded-lg bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 ml-3">
                 <ArrowRight className="w-4 h-4 text-primary-foreground" />
-              </button>
+              </span>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </section>
