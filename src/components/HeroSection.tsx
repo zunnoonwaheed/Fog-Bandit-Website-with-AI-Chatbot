@@ -19,19 +19,6 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Desktop product overlay: fixed size, never stretches, anchored to right edge */}
-      <img
-        src={heroProduct}
-        alt="Fog Bandit unit"
-        aria-hidden="true"
-        className="absolute hidden md:block pointer-events-none select-none z-[1]"
-        style={{
-          width: "300px",
-          height: "auto",
-          right: "60px",
-          bottom: "0px",
-        }}
-      />
 
       {/* Mobile background: scales with viewport width, product overlaid via vw units */}
       <div
