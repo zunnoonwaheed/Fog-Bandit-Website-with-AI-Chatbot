@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound.tsx";
 import HowItWorks from "./pages/HowItWorks.tsx";
 import Financing from "./pages/Financing.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
+import ScrollAnimator from "./components/ScrollAnimator.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollAnimator />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
