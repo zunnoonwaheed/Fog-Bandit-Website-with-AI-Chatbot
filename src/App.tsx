@@ -13,6 +13,7 @@ import Blog from "./pages/Blog.tsx";
 import CaseStudies from "./pages/CaseStudies.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import HowItWorks from "./pages/HowItWorks.tsx";
+import Financing from "./pages/Financing.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/financing" element={<Financing />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ChatWidget />
