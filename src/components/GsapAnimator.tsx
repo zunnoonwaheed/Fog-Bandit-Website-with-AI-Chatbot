@@ -183,8 +183,8 @@ const GsapAnimator = () => {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const handler = (e: Event) => {
-      const t = e.target;
-      if (!(t instanceof Element)) return;
+      const t = e.target as Node | null;
+      if (!t || !(t instanceof Element)) return;
       const target = t.closest("button, a") as HTMLElement | null;
       if (!target) return;
       if (target.closest("nav, header, [data-no-animate]")) return;
