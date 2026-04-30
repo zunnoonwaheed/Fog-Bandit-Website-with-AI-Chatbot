@@ -1,5 +1,74 @@
 import { ArrowDown, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+
+const AnimatedScoreCircle = ({ score, label, percent }: { score: string; label: string; percent: number }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0); // 0..1
+  const [display, setDisplay] = useState("0.0");
+  const target = parseFloat(score);
+  const C = 2 * Math.PI * 44;
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setProgress(percent / 100);
+      setDisplay(score);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const start = performance.now();
+            const duration = 1600;
+            const tick = (now: number) => {
+              const t = Math.min(1, (now - start) / duration);
+              const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+              setProgress((percent / 100) * eased);
+              setDisplay((target * eased).toFixed(1));
+              if (t < 1) requestAnimationFrame(tick);
+              else setDisplay(score);
+            };
+            requestAnimationFrame(tick);
+            io.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [percent, score, target]);
+
+  return (
+    <div ref={ref} className="text-center">
+      <div className="w-[80px] h-[80px] mx-auto relative">
+        <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="hsl(var(--primary) / 0.2)" strokeWidth="3" />
+          <circle
+            cx="50"
+            cy="50"
+            r="44"
+            fill="none"
+            stroke="hsl(var(--primary))"
+            strokeWidth="3"
+            strokeDasharray={C}
+            strokeDashoffset={C * (1 - progress)}
+            strokeLinecap="round"
+            style={{ transition: "stroke-dashoffset 80ms linear" }}
+          />
+        </svg>
+        <span className="absolute inset-0 flex items-center justify-center text-[17px] font-heading font-bold text-secondary tabular-nums">
+          {display}
+        </span>
+      </div>
+      <p className="text-[13px] text-muted-foreground mt-3">{label}</p>
+    </div>
+  );
+};
+
 import logoAmpol from "@/assets/logos/ampol.svg";
 import logoBrand02 from "@/assets/logos/brand02.svg";
 import logoBrand04 from "@/assets/logos/brand04.svg";
@@ -71,16 +140,7 @@ const SocialProofSection = () => {
                 { score: "9.6", label: "Support & reliability", percent: 96 },
                 { score: "9.6", label: "Return on protection", percent: 96 },
               ].map((item) => (
-                <div key={item.label} className="text-center">
-                  <div className="w-[80px] h-[80px] mx-auto relative">
-                    <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-                      <circle cx="50" cy="50" r="44" fill="none" stroke="hsl(var(--primary) / 0.2)" strokeWidth="3" />
-                      <circle cx="50" cy="50" r="44" fill="none" stroke="hsl(var(--primary))" strokeWidth="3" strokeDasharray={2 * Math.PI * 44} strokeDashoffset={2 * Math.PI * 44 * (1 - item.percent / 100)} strokeLinecap="round" />
-                    </svg>
-                    <span className="absolute inset-0 flex items-center justify-center text-[17px] font-heading font-bold text-secondary">{item.score}</span>
-                  </div>
-                  <p className="text-[13px] text-muted-foreground mt-3">{item.label}</p>
-                </div>
+                <AnimatedScoreCircle key={item.label} {...item} />
               ))}
             </div>
           </div>
