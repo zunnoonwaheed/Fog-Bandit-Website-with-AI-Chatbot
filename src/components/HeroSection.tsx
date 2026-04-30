@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroBg from "@/assets/hero-bg-clean.png";
+import heroBg from "@/assets/hero-bg-no-product.png";
 import heroBgMobile from "@/assets/hero-bg-mobile.png";
 import heroProduct from "@/assets/hero-product.png";
 import acclaimBadge from "@/assets/acclaim-badge.png";
