@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import iconSpeed from "@/assets/icon-speed.svg";
 import iconDensity from "@/assets/icon-density.svg";
 import iconSafety from "@/assets/icon-safety.svg";
@@ -80,8 +81,8 @@ const ProductCard = ({
         <a href="#" className="text-[13px] font-semibold text-accent hover:text-accent/80 transition-colors flex items-center gap-1">
           Details <ArrowRight className="hidden md:inline-block h-3.5 w-3.5" />
         </a>
-        <Button className="bg-[#FFDDE3] text-primary hover:bg-[#FFDDE3]/80 rounded-lg px-4 h-9 text-[12px] md:text-[13px] font-semibold shadow-none">
-          Get a Quote
+        <Button asChild className="bg-[#FFDDE3] text-primary hover:bg-[#FFDDE3]/80 rounded-lg px-4 h-9 text-[12px] md:text-[13px] font-semibold shadow-none">
+          <Link to="/contact">Get a Quote</Link>
         </Button>
       </div>
     </div>
