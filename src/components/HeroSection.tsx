@@ -8,16 +8,31 @@ import acclaimBadge from "@/assets/acclaim-badge.png";
 const HeroSection = () => {
   return (
     <section className="relative md:h-[750px] overflow-hidden bg-[#0a1525]">
-      {/* Desktop background: fixed natural height so embedded product stays ~348x522.
-          On viewports wider than the image's natural aspect, the image is centered
-          and the dark base color fills the sides. */}
+      {/* Desktop background: stretched edge-to-edge across viewport.
+          Product image (which is baked into heroBg) keeps its visual size because
+          the section height is fixed at 750px and we stretch width to 100%. */}
       <div
         className="absolute inset-0 hidden md:block"
         style={{
           backgroundImage: `url(${heroBg})`,
-          backgroundSize: "auto 750px",
+          backgroundSize: "100% 750px",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center top",
+        }}
+      />
+
+      {/* Desktop product overlay: fixed natural pixel size — stays identical across all viewports.
+          Positioned to match the baked-in product location in hero-bg.png (right side, bottom-aligned). */}
+      <img
+        src={heroProduct}
+        alt="Fog Bandit unit"
+        aria-hidden="true"
+        className="absolute hidden md:block pointer-events-none select-none z-[1]"
+        style={{
+          width: "348px",
+          height: "491px",
+          right: "calc(50% - 720px + 80px)",
+          top: "259px",
         }}
       />
 
