@@ -165,18 +165,10 @@
   animation: lv-zoom 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Auto-animate common content elements site-wide */
+/* Auto-animate text content site-wide (headings + paragraphs only) */
 main h1, main h2, main h3, main h4,
 section h1, section h2, section h3, section h4,
-section p,
-section img:not([aria-hidden="true"]),
-section video,
-section [class*="rounded-xl"],
-section [class*="rounded-2xl"],
-section [class*="rounded-lg"],
-section [class*="border"][class*="rounded"],
-section [class*="shadow"],
-.lv-card {
+section p {
   opacity: 0;
   will-change: opacity, transform;
 }
@@ -192,14 +184,6 @@ section [class*="shadow"],
   main h1, main h2, main h3, main h4,
   section h1, section h2, section h3, section h4,
   section p,
-  section img:not([aria-hidden="true"]),
-  section video,
-  section [class*="rounded-xl"],
-  section [class*="rounded-2xl"],
-  section [class*="rounded-lg"],
-  section [class*="border"][class*="rounded"],
-  section [class*="shadow"],
-  .lv-card,
   .lv-in-view {
     opacity: 1 !important;
     animation: none !important;
