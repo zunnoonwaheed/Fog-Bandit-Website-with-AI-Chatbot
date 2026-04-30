@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { ArrowRight, ArrowDown } from "lucide-react";
+import { Link } from "react-router-dom";
 // Note: vertical and ceiling images were swapped — swap on import to fix.
 import productVertical from "@/assets/product-ceiling.png";
 import product240Ext from "@/assets/product-240-ext.png";
@@ -30,9 +31,9 @@ const ProductsSection = () => {
             Every Fog Bandit system is built for speed, reliability, and real-world performance — delivering
             instant protection when alarms alone aren't enough.
           </p>
-          <a href="#products" className="btn-primary mt-6 inline-flex">
-            Explore the Products Range <ArrowDown className="w-4 h-4" />
-          </a>
+          <Link to="/products" className="btn-primary mt-6 inline-flex">
+            Explore the Products Range <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
         {/* Mobile: horizontal scroll snap of 366x700 cards */}

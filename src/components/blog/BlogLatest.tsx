@@ -103,7 +103,7 @@ const BlogLatest = () => {
         <div className="text-center mt-8 md:mt-10">
           <Button
             variant="outline"
-            className="rounded-lg px-6 h-11 text-[13px] font-semibold bg-background border-border text-foreground hover:bg-muted"
+            className="rounded-lg px-6 h-11 text-[13px] font-semibold bg-background border-border text-foreground hover:bg-background hover:text-foreground"
           >
             Load More Case Studies
           </Button>

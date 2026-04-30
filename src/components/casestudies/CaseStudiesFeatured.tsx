@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import featuredImg from "@/assets/casestudy-featured.jpg";
 import avatarHp from "@/assets/avatar-hp.png";
 
@@ -71,8 +72,10 @@ const CaseStudiesFeatured = () => {
             </div>
 
             <div>
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 h-9 text-[13px] font-semibold gap-1.5">
-                Read the full case study <ArrowRight className="h-3.5 w-3.5" />
+              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 h-9 text-[13px] font-semibold gap-1.5">
+                <Link to="/case-studies">
+                  Read the full case study <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
               </Button>
             </div>
           </div>
