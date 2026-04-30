@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import iconPanicAlert from "@/assets/icon-panic-alert.svg";
 import iconStopwatch from "@/assets/icon-stopwatch.svg";
 
@@ -22,8 +23,10 @@ const PanicIntegration = () => {
               </div>
             </div>
           </div>
-          <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-lg px-5 md:px-6 h-10 md:h-11 text-[12px] md:text-[13px] font-semibold whitespace-nowrap flex-shrink-0 w-full md:w-auto self-stretch md:self-auto">
-            Configure Panic System
+          <Button asChild className="bg-foreground text-background hover:bg-foreground/90 rounded-lg px-5 md:px-6 h-10 md:h-11 text-[12px] md:text-[13px] font-semibold whitespace-nowrap flex-shrink-0 w-full md:w-auto self-stretch md:self-auto">
+            <Link to="/case-studies">
+              View Case Studies
+            </Link>
           </Button>
         </div>
       </div>

@@ -32,7 +32,7 @@ const FinanceSection = () => {
               At Fog Bandit, we believe security should be accessible. Our
               Finance Assistance program allows manageable installments.
             </p>
-            <Link to="/contact" className="btn-primary mt-6 inline-flex self-start">
+            <Link to="/financing" className="btn-primary mt-6 inline-flex self-start">
               Apply for Financing <ArrowRight className="w-4 h-4" />
             </Link>
 

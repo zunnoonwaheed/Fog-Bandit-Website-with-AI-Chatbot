@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PawPrint, Droplets, Leaf } from "lucide-react";
+import { Link } from "react-router-dom";
 import safetyImg from "@/assets/about-fog-room.png";
 
 const safetyPoints = [
@@ -58,8 +59,10 @@ const SolutionsSafety = () => {
               ))}
             </div>
 
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 h-10 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2">
-              View safety certifications <ArrowRight className="h-4 w-4" />
+            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 h-10 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2">
+              <Link to="/how-it-works">
+                View safety certifications <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>

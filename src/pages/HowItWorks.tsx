@@ -26,12 +26,12 @@ const HowItWorks = () => {
             deploying dense fog instantly to eliminate visibility and stop threats before they escalate.
           </p>
           <div className="mt-8 flex flex-row flex-nowrap justify-center gap-3">
-            <a
-              href="#detection"
+            <Link
+              to="/case-studies"
               className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 sm:px-6 py-3 rounded-xl font-semibold text-xs sm:text-sm hover:opacity-90 transition-all whitespace-nowrap"
             >
               Watch a real deployment <ArrowDown className="w-4 h-4" />
-            </a>
+            </Link>
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 bg-[#021373] hover:bg-[#021373]/90 text-white px-4 sm:px-6 py-3 rounded-xl font-semibold text-xs sm:text-sm transition-all whitespace-nowrap"
