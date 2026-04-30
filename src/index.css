@@ -166,17 +166,22 @@
 }
 
 /* Auto-animate common content elements site-wide */
-main h1, main h2, main h3,
-section h1, section h2, section h3,
-section > p, section p.section-subtext,
+main h1, main h2, main h3, main h4,
+section h1, section h2, section h3, section h4,
+section p,
 section img:not([aria-hidden="true"]),
 section video,
+section [class*="rounded-xl"],
+section [class*="rounded-2xl"],
+section [class*="rounded-lg"],
+section [class*="border"][class*="rounded"],
+section [class*="shadow"],
 .lv-card {
   opacity: 0;
   will-change: opacity, transform;
 }
 .lv-in-view {
-  animation: lv-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: lv-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -184,11 +189,16 @@ section video,
   .lv-reveal.is-visible,
   .lv-reveal-fade.is-visible,
   .lv-reveal-zoom.is-visible,
-  main h1, main h2, main h3,
-  section h1, section h2, section h3,
-  section > p, section p.section-subtext,
+  main h1, main h2, main h3, main h4,
+  section h1, section h2, section h3, section h4,
+  section p,
   section img:not([aria-hidden="true"]),
   section video,
+  section [class*="rounded-xl"],
+  section [class*="rounded-2xl"],
+  section [class*="rounded-lg"],
+  section [class*="border"][class*="rounded"],
+  section [class*="shadow"],
   .lv-card,
   .lv-in-view {
     opacity: 1 !important;

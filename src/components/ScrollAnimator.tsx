@@ -2,19 +2,32 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 /**
- * Site-wide scroll reveal. Watches common elements (headings, paragraphs,
- * images, videos, cards) and adds `.lv-in-view` when they enter the viewport.
+ * Site-wide scroll reveal. Watches headings, paragraphs, images, videos, and
+ * card-like containers, and adds `.lv-in-view` when they enter the viewport.
  * Re-scans on route changes and DOM mutations so dynamically added content
- * also animates.
+ * also animates smoothly.
  */
 const SELECTOR = [
-  "main h1", "main h2", "main h3",
-  "section h1", "section h2", "section h3",
-  "section > p", "section p.section-subtext",
+  "main h1", "main h2", "main h3", "main h4",
+  "section h1", "section h2", "section h3", "section h4",
+  "section p",
   'section img:not([aria-hidden="true"])',
   "section video",
+  'section [class*="rounded-xl"]',
+  'section [class*="rounded-2xl"]',
+  'section [class*="rounded-lg"]',
+  'section [class*="border"][class*="rounded"]',
+  'section [class*="shadow"]',
   ".lv-card",
 ].join(",");
+
+const isExcluded = (el: HTMLElement) => {
+  // Skip elements inside the navbar / chat / footer-fixed UI
+  if (el.closest("nav, header, [data-no-animate]")) return true;
+  // Skip tiny inline things like icons inside buttons
+  if (el.closest("button") && el.tagName === "P") return true;
+  return false;
+};
 
 const ScrollAnimator = () => {
   const location = useLocation();
@@ -28,26 +41,32 @@ const ScrollAnimator = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement;
-            // Stagger siblings slightly for a smoother feel
             const parent = el.parentElement;
             if (parent) {
               const siblings = Array.from(parent.children).filter((c) =>
                 (c as HTMLElement).matches(SELECTOR)
               );
               const idx = siblings.indexOf(el);
-              if (idx > 0) el.style.animationDelay = `${Math.min(idx * 80, 400)}ms`;
+              if (idx > 0) {
+                el.style.animationDelay = `${Math.min(idx * 90, 500)}ms`;
+              }
             }
             el.classList.add("lv-in-view");
             observer.unobserve(el);
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
     const observeAll = () => {
       document.querySelectorAll<HTMLElement>(SELECTOR).forEach((el) => {
-        if (!el.classList.contains("lv-in-view")) observer.observe(el);
+        if (el.classList.contains("lv-in-view")) return;
+        if (isExcluded(el)) {
+          el.style.opacity = "1";
+          return;
+        }
+        observer.observe(el);
       });
     };
 
