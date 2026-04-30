@@ -167,7 +167,7 @@ const ChatWidget = () => {
                       <div className="flex items-center gap-1.5 mt-0.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
                         <span className="text-[10px] md:text-[11px] text-green-600 font-medium">
-                          Online — typically responds instantly
+                          Online — typically replies within minutes
                         </span>
                       </div>
                     </div>
