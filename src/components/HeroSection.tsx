@@ -32,7 +32,6 @@ const HeroSection = () => {
           height: "522px",
           right: "40px",
           top: "228px",
-          objectFit: "fill",
         }}
       />
 
