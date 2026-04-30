@@ -170,7 +170,7 @@ const CaseStudiesGrid = () => {
             <Button
               onClick={() => setVisibleCount((c) => Math.min(c + 3, caseStudies.length))}
               variant="outline"
-              className="rounded-lg px-6 h-10 text-[13px] font-semibold bg-card border-border text-foreground hover:bg-muted shadow-sm"
+              className="rounded-lg px-6 h-10 text-[13px] font-semibold bg-card border-border text-foreground hover:bg-card hover:text-foreground shadow-sm"
             >
               Load More Case Studies
             </Button>
