@@ -108,15 +108,15 @@ const CaseStudiesTestimonials = () => {
           {/* Right text testimonial - desktop only */}
           <div className="hidden md:flex border border-border rounded-xl p-5 flex-col bg-card">
             <div className="flex items-center gap-3 mb-3">
-              <img src={avatarRob} alt="Frank" className="w-9 h-9 rounded-full object-cover" loading="lazy" />
+              <img src={avatarPatrick} alt="David Lin" className="w-9 h-9 rounded-full object-cover" loading="lazy" />
               <div>
-                <p className="font-semibold text-foreground text-[13px]">Frank</p>
-                <p className="text-muted-foreground text-[11px]">Elk Fish Robotics WA</p>
+                <p className="font-semibold text-foreground text-[13px]">David Lin</p>
+                <p className="text-muted-foreground text-[11px]">Operations Manager, Metro Logistics NSW</p>
               </div>
             </div>
             <div className="text-accent text-[20px] leading-none mb-2">❝</div>
             <p className="text-muted-foreground text-[12px] md:text-[13px] leading-relaxed italic flex-1">
-              "The glass got broken outside and the fog bandit stopped the intruders and instantly foiled the robbery. Thank you!"
+              "After two break-in attempts last year, we installed Fog Bandit across our warehouses. Since then, every attempted intrusion has been stopped within seconds. It's the best security investment we've made."
             </p>
             <div className="text-accent text-[20px] leading-none mt-2 text-right">❞</div>
           </div>
