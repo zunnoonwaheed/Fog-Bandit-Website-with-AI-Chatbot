@@ -102,19 +102,19 @@ Deno.serve(async (req) => {
 
     if (!response.ok) {
       const errText = await response.text();
-      console.error("AI gateway error", response.status, errText);
+      console.error("Anthropic error", response.status, errText);
       if (response.status === 429) {
         return new Response(JSON.stringify({ error: "Too many requests, please try again in a moment." }), {
           status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      if (response.status === 402) {
-        return new Response(JSON.stringify({ error: "AI credits exhausted. Please add credits to continue." }), {
-          status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      if (response.status === 401 || response.status === 403) {
+        return new Response(JSON.stringify({ error: "Invalid Anthropic API key." }), {
+          status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
       return new Response(
-        JSON.stringify({ error: `AI error (${response.status})` }),
+        JSON.stringify({ error: `AI error (${response.status}): ${errText.slice(0, 200)}` }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
