@@ -8,18 +8,32 @@ import acclaimBadge from "@/assets/acclaim-badge.png";
 const HeroSection = () => {
   return (
     <section className="relative md:h-[750px] overflow-hidden bg-[#0a1525]">
-      {/* Desktop background: single image scaled to cover the full viewport width.
-          Aspect ratio is preserved so the product on the right keeps its proportions. */}
+      {/* Desktop background: image covers the section width; height is fixed at 750px
+          via the section. backgroundSize: cover preserves aspect (may crop). */}
       <div
         className="absolute inset-0 hidden md:block"
         style={{
           backgroundImage: `url(${heroBg})`,
-          backgroundSize: "100% 100%",
+          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
         }}
       />
 
+      {/* Desktop product overlay: ALWAYS exactly 348x522, pinned to the right edge,
+          aligned to the section bottom — overlays/hides any baked-in product. */}
+      <img
+        src={heroProduct}
+        alt="Fog Bandit unit"
+        aria-hidden="true"
+        className="absolute hidden md:block pointer-events-none select-none z-[1]"
+        style={{
+          width: "348px",
+          height: "522px",
+          right: "0px",
+          bottom: "0px",
+        }}
+      />
 
       {/* Mobile background: scales with viewport width, product overlaid via vw units */}
       <div
