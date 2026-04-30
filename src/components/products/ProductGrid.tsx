@@ -142,8 +142,8 @@ const bottomProducts = [
 ];
 
 const ProductGrid = () => {
-  const mobileScrollerClass = "flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-3 -mx-4 px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
-  const mobileCardClass = "w-[366px] max-w-[calc(100vw-24px)] flex-none snap-start";
+  const mobileScrollerClass = "flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
+  const mobileCardClass = "w-full max-w-[calc(100vw-32px)] flex-none snap-start";
   const desktopGridClass = "hidden md:grid";
   const primaryMobileProducts = mainProducts;
   const expandedMobileProducts = [...expandedProducts, ...bottomProducts];
