@@ -48,7 +48,7 @@ const ScrollAnimator = () => {
               );
               const idx = siblings.indexOf(el);
               if (idx > 0) {
-                el.style.animationDelay = `${Math.min(idx * 90, 500)}ms`;
+                el.style.animationDelay = `${Math.min(idx * 110, 600)}ms`;
               }
             }
             el.classList.add("lv-in-view");
@@ -56,7 +56,7 @@ const ScrollAnimator = () => {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -80px 0px" }
     );
 
     const observeAll = () => {
