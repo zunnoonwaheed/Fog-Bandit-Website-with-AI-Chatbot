@@ -1,5 +1,5 @@
 import { useState } from "react";
-import sceneResidential from "@/assets/scene-residential-hq.jpg";
+import sceneResidential from "@/assets/scene-residential.png";
 import sceneRetail from "@/assets/scene-retail-hq.jpg";
 import sceneJewellery from "@/assets/scene-jewellery-hq.jpg";
 import sceneWarehouse from "@/assets/scene-warehouse-hq.jpg";
@@ -61,14 +61,18 @@ const HowItWorksSection = () => {
           </div>
         </div>
 
-        {/* Image - mobile 366x511 portrait, desktop 1240x541 landscape */}
-        <div className="mt-6 lg:mt-8 rounded-2xl overflow-hidden mx-3 sm:mx-0">
-          <img
-            src={tabImages[activeTab]}
-            alt={`${activeTab} security scene`}
-            className="w-full object-cover aspect-[366/511] lg:aspect-[1240/541]"
-            loading="lazy"
-          />
+        {/* Image - all tabs preloaded; toggle visibility for instant switching */}
+        <div className="mt-6 lg:mt-8 rounded-2xl overflow-hidden mx-3 sm:mx-0 relative w-full aspect-[366/511] lg:aspect-[1240/541]">
+          {tabs.map((tab) => (
+            <img
+              key={tab}
+              src={tabImages[tab]}
+              alt={`${tab} security scene`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-200 ${
+                activeTab === tab ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ))}
         </div>
 
         <div className="mt-6 lg:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-3 sm:mx-0">
