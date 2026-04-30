@@ -139,7 +139,7 @@
 
 /* ---------- Global scroll-reveal animations ---------- */
 @keyframes lv-rise {
-  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  from { opacity: 0; transform: translate3d(0, 18px, 0); }
   to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 @keyframes lv-fade {
@@ -147,7 +147,7 @@
   to   { opacity: 1; }
 }
 @keyframes lv-zoom {
-  from { opacity: 0; transform: scale(0.96); }
+  from { opacity: 0; transform: scale(0.97); }
   to   { opacity: 1; transform: scale(1); }
 }
 
@@ -156,13 +156,13 @@
   will-change: opacity, transform;
 }
 .lv-reveal.is-visible {
-  animation: lv-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: lv-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .lv-reveal-fade.is-visible {
-  animation: lv-fade 0.7s ease-out both;
+  animation: lv-fade 1s ease-out both;
 }
 .lv-reveal-zoom.is-visible {
-  animation: lv-zoom 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: lv-zoom 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* Auto-animate common content elements site-wide */
@@ -181,7 +181,7 @@ section [class*="shadow"],
   will-change: opacity, transform;
 }
 .lv-in-view {
-  animation: lv-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: lv-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
