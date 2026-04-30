@@ -15,9 +15,9 @@ const HeroSection = () => {
         className="absolute inset-0 hidden md:block"
         style={{
           backgroundImage: `url(${heroBg})`,
-          backgroundSize: "100% 750px",
+          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "center top",
+          backgroundPosition: "center center",
         }}
       />
 
