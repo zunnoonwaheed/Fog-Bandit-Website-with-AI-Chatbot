@@ -49,7 +49,6 @@ const ProductsHero = () => {
               </div>
             </div>
           </div>
-          </div>
         </div>
       </div>
     </section>
