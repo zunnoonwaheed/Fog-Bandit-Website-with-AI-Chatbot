@@ -17,6 +17,7 @@ import Financing from "./pages/Financing.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
 import ScrollAnimator from "./components/ScrollAnimator.tsx";
 import GsapAnimator from "./components/GsapAnimator.tsx";
+import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <ScrollAnimator />
         <GsapAnimator />
         <Routes>
