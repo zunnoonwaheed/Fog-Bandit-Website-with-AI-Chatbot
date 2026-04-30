@@ -100,7 +100,7 @@ const CaseStudiesGrid = () => {
   const visible = caseStudies.slice(0, visibleCount);
   const hasMore = visibleCount < caseStudies.length;
   return (
-    <section className="py-8 md:py-12">
+    <section id="case-studies-grid" className="py-8 md:py-12 scroll-mt-24">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-6 md:mb-8">
           <h2 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground mb-2 leading-snug">
