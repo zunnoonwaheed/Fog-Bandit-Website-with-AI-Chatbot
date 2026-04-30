@@ -56,10 +56,10 @@ const TextCard = ({ t }: { t: Testimonial }) => (
         <p className="text-muted-foreground text-[11px] md:text-[13px] mt-0.5">{t.role}</p>
       </div>
     </div>
-    <QuoteOpen className="text-primary mt-4 md:mt-6 w-[18px] h-[14px] md:w-[26px] md:h-[20px]" />
+    <QuoteOpen className="text-[#021373] mt-4 md:mt-6 w-[18px] h-[14px] md:w-[26px] md:h-[20px]" />
     <p className="text-muted-foreground text-[12px] md:text-[15px] leading-[1.6] mt-3 md:mt-4 md:flex-1">{t.quote}</p>
     <div className="flex justify-end mt-2 md:mt-4">
-      <QuoteClose className="text-primary w-[18px] h-[14px] md:w-[26px] md:h-[20px]" />
+      <QuoteClose className="text-[#021373] w-[18px] h-[14px] md:w-[26px] md:h-[20px]" />
     </div>
   </div>
 );
