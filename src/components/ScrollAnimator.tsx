@@ -42,7 +42,7 @@ const ScrollAnimator = () => {
               );
               const idx = siblings.indexOf(el);
               if (idx > 0) {
-                el.style.animationDelay = `${Math.min(idx * 110, 600)}ms`;
+                el.style.animationDelay = `${Math.min(idx * 70, 280)}ms`;
               }
             }
             el.classList.add("lv-in-view");

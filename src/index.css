@@ -175,7 +175,11 @@ section video:not([data-no-animate]) {
   will-change: opacity, transform;
 }
 .lv-in-view {
-  animation: lv-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: lv-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+section img.lv-in-view,
+section video.lv-in-view {
+  animation: lv-fade 0.55s ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
