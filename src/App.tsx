@@ -16,6 +16,7 @@ import HowItWorks from "./pages/HowItWorks.tsx";
 import Financing from "./pages/Financing.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
 import ScrollAnimator from "./components/ScrollAnimator.tsx";
+import GsapAnimator from "./components/GsapAnimator.tsx";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollAnimator />
+        <GsapAnimator />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
