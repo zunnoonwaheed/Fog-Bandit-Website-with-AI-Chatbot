@@ -68,6 +68,7 @@ const HowItWorksSection = () => {
               key={tab}
               src={tabImages[tab]}
               alt={`${tab} security scene`}
+              data-no-animate
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-200 ${
                 activeTab === tab ? "opacity-100" : "opacity-0"
               }`}
