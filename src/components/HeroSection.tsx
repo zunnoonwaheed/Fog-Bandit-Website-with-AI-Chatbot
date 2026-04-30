@@ -31,7 +31,7 @@ const HeroSection = () => {
           width: "348px",
           height: "522px",
           right: "40px",
-          top: "228px",
+          top: "114px",
         }}
       />
 
