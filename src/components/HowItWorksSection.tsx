@@ -1,5 +1,5 @@
 import { useState } from "react";
-import sceneResidential from "@/assets/scene-residential-hq.jpg";
+import sceneResidential from "@/assets/scene-residential.png";
 import sceneRetail from "@/assets/scene-retail-hq.jpg";
 import sceneJewellery from "@/assets/scene-jewellery-hq.jpg";
 import sceneWarehouse from "@/assets/scene-warehouse-hq.jpg";
