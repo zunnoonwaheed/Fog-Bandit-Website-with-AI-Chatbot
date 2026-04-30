@@ -20,8 +20,8 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Desktop product overlay: ALWAYS exactly 348x522, pinned right with small inset
-          and aligned to the section bottom. */}
+      {/* Desktop product overlay: fixed 348x522 and intentionally dropped below the fold
+          so only the upper portion is visible, matching the reference crop. */}
       <img
         src={heroProduct}
         alt="Fog Bandit unit"
@@ -31,7 +31,7 @@ const HeroSection = () => {
           width: "348px",
           height: "522px",
           right: "40px",
-          top: "114px",
+          bottom: "-174px",
         }}
       />
 
