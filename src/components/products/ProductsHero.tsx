@@ -8,8 +8,7 @@ const ProductsHero = () => {
     <section className="pt-[120px] pb-10 lg:pt-[160px] lg:pb-[60px]">
       <div className="container mx-auto px-4">
         <div
-          className="relative mx-auto overflow-hidden rounded-2xl"
-          style={{ maxWidth: "1240px" }}
+          className="relative mx-auto overflow-hidden rounded-2xl w-full"
         >
           {/* Frame sizing: mobile 366x292, desktop 1240x550 */}
           <div className="relative w-full" style={{ aspectRatio: "1240 / 550" }}>
