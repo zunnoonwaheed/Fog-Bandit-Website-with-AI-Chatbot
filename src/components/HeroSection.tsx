@@ -32,6 +32,8 @@ const HeroSection = () => {
           height: "522px",
           right: "40px",
           bottom: "0px",
+          objectFit: "contain",
+          objectPosition: "bottom right",
         }}
       />
 
