@@ -20,8 +20,8 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Desktop product overlay: ALWAYS exactly 348x522, pinned to the right edge,
-          aligned to the section bottom — overlays/hides any baked-in product. */}
+      {/* Desktop product overlay: ALWAYS exactly 348x522, pinned right with small inset
+          and aligned to the section bottom. */}
       <img
         src={heroProduct}
         alt="Fog Bandit unit"
@@ -30,7 +30,7 @@ const HeroSection = () => {
         style={{
           width: "348px",
           height: "522px",
-          right: "0px",
+          right: "40px",
           bottom: "0px",
         }}
       />
