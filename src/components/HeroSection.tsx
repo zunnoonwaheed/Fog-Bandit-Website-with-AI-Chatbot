@@ -8,23 +8,11 @@ import acclaimBadge from "@/assets/acclaim-badge.png";
 const HeroSection = () => {
   return (
     <section className="relative md:h-[750px] overflow-hidden bg-[#0a1525]">
-      {/* Desktop layer 1: room image stretched edge-to-edge horizontally to fill any
-          width (eliminates blue side gaps). The product on the right will be visually
-          covered by layer 2 below, so its stretching doesn't matter. */}
+      {/* Desktop background: single image, pinned to the right so the product stays
+          at its natural baked-in size. The left side of the image extends to fill
+          wider viewports via the dark background color behind it. */}
       <div
-        className="absolute inset-0 hidden md:block"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: "100% 750px",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "left center",
-        }}
-      />
-      {/* Desktop layer 2: same image at NATURAL size pinned to the right edge.
-          This guarantees the product (baked into the image's right side) appears
-          at exactly 348x522 visual size on every desktop width. */}
-      <div
-        className="absolute inset-y-0 right-0 hidden md:block pointer-events-none"
+        className="absolute inset-y-0 right-0 hidden md:block"
         style={{
           width: "1440px",
           maxWidth: "100%",
