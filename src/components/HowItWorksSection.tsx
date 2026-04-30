@@ -1,6 +1,6 @@
 import { useState } from "react";
 import sceneResidential from "@/assets/scene-residential.png";
-import sceneRetail from "@/assets/retail-scene.jpg";
+import sceneRetail from "@/assets/casestudy-retail.jpg";
 import sceneJewellery from "@/assets/casestudy-jewellery.jpg";
 import sceneWarehouse from "@/assets/warehouse-scene.jpg";
 import sceneOffice from "@/assets/casestudy-office.jpg";
