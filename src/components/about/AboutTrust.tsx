@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import aboutJewelry from "@/assets/about-trust-image.svg";
 import iconTech from "@/assets/icon-tech.svg";
 import iconGlobal from "@/assets/icon-global.svg";
@@ -44,8 +45,10 @@ const AboutTrust = () => {
             <p className="font-dm-sans text-[14px] md:text-[20px] font-medium text-muted-foreground mb-4 md:mb-5">
               More than a product — a proven security partner.
             </p>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 h-10 text-[13px] font-semibold gap-2 mb-5 md:mb-6">
-              View case studies <ArrowRight className="h-3.5 w-3.5" />
+            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 h-10 text-[13px] font-semibold gap-2 mb-5 md:mb-6">
+              <Link to="/case-studies">
+                View case studies <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
             </Button>
 
             <div className="space-y-3 md:space-y-4">

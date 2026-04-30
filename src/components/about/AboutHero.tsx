@@ -18,8 +18,10 @@ const AboutHero = () => {
               Explore The Products <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>
-          <Button className="bg-[#021373] text-white hover:bg-[#021373]/90 rounded-lg px-6 md:px-8 h-10 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2">
-            View Real Installations <ArrowDown className="h-4 w-4" />
+          <Button asChild className="bg-[#021373] text-white hover:bg-[#021373]/90 rounded-lg px-6 md:px-8 h-10 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2">
+            <Link to="/case-studies">
+              View Real Installations <ArrowRight className="h-4 w-4" />
+            </Link>
           </Button>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ProductsHero = () => {
   return (
@@ -14,11 +15,15 @@ const ProductsHero = () => {
           <span className="hidden md:inline">Fog Bandit technology creates a curtain of impenetrable fog in seconds, rendering theft impossible by removing the intruder's vision. Explore our curated range of ANZ-certified security solutions.</span>
         </p>
         <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-4">
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 md:px-7 h-11 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2 w-full md:w-auto">
-            View Real Installations <ArrowDown className="h-4 w-4" />
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 md:px-7 h-11 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2 w-full md:w-auto">
+            <Link to="/case-studies">
+              View Real Installations <ArrowRight className="h-4 w-4" />
+            </Link>
           </Button>
-          <Button className="bg-[#021373] text-white hover:bg-[#021373]/90 rounded-lg px-5 md:px-7 h-11 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2 w-full md:w-auto">
-            Talk to Our Team <ArrowDown className="h-4 w-4" />
+          <Button asChild className="bg-[#021373] text-white hover:bg-[#021373]/90 rounded-lg px-5 md:px-7 h-11 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2 w-full md:w-auto">
+            <Link to="/contact">
+              Talk to Our Team <ArrowRight className="h-4 w-4" />
+            </Link>
           </Button>
         </div>
       </div>
