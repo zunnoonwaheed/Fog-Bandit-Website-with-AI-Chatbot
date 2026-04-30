@@ -21,6 +21,21 @@ const HeroSection = () => {
         }}
       />
 
+      {/* Desktop product overlay: fixed natural pixel size — stays identical across all viewports.
+          Positioned to match the baked-in product location in hero-bg.png (right side, bottom-aligned). */}
+      <img
+        src={heroProduct}
+        alt="Fog Bandit unit"
+        aria-hidden="true"
+        className="absolute hidden md:block pointer-events-none select-none z-[1]"
+        style={{
+          width: "348px",
+          height: "491px",
+          right: "calc(50% - 720px + 80px)",
+          top: "259px",
+        }}
+      />
+
       {/* Mobile background: scales with viewport width, product overlaid via vw units */}
       <div
         className="absolute inset-0 md:hidden"
