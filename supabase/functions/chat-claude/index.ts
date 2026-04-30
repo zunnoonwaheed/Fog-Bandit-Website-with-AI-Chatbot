@@ -65,10 +65,10 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) {
+    const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
+    if (!ANTHROPIC_API_KEY) {
       return new Response(
-        JSON.stringify({ error: "AI is not configured" }),
+        JSON.stringify({ error: "ANTHROPIC_API_KEY is not configured" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
@@ -85,42 +85,44 @@ Deno.serve(async (req) => {
       .filter((m: any) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
       .map((m: any) => ({ role: m.role, content: m.content }));
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        "x-api-key": ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          ...cleanMessages,
-        ],
+        model: "claude-haiku-4-5",
+        max_tokens: 1024,
+        system: SYSTEM_PROMPT,
+        messages: cleanMessages,
       }),
     });
 
     if (!response.ok) {
       const errText = await response.text();
-      console.error("AI gateway error", response.status, errText);
+      console.error("Anthropic error", response.status, errText);
       if (response.status === 429) {
         return new Response(JSON.stringify({ error: "Too many requests, please try again in a moment." }), {
           status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      if (response.status === 402) {
-        return new Response(JSON.stringify({ error: "AI credits exhausted. Please add credits to continue." }), {
-          status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      if (response.status === 401 || response.status === 403) {
+        return new Response(JSON.stringify({ error: "Invalid Anthropic API key." }), {
+          status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
       return new Response(
-        JSON.stringify({ error: `AI error (${response.status})` }),
+        JSON.stringify({ error: `AI error (${response.status}): ${errText.slice(0, 200)}` }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
 
     const data = await response.json();
-    const reply = data?.choices?.[0]?.message?.content ?? "Sorry, I couldn't generate a response.";
+    const reply = Array.isArray(data?.content)
+      ? data.content.filter((b: any) => b?.type === "text").map((b: any) => b.text).join("\n").trim() || "Sorry, I couldn't generate a response."
+      : "Sorry, I couldn't generate a response.";
 
     return new Response(JSON.stringify({ reply }), {
       status: 200,
