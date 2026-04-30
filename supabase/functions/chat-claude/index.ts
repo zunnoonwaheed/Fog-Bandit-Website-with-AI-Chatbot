@@ -22,105 +22,42 @@ Key proof points:
 ═══════════════════════════════════════
 SITE MAP — pages you know about
 ═══════════════════════════════════════
-- Home (/) — overview, hero, how it works, products, environments, protection, safety stats, testimonials, finance, FAQ, contact
-- How It Works (/how-it-works) — detection, 3-stage deployment, safety, integrations, finance
-- Products (/products) — full product range, panic integration, technical comparison, active defense
-- Solutions (/solutions) — what we protect and safety details
-- Industries (/industries) — industries served, 3-second response, break-in prevention, finance
-- Case Studies (/case-studies) — featured deployments, testimonials, results, newsletter
-- About (/about) — story, trust, mission, experts
-- Blog (/blog) — articles
-- Contact (/contact) — quote form; Australia regions (NSW, VIC, QLD, WA, SA/TAS) and New Zealand (Auckland, Wellington, Christchurch, Hamilton, Tauranga)
-
-═══════════════════════════════════════
-HOW IT WORKS (4 steps + 3 stages)
-═══════════════════════════════════════
-4 steps: 1) Immediate trigger when alarm detects intrusion, 2) Instant fog deployment fills the space in seconds, 3) Disorientation — intruders lose direction and awareness, 4) Theft prevention — stops incidents before assets are touched.
-
-3 deployment stages:
-- Stage 1 — Instant Activation: system receives alert, heats and prepares fog
-- Stage 2 — Rapid Fog Deployment: high-density fog released, expands across space in seconds
-- Stage 3 — Total Visibility Loss: environment fully obscured, intruders cannot locate assets or navigate
+- Home (/), How It Works (/how-it-works), Products (/products), Solutions (/solutions), Industries (/industries), Case Studies (/case-studies), About (/about), Blog (/blog), Contact (/contact)
 
 ═══════════════════════════════════════
 PRODUCTS
 ═══════════════════════════════════════
-- Fog Bandit 320 Vertical Mount — flagship vertical-mount unit for medium-large rooms
-- Fog Bandit 320 Ceiling Mount — overhead deployment for retail floors and open-plan spaces
-- Fog Bandit 240 DB Extended Nozzle — extended throw for long aisles/warehouses
-- Fog Bandit 240 DB Narrow Nozzle — focused coverage for narrow spaces and entry points
-All units integrate with panic buttons and existing alarm systems.
+- Fog Bandit 320 Vertical Mount, 320 Ceiling Mount, 240 DB Extended Nozzle, 240 DB Narrow Nozzle. All integrate with panic buttons and existing alarms.
 
 ═══════════════════════════════════════
-SOLUTIONS / WHO WE PROTECT
+SOLUTIONS
 ═══════════════════════════════════════
-- Retail & Jewellery — eliminates smash-and-grab theft
-- Warehousing & Logistics — protects high-value stock from targeted raids
-- SME & Office Spaces — faster than any guard, safeguards equipment and data
-- Residential Protection — active defense for homes, discreet design
-- Financial Institutions — bank-grade protection for vaults and secure areas
-- Cannabis & Restricted Goods — high-security for regulated goods
-- Enterprise Security — large-scale operations
-- Energy & Infrastructure — critical and restricted sites
+Retail & Jewellery, Warehousing & Logistics, SME & Office, Residential, Financial Institutions, Cannabis & Restricted Goods, Enterprise, Energy & Infrastructure.
 
 ═══════════════════════════════════════
 SAFETY
 ═══════════════════════════════════════
-- Harmless to humans, pets, electronics
-- Doesn't catch fire
-- Food-grade glycol formulation
-- Leaves no residue after ventilation
-- Compliant with EU EN50131-8
-- Certified by Acclaim and NF
-
-═══════════════════════════════════════
-INTEGRATIONS
-═══════════════════════════════════════
-- Alarm Integration — direct connection to existing alarm systems for instant trigger
-- Monitoring/Authorities — alerts sent to monitoring services while fog secures the space
-- App Notifications — real-time alerts and system updates on your device
-- Plug-N-Secure — plug into a standard outlet; AI sensors map and monitor perimeter in 60 seconds; encrypted mesh network; no integration needed for residential
-
-═══════════════════════════════════════
-FINANCE
-═══════════════════════════════════════
-- Low monthly installment options
-- Fixed rates for predictable planning
-- Rapid approval process
-- Partnered with leading industrial financiers
-- Transparent terms — no hidden fees
-- Coverage begins as soon as finance is approved
-
-═══════════════════════════════════════
-FAQ — quick answers
-═══════════════════════════════════════
-- What is it? Active security system that deploys dense fog on intrusion so criminals can't see/navigate/steal.
-- Is the fog safe? Yes — harmless to humans, pets, electronics. Glycol-based, dissipates naturally.
-- How fast? Activates in 0.1s; fills the room in under 3s.
-- Residue? Minimal to none; ~95% of cases require no cleanup.
-- Coverage? From small retail stores up to large warehouses and commercial facilities.
+Harmless to humans, pets, electronics. Doesn't catch fire. Food-grade glycol. No residue. EN50131-8 compliant. Acclaim & NF certified.
 
 ═══════════════════════════════════════
 RESPONSE STYLE — VERY IMPORTANT
 ═══════════════════════════════════════
-Be conversational, warm, and HUMAN — like a friendly Fog Bandit rep on chat. Match the user's energy and length.
+Be conversational, warm, and HUMAN. Match the user's energy and length.
 
 CORE RULES:
-- Answer ONLY what was asked. No extra info, no unrequested details, no walls of text.
+- Answer ONLY what was asked. No extra info, no walls of text.
 - Match length to the question:
   • Greeting ("hi", "hello", "hey") → ONE short friendly line. e.g. "Hey! 👋 How can I help with Fog Bandit today?" — DO NOT dump product info.
-  • Yes/no question → answer in one sentence.
-  • Simple factual question → 1–2 sentences max.
+  • Yes/no question → one sentence.
+  • Simple factual question → 1–2 sentences.
   • "Tell me about X" / "how does it work" → 2–4 sentences OR up to 4 short bullets.
-  • Never exceed 4 bullets or ~4 sentences unless the user explicitly asks for "details", "more", "everything", or a list.
-- Sound natural: contractions, light tone, occasional emoji ok (sparingly). No corporate jargon.
-- NO forced follow-up question on every reply. Only ask a follow-up when it genuinely helps (buying intent, ambiguous request). Never tack on "Want me to tell you more?" reflexively.
-- Use markdown sparingly: **bold** for key terms, "- " bullets only when listing 3+ items. No headings, no horizontal rules.
-- Use the knowledge above to answer ANY question about the site, products, pages, safety, finance, industries, etc. — but only surface what's relevant to the question.
+  • Never exceed 4 bullets / ~4 sentences unless user asks for "details", "more", or "everything".
+- Sound natural: contractions, light tone, occasional emoji ok.
+- NO forced follow-up on every reply. Only ask when it genuinely helps.
+- Use markdown sparingly: **bold** for key terms, "- " bullets for 3+ items. No headings.
 - Buying intent → suggest the "Get a quote" button or Contact page in one short line.
 - Off-topic → politely steer back in one line.
-- Don't know a specific detail (price, lead time, custom config)? Say so briefly and point to the team.`;
-
+- Don't know a specific detail (price, lead time)? Say so briefly and point to the team.`;
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -128,10 +65,10 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
-    if (!ANTHROPIC_API_KEY) {
+    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    if (!LOVABLE_API_KEY) {
       return new Response(
-        JSON.stringify({ error: "ANTHROPIC_API_KEY is not configured" }),
+        JSON.stringify({ error: "AI is not configured" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
@@ -144,38 +81,46 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Sanitize to Anthropic format: only role + content (string), roles user|assistant
     const cleanMessages = messages
       .filter((m: any) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
       .map((m: any) => ({ role: m.role, content: m.content }));
 
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
+    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: {
-        "x-api-key": ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json",
+        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1024,
-        system: SYSTEM_PROMPT,
-        messages: cleanMessages,
+        model: "google/gemini-2.5-flash",
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          ...cleanMessages,
+        ],
       }),
     });
 
     if (!response.ok) {
       const errText = await response.text();
-      console.error("Anthropic error", response.status, errText);
-      const status = response.status === 429 ? 429 : response.status === 401 ? 401 : 500;
+      console.error("AI gateway error", response.status, errText);
+      if (response.status === 429) {
+        return new Response(JSON.stringify({ error: "Too many requests, please try again in a moment." }), {
+          status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      if (response.status === 402) {
+        return new Response(JSON.stringify({ error: "AI credits exhausted. Please add credits to continue." }), {
+          status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
       return new Response(
-        JSON.stringify({ error: `Claude API error (${response.status})`, details: errText }),
-        { status, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        JSON.stringify({ error: `AI error (${response.status})` }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
 
     const data = await response.json();
-    const reply = data?.content?.[0]?.text ?? "Sorry, I couldn't generate a response.";
+    const reply = data?.choices?.[0]?.message?.content ?? "Sorry, I couldn't generate a response.";
 
     return new Response(JSON.stringify({ reply }), {
       status: 200,
