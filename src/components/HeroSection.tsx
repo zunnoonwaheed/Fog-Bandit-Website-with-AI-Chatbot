@@ -8,15 +8,16 @@ import acclaimBadge from "@/assets/acclaim-badge.png";
 const HeroSection = () => {
   return (
     <section className="relative md:h-[750px] overflow-hidden bg-[#0a1525]">
-      {/* Desktop room background: cover (no stretch). Image keeps aspect ratio,
-          crops sides on ultra-wide screens so the product never distorts. */}
+      {/* Desktop room background: fixed at natural 1440x750 ratio, never stretches.
+          Centered; navy bg shows on ultra-wide screens. Product (baked in image)
+          stays exactly 348x522 visual size on all desktop views. */}
       <div
         className="absolute inset-0 hidden md:block"
         style={{
           backgroundImage: `url(${heroBg})`,
-          backgroundSize: "cover",
+          backgroundSize: "1440px 750px",
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "center right",
+          backgroundPosition: "center center",
         }}
       />
 
