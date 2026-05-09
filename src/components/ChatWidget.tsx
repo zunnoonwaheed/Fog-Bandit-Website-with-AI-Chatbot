@@ -114,11 +114,11 @@ const ChatWidget = () => {
       if (!res.ok) throw new Error(data?.error || `Chat failed (${res.status})`);
       const reply = data?.reply ?? "Sorry, no response.";
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error(e);
       toast({
         title: "Chat error",
-        description: e?.message ?? "Failed to reach the assistant.",
+        description: e instanceof Error ? e.message : "Failed to reach the assistant.",
         variant: "destructive",
       });
     } finally {
