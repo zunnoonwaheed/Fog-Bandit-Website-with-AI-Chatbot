@@ -138,31 +138,31 @@
 }
 
 /* ---------- Global scroll-reveal animations ---------- */
-@keyframes lv-rise {
+@keyframes fb-rise {
   from { opacity: 0; transform: translate3d(0, 18px, 0); }
   to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
-@keyframes lv-fade {
+@keyframes fb-fade {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-@keyframes lv-zoom {
+@keyframes fb-zoom {
   from { opacity: 0; transform: scale(0.97); }
   to   { opacity: 1; transform: scale(1); }
 }
 
-.lv-reveal {
+.fb-reveal {
   opacity: 0;
   will-change: opacity, transform;
 }
-.lv-reveal.is-visible {
-  animation: lv-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+.fb-reveal.is-visible {
+  animation: fb-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-.lv-reveal-fade.is-visible {
-  animation: lv-fade 1s ease-out both;
+.fb-reveal-fade.is-visible {
+  animation: fb-fade 1s ease-out both;
 }
-.lv-reveal-zoom.is-visible {
-  animation: lv-zoom 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+.fb-reveal-zoom.is-visible {
+  animation: fb-zoom 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* Auto-animate text + images site-wide (above-the-fold hero is excluded via [data-hero-home]) */
@@ -177,23 +177,23 @@ section:not([data-hero-home]) video:not([data-no-animate]) {
   opacity: 0;
   will-change: opacity, transform;
 }
-.lv-in-view {
-  animation: lv-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+.fb-in-view {
+  animation: fb-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-@keyframes lv-img-in {
+@keyframes fb-img-in {
   from { opacity: 0; transform: translate3d(0, 12px, 0) scale(1.02); filter: blur(6px); }
   to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
 }
-section img.lv-in-view,
-section video.lv-in-view {
-  animation: lv-img-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+section img.fb-in-view,
+section video.fb-in-view {
+  animation: fb-img-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lv-reveal,
-  .lv-reveal.is-visible,
-  .lv-reveal-fade.is-visible,
-  .lv-reveal-zoom.is-visible,
+  .fb-reveal,
+  .fb-reveal.is-visible,
+  .fb-reveal-fade.is-visible,
+  .fb-reveal-zoom.is-visible,
   main h1, main h2, main h3, main h4,
   section:not([data-hero-home]) h1,
   section:not([data-hero-home]) h2,
@@ -202,7 +202,7 @@ section video.lv-in-view {
   section:not([data-hero-home]) p,
   section:not([data-hero-home]) img:not([aria-hidden="true"]):not([data-no-animate]),
   section:not([data-hero-home]) video:not([data-no-animate]),
-  .lv-in-view {
+  .fb-in-view {
     opacity: 1 !important;
     animation: none !important;
     transform: none !important;
@@ -263,4 +263,21 @@ section video.lv-in-view {
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

@@ -1,7 +1,6 @@
 import { defineConfig, type Connect, type Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 import dotenv from "dotenv";
 
 // Load .env file
@@ -100,7 +99,7 @@ function anthropicChatApi(): Plugin {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   server: {
     // Always this URL: http://127.0.0.1:8080 — no port hopping. If busy: npm run kill-ports
     host: "127.0.0.1",
@@ -114,11 +113,11 @@ export default defineConfig(({ mode }) => ({
     host: "127.0.0.1",
     port: 4173,
   },
-  plugins: [anthropicChatApi(), react(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [anthropicChatApi(), react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
     dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime", "@tanstack/react-query", "@tanstack/query-core"],
   },
-}));
+});

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 /**
  * Site-wide scroll reveal. Watches headings, paragraphs, images, videos, and
- * card-like containers, and adds `.lv-in-view` when they enter the viewport.
+ * card-like containers, and adds `.fb-in-view` when they enter the viewport.
  * Re-scans on route changes and DOM mutations so dynamically added content
  * also animates smoothly.
  */
@@ -45,7 +45,7 @@ const ScrollAnimator = () => {
                 el.style.animationDelay = `${Math.min(idx * 70, 280)}ms`;
               }
             }
-            el.classList.add("lv-in-view");
+            el.classList.add("fb-in-view");
             observer.unobserve(el);
           }
         });
@@ -55,7 +55,7 @@ const ScrollAnimator = () => {
 
     const observeAll = () => {
       document.querySelectorAll<HTMLElement>(SELECTOR).forEach((el) => {
-        if (el.classList.contains("lv-in-view")) return;
+        if (el.classList.contains("fb-in-view")) return;
         if (isExcluded(el)) {
           el.style.opacity = "1";
           return;

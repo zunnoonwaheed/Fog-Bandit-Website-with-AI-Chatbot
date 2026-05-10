@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Fog Bandit — website
 
-TODO: Document your project here
+Vite + React + TypeScript. Local dev: `npm run dev` (http://127.0.0.1:8080).

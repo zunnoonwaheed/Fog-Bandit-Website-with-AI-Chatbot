@@ -14,6 +14,7 @@ export const innerNavLinks: NavLinkItem[] = [
   { label: "Solutions", href: "/solutions" },
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
+  { label: "Partners", href: "/strategic-partners" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

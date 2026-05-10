@@ -4,7 +4,7 @@ import banditLogo from "@/assets/bandit-logo.svg";
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Products", href: "/products" },
+  { label: "Strategic Partners", href: "/strategic-partners" },
   { label: "Financial Assistance", href: "/financing" },
   { label: "Certifications and Accreditations", href: "/about" },
 ];
