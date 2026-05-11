@@ -1,19 +1,20 @@
 import ProductCard from "./ProductCard";
-import product240Box from "@/assets/product-240db-box.png";
-import productCardInnovative from "@/assets/product-240db-narrow.png";
-import productBanditFront from "@/assets/product-bandit-front.png";
-import productRoundedDark from "@/assets/product-rounded-dark.png";
-import productGreenVertical from "@/assets/product-green-vertical.png";
-import productBanditLens from "@/assets/product-bandit-lens.png";
-import productRoundedGrey from "@/assets/product-rounded-grey.png";
-import productRoundedOpen from "@/assets/product-rounded-open.png";
-import productCeilingLed from "@/assets/product-ceiling-led.png";
-import productFlashUnit from "@/assets/product-flash-unit.png";
-import productBanditFront2 from "@/assets/product-bandit-front2.png";
+import product240ExtendedCard from "@/assets/product-240-extended-card.png";
+import product240NarrowCard from "@/assets/product-240-narrow-card.png";
+import productPlt240Frontal from "@/assets/product-plt-240-frontal.png";
+import productPlt240PerspectiveA from "@/assets/product-plt-240-perspective-a.png";
+import productPlt240PerspectiveB from "@/assets/product-plt-240-perspective-b.png";
+import productPlt320Covert from "@/assets/product-plt-320-covert.png";
+import productPltBanditVertical from "@/assets/product-plt-bandit-vertical.png";
+import productPltWhiteHorizontal from "@/assets/product-plt-white-horizontal.png";
+import productPltSideMount from "@/assets/product-plt-side-mount.png";
+import productPltFlashSquare from "@/assets/product-plt-flash-square.png";
+import productPltFlashFogPill from "@/assets/product-plt-flash-fog-pill.png";
 
 const mainProducts = [
   {
-    image: product240Box,
+    image: product240ExtendedCard,
+    imageAspectClass: "aspect-[604/350]",
     title: "Fog Bandit 240 DB Extended Nozzle (Complete Kit)",
     description: "Designed for cabinet/covert installations",
     features: [
@@ -35,7 +36,8 @@ const mainProducts = [
     ],
   },
   {
-    image: productCardInnovative,
+    image: product240NarrowCard,
+    imageAspectClass: "aspect-[604/350]",
     title: "Fog Bandit 240 DB Narrow Nozzle (Complete Kit)",
     description: "Designed for long corridors or narrow rooms",
     features: [
@@ -57,7 +59,7 @@ const mainProducts = [
     ],
   },
   {
-    image: productBanditFront,
+    image: productPltSideMount,
     title: "Fog Bandit 320 Ceiling Mount (Complete Kit)",
     description: "Designed for room sizes of 40 to 200 cubic metres",
     features: [
@@ -78,7 +80,7 @@ const mainProducts = [
     ],
   },
   {
-    image: productRoundedDark,
+    image: productPltBanditVertical,
     title: "Fog Bandit 320 Vertical Mount (Complete Kit)",
     description: "Designed for room sizes of 60 to 300 cubic metres",
     features: [
@@ -100,7 +102,7 @@ const mainProducts = [
     ],
   },
   {
-    image: productGreenVertical,
+    image: productPltWhiteHorizontal,
     title: "Fog Bandit 320 Horizontal White (Complete Kit)",
     description: "Designed for room sizes of 40 to 300 cubic metres",
     features: [
@@ -124,7 +126,7 @@ const mainProducts = [
 
 const expandedProducts = [
   {
-    image: productBanditLens,
+    image: productPlt240Frontal,
     title: "Fog Bandit 240 DB Standard Tri Nozzle (Complete Kit)",
     description: "Designed as a general purpose unit",
     features: [
@@ -146,7 +148,7 @@ const expandedProducts = [
     ],
   },
   {
-    image: productRoundedGrey,
+    image: productPlt240PerspectiveB,
     title: "Fog Bandit 240 DB Downward Nozzle (Complete Kit)",
     description: "Designed for high ceiling, warehouse applications",
     features: [
@@ -168,7 +170,8 @@ const expandedProducts = [
     ],
   },
   {
-    image: productRoundedOpen,
+    image: productPlt240PerspectiveA,
+    imageNoZoom: true,
     title: "Fog Bandit 240 DB Narrow Nozzle (Complete Kit)",
     description: "Designed for long corridors or camera rooms.",
     features: [
@@ -193,7 +196,7 @@ const expandedProducts = [
 
 const bottomProducts = [
   {
-    image: productCeilingLed,
+    image: productPlt320Covert,
     title: "Fog Bandit 320 Splitter Option (Complete Kit)",
     description: "This unit can wall mount with two fog nozzles.",
     features: [
@@ -215,7 +218,7 @@ const bottomProducts = [
     ],
   },
   {
-    image: productFlashUnit,
+    image: productPltFlashSquare,
     title: "Fog Bandit Standalone Flash Unit",
     description: "Works with either the Fog Bandit 240 or 320",
     features: [
@@ -237,7 +240,7 @@ const bottomProducts = [
     ],
   },
   {
-    image: productBanditFront2,
+    image: productPltFlashFogPill,
     title: "Fog Bandit 320 – Flash Fog Enabled (Complete Kit)",
     description: "Quality Flash unit with 6 LEDs for effect.",
     features: [

@@ -11,6 +11,10 @@ interface ProductCardProps {
   applications?: string[];
   specifications?: string[];
   large?: boolean;
+  /** Full image visible, no object-cover zoom/crop */
+  imageNoZoom?: boolean;
+  /** Image strip aspect ratio (width/height), e.g. aspect-[604/350] for hero row */
+  imageAspectClass?: string;
 }
 
 const ProductCard = ({
@@ -21,6 +25,8 @@ const ProductCard = ({
   applications,
   specifications,
   large = false,
+  imageNoZoom = false,
+  imageAspectClass = "aspect-[397/350]",
 }: ProductCardProps) => {
   const [activeTab, setActiveTab] = useState<"features" | "applications" | "specifications">("features");
 
@@ -33,10 +39,17 @@ const ProductCard = ({
   const activeContent = activeTab === "features" ? features : activeTab === "applications" ? applications : specifications;
 
   return (
-    <div className={`flex h-full flex-col bg-white rounded-[16px] overflow-hidden border border-[#E5E7EB] shadow-sm ${large ? "min-h-[600px] md:min-h-[700px]" : "min-h-[550px]"}`}>
-      {/* Image */}
-      <div className={`relative overflow-hidden h-[280px] flex-none ${large ? "md:h-[320px]" : "md:h-[240px]"}`}>
-        <img src={image} alt={title} className="w-full h-full object-cover" loading="lazy" />
+    <div className={`flex h-full flex-col bg-white rounded-[16px] overflow-hidden border border-[#E5E7EB] shadow-sm ${large ? "min-h-[600px] md:min-h-[640px]" : "min-h-[560px] md:min-h-[600px]"}`}>
+      {/* Image full-bleed; default 397×350; hero 240 row uses 604×350 (Figma) for matching placement */}
+      <div
+        className={`relative w-full shrink-0 overflow-hidden ${imageAspectClass} ${imageNoZoom ? "bg-[#141416]" : "bg-neutral-950"}`}
+      >
+        <img
+          src={image}
+          alt={title}
+          className={`absolute inset-0 block h-full w-full object-center ${imageNoZoom ? "object-contain" : "object-cover"}`}
+          loading="lazy"
+        />
       </div>
 
       {/* Content */}
