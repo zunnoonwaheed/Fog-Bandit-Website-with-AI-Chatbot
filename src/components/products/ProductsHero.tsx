@@ -32,7 +32,7 @@ const ProductsHero = () => {
                 </h1>
                 <p className="font-dm-sans text-[13px] md:text-[16px] font-medium text-white/85 leading-relaxed mb-5 md:mb-7 max-w-2xl mx-auto">
                   <span className="md:hidden">Fog Bandit blocks vision and prevents theft. Explore our certified security solutions.</span>
-                  <span className="hidden md:inline">Fog Bandit technology creates a curtain of impenetrable fog in seconds, rendering theft impossible by removing the intruder's vision. Explore our curated range of ANZ-certified security solutions.</span>
+                  <span className="hidden md:inline">Fog Bandit technology creates a curtain of impenetrable fog in seconds, rendering theft impossible by removing the intruder's vision. Explore our curated range of certified Fog Bandit security solutions.</span>
                 </p>
                 <div className="flex flex-row items-center justify-center gap-2 md:gap-4">
                   <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-3 md:px-7 h-10 md:h-11 text-[12px] md:text-[14px] font-semibold gap-1.5 md:gap-2">

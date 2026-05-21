@@ -1,20 +1,20 @@
-import storeOverlay from "@/assets/store-overlay.jpg";
-import storeOverlayMobile from "@/assets/store-overlay-mobile.svg";
+import fogImageDesktop from "@/assets/Room filled with dense fog (1).png";
+import fogImageMobile from "@/assets/Room filled with dense fog (2).svg";
 
 const VisibilitySection = () => {
   return (
     <section className="pb-14 md:pb-[120px]">
       <div className="container mx-auto px-4">
         <img
-          src={storeOverlayMobile}
+          src={fogImageMobile}
           alt="Retail store protected by fog with Zero Visibility and Sensory Disorientation features"
-          className="w-full h-auto rounded-2xl md:hidden"
+          className="block md:hidden w-full h-auto rounded-2xl"
           loading="lazy"
         />
         <img
-          src={storeOverlay}
+          src={fogImageDesktop}
           alt="Retail store protected by fog with Zero Visibility and Sensory Disorientation features"
-          className="w-full h-auto rounded-2xl hidden md:block"
+          className="hidden md:block w-full h-auto rounded-2xl"
           loading="lazy"
         />
       </div>

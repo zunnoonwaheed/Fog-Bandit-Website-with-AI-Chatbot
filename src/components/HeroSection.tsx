@@ -1,73 +1,23 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroBg from "@/assets/hero-bg-no-product.png";
-import heroBgMobile from "@/assets/hero-bg-mobile.png";
-import heroProduct from "@/assets/hero-product.png";
+import heroVideo from "@/assets/products-hero-bg.mp4";
 import acclaimBadge from "@/assets/acclaim-badge.png";
 
 const HeroSection = () => {
   return (
     <section data-hero-home className="relative md:h-[750px] overflow-hidden bg-[#0a1525]">
-      {/* Desktop background: image covers the section width; height is fixed at 750px
-          via the section. backgroundSize: cover preserves aspect (may crop). */}
-      <div
-        className="absolute inset-0 hidden md:block"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center center",
-        }}
+      {/* Video background */}
+      <video
+        src={heroVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Desktop product overlay: fixed 348x522 and intentionally dropped below the fold
-          so only the upper portion is visible, matching the reference crop. */}
-      <img
-        src={heroProduct}
-        alt="Fog Bandit unit"
-        aria-hidden="true"
-        className="absolute hidden md:block pointer-events-none select-none z-[1]"
-        style={{
-          width: "348px",
-          height: "522px",
-          right: "40px",
-          bottom: "-174px",
-        }}
-      />
-
-      {/* Mobile background: scales with viewport width, product overlaid via vw units */}
-      <div
-        className="absolute inset-0 md:hidden"
-        style={{
-          backgroundImage: `url(${heroBgMobile})`,
-          backgroundSize: "100vw auto",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center top",
-        }}
-      />
-
-      {/* Mobile product overlay: 348x522 at left:51 top:518 within 430x750 frame, scaled to viewport */}
-      <img
-        src={heroProduct}
-        alt="Fog Bandit unit"
-        aria-hidden="true"
-        className="absolute md:hidden pointer-events-none select-none z-[1]"
-        style={{
-          width: `${(348 / 430) * 100}vw`,
-          height: `${(522 / 430) * 100}vw`,
-          top: `${(518 / 430) * 100}vw`,
-          left: `${(51 / 430) * 100}vw`,
-        }}
-      />
-
-      {/* Subtle bottom vignette only — keep image bright */}
-      <div
-        className="absolute inset-0 pointer-events-none z-[2]"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.25) 100%)",
-        }}
-      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/50" />
 
       {/* Padding tuned to 1440×750 hero: clear space below floating nav */}
       <div className="relative z-10 mx-auto max-w-[1240px] px-5 pt-[152px] pb-14 sm:px-6 sm:pt-[168px] md:px-6 md:pt-[176px] lg:px-0 lg:pb-16 lg:pt-[188px] xl:pt-[196px]">

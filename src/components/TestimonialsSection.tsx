@@ -49,12 +49,9 @@ const QuoteClose = ({ className = "" }: { className?: string }) => (
 
 const TextCard = ({ t }: { t: Testimonial }) => (
   <div className="bg-background border border-border rounded-2xl p-4 md:p-8 shadow-sm flex flex-col min-h-[248px] md:min-h-[300px]">
-    <div className="flex items-center gap-3 md:gap-4">
-      <img src={t.avatar} alt={t.name} className="w-9 h-9 md:w-12 md:h-12 rounded-full object-cover" loading="lazy" />
-      <div>
-        <p className="font-bold text-secondary text-[13px] md:text-[16px] leading-tight">{t.name}</p>
-        <p className="text-muted-foreground text-[11px] md:text-[13px] mt-0.5">{t.role}</p>
-      </div>
+    <div>
+      <p className="font-bold text-secondary text-[13px] md:text-[16px] leading-tight">{t.name}</p>
+      <p className="text-muted-foreground text-[11px] md:text-[13px] mt-0.5">{t.role}</p>
     </div>
     <QuoteOpen className="text-[#021373] mt-4 md:mt-6 w-[18px] h-[14px] md:w-[26px] md:h-[20px]" />
     <p className="text-muted-foreground text-[12px] md:text-[15px] leading-[1.6] mt-3 md:mt-4 md:flex-1">{t.quote}</p>
@@ -70,12 +67,9 @@ const PiaCard = ({ className = "" }: { className?: string }) => (
     <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 via-transparent to-transparent" />
     {/* Glass overlay card */}
     <div className="absolute left-4 right-4 bottom-4 rounded-xl p-4 bg-white/25 backdrop-blur-md border border-white/30">
-      <div className="flex items-center gap-2.5 mb-2.5">
-        <img src={avatarPia} alt="Sukoon Bedi" className="w-9 h-9 rounded-md object-cover" loading="lazy" />
-        <div>
-          <p className="text-white text-[13px] font-bold leading-tight">Sukoon Bedi</p>
-          <p className="text-white/80 text-[11px] leading-tight mt-0.5">IGA Winchelsea VIC</p>
-        </div>
+      <div className="mb-2.5">
+        <p className="text-white text-[13px] font-bold leading-tight">Sukoon Bedi</p>
+        <p className="text-white/80 text-[11px] leading-tight mt-0.5">IGA Winchelsea VIC</p>
       </div>
       <p className="text-white text-[12px] leading-relaxed">
         The Fog Bandit worked perfectly, and we did not suffer any loss and the shop is back open this morning for usual trading. Without the Fog Bandit the outcome could have been very different. We feel assured by having the Fog Bandit installed and strongly suggest that other IGA supermarkets do the same.

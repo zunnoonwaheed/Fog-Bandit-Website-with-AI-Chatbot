@@ -1,4 +1,4 @@
-import teamImg from "@/assets/industries-team.png";
+import teamImg from "@/assets/Instagram post - 18.png";
 import operationalImg from "@/assets/industries-operational.png";
 import brandImg from "@/assets/industries-brand.png";
 import iconStorefront from "@/assets/icon-storefront.svg";

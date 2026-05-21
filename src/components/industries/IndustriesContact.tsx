@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import logoImg from "@/assets/fog-bandit-logo-stacked.svg";
+import logoImg from "@/assets/image 40.svg";
 
 const IndustriesContact = () => {
   return (
@@ -9,7 +9,7 @@ const IndustriesContact = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-start">
           <div>
-            <img src={logoImg} alt="Fog Bandit" className="h-16 md:h-20 object-contain mb-4 hidden md:block" />
+            <img src={logoImg} alt="Fog Bandit" className="h-24 md:h-28 w-auto object-contain mb-4 hidden md:block" />
             <h2 className="text-[18px] md:text-xl lg:text-[26px] font-bold text-foreground mb-3 leading-snug">
               <span className="md:hidden">If it's worth protecting, it's worth stopping theft properly</span>
               <span className="hidden md:inline">Know your risk before it becomes a loss</span>

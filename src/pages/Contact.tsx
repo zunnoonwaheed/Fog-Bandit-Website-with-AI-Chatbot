@@ -71,7 +71,7 @@ const Contact = () => {
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">
                           Full Name<span className="text-[#DC2626]">*</span>
                         </label>
-                        <Input placeholder="Enter your first name" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
+                        <Input placeholder="Enter your Full Name" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
                       </div>
                       <div>
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">
@@ -84,7 +84,7 @@ const Contact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div>
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">
-                          Phone No.<span className="text-[#DC2626]">*</span>
+                          Phone<span className="text-[#DC2626]">*</span>
                         </label>
                         <Input placeholder="Enter your Phone Number" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
                       </div>
@@ -92,28 +92,28 @@ const Contact = () => {
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">
                           Location
                         </label>
-                        <Input placeholder="Enter your company name" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
+                        <Input placeholder="Enter your location" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div>
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">
-                          Country Name
+                          Company Name
                         </label>
-                        <Input placeholder="Enter your Phone Number" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
+                        <Input placeholder="Enter your company name" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
                       </div>
                       <div>
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">
                           Area to Secure
                         </label>
-                        <Input placeholder="Enter your company name" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
+                        <Input placeholder="Enter area to secure" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
                       </div>
                     </div>
 
                     <div>
-                      <label className="text-[13px] font-semibold text-[#111827] mb-2 block">Requirements</label>
-                      <Textarea placeholder="Anything you want us to know about your requirements" className="min-h-[120px] rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
+                      <label className="text-[13px] font-semibold text-[#111827] mb-2 block">Anything you want us to know about your location</label>
+                      <Textarea placeholder="Tell us more about your location" className="min-h-[120px] rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
                     </div>
 
                     <Button className="w-full h-12 rounded-[10px] bg-[#DC2626] text-white hover:bg-[#B91C1C] text-[14px] font-semibold shadow-none">
@@ -241,6 +241,24 @@ const Contact = () => {
                         <p className="flex items-start gap-2">
                           <Mail className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
                           sales.qld@banditanz.com.au
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="text-[15px] font-bold text-[#111827] mb-3">Fog Bandit ANZ – Auckland Office</h3>
+                      <div className="space-y-2 text-[13px] text-[#4B5563]">
+                        <p className="flex items-start gap-2">
+                          <MapPin className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          PO Box 230294 Botany Downs, Auckland 2143
+                        </p>
+                        <p className="flex items-start gap-2">
+                          <Phone className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          0800 385 358
+                        </p>
+                        <p className="flex items-start gap-2">
+                          <Mail className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          security.nz@banditanz.com.au
                         </p>
                       </div>
                     </div>

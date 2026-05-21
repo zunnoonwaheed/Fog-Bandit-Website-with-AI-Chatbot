@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import iconActivation from "@/assets/icon-stage-activation.svg";
 import iconDeployment from "@/assets/icon-stage-deployment.svg";
 import iconVisibility from "@/assets/icon-stage-visibility.svg";
-import stagesFogBikes from "@/assets/stages-fog-bikes.png";
-import stagesFogMobile from "@/assets/stages-fog-mobile.svg";
+import fogImageDesktop from "@/assets/Room filled with dense fog (1).png";
+import fogImageMobile from "@/assets/Room filled with dense fog (2).svg";
 
 const stages = [
   {
@@ -64,15 +64,15 @@ const StagesSection = () => {
         {/* Fog scene image - portrait (with baked overlays) on mobile, landscape on desktop */}
         <div className="relative mt-6 md:mt-8 max-w-6xl mx-auto rounded-2xl overflow-hidden">
           <img
-            src={stagesFogMobile}
+            src={fogImageMobile}
             alt="Dense fog filling a retail space with Zero Visibility and Sensory Disorientation"
             className="block md:hidden w-full h-auto"
             loading="lazy"
           />
           <img
-            src={stagesFogBikes}
-            alt="Dense fog filling a retail space"
-            className="hidden md:block w-full h-[520px] object-cover"
+            src={fogImageDesktop}
+            alt="Dense fog filling a retail space with Zero Visibility and Sensory Disorientation"
+            className="hidden md:block w-full h-auto"
             loading="lazy"
           />
         </div>

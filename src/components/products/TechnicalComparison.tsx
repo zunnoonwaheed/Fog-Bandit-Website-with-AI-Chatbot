@@ -15,9 +15,9 @@ const models = [
       { label: "CE", color: "bg-[#021373]" },
       { label: "Acclaim", color: "bg-[#021373]" },
       { label: "A-Tick", color: "bg-[#021373]" },
-      { label: "sDs", color: "bg-[#021373]" },
+      { label: "SDS", color: "bg-[#021373]" },
     ],
-    note: "(World's only Security Fogging Device to achieve the Highest NF&A2P Security Level 2 Shield.)",
+    note: "(World's only Security Fogging Device to achieve the highest NF&A2P Security Level 3 Shields)",
   },
   {
     model: "Bandit 320 Compact",
@@ -32,9 +32,9 @@ const models = [
       { label: "CE", color: "bg-[#021373]" },
       { label: "Acclaim", color: "bg-[#021373]" },
       { label: "A-Tick", color: "bg-[#021373]" },
-      { label: "sDs", color: "bg-[#021373]" },
+      { label: "SDS", color: "bg-[#021373]" },
     ],
-    note: "(World's only Security Fogging Device to achieve the Highest NF&A2P Security Level 2 Shield.)",
+    note: "(World's only Security Fogging Device to achieve the highest NF&A2P Security Level 3 Shields)",
   },
 ];
 

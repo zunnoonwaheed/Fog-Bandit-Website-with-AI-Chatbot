@@ -89,8 +89,8 @@ const ProtectionSection = () => {
                   <p className="text-primary-foreground/60 text-[11px] mt-0.5">Reaction Time</p>
                 </div>
                 <div>
-                  <span className="text-primary-foreground font-heading font-bold text-xl">28,000</span>
-                  <p className="text-primary-foreground/60 text-[11px] mt-0.5">ft³/min Deployment</p>
+                  <span className="text-primary-foreground font-heading font-bold text-xl">50</span>
+                  <p className="text-primary-foreground/60 text-[11px] mt-0.5">m3 / Sec Deployment</p>
                 </div>
               </div>
             </div>

@@ -8,8 +8,7 @@ import { cn } from "@/lib/utils";
 import chatFabBlue from "@/assets/chat-fab-blue.svg";
 import chatFabRed from "@/assets/chat-fab-red.svg";
 import chatAvatar from "@/assets/chat-avatar.svg";
-import logoFallback from "@/assets/fog-bandit-logo.svg";
-import logoLockupAnz from "@/assets/fog-bandit-anz-logo-full.svg";
+import newLogo from "@/assets/image 40.svg";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useChatWidget } from "@/context/ChatWidgetContext";
@@ -174,16 +173,10 @@ const ChatWidget = () => {
                     aria-label="Fog Bandit ANZ — home"
                   >
                     <img
-                      src={logoFallback}
+                      src={newLogo}
                       alt=""
                       aria-hidden
-                      className="h-7 w-auto object-contain sm:h-8 lg:hidden"
-                    />
-                    <img
-                      src={logoLockupAnz}
-                      alt=""
-                      aria-hidden
-                      className="hidden lg:block h-9 md:h-10 w-auto max-w-[200px] object-contain object-left"
+                      className="h-10 w-auto object-contain sm:h-11 lg:h-12 max-w-[250px] object-left"
                     />
                   </Link>
 

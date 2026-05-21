@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import banditLogo from "@/assets/bandit-logo.svg";
+import banditLogo from "@/assets/Frame 2147227015 (2).png";
 
 const inputClass = "mt-2 w-full h-12 px-4 rounded-lg border-0 bg-[#F9F9F9] text-[13px] text-secondary placeholder:text-[#94A3B8] shadow-none focus:outline-none focus:ring-1 focus:ring-secondary transition-colors";
 
@@ -14,13 +14,7 @@ const ContactSection = () => {
           {/* Left */}
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3 mb-8">
-              <img src={banditLogo} alt="Fog Bandit logo" className="w-16 h-auto" loading="lazy" />
-              <div>
-                <h1 className="font-inter text-[18px] md:text-[20px] font-bold text-foreground tracking-tight leading-tight">
-                  FOG BANDIT<sup className="text-[10px]">®</sup>
-                </h1>
-                <p className="font-inter text-[18px] md:text-[20px] font-bold text-foreground tracking-tight leading-tight">ANZ</p>
-              </div>
+              <img src={banditLogo} alt="Fog Bandit logo" className="w-24 md:w-28 h-auto" loading="lazy" />
             </div>
             <h2 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground tracking-tight leading-tight">
               Take control of your security
@@ -28,7 +22,8 @@ const ContactSection = () => {
             <p className="font-dm-sans text-[14px] md:text-[16px] font-medium text-muted-foreground mt-4 leading-relaxed max-w-md">
               Complete this form and one of our trained security advisers will be in contact to help create the right Fog Bandit system for your needs.
             </p>
-            <div className="mt-10 space-y-1">
+            <div className="mt-10">
+              <p className="text-foreground text-sm font-semibold mb-2">Head Office</p>
               <p className="text-foreground text-sm font-medium">1300 385 358</p>
               <p className="text-foreground text-sm font-medium">security@banditanz.com</p>
               <p className="text-foreground text-sm font-medium">3/8 Royal Street</p>

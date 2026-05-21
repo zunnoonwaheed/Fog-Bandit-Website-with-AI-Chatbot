@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import logoImg from "@/assets/fog-bandit-logo-stacked.svg";
+import logoImg from "@/assets/image 40.svg";
 
 const AboutContact = () => {
   return (
@@ -9,7 +9,7 @@ const AboutContact = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
           <div className="md:col-span-5">
-            <img src={logoImg} alt="Fog Bandit" className="h-16 md:h-20 object-contain mb-4" />
+            <img src={logoImg} alt="Fog Bandit" className="h-24 md:h-28 w-auto object-contain mb-4" />
             <h2 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground mb-3 leading-snug">
               Built by experts. Trusted in the real world.
             </h2>

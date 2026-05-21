@@ -51,7 +51,7 @@ const DetectionSection = () => {
                 <div>
                   <h3 className="font-poppins font-semibold text-foreground mb-1 text-[16px] md:text-[24px]">0.1s Reaction Time</h3>
                   <p className="font-dm-sans text-[14px] md:text-[18px] text-muted-foreground leading-relaxed">
-                    Fog deployment begins almost instantly after detection, ensuring intruders have no time to act.
+                    Fog deployment begins almost instantly after detection, ensuring intruders have no time to act and No false triggering due to confirmation.
                   </p>
                 </div>
               </div>

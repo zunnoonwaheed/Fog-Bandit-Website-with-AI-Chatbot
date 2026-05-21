@@ -10,7 +10,7 @@ const AboutHero = () => {
           Protecting ANZ Businesses for <span className="text-primary">Over 30+ Years</span>
         </h1>
         <p className="font-dm-sans text-[14px] md:text-[18px] font-medium text-muted-foreground leading-relaxed mb-7 md:mb-8 max-w-3xl mx-auto">
-          Fog Bandit ANZ is built on one principle — security should stop crime, not just record it. For over two decades, we've helped businesses and homeowners move from passive systems to real protection.
+          Fog Bandit ANZ is built on one principle — security should stop crime, not just record it. For over three decades, BANDIT n.v. (made in Belgium) helped businesses and homeowners move from passive systems to real protection.
         </p>
         <div className="flex items-center justify-center gap-3 md:gap-4 flex-wrap">
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 md:px-8 h-10 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2">

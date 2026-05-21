@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: "99.9%", label: "Harmless To Human", percent: 99.9, target: 99.9, decimals: 1, suffix: "%" },
-  { value: "99.9%", label: "Harmless To Pets", percent: 99.9, target: 99.9, decimals: 1, suffix: "%" },
-  { value: "99.9%", label: "Harmless To Electronics", percent: 99.9, target: 99.9, decimals: 1, suffix: "%" },
+  { value: "100%", label: "Harmless To Human", percent: 100, target: 100, decimals: 0, suffix: "%" },
+  { value: "100%", label: "Harmless To Pets", percent: 100, target: 100, decimals: 0, suffix: "%" },
+  { value: "100%", label: "Harmless To Electronics", percent: 100, target: 100, decimals: 0, suffix: "%" },
   { value: "100%", label: "Doesn't Catch Fire", percent: 100, target: 100, decimals: 0, suffix: "%" },
-  { value: "95%", label: "Left No Residue", percent: 95, target: 95, decimals: 0, suffix: "%" },
+  { value: "100%", label: "Left No Residue", percent: 100, target: 100, decimals: 0, suffix: "%" },
 ];
 
 const RADIUS = 32;

@@ -3,9 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useChatWidgetOptional } from "@/context/ChatWidgetContext";
-import logoFallback from "@/assets/fog-bandit-logo.svg";
-import logoLockupAnz from "@/assets/fog-bandit-anz-logo-full.svg";
-import logoHomeHero from "@/assets/fog-bandit-anz-logo-home.png";
+import newLogo from "@/assets/image 40.svg";
 import { homeNavLinks, innerNavLinks } from "@/constants/navigation";
 
 interface NavbarProps {
@@ -83,29 +81,12 @@ const Navbar = (_props: NavbarProps = {}) => {
             className="flex shrink-0 items-center gap-0 overflow-visible"
             aria-label="Fog Bandit ANZ — home"
           >
-            {isHomeHeroNav ? (
-              <img
-                src={logoHomeHero}
-                alt=""
-                aria-hidden
-                className="h-9 w-auto max-h-10 max-w-[calc(100vw-10rem)] shrink-0 object-contain object-left drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)] sm:h-10 lg:h-[42px] lg:max-w-none"
-              />
-            ) : (
-              <>
-                <img
-                  src={logoFallback}
-                  alt=""
-                  aria-hidden
-                  className="h-[30px] w-auto shrink-0 object-contain sm:h-8 lg:hidden"
-                />
-                <img
-                  src={logoLockupAnz}
-                  alt=""
-                  aria-hidden
-                  className="max-lg:hidden h-[40px] w-auto shrink-0 object-contain object-left"
-                />
-              </>
-            )}
+            <img
+              src={newLogo}
+              alt=""
+              aria-hidden
+              className="h-12 w-auto max-h-14 max-w-[calc(100vw-10rem)] shrink-0 object-contain object-left sm:h-14 lg:h-[56px] lg:max-w-none"
+            />
           </Link>
 
           <div className="hidden min-w-0 flex-1 justify-center gap-8 px-4 lg:flex">

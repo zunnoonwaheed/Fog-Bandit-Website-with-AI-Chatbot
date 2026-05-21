@@ -1,4 +1,4 @@
-import productsLineup from "@/assets/products-lineup.png";
+import productsLineup from "@/assets/Fog Bandit unit manufacturing (7).png";
 import iconStopwatchRed from "@/assets/icon-stopwatch-red.svg";
 import iconShieldRed from "@/assets/icon-shield-red.svg";
 
@@ -22,7 +22,7 @@ const ActiveDefense = () => {
           <img
             src={productsLineup}
             alt="Fog Bandit product lineup"
-            className="w-full h-[280px] md:h-[400px] object-cover relative z-10"
+            className="w-full h-auto md:h-[550px] object-cover relative z-10"
             loading="lazy"
           />
         </div>

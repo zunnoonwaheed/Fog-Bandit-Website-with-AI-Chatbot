@@ -16,7 +16,7 @@ const PlugNSecureSection = () => {
     <section className="pb-14 lg:pb-[120px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="section-heading">Plug N Secure™</h2>
+          <h2 className="section-heading">Plug N Secure</h2>
           <p className="section-subtext mt-4">
             The world's first professional standalone residential security system. Zero
             integration required. 100% peace of mind.

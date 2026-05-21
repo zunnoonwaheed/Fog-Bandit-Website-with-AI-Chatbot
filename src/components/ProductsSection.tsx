@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import homeTallLeft from "@/assets/home-bento-tall-left.png";
+import product320VVertical from "@/assets/product-320v-vertical.png";
 import homeTallRight from "@/assets/home-bento-tall-right.png";
-import productPlt240Frontal from "@/assets/product-plt-240-frontal.png";
-import productPlt240PerspectiveA from "@/assets/product-plt-240-perspective-a.png";
+import product240DbExtended from "@/assets/product-240db-extended.png";
+import product240DbNarrow from "@/assets/product-240db-narrow.png";
 
 const productShotClass = "absolute inset-0 h-full w-full object-cover object-center";
 
@@ -41,10 +41,10 @@ const ProductsSection = () => {
         <div ref={mobileScrollRef} className="mt-10 md:hidden -mr-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory">
           <div className="flex gap-4 pr-4">
             {[
-              { img: homeTallRight, title: "Fog Bandit 320 Ceiling Mount", labels: false },
-              { img: productPlt240PerspectiveA, title: "Fog Bandit 240 DB Narrow Nozzle", labels: true },
-              { img: productPlt240Frontal, title: "Fog Bandit 240 DB Extended Nozzle", labels: true },
-              { img: homeTallLeft, title: "Fog Bandit 320 Vertical Mount", labels: false },
+              { img: product320VVertical, title: "Fog Bandit 320 V Vertical Mount", labels: true },
+              { img: product240DbNarrow, title: "Fog Bandit 240 DB Extended Nozzle", labels: true },
+              { img: product240DbExtended, title: "Fog Bandit 240 DB Narrow Nozzle", labels: true },
+              { img: homeTallRight, title: "Fog Bandit 320 C Ceiling Mount", labels: true },
             ].map((p, i, arr) => (
               <div
                 key={p.title}
@@ -57,13 +57,13 @@ const ProductsSection = () => {
                 </Link>
                 {p.labels ? (
                   <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
-                    <h3 className="text-primary-foreground font-heading font-bold text-lg leading-tight max-w-[200px]">{p.title}</h3>
+                    <h3 className="text-white font-heading font-bold text-[17px] leading-tight max-w-[200px]">{p.title.replace(' ', '\n')}</h3>
                     <button
                       aria-label="Next product"
                       onClick={() => scrollToCard((i + 1) % arr.length)}
-                      className="w-12 h-11 rounded-lg bg-white/10 hover:bg-white/10 focus:bg-white/10 active:bg-white/10 border border-white/20 backdrop-blur-md transition-none flex items-center justify-center shrink-0 ml-3"
+                      className="w-10 h-10 rounded-lg bg-[#1a1a1a] flex items-center justify-center shrink-0 ml-3"
                     >
-                      <ArrowRight className="w-4 h-4 text-primary-foreground" />
+                      <ArrowRight className="w-4 h-4 text-white" />
                     </button>
                   </div>
                 ) : null}
@@ -72,44 +72,54 @@ const ProductsSection = () => {
           </div>
         </div>
 
-        {/* Desktop bento: [tall = former R img] [240 narrow / 240 ext] [tall = former L img] */}
+        {/* Desktop bento: [320 V Vertical] [240 narrow / 240 ext] [320 C Ceiling] */}
         <div className="mt-12 hidden md:grid md:grid-cols-3 gap-4 auto-rows-[280px]">
           <Link
             to="/products"
-            aria-label="Fog Bandit 320 Ceiling Mount"
+            aria-label="Fog Bandit 320 Vertical Mount"
             className="md:col-start-1 md:row-start-1 md:row-span-2 h-full min-h-0 rounded-2xl relative overflow-hidden block"
           >
-            <img src={homeTallRight} alt="" className={productShotClass} loading="lazy" />
-            <span className="sr-only">Fog Bandit 320 Ceiling Mount</span>
+            <img src={product320VVertical} alt="" className={productShotClass} loading="lazy" />
+            <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
+              <h3 className="text-white font-heading font-bold text-[15px] leading-tight max-w-[180px]">Fog Bandit 320 V<br />Vertical Mount</h3>
+              <span aria-label="View product" className="w-9 h-9 rounded-lg bg-[#1a1a1a] flex items-center justify-center shrink-0 ml-2">
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
+              </span>
+            </div>
           </Link>
 
           <Link to="/products" className="md:col-start-2 md:row-start-1 h-full min-h-0 rounded-2xl relative overflow-hidden block">
-            <img src={productPlt240PerspectiveA} alt="Fog Bandit 240 DB Narrow Nozzle" className={productShotClass} loading="lazy" />
-            <div className="absolute bottom-4 left-4 right-4 z-10 flex items-end justify-between">
-              <h3 className="text-primary-foreground font-heading font-bold text-base leading-tight max-w-[180px]">Fog Bandit 240 DB Narrow Nozzle</h3>
-              <span aria-label="View product" className="w-10 h-9 rounded-lg bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 ml-2">
-                <ArrowRight className="w-3.5 h-3.5 text-primary-foreground" />
+            <img src={product240DbNarrow} alt="Fog Bandit 240 DB Extended Nozzle" className={productShotClass} loading="lazy" />
+            <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
+              <h3 className="text-white font-heading font-bold text-[15px] leading-tight max-w-[180px]">Fog Bandit 240 DB<br />Extended Nozzle</h3>
+              <span aria-label="View product" className="w-9 h-9 rounded-lg bg-[#1a1a1a] flex items-center justify-center shrink-0 ml-2">
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
               </span>
             </div>
           </Link>
 
           <Link to="/products" className="md:col-start-2 md:row-start-2 h-full min-h-0 rounded-2xl relative overflow-hidden block">
-            <img src={productPlt240Frontal} alt="Fog Bandit 240 DB Extended Nozzle" className={productShotClass} loading="lazy" />
-            <div className="absolute bottom-4 left-4 right-4 z-10 flex items-end justify-between">
-              <h3 className="text-primary-foreground font-heading font-bold text-base leading-tight max-w-[180px]">Fog Bandit 240 DB Extended Nozzle</h3>
-              <span aria-label="View product" className="w-10 h-9 rounded-lg bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 ml-2">
-                <ArrowRight className="w-3.5 h-3.5 text-primary-foreground" />
+            <img src={product240DbExtended} alt="Fog Bandit 240 DB Narrow Nozzle" className={productShotClass} loading="lazy" />
+            <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
+              <h3 className="text-white font-heading font-bold text-[15px] leading-tight max-w-[180px]">Fog Bandit 240 DB<br />Narrow Nozzle</h3>
+              <span aria-label="View product" className="w-9 h-9 rounded-lg bg-[#1a1a1a] flex items-center justify-center shrink-0 ml-2">
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
               </span>
             </div>
           </Link>
 
           <Link
             to="/products"
-            aria-label="Fog Bandit 320 Vertical Mount"
+            aria-label="Fog Bandit 320 Ceiling Mount"
             className="md:col-start-3 md:row-start-1 md:row-span-2 h-full min-h-0 rounded-2xl relative overflow-hidden block"
           >
-            <img src={homeTallLeft} alt="" className={productShotClass} loading="lazy" />
-            <span className="sr-only">Fog Bandit 320 Vertical Mount</span>
+            <img src={homeTallRight} alt="" className={productShotClass} loading="lazy" />
+            <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
+              <h3 className="text-white font-heading font-bold text-[15px] leading-tight max-w-[180px]">Fog Bandit 320 C<br />Ceiling Mount</h3>
+              <span aria-label="View product" className="w-9 h-9 rounded-lg bg-[#1a1a1a] flex items-center justify-center shrink-0 ml-2">
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
+              </span>
+            </div>
           </Link>
         </div>
       </div>

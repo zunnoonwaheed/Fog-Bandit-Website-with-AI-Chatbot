@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import logoImg from "@/assets/fog-bandit-logo-stacked.svg";
+import logoImg from "@/assets/image 40.svg";
 
 const ProductsContact = () => {
   return (
@@ -10,7 +10,7 @@ const ProductsContact = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-start">
           <div>
-            <img src={logoImg} alt="Fog Bandit" className="h-14 md:h-20 object-contain mb-4 hidden md:block" />
+            <img src={logoImg} alt="Fog Bandit" className="h-24 md:h-28 w-auto object-contain mb-4 hidden md:block" />
             <h2 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground mb-3 leading-snug">
               <span className="md:hidden">If it's worth protecting, it's worth stopping theft properly</span>
               <span className="hidden md:inline">Upgrade from detection to prevention</span>
