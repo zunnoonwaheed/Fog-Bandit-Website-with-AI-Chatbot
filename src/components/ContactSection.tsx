@@ -14,7 +14,7 @@ const ContactSection = () => {
           {/* Left */}
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3 mb-8">
-              <img src={banditLogo} alt="Fog Bandit logo" className="w-24 md:w-28 h-auto" loading="lazy" />
+              <img src={banditLogo} alt="Fog Bandit logo" className="h-[80px] w-auto" loading="lazy" />
             </div>
             <h2 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground tracking-tight leading-tight">
               Take control of your security

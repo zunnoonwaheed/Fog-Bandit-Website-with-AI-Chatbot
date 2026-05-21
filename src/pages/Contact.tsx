@@ -138,126 +138,126 @@ const Contact = () => {
                   <div className="grid md:grid-cols-2 gap-8 md:gap-12">
                     {/* Office locations */}
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-bold text-[#111827] mb-3">Fog Bandit ANZ – Sydney</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Sydney</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
-                          <MapPin className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />
                           Epping, NSW 2121
                         </p>
                         <p className="flex items-start gap-2">
-                          <Phone className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Phone className="h-4 w-4 mt-0.5 text-[#111827]" />
                           0451 205 157
                         </p>
                         <p className="flex items-start gap-2">
-                          <Mail className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Mail className="h-4 w-4 mt-0.5 text-[#111827]" />
                           sales.nsw@banditanz.com.au
                         </p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-bold text-[#111827] mb-3">Fog Bandit ANZ – Darwin</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Darwin</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
-                          <MapPin className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />
                           Parap, Northern Territory 0820
                         </p>
                         <p className="flex items-start gap-2">
-                          <Phone className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Phone className="h-4 w-4 mt-0.5 text-[#111827]" />
                           1300 385 358
                         </p>
                         <p className="flex items-start gap-2">
-                          <Mail className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Mail className="h-4 w-4 mt-0.5 text-[#111827]" />
                           sales.NT@banditanz.com.au
                         </p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-bold text-[#111827] mb-3">Fog Bandit ANZ – Melbourne</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Melbourne</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
-                          <MapPin className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />
                           Berwick VIC 3806
                         </p>
                         <p className="flex items-start gap-2">
-                          <Phone className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Phone className="h-4 w-4 mt-0.5 text-[#111827]" />
                           1300 385 358
                         </p>
                         <p className="flex items-start gap-2">
-                          <Mail className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Mail className="h-4 w-4 mt-0.5 text-[#111827]" />
                           sales.vic@banditanz.com.au
                         </p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-bold text-[#111827] mb-3">Fog Bandit – South Pacific Region</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit – South Pacific Region</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
-                          <MapPin className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <MapPin className="h-4 w-4 min-h-[16px] min-w-[16px] shrink-0 mt-0.5 text-[#111827]" />
                           228 Rue Georges Leques, Normandie, Noumea 98800 - New Caledonia
                         </p>
                         <p className="flex items-start gap-2">
-                          <Phone className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Phone className="h-4 w-4 mt-0.5 text-[#111827]" />
                           +687 776 896
                         </p>
                         <p className="flex items-start gap-2">
-                          <Mail className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Mail className="h-4 w-4 mt-0.5 text-[#111827]" />
                           secretariat@incendienc.nc
                         </p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-bold text-[#111827] mb-3">Fog Bandit ANZ – Adelaide</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Adelaide</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
-                          <MapPin className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />
                           Woodville Park SA 5011
                         </p>
                         <p className="flex items-start gap-2">
-                          <Phone className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Phone className="h-4 w-4 mt-0.5 text-[#111827]" />
                           1300 385 358
                         </p>
                         <p className="flex items-start gap-2">
-                          <Mail className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Mail className="h-4 w-4 mt-0.5 text-[#111827]" />
                           sales.sa@banditanz.com.au
                         </p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-bold text-[#111827] mb-3">Fog Bandit ANZ – Brisbane</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Brisbane</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
-                          <MapPin className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />
                           Underwood QLD 4119
                         </p>
                         <p className="flex items-start gap-2">
-                          <Phone className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Phone className="h-4 w-4 mt-0.5 text-[#111827]" />
                           1300 385 358
                         </p>
                         <p className="flex items-start gap-2">
-                          <Mail className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Mail className="h-4 w-4 mt-0.5 text-[#111827]" />
                           sales.qld@banditanz.com.au
                         </p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-bold text-[#111827] mb-3">Fog Bandit ANZ – Auckland Office</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Auckland Office</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
-                          <MapPin className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />
                           PO Box 230294 Botany Downs, Auckland 2143
                         </p>
                         <p className="flex items-start gap-2">
-                          <Phone className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Phone className="h-4 w-4 mt-0.5 text-[#111827]" />
                           0800 385 358
                         </p>
                         <p className="flex items-start gap-2">
-                          <Mail className="h-3.5 w-3.5 mt-0.5 text-[#6B7280]" />
+                          <Mail className="h-4 w-4 mt-0.5 text-[#111827]" />
                           security.nz@banditanz.com.au
                         </p>
                       </div>
