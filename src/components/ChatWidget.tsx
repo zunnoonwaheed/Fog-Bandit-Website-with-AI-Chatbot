@@ -20,6 +20,10 @@ const businessTypes = [
   { label: "Hospitality / Hotel", icon: "🏨" },
   { label: "Healthcare / Medical", icon: "🏥" },
   { label: "Office / Finance", icon: "💼" },
+  { label: "Petrol Stations", icon: "⛽" },
+  { label: "Tobacconists", icon: "🚬" },
+  { label: "Liquor Stores", icon: "🍷" },
+  { label: "Residential / Home", icon: "🏠" },
   { label: "Other", icon: "🔧" },
 ];
 

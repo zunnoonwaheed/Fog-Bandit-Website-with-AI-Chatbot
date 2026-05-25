@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import retailImg from "@/assets/casestudy-retail.jpg";
 import warehouseImg from "@/assets/casestudy-warehouse.jpg";
 import jewelleryImg from "@/assets/casestudy-jewellery.jpg";
@@ -148,21 +147,13 @@ const CaseStudiesGrid = () => {
                   </div>
                 </div>
 
-                {/* Author + Read */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <img src={cs.avatar} alt={cs.author} className="w-7 h-7 rounded-full object-cover" loading="lazy" />
-                    <div>
-                      <p className="text-foreground text-[12px] font-semibold">{cs.author}</p>
-                      <p className="text-muted-foreground text-[10px]">{cs.authorRole}</p>
-                    </div>
+                {/* Author */}
+                <div className="flex items-center gap-2">
+                  <img src={cs.avatar} alt={cs.author} className="w-7 h-7 rounded-full object-cover" loading="lazy" />
+                  <div>
+                    <p className="text-foreground text-[12px] font-semibold">{cs.author}</p>
+                    <p className="text-muted-foreground text-[10px]">{cs.authorRole}</p>
                   </div>
-                  <a
-                    href="#contact"
-                    className="text-[#021373] text-[12px] font-semibold flex items-center gap-1 shrink-0 hover:underline"
-                  >
-                    Read <ArrowRight className="h-3 w-3" />
-                  </a>
                 </div>
               </div>
             </article>

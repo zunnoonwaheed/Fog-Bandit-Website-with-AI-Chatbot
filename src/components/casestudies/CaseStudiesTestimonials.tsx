@@ -1,28 +1,24 @@
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
-import testimonialCardBg from "@/assets/testimonial-card-bg.jpg";
 import sarahCardBg from "@/assets/testimonial-sarah-bg.jpg";
-import avatarPatrick from "@/assets/avatar-patrick.png";
-import avatarPia from "@/assets/avatar-pia.png";
-import avatarRob from "@/assets/avatar-rob.png";
-import avatarSarah from "@/assets/avatar-sarah.png";
+import InitialsAvatar from "@/components/InitialsAvatar";
 
 const imageTestimonials = [
   {
     img: testimonial1,
-    avatar: avatarPatrick,
-    name: "Frank",
-    role: "Elk Fish Robotics WA",
-    quote: "The glass got broken outside and the fog bandit stopped the intruders and instantly foiled the robbery. Thank you!",
+    name: "Hasan Shahzad",
+    role: "Google Review",
+    quote: "Excellent product and great service team",
     aspect: "aspect-[685/363]",
+    metadata: "Local Guide · 37 reviews · 7 photos · 4 days ago",
   },
   {
     img: testimonial2,
-    avatar: avatarPia,
-    name: "Jack",
-    role: "",
-    quote: "I sleep well knowing that Fog Bandit is on Guard. I highly recommend Fog Bandit for your business, property or asset!",
+    name: "Muhammad Sibtain",
+    role: "Google Review",
+    quote: "Best fog devices ever",
     aspect: "aspect-[535/363]",
+    metadata: "16 reviews · 1 photo · 2 years ago",
   },
 ];
 
@@ -32,7 +28,7 @@ const CaseStudiesTestimonials = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-6 md:mb-8">
           <h2 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground mb-2 leading-snug">
-            <span className="text-primary">Trusted by businesses</span> that can't afford downtime
+            <span className="text-primary">Trusted by customers</span> that can't afford downtime
           </h2>
           <p className="font-dm-sans text-muted-foreground text-[14px] md:text-[18px] font-medium leading-relaxed">
             Hear directly from security leaders and operators using Fog Bandit every day.
@@ -51,10 +47,11 @@ const CaseStudiesTestimonials = () => {
               />
               <div className="p-4 md:p-5">
                 <div className="flex items-center gap-3 mb-3">
-                  <img src={t.avatar} alt={t.name} className="w-9 h-9 rounded-full object-cover" loading="lazy" />
+                  <InitialsAvatar name={t.name} size="md" />
                   <div>
                     <p className="font-semibold text-foreground text-[13px]">{t.name}</p>
                     {t.role && <p className="text-muted-foreground text-[11px]">{t.role}</p>}
+                    {t.metadata && <p className="text-muted-foreground/70 text-[10px] mt-0.5">{t.metadata}</p>}
                   </div>
                 </div>
                 <p className="text-muted-foreground text-[12px] md:text-[13px] leading-relaxed italic">
@@ -70,20 +67,19 @@ const CaseStudiesTestimonials = () => {
           {/* Left text testimonial */}
           <div className="border border-border rounded-xl p-5 flex flex-col bg-card">
             <div className="flex items-center gap-3 mb-3">
-              <img src={avatarRob} alt="Kamlesh" className="w-9 h-9 rounded-full object-cover" loading="lazy" />
+              <InitialsAvatar name="Malik" size="md" />
               <div>
-                <p className="font-semibold text-foreground text-[13px]">Kamlesh</p>
-                <p className="text-muted-foreground text-[11px]">Sindhiz Group of Companies ACT</p>
+                <p className="font-semibold text-foreground text-[13px]">Malik</p>
+                <p className="text-muted-foreground text-[11px]">Google Review</p>
+                <p className="text-muted-foreground/70 text-[10px] mt-0.5">6 reviews · 2 years ago</p>
               </div>
             </div>
-            <div className="text-accent text-[20px] leading-none mb-2">❝</div>
-            <p className="text-muted-foreground text-[12px] md:text-[13px] leading-relaxed italic flex-1">
-              "The Fog Bandit was installed at all our Tobacco Stores in ACT & NSW, to protect against burglaries which were steadily increasing. The Fog Bandit has proved to be an extremely reliable and immensely efficient system in dramatically reducing our problem and foiling robberies without any failure."
+            <p className="text-muted-foreground text-[12px] md:text-[13px] leading-relaxed italic flex-1 mt-3">
+              "Unique and amazing devices to stop intruders"
             </p>
-            <div className="text-accent text-[20px] leading-none mt-2 text-right">❞</div>
           </div>
 
-          {/* Middle - Sukoon image background card with frosted overlay - desktop only */}
+          {/* Middle - Francis image background card with frosted overlay - desktop only */}
           <div className="hidden md:flex rounded-xl overflow-hidden relative min-h-[303px] items-end p-6">
             <img
               src={sarahCardBg}
@@ -93,14 +89,17 @@ const CaseStudiesTestimonials = () => {
             />
             <div className="relative w-full rounded-xl bg-white/30 backdrop-blur-md p-4 text-white">
               <div className="flex items-center gap-3 mb-2">
-                <img src={avatarSarah} alt="Sukoon Bedi" className="w-9 h-9 rounded-md object-cover" loading="lazy" />
+                <InitialsAvatar name="Francis King" size="md" />
                 <div>
-                  <p className="font-semibold text-[13px]">Sukoon Bedi</p>
-                  <p className="text-white/80 text-[11px]">IGA Winchelsea VIC</p>
+                  <p className="font-semibold text-[13px]">Francis King</p>
+                  <p className="text-white/80 text-[11px]">Google Review</p>
+                  <p className="text-white/70 text-[10px] mt-0.5">
+                    Local Guide · 52 reviews · 42 photos · 2 years ago
+                  </p>
                 </div>
               </div>
               <p className="text-[12px] md:text-[13px] leading-relaxed italic">
-                "The Fog Bandit worked perfectly, and we did not suffer any loss. We feel assured by having the Fog Bandit installed."
+                "It just works."
               </p>
             </div>
           </div>
@@ -108,17 +107,16 @@ const CaseStudiesTestimonials = () => {
           {/* Right text testimonial - desktop only */}
           <div className="hidden md:flex border border-border rounded-xl p-5 flex-col bg-card">
             <div className="flex items-center gap-3 mb-3">
-              <img src={avatarPatrick} alt="David Lin" className="w-9 h-9 rounded-full object-cover" loading="lazy" />
+              <InitialsAvatar name="H A" size="md" />
               <div>
-                <p className="font-semibold text-foreground text-[13px]">David Lin</p>
-                <p className="text-muted-foreground text-[11px]">Operations Manager, Metro Logistics NSW</p>
+                <p className="font-semibold text-foreground text-[13px]">H A</p>
+                <p className="text-muted-foreground text-[11px]">Google Review</p>
+                <p className="text-muted-foreground/70 text-[10px] mt-0.5">1 review · 2 years ago</p>
               </div>
             </div>
-            <div className="text-accent text-[20px] leading-none mb-2">❝</div>
-            <p className="text-muted-foreground text-[12px] md:text-[13px] leading-relaxed italic flex-1">
-              "After two break-in attempts last year, we installed Fog Bandit across our warehouses. Since then, every attempted intrusion has been stopped within seconds. It's the best security investment we've made."
+            <p className="text-muted-foreground text-[12px] md:text-[13px] leading-relaxed italic flex-1 mt-3">
+              "Great pricing, innovative and functional products range, been using for over 5 years now and everything still working flawlessly. Great after sales support too."
             </p>
-            <div className="text-accent text-[20px] leading-none mt-2 text-right">❞</div>
           </div>
         </div>
       </div>
