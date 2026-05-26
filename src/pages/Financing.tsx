@@ -78,7 +78,7 @@ const Financing = () => {
                       </div>
                       <div>
                         <p className="text-[12px] text-muted-foreground">Finance Enquiries</p>
-                        <p className="text-[14px] md:text-[15px] font-semibold text-foreground break-all">finance@banditanz.com.au</p>
+                        <p className="text-[14px] md:text-[15px] font-semibold text-foreground break-all">admin@banditanz.com.au</p>
                       </div>
                     </div>
                   </div>
