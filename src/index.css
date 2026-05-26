@@ -281,3 +281,23 @@ section video.fb-in-view {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Testimonials bottom row — strict equal 372px cards on desktop */
+@media (min-width: 768px) {
+  section#case-studies .testimonials-bottom-row {
+    display: grid !important;
+    grid-template-rows: 372px !important;
+    align-items: start !important;
+  }
+
+  section#case-studies .testimonials-bottom-row > article.testimonial-bottom-card {
+    height: 372px !important;
+    max-height: 372px !important;
+    min-height: 372px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    margin-top: 0 !important;
+    transform: none !important;
+    position: relative !important;
+  }
+}

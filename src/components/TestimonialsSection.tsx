@@ -1,112 +1,204 @@
-import { useRef } from "react";
-import fogActionSplit from "@/assets/fog-action-split.png";
-import InitialsAvatar from "@/components/InitialsAvatar";
+import testimonialJewelry from "@/assets/testimonial-jewelry.png";
+import testimonialOffice from "@/assets/testimonial-office.png";
+import testimonialWarehouse from "@/assets/testimonial-warehouse.png";
+import { cn } from "@/lib/utils";
 
-type Testimonial = {
+const BOTTOM_CARD_HEIGHT_PX = 372;
+
+type ImageTestimonial = {
   name: string;
-  role: string;
+  company: string;
   quote: string;
-  metadata?: string;
+  image: string;
+  imageAlt: string;
 };
 
-const cardLeft: Testimonial = {
-  name: "H A",
-  role: "Google Review",
+type QuoteTestimonial = {
+  name: string;
+  company: string;
+  quote: string;
+};
+
+const topRow: ImageTestimonial[] = [
+  {
+    name: "Sue Dixon",
+    company: "Harvey and Thompson Pawnbrokers",
+    quote:
+      "As Pawnbrokers we have a special responsibility to look after valuables belonging to our customers. Often these items are of great sentimental value. The Bandit is a powerful and effective product, which helps to prevent criminality in our stores.",
+    image: testimonialJewelry,
+    imageAlt: "Fog Bandit protecting a jewelry store display",
+  },
+  {
+    name: "Jamie Kirkland",
+    company: "Cutting Jewellers",
+    quote:
+      "The Fog Bandit worked perfectly! Nobody was hurt, we did not suffer any loss and the shop is back open this morning for Christmas trading. Without the Fog Bandit the outcome could have been very different. We feel assured by having the Fog Bandit installed and strongly suggest that other retail Jewellers do the same.",
+    image: testimonialOffice,
+    imageAlt: "Fog Bandit deployed in an office environment",
+  },
+];
+
+const quoteLeft: QuoteTestimonial = {
+  name: "Kamlesh",
+  company: "Sindhiz Group of Companies ACT",
   quote:
-    "Great pricing, innovative and functional products range, been using for over 5 years now and everything still working flawlessly. Great after sales support too.",
-  metadata: "1 review · 2 years ago",
+    "The Fog Bandit was installed at all our Tobacco Stores in ACT & NSW, to protect against burglaries which were steadily increasing. The Fog Bandit has proved to be an extremely reliable and immensely efficient system in dramatically reducing our problem and foiling robberies without any failure.",
 };
 
-const cardRight: Testimonial = {
-  name: "Hamza Sajid",
-  role: "Google Review",
+const quoteRight: QuoteTestimonial = {
+  name: "Frank",
+  company: "Elk Fish Robotics WA",
   quote:
-    "Works really well for foiling robberies",
-  metadata: "2 reviews · 2 years ago",
+    "The glass got broken outside and the fog bandit stopped the intruders and instantly foiled the robbery. Thank you!",
 };
 
-const TextCard = ({ t }: { t: Testimonial }) => (
-  <div className="bg-background border border-border rounded-2xl p-4 md:p-8 shadow-sm flex flex-col min-h-[248px] md:min-h-[300px]">
-    <div className="flex items-center gap-3">
-      <InitialsAvatar name={t.name} size="md" />
-      <div>
-        <p className="font-bold text-secondary text-[13px] md:text-[16px] leading-tight">{t.name}</p>
-        <p className="text-muted-foreground text-[11px] md:text-[13px] mt-0.5">{t.role}</p>
-        {t.metadata && (
-          <p className="text-muted-foreground/70 text-[10px] md:text-[11px] mt-0.5">{t.metadata}</p>
-        )}
-      </div>
-    </div>
-    <p className="text-muted-foreground text-[12px] md:text-[15px] leading-[1.6] mt-4 md:mt-6 italic flex-1">"{t.quote}"</p>
-  </div>
+const featuredCenter = {
+  name: "Sukoon Bedi",
+  company: "IGA Winchelsea VIC",
+  quote:
+    "The Fog Bandit worked perfectly, and we did not suffer any loss and the shop is back open this morning for usual trading. Without the Fog Bandit the outcome could have been very different. We feel assured by having the Fog Bandit installed and strongly suggest that other IGA supermarkets do the same.",
+};
+
+const QuoteMarks = () => (
+  <>
+    <span
+      className="pointer-events-none absolute left-5 top-5 font-serif text-[40px] leading-none text-[#021373] md:left-6 md:top-6"
+      aria-hidden
+    >
+      “
+    </span>
+    <span
+      className="pointer-events-none absolute bottom-5 right-5 font-serif text-[40px] leading-none text-[#021373] md:bottom-6 md:right-6"
+      aria-hidden
+    >
+      ”
+    </span>
+  </>
 );
 
-const ImageCard = ({ className = "" }: { className?: string }) => (
-  <div className={`relative rounded-2xl overflow-hidden w-full h-[420px] shadow-lg ${className}`}>
-    <img src={fogActionSplit} alt="Fog Bandit in action" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-    <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 via-transparent to-transparent" />
-    {/* Glass overlay card */}
-    <div className="absolute left-4 right-4 bottom-4 rounded-xl p-4 bg-white/25 backdrop-blur-md border border-white/30">
-      <div className="flex items-center gap-2.5 mb-2.5">
-        <InitialsAvatar name="Francis King" size="md" />
-        <div>
-          <p className="text-white text-[13px] font-bold leading-tight">Francis King</p>
-          <p className="text-white/80 text-[11px] leading-tight mt-0.5">Google Review</p>
-        </div>
-      </div>
-      <p className="text-white text-[12px] leading-relaxed">
-        "It just works."
-      </p>
-      <p className="text-white/70 text-[10px] mt-1.5">
-        Local Guide · 52 reviews · 42 photos · 2 years ago
-      </p>
+const ImageTestimonialCard = ({ t }: { t: ImageTestimonial }) => (
+  <article className="overflow-hidden rounded-2xl border border-border/60 bg-white shadow-[0_4px_24px_rgba(15,23,42,0.06)]">
+    <img src={t.image} alt={t.imageAlt} className="h-[220px] w-full object-cover md:h-[260px]" loading="lazy" />
+    <div className="p-5 md:p-6">
+      <p className="font-inter text-[15px] font-bold leading-tight text-secondary md:text-[16px]">{t.name}</p>
+      <p className="mt-1 font-dm-sans text-[12px] text-[#64748B] md:text-[13px]">{t.company}</p>
+      <p className="mt-4 font-dm-sans text-[13px] leading-[1.65] text-[#334155] md:text-[14px]">{t.quote}</p>
     </div>
-  </div>
+  </article>
 );
 
+const QuoteTestimonialCard = ({ t }: { t: QuoteTestimonial }) => (
+  <article
+    className="testimonial-bottom-card relative flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-white shadow-[0_4px_24px_rgba(15,23,42,0.06)]"
+    style={{
+      height: `${BOTTOM_CARD_HEIGHT_PX}px`,
+      minHeight: `${BOTTOM_CARD_HEIGHT_PX}px`,
+      maxHeight: `${BOTTOM_CARD_HEIGHT_PX}px`,
+    }}
+  >
+    <QuoteMarks />
+    <div className="relative z-10 flex min-h-0 flex-1 flex-col overflow-hidden px-6 pb-6 pt-10 md:px-8 md:pt-12">
+      <p className="font-inter text-[15px] font-bold leading-tight text-secondary md:text-[16px]">{t.name}</p>
+      <p className="mt-1 font-dm-sans text-[12px] text-[#64748B] md:text-[13px]">{t.company}</p>
+      <p className="mt-4 min-h-0 flex-1 overflow-y-auto font-dm-sans text-[13px] leading-[1.65] text-[#334155] md:text-[14px]">
+        {t.quote}
+      </p>
+    </div>
+  </article>
+);
 
-const TestimonialsSection = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+const FeaturedTestimonialCard = () => (
+  <article
+    className="testimonial-bottom-card relative overflow-hidden rounded-2xl shadow-[0_4px_24px_rgba(15,23,42,0.08)]"
+    style={{
+      height: `${BOTTOM_CARD_HEIGHT_PX}px`,
+      minHeight: `${BOTTOM_CARD_HEIGHT_PX}px`,
+      maxHeight: `${BOTTOM_CARD_HEIGHT_PX}px`,
+    }}
+  >
+    <img
+      src={testimonialWarehouse}
+      alt="Fog Bandit protecting a warehouse"
+      className="absolute inset-0 h-full w-full object-cover"
+      loading="lazy"
+    />
+    <div className="absolute inset-0 bg-black/20" />
+    <div className="absolute inset-0 flex items-center justify-center p-4 md:p-5">
+      <div className="max-h-[calc(100%-1.5rem)] w-full max-w-md overflow-y-auto rounded-xl border border-white/30 bg-white/25 p-4 backdrop-blur-md md:p-5">
+        <p className="font-inter text-[14px] font-bold leading-tight text-white md:text-[15px]">{featuredCenter.name}</p>
+        <p className="mt-1 font-dm-sans text-[11px] text-white/85 md:text-[12px]">{featuredCenter.company}</p>
+        <p className="mt-3 min-h-0 overflow-y-auto font-dm-sans text-[12px] leading-[1.55] text-white md:text-[13px]">
+          {featuredCenter.quote}
+        </p>
+      </div>
+    </div>
+  </article>
+);
 
+type TestimonialsSectionProps = {
+  className?: string;
+};
+
+const TestimonialsSection = ({ className }: TestimonialsSectionProps) => {
   return (
-    <section id="case-studies" className="pb-14 lg:pb-[120px]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-[20px] md:text-[28px] font-bold text-secondary leading-snug">
-            Proven When It <span className="text-[#021373]">Matters Most</span>
+    <section id="case-studies" className={cn("bg-[#F9F9F9] py-14 lg:py-20", className)}>
+      <style>
+        {`
+          section#case-studies .testimonials-bottom-row {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            grid-template-rows: ${BOTTOM_CARD_HEIGHT_PX}px !important;
+            gap: 1.25rem !important;
+            align-items: start !important;
+          }
+
+          section#case-studies .testimonials-bottom-row > article.testimonial-bottom-card {
+            height: ${BOTTOM_CARD_HEIGHT_PX}px !important;
+            max-height: ${BOTTOM_CARD_HEIGHT_PX}px !important;
+            min-height: ${BOTTOM_CARD_HEIGHT_PX}px !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            transform: none !important;
+            position: relative !important;
+          }
+
+          @media (max-width: 767px) {
+            section#case-studies .testimonials-bottom-row {
+              grid-template-columns: 1fr !important;
+              grid-template-rows: auto !important;
+            }
+            section#case-studies .testimonials-bottom-row > article.testimonial-bottom-card {
+              height: auto !important;
+              min-height: 280px !important;
+              max-height: none !important;
+            }
+          }
+        `}
+      </style>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-inter text-[24px] font-bold leading-tight md:text-[32px]">
+            <span className="text-primary">Trusted by businesses</span>{" "}
+            <span className="text-secondary">that can&apos;t afford downtime</span>
           </h2>
-          <p className="mt-3 text-[13px] md:text-[15px] text-muted-foreground leading-relaxed">
-            Fog Bandit isn't theoretical, it's been tested in real break-ins where seconds made the difference between loss and protection.
+          <p className="mt-3 font-dm-sans text-[15px] leading-relaxed text-[#64748B] md:mt-4 md:text-[17px]">
+            Hear directly from security leaders and operators using Fog Bandit every day.
           </p>
         </div>
 
-        {/* Desktop: 3-column layout - wide side cards, narrower portrait center */}
-        <div className="mt-10 hidden md:grid md:grid-cols-[1fr_300px_1fr] gap-8 items-center">
-          <div>
-            <TextCard t={cardLeft} />
-          </div>
-          <ImageCard className="max-w-[300px] mx-auto" />
-          <div>
-            <TextCard t={cardRight} />
-          </div>
+        <div className="mt-8 grid grid-cols-1 gap-5 md:mt-10 md:grid-cols-2">
+          {topRow.map((t) => (
+            <ImageTestimonialCard key={t.name} t={t} />
+          ))}
         </div>
 
-        {/* Mobile: horizontal snap scroll - all cards same width */}
-        <div className="mt-8 md:hidden -mx-4">
-          <div
-            ref={scrollRef}
-            className="flex items-center gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-4 scroll-smooth scrollbar-hide"
-          >
-            <div className="snap-center shrink-0 w-[78%] max-w-[286px]">
-              <TextCard t={cardLeft} />
-            </div>
-            <div className="snap-center shrink-0 w-[78%] max-w-[286px]">
-              <ImageCard />
-            </div>
-            <div className="snap-center shrink-0 w-[78%] max-w-[286px]">
-              <TextCard t={cardRight} />
-            </div>
-          </div>
+        <div className="testimonials-bottom-row mt-5">
+          <QuoteTestimonialCard t={quoteLeft} />
+          <FeaturedTestimonialCard />
+          <QuoteTestimonialCard t={quoteRight} />
         </div>
       </div>
     </section>
