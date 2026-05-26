@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import banditLogo from "@/assets/Frame 2147227015 (2).png";
+import banditLogo from "@/assets/footer-logo.svg";
 
 const inputClass = "mt-2 w-full h-12 px-4 rounded-lg border-0 bg-[#F9F9F9] text-[13px] text-secondary placeholder:text-[#94A3B8] shadow-none focus:outline-none focus:ring-1 focus:ring-secondary transition-colors";
 
@@ -14,7 +14,7 @@ const ContactSection = () => {
           {/* Left */}
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3 mb-8">
-              <img src={banditLogo} alt="Fog Bandit logo" className="h-[80px] w-auto" loading="lazy" />
+              <img src={banditLogo} alt="Fog Bandit logo" className="w-[245px] h-[124.41px] object-contain" loading="lazy" />
             </div>
             <h2 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground tracking-tight leading-tight">
               Take control of your security
