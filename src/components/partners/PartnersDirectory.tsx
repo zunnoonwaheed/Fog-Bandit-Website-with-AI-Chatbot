@@ -1,4 +1,4 @@
-import { MapPin, Mail, Phone, Globe } from "lucide-react";
+import { Mail, Phone, Globe } from "lucide-react";
 import mapImage from "@/assets/contact-map-anz-region.png";
 
 interface Partner {
@@ -281,13 +281,10 @@ const partnersData: StatePartners[] = [
 const PartnerCard = ({ partner }: { partner: Partner }) => {
   return (
     <div className="group bg-background border border-border rounded-xl p-5 md:p-6 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full flex flex-col w-full">
-      <div className="flex items-start justify-between mb-4 gap-2">
-        <h3 className="font-inter text-[15px] md:text-[16px] font-bold text-foreground leading-snug flex-1 min-w-0">
+      <div className="mb-4">
+        <h3 className="font-inter text-[15px] md:text-[16px] font-bold text-foreground leading-snug">
           <span className="line-clamp-2">{partner.name}</span>
         </h3>
-        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-          <MapPin className="h-4 w-4 text-primary" />
-        </div>
       </div>
 
       <div className="space-y-3 flex-1">

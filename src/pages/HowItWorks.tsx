@@ -18,6 +18,9 @@ const HowItWorks = () => {
       {/* Page hero */}
       <section className="relative pt-[140px] lg:pt-[210px] pb-10 lg:pb-[60px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-primary/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
+            The world leader in security fogging
+          </p>
           <h1 className="section-heading">
             How Fog Bandit stops intruders in seconds
           </h1>

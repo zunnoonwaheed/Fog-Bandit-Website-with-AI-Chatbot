@@ -24,7 +24,7 @@ const ContactSection = () => {
             </p>
             <div className="mt-10">
               <p className="text-foreground text-sm font-semibold mb-2">Head Office</p>
-              <p className="text-foreground text-sm font-medium">1300 385 358</p>
+              <p className="text-foreground text-sm font-medium">+61 482 795 786</p>
               <p className="text-foreground text-sm font-medium">security@banditanz.com</p>
               <p className="text-foreground text-sm font-medium">3/8 Royal Street</p>
               <p className="text-foreground text-sm font-medium">Kenwick WA 6107</p>
