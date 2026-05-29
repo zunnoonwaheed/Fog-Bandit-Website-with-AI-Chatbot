@@ -1,4 +1,4 @@
-import aboutFogRoom from "@/assets/about-fog-room.png";
+import aboutFogRoom from "@/assets/2 (1).png";
 
 const AboutStory = () => {
   return (

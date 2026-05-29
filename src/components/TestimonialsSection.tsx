@@ -141,7 +141,7 @@ type TestimonialsSectionProps = {
 
 const TestimonialsSection = ({ className }: TestimonialsSectionProps) => {
   return (
-    <section id="case-studies" className={cn("bg-[#F9F9F9] py-14 lg:py-20", className)}>
+    <section id="case-studies" className={cn("bg-[#F9F9F9] py-10 lg:py-14", className)}>
       <style>
         {`
           section#case-studies .testimonials-bottom-row {
@@ -180,7 +180,7 @@ const TestimonialsSection = ({ className }: TestimonialsSectionProps) => {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-inter text-[24px] font-bold leading-tight md:text-[32px]">
+          <h2 className="font-inter text-[24px] font-bold leading-tight md:text-[28px]">
             <span className="text-primary">Trusted by businesses</span>{" "}
             <span className="text-secondary">that can&apos;t afford downtime</span>
           </h2>

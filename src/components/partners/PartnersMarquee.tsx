@@ -4,6 +4,13 @@ import partnerLogo2 from "@/assets/partner-logo-2.png";
 import partnerLogo3 from "@/assets/partner-logo-3.png";
 import partnerLogo4 from "@/assets/partner-logo-4.png";
 import partnerLogo5 from "@/assets/partner-logo-5.png";
+import partnerSentricom from "@/assets/partner-sentricom.png";
+import partnerProtection1 from "@/assets/partner-protection1.png";
+import partnerHitech from "@/assets/partner-hitech.png";
+import partnerGsec from "@/assets/partner-gsec.png";
+import partnerAsc from "@/assets/partner-asc.png";
+import partnerSafeguards from "@/assets/partner-safeguards.png";
+import partnerElectra from "@/assets/partner-electra.png";
 
 const partnerLogos = [
   { src: partnerLook, alt: "Look Video Surveillance" },
@@ -12,6 +19,13 @@ const partnerLogos = [
   { src: partnerLogo3, alt: "Partner 3" },
   { src: partnerLogo4, alt: "Partner 4" },
   { src: partnerLogo5, alt: "Partner 5" },
+  { src: partnerSentricom, alt: "Sentricom" },
+  { src: partnerProtection1, alt: "Protection1 Security" },
+  { src: partnerHitech, alt: "Hitech Security" },
+  { src: partnerGsec, alt: "G-sec" },
+  { src: partnerAsc, alt: "Asset Security Concepts" },
+  { src: partnerSafeguards, alt: "Safeguards Security Services" },
+  { src: partnerElectra, alt: "Electra Security" },
 ];
 
 const PartnersMarquee = () => {

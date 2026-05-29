@@ -33,6 +33,27 @@ const partnersData: StatePartners[] = [
         address: "P O BOX 2338, Ellenbrook WA 6069",
         mobile: "04 2093 9184",
         email: "admin@nida.net.au"
+      },
+      {
+        name: "Sentricom",
+        address: "131 Welshpool Road, WELSHPOOL WA 6106",
+        phone: "(08) 9458 3626",
+        email: "sales@sentricom.com.au",
+        website: "www.sentricom.com.au"
+      },
+      {
+        name: "Protection1 Security",
+        address: "Unit 6, 63 Oxleigh Drive, Malaga, Western Australia 6090",
+        phone: "(08) 9248 6633",
+        email: "sales@protection1.com.au",
+        website: "www.protection1.com.au"
+      },
+      {
+        name: "Hitech Security",
+        address: "4/28 Hammond Rd, Cockburn Central WA 6164",
+        phone: "300 613 260",
+        email: "info@hitechsecurity.com.au",
+        website: "www.hitechsecurity.com.au"
       }
     ]
   },
@@ -67,6 +88,33 @@ const partnersData: StatePartners[] = [
         mobile: "0438 436 199",
         email: "info@looksecurity.com.au",
         website: "www.looksecurity.com.au"
+      },
+      {
+        name: "G-sec",
+        address: "Victoria",
+        phone: "03 8848 4000",
+        email: "info@gsec.com.au",
+        website: "gsec.com.au"
+      },
+      {
+        name: "Asset Security Concepts Pty Ltd",
+        address: "4/569 Somerville Rd, Sunshine West, 3020",
+        phone: "1300 662 824",
+        email: "sales@ascpty.com.au",
+        website: "ascpty.com.au"
+      },
+      {
+        name: "Twenty Twenty IT",
+        address: "ALTONA 3018 VIC, Australia",
+        mobile: "0456 007 221",
+        email: "trav@2020it.com.au"
+      },
+      {
+        name: "QA Electrical",
+        address: "111-115 Douro St, North Geelong VIC 3215",
+        phone: "1300 797 732",
+        email: "info@qaelectrical.com.au",
+        website: "www.qaelectrical.com.au"
       }
     ]
   },
@@ -106,6 +154,13 @@ const partnersData: StatePartners[] = [
         mobile: "0487 777 774",
         email: "pete@anythingelectrical.com.au",
         website: "www.anythingelectrical.com.au"
+      },
+      {
+        name: "Safeguards Security Services",
+        address: "2/2 Stennett Road INGLEBURN 2565",
+        phone: "1300 225 276",
+        email: "sales@safeguardsecurity.com.au",
+        website: "safeguardsecurity.com.au"
       }
     ]
   },
@@ -127,6 +182,45 @@ const partnersData: StatePartners[] = [
         mobile: "0420 996 923",
         email: "mushir@sunshinesecurity.com.au",
         website: "www.sunshinesecurity.com.au"
+      },
+      {
+        name: "Asset Security Concepts Pty Ltd",
+        address: "12/38-46 South Street Rydalmere, NSW 2116",
+        phone: "1300 662 824",
+        email: "sales@ascpty.com.au",
+        website: "ascpty.com.au"
+      },
+      {
+        name: "PMT",
+        address: "Unit 2, 8 Metroplex Ave Murarrie QLD 4172",
+        phone: "1300 853 686",
+        email: "venny.xanthopoulos@pmtsecurity.com.au",
+        website: "pmtsecurity.com.au"
+      },
+      {
+        name: "Electra Security",
+        address: "WATERFORD WEST, QLD, 4133",
+        phone: "(61) 4690 6450 8",
+        email: "sales@electrasecurity.com.au"
+      }
+    ]
+  },
+  {
+    state: "Australian Capital Territory",
+    stateCode: "ACT",
+    partners: [
+      {
+        name: "Metro Security & Electrical",
+        address: "Australian Capital Territory",
+        phone: "1300 563 876",
+        email: "info@metroes.com.au",
+        website: "metroes.com.au"
+      },
+      {
+        name: "Matt Roger - Electrical",
+        address: "Australian Capital Territory",
+        mobile: "0409 626 881",
+        email: "Rogersclan7@hotmail.com"
       }
     ]
   },
@@ -139,6 +233,20 @@ const partnersData: StatePartners[] = [
         address: "21 Kilkenny Rd, Woodville Park SA 5011",
         phone: "08 8244 6776",
         email: "admin@lhb.net.au"
+      },
+      {
+        name: "Sentricom",
+        address: "South Australia",
+        phone: "(08) 9458 3626",
+        email: "sales@sentricom.com.au",
+        website: "www.sentricom.com.au"
+      },
+      {
+        name: "PMT",
+        address: "107a Sir Donald Bradman Drive, Hilton, SA 5033",
+        phone: "03 9388 0626",
+        email: "kylie.gibbins@pmtsecurity.com.au",
+        website: "pmtsecurity.com.au"
       }
     ]
   },
@@ -151,6 +259,20 @@ const partnersData: StatePartners[] = [
         address: "158 Coonawarra Road, Winnellie",
         phone: "08 8984 3150",
         email: "info@ccsnt.com.au"
+      },
+      {
+        name: "JC Electronic Security",
+        address: "4/41 Georgina Crescent Yarrawonga NT 0830",
+        phone: "08 8893 2633",
+        email: "info@jcelectronics.com.au",
+        website: "jcelectronics.com.au/contact"
+      },
+      {
+        name: "Good Sparks Electrical",
+        address: "22 Castillon Rd, Berrimah, NT 0828",
+        phone: "08 8982 2271",
+        email: "service@goodsparks.com.au",
+        website: "goodsparkselectrical.com.au"
       }
     ]
   }
@@ -169,10 +291,7 @@ const PartnerCard = ({ partner }: { partner: Partner }) => {
       </div>
 
       <div className="space-y-3 flex-1">
-        <div className="flex items-start gap-2.5">
-          <div className="mt-0.5">
-            <div className="w-1 h-1 rounded-full bg-muted-foreground/40"></div>
-          </div>
+        <div className="flex items-start">
           <p className="font-dm-sans text-[13px] md:text-[14px] text-muted-foreground leading-relaxed">
             {partner.address}
           </p>
