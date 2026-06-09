@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 
 const Products = () => {
   return (
-    <div className="min-h-screen bg-[#FFFFFF] relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#F9F9F9] relative overflow-x-hidden">
       <Navbar activeLink="Products" />
       <ProductsHero />
       <ProductGrid />
