@@ -19,6 +19,7 @@ export default {
         body: ['DM Sans', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
         'dm-sans': ['DM Sans', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

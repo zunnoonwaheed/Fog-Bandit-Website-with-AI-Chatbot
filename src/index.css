@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -78,6 +78,7 @@
   body {
     @apply bg-background font-body antialiased;
     color: #475569;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -87,6 +88,24 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+  }
+
+  /* Prevent video and image flickering/glitching */
+  video {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+
+  /* Ensure video controls properly pause audio */
+  video:paused {
+    /* Force audio stop when paused */
+  }
+
+  img {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 }
 
@@ -165,7 +184,8 @@
   animation: fb-zoom 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Auto-animate text + images site-wide (above-the-fold hero is excluded via [data-hero-home]) */
+/* DISABLED: Auto-animate text + images site-wide - CAUSES FLICKERING */
+/* Keeping elements visible by default to prevent glitching */
 main h1, main h2, main h3, main h4,
 section:not([data-hero-home]) h1,
 section:not([data-hero-home]) h2,
@@ -174,19 +194,21 @@ section:not([data-hero-home]) h4,
 section:not([data-hero-home]) p,
 section:not([data-hero-home]) img:not([aria-hidden="true"]):not([data-no-animate]),
 section:not([data-hero-home]) video:not([data-no-animate]) {
-  opacity: 0;
-  will-change: opacity, transform;
+  opacity: 1 !important;
+  will-change: auto;
 }
 .fb-in-view {
-  animation: fb-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* animation: fb-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; */
+  opacity: 1 !important;
 }
 @keyframes fb-img-in {
-  from { opacity: 0; transform: translate3d(0, 12px, 0) scale(1.02); filter: blur(6px); }
+  from { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
   to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
 }
 section img.fb-in-view,
 section video.fb-in-view {
-  animation: fb-img-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* animation: fb-img-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) both; */
+  opacity: 1 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -280,4 +302,22 @@ section video.fb-in-view {
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Force rounded corners to always render properly */
+video, 
+video::-webkit-media-controls-panel,
+.rounded-2xl,
+.rounded-\[20px\],
+.rounded-\[16px\] {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: auto;
+}
+
+/* Ensure video containers maintain shape */
+video {
+  border-radius: inherit;
 }

@@ -2,10 +2,10 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
+import ComparisonSection from "@/components/ComparisonSection";
 import ProductsSection from "@/components/ProductsSection";
 import PlugNSecureSection from "@/components/PlugNSecureSection";
 import EnvironmentsSection from "@/components/EnvironmentsSection";
-import ProtectionSection from "@/components/ProtectionSection";
 import SafetyStatsSection from "@/components/SafetyStatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FinanceSection from "@/components/FinanceSection";
@@ -15,7 +15,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-[#F9F9F9]">
+    <div className="min-h-screen bg-[#FFFFFF] relative overflow-x-hidden">
       <Navbar />
       <HeroSection />
       <SocialProofSection />
@@ -23,7 +23,7 @@ const Index = () => {
       <ProductsSection />
       <PlugNSecureSection />
       <EnvironmentsSection />
-      <ProtectionSection />
+      <ComparisonSection />
       <SafetyStatsSection />
       <TestimonialsSection />
       <FinanceSection />

@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const Solutions = () => {
   return (
-    <div className="min-h-screen bg-[#F9F9F9] relative">
+    <div className="min-h-screen bg-[#FFFFFF] relative">
       <Navbar activeLink="Solutions" mobileMode="cta" />
       <SolutionsHero />
       <SolutionsProtect />

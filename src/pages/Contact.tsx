@@ -8,7 +8,7 @@ import contactMap from "@/assets/contact-map-anz-region.png";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-[#FFFFFF] relative">
       <Navbar activeLink="Contact" mobileMode="cta" />
 
       <main>

@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-[#F9F9F9] relative">
+    <div className="min-h-screen bg-[#FFFFFF] relative">
       <Navbar activeLink="About Us" />
       <AboutHero />
       <AboutStory />

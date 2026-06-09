@@ -1,125 +1,154 @@
-import { useRef } from "react";
-import fogActionSplit from "@/assets/fog-action-split.png";
-import avatarPatrick from "@/assets/avatar-patrick.png";
-import avatarRob from "@/assets/avatar-rob.png";
-import avatarPia from "@/assets/avatar-pia.png";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 type Testimonial = {
+  id: string;
+  image: string;
+  quote: string;
   name: string;
   role: string;
-  avatar: string;
-  quote: string;
+  videoUrl?: string;
 };
 
-const cardLeft: Testimonial = {
-  name: "Kamlesh",
-  role: "Sindhiz Group of Companies ACT",
-  avatar: avatarRob,
-  quote:
-    "The Fog Bandit was installed at all our Tobacco Stores in ACT & NSW, to protect against burglaries which were steadily increasing. The Fog Bandit has proved to be an extremely reliable and immensely efficient system in dramatically reducing our problem and foiling robberies without any failure.",
-};
+const testimonials: Testimonial[] = [
+  {
+    id: "testimonial-1",
+    image: "/assets/testimonial-1.png",
+    quote: "We haven't had a single loss since the install.",
+    name: "David H.",
+    role: "National Retail Chain",
+    videoUrl: "/assets/videos/testimonial-1.mp4",
+  },
+  {
+    id: "testimonial-2",
+    image: "/assets/testimonial-2.png",
+    quote: "The speed is what saved our stock during a raid.",
+    name: "Elena R.",
+    role: "Boutique Jewellery Owner",
+    videoUrl: "/assets/videos/testimonial-2.mp4",
+  },
+  {
+    id: "testimonial-3",
+    image: "/assets/testimonial-3.png",
+    quote: "It's the most reliable active layer in our stack.",
+    name: "Mark S.",
+    role: "Operations Director",
+    videoUrl: "/assets/videos/testimonial-3.mp4",
+  },
+];
 
-const cardRight: Testimonial = {
-  name: "Frank",
-  role: "Elk Fish Robotics WA",
-  avatar: avatarPatrick,
-  quote:
-    "The glass got broken outside and the fog bandit stopped the intruders and instantly foiled the robbery. Thank you!",
-};
+const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
 
-const QuoteOpen = ({ className = "" }: { className?: string }) => (
-  <svg className={className} width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M0 18V12.6C0 10.92 0.31 9.18 0.93 7.38C1.55 5.58 2.43 3.88 3.57 2.28C4.71 0.68 6.07 -0.7 7.65 -1.86L9.42 0.06C8.16 1.32 7.07 2.7 6.15 4.2C5.23 5.7 4.59 7.32 4.23 9.06H8.4V18H0ZM12.6 18V12.6C12.6 10.92 12.91 9.18 13.53 7.38C14.15 5.58 15.03 3.88 16.17 2.28C17.31 0.68 18.67 -0.7 20.25 -1.86L22.02 0.06C20.76 1.32 19.67 2.7 18.75 4.2C17.83 5.7 17.19 7.32 16.83 9.06H21V18H12.6Z"
-      fill="currentColor"
-    />
-  </svg>
-);
-
-const QuoteClose = ({ className = "" }: { className?: string }) => (
-  <svg className={className} width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g transform="rotate(180 11 9)">
-      <path
-        d="M0 18V12.6C0 10.92 0.31 9.18 0.93 7.38C1.55 5.58 2.43 3.88 3.57 2.28C4.71 0.68 6.07 -0.7 7.65 -1.86L9.42 0.06C8.16 1.32 7.07 2.7 6.15 4.2C5.23 5.7 4.59 7.32 4.23 9.06H8.4V18H0ZM12.6 18V12.6C12.6 10.92 12.91 9.18 13.53 7.38C14.15 5.58 15.03 3.88 16.17 2.28C17.31 0.68 18.67 -0.7 20.25 -1.86L22.02 0.06C20.76 1.32 19.67 2.7 18.75 4.2C17.83 5.7 17.19 7.32 16.83 9.06H21V18H12.6Z"
-        fill="currentColor"
-      />
-    </g>
-  </svg>
-);
-
-const TextCard = ({ t }: { t: Testimonial }) => (
-  <div className="bg-background border border-border rounded-2xl p-4 md:p-8 shadow-sm flex flex-col min-h-[248px] md:min-h-[300px]">
-    <div>
-      <p className="font-bold text-secondary text-[13px] md:text-[16px] leading-tight">{t.name}</p>
-      <p className="text-muted-foreground text-[11px] md:text-[13px] mt-0.5">{t.role}</p>
-    </div>
-    <QuoteOpen className="text-[#021373] mt-4 md:mt-6 w-[18px] h-[14px] md:w-[26px] md:h-[20px]" />
-    <p className="text-muted-foreground text-[12px] md:text-[15px] leading-[1.6] mt-3 md:mt-4 md:flex-1">{t.quote}</p>
-    <div className="flex justify-end mt-2 md:mt-4">
-      <QuoteClose className="text-[#021373] w-[18px] h-[14px] md:w-[26px] md:h-[20px]" />
-    </div>
-  </div>
-);
-
-const PiaCard = ({ className = "" }: { className?: string }) => (
-  <div className={`relative rounded-2xl overflow-hidden w-full h-[420px] shadow-lg ${className}`}>
-    <img src={fogActionSplit} alt="Fog Bandit in action" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-    <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 via-transparent to-transparent" />
-    {/* Glass overlay card */}
-    <div className="absolute left-4 right-4 bottom-4 rounded-xl p-4 bg-white/25 backdrop-blur-md border border-white/30">
-      <div className="mb-2.5">
-        <p className="text-white text-[13px] font-bold leading-tight">Sukoon Bedi</p>
-        <p className="text-white/80 text-[11px] leading-tight mt-0.5">IGA Winchelsea VIC</p>
-      </div>
-      <p className="text-white text-[12px] leading-relaxed">
-        The Fog Bandit worked perfectly, and we did not suffer any loss and the shop is back open this morning for usual trading. Without the Fog Bandit the outcome could have been very different. We feel assured by having the Fog Bandit installed and strongly suggest that other IGA supermarkets do the same.
-      </p>
-    </div>
-  </div>
-);
-
-
-const TestimonialsSection = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const handleVideoPause = () => {
+    setIsPlaying(false);
+  };
 
   return (
-    <section id="case-studies" className="pb-14 lg:pb-[120px]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-[20px] md:text-[28px] font-bold text-secondary leading-snug">
-            Proven When It <span className="text-[#021373]">Matters Most</span>
-          </h2>
-          <p className="mt-3 text-[13px] md:text-[15px] text-muted-foreground leading-relaxed">
-            Fog Bandit isn't theoretical, it's been tested in real break-ins where seconds made the difference between loss and protection.
+    <div className="flex flex-col">
+      {/* Image with play button */}
+      <div className="relative rounded-2xl overflow-hidden aspect-square group cursor-pointer">
+        {isPlaying && testimonial.videoUrl ? (
+          <video
+            src={testimonial.videoUrl}
+            controls
+            autoPlay
+            className="absolute inset-0 w-full h-full object-cover"
+            playsInline
+            onEnded={() => setIsPlaying(false)}
+            onPause={handleVideoPause}
+          >
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <>
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <button
+              onClick={() => setIsPlaying(true)}
+              className="absolute inset-0 flex items-center justify-center"
+              aria-label={`Play testimonial from ${testimonial.name}`}
+            >
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 flex items-center justify-center">
+                <svg
+                  className="w-6 h-6 md:w-8 md:h-8 text-gray-900 ml-1"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* Quote and author */}
+      <div className="mt-4 md:mt-6">
+        <p className="font-dm-sans text-[15px] md:text-[17px] text-[#1A1A1A] leading-relaxed">
+          "{testimonial.quote}"
+        </p>
+        <p className="font-dm-sans text-[13px] md:text-[14px] text-[#1A1A1A] font-semibold mt-3">
+          {testimonial.name}
+        </p>
+        <p className="font-dm-sans text-[12px] md:text-[13px] text-[#666666] mt-0.5">
+          {testimonial.role}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const TestimonialsSection = () => {
+  return (
+    <section id="testimonials" className="pb-14 lg:pb-[120px]">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center">
+          <h2 className="section-heading">Hear From Businesses We Protect</h2>
+          <p className="section-subtext mt-4">
+            Hear directly from security leaders and operators using Fog Bandit every day.
           </p>
         </div>
 
-        {/* Desktop: 3-column layout - wide side cards, narrower portrait center */}
-        <div className="mt-10 hidden md:grid md:grid-cols-[1fr_300px_1fr] gap-8 items-center">
-          <div>
-            <TextCard t={cardLeft} />
-          </div>
-          <PiaCard className="max-w-[300px] mx-auto" />
-          <div>
-            <TextCard t={cardRight} />
-          </div>
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 md:mt-10">
+          <a
+            href="/case-studies"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-[15px] transition-all hover:opacity-90"
+          >
+            View Case Studies
+            <ChevronDown className="w-4 h-4" />
+          </a>
+          <a
+            href="/products"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-[15px] transition-all hover:opacity-90 text-white"
+            style={{ backgroundColor: "hsl(var(--brand-blue))" }}
+          >
+            Explore Products
+            <ChevronDown className="w-4 h-4" />
+          </a>
         </div>
 
-        {/* Mobile: horizontal snap scroll - all cards same width */}
-        <div className="mt-8 md:hidden -mx-4">
-          <div
-            ref={scrollRef}
-            className="flex items-center gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-4 scroll-smooth scrollbar-hide"
-          >
-            <div className="snap-center shrink-0 w-[78%] max-w-[286px]">
-              <TextCard t={cardLeft} />
-            </div>
-            <div className="snap-center shrink-0 w-[78%] max-w-[286px]">
-              <PiaCard />
-            </div>
-            <div className="snap-center shrink-0 w-[78%] max-w-[286px]">
-              <TextCard t={cardRight} />
-            </div>
+        {/* Desktop: 3-column grid */}
+        <div className="hidden md:grid grid-cols-3 gap-6 lg:gap-8 mt-12 lg:mt-16">
+          {testimonials.map((testimonial) => (
+            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+          ))}
+        </div>
+
+        {/* Mobile: Horizontal scroll carousel */}
+        <div className="md:hidden mt-10 overflow-x-auto scrollbar-hide -mx-4 px-4">
+          <div className="flex gap-4 snap-x snap-mandatory">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="min-w-[85vw] snap-center">
+                <TestimonialCard testimonial={testimonial} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
