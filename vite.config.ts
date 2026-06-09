@@ -53,7 +53,9 @@ function attachAnthropicChatMiddleware(middlewares: Connect.Server): void {
           max_tokens: 1024,
           system: `You are the Fog Bandit Quote Assistant. Help customers get security quotes.
 
-Keep responses SHORT and to-the-point - 1-2 sentences max. Ask ONE question at a time. Be friendly but concise.`,
+Keep responses SHORT and to-the-point - 1-2 sentences max. Ask ONE question at a time. Be friendly but concise.
+
+IMPORTANT: When calculating area or volume, ALWAYS use metres (m² for area, m³ for volume), NOT feet. Always ask for dimensions in metres and provide calculations in metres.`,
           messages: cleanMessages,
         }),
       });

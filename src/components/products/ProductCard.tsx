@@ -42,7 +42,7 @@ const ProductCard = ({
     <div className={`flex h-full flex-col bg-white rounded-[16px] overflow-hidden border border-[#E5E7EB] shadow-sm ${large ? "min-h-[600px] md:min-h-[640px]" : "min-h-[560px] md:min-h-[600px]"}`}>
       {/* Image full-bleed; default 397×350; hero 240 row uses 604×350 (Figma) for matching placement */}
       <div
-        className={`relative w-full shrink-0 overflow-hidden ${imageAspectClass} ${imageNoZoom ? "bg-[#141416]" : "bg-neutral-950"}`}
+        className={`relative w-full shrink-0 overflow-hidden h-[350px] md:${imageAspectClass} ${imageNoZoom ? "bg-[#141416]" : "bg-neutral-950"}`}
       >
         <img
           src={image}

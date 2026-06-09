@@ -6,6 +6,9 @@ const AboutHero = () => {
   return (
     <section className="pt-[140px] pb-10 lg:pt-[210px] lg:pb-[60px] text-center">
       <div className="container mx-auto px-4 max-w-5xl">
+        <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-primary/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
+          The world leader in security fogging
+        </p>
         <h1 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground leading-tight mb-3 md:mb-4">
           Protecting ANZ Businesses for <span className="text-primary">Over 30+ Years</span>
         </h1>

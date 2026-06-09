@@ -67,8 +67,8 @@ const Financing = () => {
                         <Phone className="h-4 w-4 text-white" />
                       </div>
                       <div>
-                        <p className="text-[12px] text-muted-foreground">Toll Free</p>
-                        <p className="text-[14px] md:text-[15px] font-semibold text-foreground">#1300 385 358</p>
+                        <p className="text-[12px] text-muted-foreground">Call Us</p>
+                        <p className="text-[14px] md:text-[15px] font-semibold text-foreground">+61 482 795 786</p>
                       </div>
                     </div>
 
@@ -78,7 +78,7 @@ const Financing = () => {
                       </div>
                       <div>
                         <p className="text-[12px] text-muted-foreground">Finance Enquiries</p>
-                        <p className="text-[14px] md:text-[15px] font-semibold text-foreground break-all">finance@banditanz.com.au</p>
+                        <p className="text-[14px] md:text-[15px] font-semibold text-foreground break-all">admin@banditanz.com.au</p>
                       </div>
                     </div>
                   </div>

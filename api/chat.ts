@@ -2,7 +2,9 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 const SHORT_SYSTEM = `You are the Fog Bandit Quote Assistant. Help customers get security quotes.
 
-Keep responses SHORT and to-the-point - 1-2 sentences max. Ask ONE question at a time. Be friendly but concise.`;
+Keep responses SHORT and to-the-point - 1-2 sentences max. Ask ONE question at a time. Be friendly but concise.
+
+IMPORTANT: When calculating area or volume, ALWAYS use metres (m² for area, m³ for volume), NOT feet. Ask for dimensions in metres.`;
 
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
   res.setHeader("Content-Type", "application/json");

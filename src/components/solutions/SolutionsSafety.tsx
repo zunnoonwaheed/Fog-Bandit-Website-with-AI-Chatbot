@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PawPrint, Droplets, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
-import safetyImg from "@/assets/about-fog-room.png";
+import safetyImg from "@/assets/2 (1).png";
 
 const safetyPoints = [
   {

@@ -20,7 +20,7 @@ const benefits = [
 
 const FinanceSection = () => {
   return (
-    <section className="pb-14 lg:pb-[120px]">
+    <section className="py-14 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* Left content */}

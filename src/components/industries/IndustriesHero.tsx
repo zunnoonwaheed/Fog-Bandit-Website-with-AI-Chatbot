@@ -7,6 +7,9 @@ const IndustriesHero = () => {
     <section className="pt-28 pb-10 md:pt-[140px] lg:pt-[210px] md:pb-[80px]">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto">
+          <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-primary/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
+            The world leader in security fogging
+          </p>
           <h1 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground leading-tight mb-3 md:mb-4">
             Protect your revenue, not just your premises
           </h1>

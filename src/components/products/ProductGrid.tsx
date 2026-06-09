@@ -1,3 +1,4 @@
+import { useRef, useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import product240ExtendedCard from "@/assets/product-240-extended-card.png";
 import product240NarrowCard from "@/assets/product-240-narrow-card.png";
@@ -266,21 +267,70 @@ const bottomProducts = [
 ];
 
 const ProductGrid = () => {
+  const primaryScrollRef = useRef<HTMLDivElement>(null);
+  const expandedScrollRef = useRef<HTMLDivElement>(null);
+  const [primaryActiveIndex, setPrimaryActiveIndex] = useState(0);
+  const [expandedActiveIndex, setExpandedActiveIndex] = useState(0);
+
   const mobileScrollerClass = "flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
   const mobileCardClass = "w-full max-w-[calc(100vw-32px)] flex-none snap-start";
   const desktopGridClass = "hidden md:grid";
   const primaryMobileProducts = mainProducts;
   const expandedMobileProducts = [...expandedProducts, ...bottomProducts];
 
+  useEffect(() => {
+    const handleScroll = (ref: React.RefObject<HTMLDivElement>, setIndex: (index: number) => void) => {
+      if (!ref.current) return;
+      const scrollLeft = ref.current.scrollLeft;
+      const cardWidth = ref.current.scrollWidth / ref.current.children.length;
+      const index = Math.round(scrollLeft / cardWidth);
+      setIndex(index);
+    };
+
+    const primaryScroller = primaryScrollRef.current;
+    const expandedScroller = expandedScrollRef.current;
+
+    const handlePrimaryScroll = () => handleScroll(primaryScrollRef, setPrimaryActiveIndex);
+    const handleExpandedScroll = () => handleScroll(expandedScrollRef, setExpandedActiveIndex);
+
+    primaryScroller?.addEventListener('scroll', handlePrimaryScroll);
+    expandedScroller?.addEventListener('scroll', handleExpandedScroll);
+
+    return () => {
+      primaryScroller?.removeEventListener('scroll', handlePrimaryScroll);
+      expandedScroller?.removeEventListener('scroll', handleExpandedScroll);
+    };
+  }, []);
+
   return (
     <section className="pb-14 md:pb-[100px]">
       <div className="container mx-auto px-4">
-        <div className={`${mobileScrollerClass} mb-12 md:hidden`}>
-          {primaryMobileProducts.map((product, i) => (
-            <div key={i} className={mobileCardClass}>
-              <ProductCard {...product} large={i < 2} />
-            </div>
-          ))}
+        <div id="fog-generators" className="scroll-mt-24 md:hidden mb-8">
+          <div ref={primaryScrollRef} className={mobileScrollerClass}>
+            {primaryMobileProducts.map((product, i) => (
+              <div key={i} className={mobileCardClass}>
+                <ProductCard {...product} large={i < 2} />
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center gap-2 mt-4">
+            {primaryMobileProducts.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  const element = primaryScrollRef.current;
+                  if (element) {
+                    const cardWidth = element.scrollWidth / primaryMobileProducts.length;
+                    element.scrollTo({ left: cardWidth * i, behavior: 'smooth' });
+                  }
+                }}
+                className={`h-2 rounded-full transition-all ${
+                  i === primaryActiveIndex ? 'w-6 bg-primary' : 'w-2 bg-gray-300'
+                }`}
+                aria-label={`Go to product ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         <div className={`${desktopGridClass} md:grid-cols-2 md:gap-10 md:mb-10`}>
@@ -290,15 +340,17 @@ const ProductGrid = () => {
             </div>
           ))}
         </div>
-        <div className={`${desktopGridClass} md:grid-cols-3 md:gap-8 md:mb-[100px]`}>
-          {mainProducts.slice(2).map((product, i) => (
-            <div key={i}>
-              <ProductCard {...product} />
-            </div>
-          ))}
+        <div id="bandit-320-split" className="scroll-mt-24">
+          <div className={`${desktopGridClass} md:grid-cols-3 md:gap-8 md:mb-[100px]`}>
+            {mainProducts.slice(2).map((product, i) => (
+              <div key={i}>
+                <ProductCard {...product} />
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="text-center mb-8 md:mb-12">
+        <div id="led-flash" className="text-center mb-8 md:mb-12 scroll-mt-24">
           <h2 className="font-inter text-[24px] md:text-[32px] font-bold text-[#111827] mb-3">
             Expanded Product Range
           </h2>
@@ -307,12 +359,32 @@ const ProductGrid = () => {
           </p>
         </div>
 
-        <div className={`${mobileScrollerClass} mb-12 md:hidden`}>
-          {expandedMobileProducts.map((product, i) => (
-            <div key={i} className={mobileCardClass}>
-              <ProductCard {...product} />
-            </div>
-          ))}
+        <div className="md:hidden mb-8">
+          <div ref={expandedScrollRef} className={mobileScrollerClass}>
+            {expandedMobileProducts.map((product, i) => (
+              <div key={i} className={mobileCardClass}>
+                <ProductCard {...product} />
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center gap-2 mt-4">
+            {expandedMobileProducts.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  const element = expandedScrollRef.current;
+                  if (element) {
+                    const cardWidth = element.scrollWidth / expandedMobileProducts.length;
+                    element.scrollTo({ left: cardWidth * i, behavior: 'smooth' });
+                  }
+                }}
+                className={`h-2 rounded-full transition-all ${
+                  i === expandedActiveIndex ? 'w-6 bg-primary' : 'w-2 bg-gray-300'
+                }`}
+                aria-label={`Go to product ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         <div className={`${desktopGridClass} md:grid-cols-3 md:gap-8 md:mb-10`}>

@@ -24,6 +24,9 @@ const HeroSection = () => {
         {/* Wider than 592px so the title can sit on one line at desktop; product sits in the remaining width */}
         <div className="hero-home-copy min-w-0 max-w-lg md:max-w-2xl lg:max-w-[min(52rem,calc(100vw-18rem))] xl:max-w-[min(58rem,calc(100vw-22rem))]">
           {/* Title + body layout locked in index.css (lg+) so utilities/build order can't override */}
+          <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-white/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
+            The world leader in security fogging
+          </p>
           <h1 className="hero-home-title font-inter">
             End the break-in before it begins
           </h1>

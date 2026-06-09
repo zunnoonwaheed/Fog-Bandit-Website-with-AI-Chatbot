@@ -94,7 +94,7 @@ const StatCircle = ({
 
 const SafetyStatsSection = () => {
   return (
-    <section className="pb-14 lg:pb-[120px]">
+    <section className="pb-14 lg:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl lg:max-w-4xl mx-auto">
           <h2 className="text-[20px] md:text-[28px] font-bold text-secondary leading-snug">

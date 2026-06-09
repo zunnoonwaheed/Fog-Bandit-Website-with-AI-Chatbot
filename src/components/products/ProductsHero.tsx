@@ -27,6 +27,9 @@ const ProductsHero = () => {
             {/* Content */}
             <div className="absolute inset-0 flex items-center justify-center text-center px-4 md:px-8">
               <div className="max-w-3xl">
+                <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-white/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
+                  The world leader in security fogging
+                </p>
                 <h1 className="font-inter text-[22px] md:text-[36px] font-semibold text-white leading-tight mb-3 md:mb-4">
                   Stop Intruders in Their Tracks.
                 </h1>

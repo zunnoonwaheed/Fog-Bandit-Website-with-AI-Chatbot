@@ -1,4 +1,4 @@
-import fogImg from "@/assets/security-fog-room.png";
+import fogImg from "@/assets/retail-environment.png";
 import iconStopwatch from "@/assets/icon-stopwatch-blue.svg";
 import iconBroom from "@/assets/icon-broom-blue.svg";
 
