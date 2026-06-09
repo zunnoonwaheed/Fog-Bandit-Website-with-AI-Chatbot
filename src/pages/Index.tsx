@@ -4,7 +4,10 @@ import SocialProofSection from "@/components/SocialProofSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ProductsSection from "@/components/ProductsSection";
 import PlugNSecureSection from "@/components/PlugNSecureSection";
+import EnvironmentsSection from "@/components/EnvironmentsSection";
+import ProtectionSection from "@/components/ProtectionSection";
 import SafetyStatsSection from "@/components/SafetyStatsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import FinanceSection from "@/components/FinanceSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
@@ -19,7 +22,10 @@ const Index = () => {
       <HowItWorksSection />
       <ProductsSection />
       <PlugNSecureSection />
+      <EnvironmentsSection />
+      <ProtectionSection />
       <SafetyStatsSection />
+      <TestimonialsSection />
       <FinanceSection />
       <FAQSection />
       <ContactSection />
