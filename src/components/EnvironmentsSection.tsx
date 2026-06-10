@@ -13,7 +13,7 @@ const Pin = ({ kind }: { kind: Card["badge"] }) => (
 
 const CardBlock = ({ card, className = "" }: { card: Card; className?: string }) => (
   <div className={`relative overflow-hidden rounded-2xl ${className}`}>
-    <img src={card.img} alt={card.title} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+    <img src={card.img} alt={card.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
     <div className="relative z-10 flex h-full flex-col justify-end p-5 md:p-6">
       <Pin kind={card.badge} />

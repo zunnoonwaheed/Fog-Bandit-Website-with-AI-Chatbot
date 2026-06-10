@@ -30,7 +30,7 @@ const SideCard = ({ t, heightClass = "" }: { t: (typeof side)[number]; heightCla
 
 const FeaturedCard = ({ heightClass = "" }: { heightClass?: string }) => (
   <article className={`relative overflow-hidden rounded-2xl bg-[#0a0a0a] ${heightClass || "min-h-[480px]"}`}>
-    <img src={fogStore} alt={`${featured.name}, ${featured.role}: ${featured.quote}`} loading="lazy" decoding="async"
+    <img src={fogStore} alt={`${featured.name}, ${featured.role}: ${featured.quote}`} loading="lazy"
          className="absolute inset-0 h-full w-full object-contain object-center" />
     <span className="sr-only">{featured.name} — {featured.role}. {featured.quote}</span>
   </article>
