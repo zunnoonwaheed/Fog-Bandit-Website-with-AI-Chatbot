@@ -13,7 +13,7 @@ const features = [
 
 const PlugNSecureSection = () => {
   return (
-    <section className="pb-14 lg:pb-[120px]">
+    <section className="pt-[100px] lg:pt-[120px] pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="section-heading">Plug N Secure</h2>

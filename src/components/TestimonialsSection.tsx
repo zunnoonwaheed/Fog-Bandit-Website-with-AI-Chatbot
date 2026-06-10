@@ -1,159 +1,68 @@
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import fogStore from "@/assets/testimonial-featured.png.asset.json";
+import quoteIconOpening from "@/assets/icon-quote.png.asset.json";
+import quoteIconClosing from "@/assets/icon-quote-closing.png.asset.json";
 
-type Testimonial = {
-  id: string;
-  image: string;
-  quote: string;
-  name: string;
-  role: string;
-  videoUrl?: string;
-};
-
-const testimonials: Testimonial[] = [
-  {
-    id: "testimonial-1",
-    image: "/assets/testimonial-1.png",
-    quote: "We haven't had a single loss since the install.",
-    name: "David H.",
-    role: "National Retail Chain",
-    videoUrl: "/assets/videos/testimonial-1.mp4",
-  },
-  {
-    id: "testimonial-2",
-    image: "/assets/testimonial-2.png",
-    quote: "The speed is what saved our stock during a raid.",
-    name: "Elena R.",
-    role: "Boutique Jewellery Owner",
-    videoUrl: "/assets/videos/testimonial-2.mp4",
-  },
-  {
-    id: "testimonial-3",
-    image: "/assets/testimonial-3.png",
-    quote: "It's the most reliable active layer in our stack.",
-    name: "Mark S.",
-    role: "Operations Director",
-    videoUrl: "/assets/videos/testimonial-3.mp4",
-  },
+const side = [
+  { name: "Frank", role: "Elk Fish Robotics WA",
+    quote: "The glass got broken outside and the fog bandit stopped the intruders and instantly foiled the robbery. Thank you!" },
+  { name: "Kamlesh", role: "Sindhiz Group of Companies ACT",
+    quote: "The Fog Bandit was installed at all our Tobacco Stores in ACT & NSW, to protect against burglaries which were steadily increasing. The Fog Bandit has proved to be an extremely reliable and immensely efficient system in dramatically reducing our problem and foiling robberies without any failure." },
 ];
 
-const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+const featured = {
+  name: "Sukoon Bedi", role: "IGA Winchelsea VIC",
+  quote: "The Fog Bandit worked perfectly, and we did not suffer any loss and the shop is back open this morning for usual trading. Without the Fog Bandit the outcome could have been very different. We feel assured by having the Fog Bandit installed and strongly suggest that other IGA supermarkets do the same.",
+};
 
-  const handleVideoPause = () => {
-    setIsPlaying(false);
-  };
+const QuoteIcon = ({ className = "", isClosing = false }: { className?: string; isClosing?: boolean }) => (
+  <img src={isClosing ? quoteIconClosing.url : quoteIconOpening.url} alt="" aria-hidden className={`h-6 w-6 ${className}`} />
+);
 
-  return (
-    <div className="flex flex-col">
-      {/* Image with play button */}
-      <div className="relative rounded-2xl overflow-hidden aspect-square group cursor-pointer">
-        {isPlaying && testimonial.videoUrl ? (
-          <video
-            src={testimonial.videoUrl}
-            controls
-            autoPlay
-            className="absolute inset-0 w-full h-full object-cover"
-            playsInline
-            onEnded={() => setIsPlaying(false)}
-            onPause={handleVideoPause}
-          >
-            Your browser does not support the video tag.
-          </video>
-        ) : (
-          <>
-            <img
-              src={testimonial.image}
-              alt={testimonial.name}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-            <button
-              onClick={() => setIsPlaying(true)}
-              className="absolute inset-0 flex items-center justify-center"
-              aria-label={`Play testimonial from ${testimonial.name}`}
-            >
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 md:w-8 md:h-8 text-gray-900 ml-1"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </button>
-          </>
-        )}
+const SideCard = ({ t, heightClass = "" }: { t: (typeof side)[number]; heightClass?: string }) => (
+  <article className={`rounded-2xl border border-border bg-background p-6 flex flex-col ${heightClass}`}>
+    <h3 className="font-heading text-[18px] font-bold text-secondary">{t.name}</h3>
+    <p className="text-[13px] text-muted-foreground mt-1">{t.role}</p>
+    <QuoteIcon className="mt-5" />
+    <p className="mt-3 text-[14px] leading-relaxed text-secondary/90 flex-1">{t.quote}</p>
+    <QuoteIcon isClosing className="mt-4 ml-auto" />
+  </article>
+);
+
+const FeaturedCard = ({ heightClass = "" }: { heightClass?: string }) => (
+  <article className={`relative overflow-hidden rounded-2xl bg-[#0a0a0a] ${heightClass || "min-h-[480px]"}`}>
+    <img src={fogStore.url} alt={`${featured.name}, ${featured.role}: ${featured.quote}`} loading="lazy"
+         className="absolute inset-0 h-full w-full object-contain object-center" />
+    <span className="sr-only">{featured.name} — {featured.role}. {featured.quote}</span>
+  </article>
+);
+
+const TestimonialsSection = () => (
+  <section id="testimonials" className="pt-[100px] lg:pt-[120px] pb-0">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="text-center">
+        <h2 className="section-heading">
+          Proven When It <span className="text-[#021373]">Matters Most</span>
+        </h2>
+        <p className="section-subtext mt-4">
+          Fog Bandit isn&apos;t theoretical. It&apos;s been tested in real break-ins where seconds made the difference between loss and protection.
+        </p>
       </div>
 
-      {/* Quote and author */}
-      <div className="mt-4 md:mt-6">
-        <p className="font-dm-sans text-[15px] md:text-[17px] text-[#1A1A1A] leading-relaxed">
-          "{testimonial.quote}"
-        </p>
-        <p className="font-dm-sans text-[13px] md:text-[14px] text-[#1A1A1A] font-semibold mt-3">
-          {testimonial.name}
-        </p>
-        <p className="font-dm-sans text-[12px] md:text-[13px] text-[#666666] mt-0.5">
-          {testimonial.role}
-        </p>
+      {/* Mobile carousel */}
+      <div className="mt-10 lg:hidden -mx-4 px-4 overflow-x-auto snap-x snap-mandatory flex items-center gap-4 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="snap-center shrink-0 w-[88%]"><SideCard t={side[0]} /></div>
+        <div className="snap-center shrink-0 w-[88%]"><FeaturedCard /></div>
+        <div className="snap-center shrink-0 w-[88%]"><SideCard t={side[1]} /></div>
+      </div>
+
+      {/* Desktop 3-col */}
+      <div className="mt-12 hidden lg:grid grid-cols-3 items-center gap-6">
+        <SideCard t={side[0]} heightClass="h-[372px]" />
+        <FeaturedCard heightClass="h-[468px]" />
+        <SideCard t={side[1]} heightClass="h-[320px]" />
       </div>
     </div>
-  );
-};
-
-const TestimonialsSection = () => {
-  return (
-    <section id="testimonials" className="pb-14 lg:pb-[120px]">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center">
-          <h2 className="section-heading">Hear From Businesses We Protect</h2>
-          <p className="section-subtext mt-4">
-            Hear directly from security leaders and operators using Fog Bandit every day.
-          </p>
-        </div>
-
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 md:mt-10">
-          <a
-            href="/case-studies"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-[15px] transition-all hover:opacity-90"
-          >
-            View Case Studies
-            <ChevronDown className="w-4 h-4" />
-          </a>
-          <a
-            href="/products"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-[15px] transition-all hover:opacity-90 text-white"
-            style={{ backgroundColor: "hsl(var(--brand-blue))" }}
-          >
-            Explore Products
-            <ChevronDown className="w-4 h-4" />
-          </a>
-        </div>
-
-        {/* Desktop: 3-column grid */}
-        <div className="hidden md:grid grid-cols-3 gap-6 lg:gap-8 mt-12 lg:mt-16">
-          {testimonials.map((testimonial) => (
-            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-          ))}
-        </div>
-
-        {/* Mobile: Horizontal scroll carousel */}
-        <div className="md:hidden mt-10 overflow-x-auto scrollbar-hide -mx-4 px-4">
-          <div className="flex gap-4 snap-x snap-mandatory">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="min-w-[85vw] snap-center">
-                <TestimonialCard testimonial={testimonial} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+  </section>
+);
 
 export default TestimonialsSection;

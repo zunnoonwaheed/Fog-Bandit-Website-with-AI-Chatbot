@@ -91,7 +91,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 
 const RealDeploymentsTestimonials = () => {
   return (
-    <section className="pb-[100px] lg:pb-[120px]">
+    <section className="pt-[100px] lg:pt-[120px] pb-0">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center">

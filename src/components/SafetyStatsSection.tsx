@@ -94,10 +94,10 @@ const StatCircle = ({
 
 const SafetyStatsSection = () => {
   return (
-    <section className="pb-14 lg:pb-20">
+    <section className="pt-[100px] lg:pt-[120px] pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl lg:max-w-4xl mx-auto">
-          <h2 className="text-[20px] md:text-[28px] font-bold text-secondary leading-snug">
+          <h2 className="section-heading">
             When seconds matter, businesses choose certainty
           </h2>
           <p className="mt-3 text-[13px] md:text-[15px] text-muted-foreground leading-relaxed">

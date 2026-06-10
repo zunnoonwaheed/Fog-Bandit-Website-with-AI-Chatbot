@@ -14,7 +14,7 @@ const features = [
 
 const HowItWorksSection = () => {
   return (
-    <section id="how-it-works" className="pb-14 lg:pb-[120px]">
+    <section id="how-it-works" className="pt-[100px] lg:pt-[120px] pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="section-heading">Stop Crime At The Point Of Entry</h2>

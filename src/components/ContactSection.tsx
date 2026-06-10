@@ -8,7 +8,7 @@ const ContactSection = () => {
   const [form, setForm] = useState({ firstName: "", lastName: "", company: "", email: "", requirements: "" });
 
   return (
-    <section id="contact" className="bg-white pt-14 lg:pt-[80px] pb-8 lg:pb-12">
+    <section id="contact" className="bg-white pt-[100px] lg:pt-[120px] pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left */}
@@ -16,7 +16,7 @@ const ContactSection = () => {
             <div className="flex items-center gap-3 mb-8">
               <img src={banditLogo} alt="Fog Bandit logo" className="w-[245px] h-[124.41px] object-contain" loading="lazy" />
             </div>
-            <h2 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground tracking-tight leading-tight">
+            <h2 className="section-heading">
               Take control of your security
             </h2>
             <p className="font-dm-sans text-[14px] md:text-[16px] font-medium text-muted-foreground mt-4 leading-relaxed max-w-md">

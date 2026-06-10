@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 
 const RealDeploymentsHero = () => {
   return (
-    <section className="pt-[120px] pb-8 lg:pt-[160px] md:pb-10 bg-[#FFFFFF]">
+    <section className="pt-[152px] sm:pt-[168px] md:pt-[176px] lg:pt-[188px] xl:pt-[196px] pb-12 bg-[#FFFFFF]">
       <div className="container mx-auto px-4 text-center">
-        <h1 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground leading-tight mb-3 md:mb-4 max-w-4xl mx-auto">
+        <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-primary/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
+          The world leader in security fogging
+        </p>
+        <h1 className="section-heading mb-3 md:mb-4 max-w-4xl mx-auto">
           See Fog Bandit in Action
         </h1>
-        <p className="font-dm-sans text-foreground text-[14px] md:text-[18px] font-medium leading-relaxed max-w-3xl mx-auto mb-7 md:mb-8 px-4">
+        <p className="section-subtext max-w-3xl mx-auto px-4 mb-7 md:mb-8">
           Watch real deployments, controlled demonstrations, and<br className="hidden md:inline" /> live activations to understand how Fog Bandit protects businesses within seconds.
         </p>
         <div className="flex flex-col md:flex-row gap-3 justify-center items-center mx-auto px-4 w-full md:w-auto max-w-[540px] md:max-w-none">

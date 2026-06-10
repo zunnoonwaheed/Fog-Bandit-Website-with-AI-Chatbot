@@ -28,10 +28,10 @@ const PerformanceTests = () => {
   };
 
   return (
-    <section className="pt-[100px] lg:pt-[120px] pb-[100px] lg:pb-[120px] bg-[#FFFFFF]">
+    <section className="pt-[100px] lg:pt-[120px] pb-0 bg-[#FFFFFF]">
       <div className="!max-w-[1240px] mx-auto px-4 sm:px-6 lg:!px-8">
         <div className="mb-8 lg:hidden text-left">
-          <h2 className="font-poppins text-[24px] md:text-[32px] font-semibold text-foreground mb-3 whitespace-nowrap">
+          <h2 className="section-heading">
             Real-Time Performance Tests
           </h2>
           <p className="font-dm-sans text-foreground text-[16px]">
@@ -42,7 +42,7 @@ const PerformanceTests = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-end">
           <div className="hidden lg:block text-left">
             <div className="mb-12">
-              <h2 className="font-poppins text-[28px] md:text-[32px] font-semibold text-foreground mb-3 whitespace-nowrap">
+              <h2 className="section-heading">
                 Real-Time Performance Tests
               </h2>
               <p className="font-dm-sans text-foreground text-[16px]">

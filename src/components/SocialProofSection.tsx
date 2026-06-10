@@ -89,7 +89,7 @@ const circumference = 2 * Math.PI * 41;
 
 const SocialProofSection = () => {
   return (
-    <section className="pt-14 lg:pt-[120px] pb-14 lg:pb-[120px]">
+    <section className="pt-[100px] lg:pt-[120px] pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center max-w-2xl lg:max-w-[1100px] mx-auto">

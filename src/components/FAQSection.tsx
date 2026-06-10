@@ -28,7 +28,7 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="pb-14 lg:pb-[120px]">
+    <section id="faq" className="pt-[100px] lg:pt-[120px] pb-[100px] lg:pb-[120px]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="section-heading">Everything You Need To Know</h2>

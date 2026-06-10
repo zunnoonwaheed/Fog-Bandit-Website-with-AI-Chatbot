@@ -1,6 +1,6 @@
 const CTASection = () => {
   return (
-    <section className="pb-[100px] lg:pb-[120px]">
+    <section className="pt-[100px] lg:pt-[120px] pb-0">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop */}
         <div className="hidden md:block relative rounded-[20px] overflow-hidden">
@@ -11,7 +11,7 @@ const CTASection = () => {
             loading="lazy"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">
-            <h2 className="font-inter text-[28px] lg:text-[32px] font-semibold text-white leading-tight">
+            <h2 className="section-heading text-white">
               Ready to See It in Your Environment?
             </h2>
             <p className="font-dm-sans text-[15px] lg:text-[16px] text-white/90 font-medium leading-relaxed mt-4 max-w-[620px]">
@@ -51,7 +51,7 @@ const CTASection = () => {
             loading="lazy"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-            <h2 className="font-inter text-[24px] font-semibold text-white leading-tight">
+            <h2 className="section-heading text-white">
               Ready to See It in Your Environment?
             </h2>
             <p className="font-dm-sans text-[14px] text-white/90 font-medium leading-relaxed mt-3">

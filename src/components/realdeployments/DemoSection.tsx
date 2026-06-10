@@ -16,10 +16,10 @@ const DemoSection = () => {
   };
 
   return (
-    <section className="pt-16 md:pt-24 pb-4 md:pb-12 bg-[#FFFFFF]">
+    <section className="pt-[100px] lg:pt-[120px] pb-0 bg-[#FFFFFF]">
       <div className="!max-w-[1240px] mx-auto px-4 sm:px-6 lg:!px-8">
         <div className="text-center mb-12">
-          <h2 className="font-poppins text-[28px] md:text-[32px] font-semibold text-foreground mb-4">
+          <h2 className="section-heading mb-4">
             How Fog Bandit <span className="text-primary">Works</span>
           </h2>
           <p className="font-dm-sans text-foreground text-[16px] md:text-[18px] font-normal leading-relaxed max-w-[950px] mx-auto">

@@ -21,10 +21,10 @@ const ComparisonSection = () => {
   ];
 
   return (
-    <section className="py-14 lg:py-[120px] bg-[#F5F5F5]">
+    <section className="pt-[100px] lg:pt-[120px] pb-0 bg-[#F5F5F5]">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center pt-2 md:pt-0">
-          <h2 className="font-inter text-[24px] md:text-[32px] font-semibold text-black leading-tight tracking-tight">
+          <h2 className="section-heading">
             Trading Hours Protection
           </h2>
           <p className="font-dm-sans text-[14px] md:text-[16px] text-[#666666] font-medium leading-relaxed mt-3 md:mt-4 max-w-[720px] mx-auto">

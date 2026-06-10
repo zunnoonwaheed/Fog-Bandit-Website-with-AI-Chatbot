@@ -52,7 +52,7 @@ const VideoGrid = () => {
   };
 
   return (
-    <section className="pt-4 pb-12 md:pb-20 bg-[#FFFFFF]">
+    <section className="pb-0 bg-[#FFFFFF]">
       <div className="container mx-auto px-4">
         {/* Desktop: 5 videos in a row with center one larger */}
         <div className="hidden lg:flex items-center justify-center gap-6 max-w-[1400px] mx-auto">

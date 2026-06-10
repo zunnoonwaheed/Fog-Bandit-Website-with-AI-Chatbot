@@ -28,11 +28,11 @@ const TradingHoursProtection = () => {
   ];
 
   return (
-    <section className="pb-[100px] lg:pb-[120px] bg-[#FFFFFF]">
+    <section className="pt-[100px] lg:pt-[120px] pb-0 bg-[#FFFFFF]">
       <div className="!max-w-[1240px] mx-auto px-4 sm:px-6 lg:!px-8">
         <div className="lg:hidden">
           <div className="text-center mb-8">
-            <h2 className="font-inter text-[24px] md:text-[32px] font-semibold text-black leading-tight tracking-tight">
+            <h2 className="section-heading">
               Trading Hours Protection
             </h2>
             <p className="font-dm-sans text-[14px] md:text-[16px] text-[#666666] font-medium leading-relaxed mt-3 md:mt-4 max-w-[500px] mx-auto">
@@ -75,7 +75,7 @@ const TradingHoursProtection = () => {
           <div className="space-y-5">
             {features.map((feature) => (
               <div key={feature.title} className="flex items-start gap-4">
-                <img src={feature.icon} alt="" className="shrink-0 w-12 h-12" />
+                <img src={feature.icon} alt="" className="shrink-0 h-[27px]" />
                 <div>
                   <h3 className="font-inter text-[17px] font-semibold text-[#1A1A1A] leading-snug">
                     {feature.title}
@@ -91,7 +91,7 @@ const TradingHoursProtection = () => {
 
         <div className="hidden lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
           <div>
-            <h2 className="font-inter text-[32px] font-semibold text-black leading-tight tracking-tight">
+            <h2 className="section-heading">
               Trading Hours Protection
             </h2>
             <p className="font-dm-sans text-[16px] text-[#666666] font-medium leading-relaxed mt-4 mb-8">
@@ -102,7 +102,7 @@ const TradingHoursProtection = () => {
             <div className="space-y-6">
               {features.map((feature) => (
                 <div key={feature.title} className="flex items-start gap-4">
-                  <img src={feature.icon} alt="" className="shrink-0 w-12 h-12" />
+                  <img src={feature.icon} alt="" className="shrink-0 h-[27px]" />
                   <div>
                     <h3 className="font-inter text-[18px] font-semibold text-[#1A1A1A] leading-snug">
                       {feature.title}
