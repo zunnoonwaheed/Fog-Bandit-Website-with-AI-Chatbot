@@ -52,7 +52,7 @@ const ProtectionSection = () => {
             })}
           </div>
           <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl min-h-[420px] lg:min-h-[655px] bg-[#0a0a0a]">
-            <img src={riskImg} alt="Jewellery store filling with security fog" loading="lazy" className="h-full w-full object-contain" />
+            <img src={riskImg} alt="Jewellery store filling with security fog" loading="lazy" decoding="async" className="h-full w-full object-contain" />
           </div>
         </div>
       </div>

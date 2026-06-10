@@ -86,7 +86,7 @@ const ProtectionEnvironments = () => {
                   key={env.title}
                   className="bg-background border border-border rounded-xl p-6 hover:border-primary/20 transition-colors min-w-[calc(100vw-48px)] max-w-[calc(100vw-48px)] snap-center flex-shrink-0"
                 >
-                  <img src={env.icon} alt="" className="h-[27px] mb-4" />
+                  <img src={env.icon} alt="" className="h-[27px] mb-4" loading="lazy" />
                   <h3 className="font-heading text-[17px] font-bold text-secondary mb-2">
                     {env.title}
                   </h3>
@@ -128,7 +128,7 @@ const ProtectionEnvironments = () => {
               key={env.title}
               className="bg-background border border-border rounded-xl p-6 hover:border-primary/20 transition-colors"
             >
-              <img src={env.icon} alt="" className="h-[27px] mb-4" />
+              <img src={env.icon} alt="" className="h-[27px] mb-4" loading="lazy" />
               <h3 className="font-heading text-[17px] font-bold text-secondary mb-2">
                 {env.title}
               </h3>

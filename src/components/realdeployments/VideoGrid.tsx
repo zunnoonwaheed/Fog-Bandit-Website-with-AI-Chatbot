@@ -78,6 +78,7 @@ const VideoGrid = () => {
                     className="w-full h-full object-cover"
                     onEnded={() => setPlayingVideo(null)}
                     onPause={handleVideoPause}
+                    preload="auto"
                   >
                     Your browser does not support the video tag.
                   </video>
@@ -88,6 +89,8 @@ const VideoGrid = () => {
                       className="w-full h-full object-cover"
                       muted
                       playsInline
+                      preload="metadata"
+                      loading="lazy"
                     />
 
                     <button
@@ -138,6 +141,7 @@ const VideoGrid = () => {
                   className="w-full h-full object-cover"
                   onEnded={() => setPlayingVideo(null)}
                   onPause={handleVideoPause}
+                  preload="auto"
                 >
                   Your browser does not support the video tag.
                 </video>
@@ -148,6 +152,8 @@ const VideoGrid = () => {
                     className="w-full h-full object-cover"
                     muted
                     playsInline
+                    preload="metadata"
+                    loading="lazy"
                   />
 
                   <button
@@ -199,6 +205,7 @@ const VideoGrid = () => {
                       className="w-full h-full object-cover"
                       onEnded={() => setPlayingVideo(null)}
                       onPause={handleVideoPause}
+                      preload="auto"
                     >
                       Your browser does not support the video tag.
                     </video>
@@ -209,6 +216,8 @@ const VideoGrid = () => {
                         className="w-full h-full object-cover"
                         muted
                         playsInline
+                        preload="metadata"
+                        loading="lazy"
                       />
                       <button
                         onClick={() => handlePlayClick(video.id)}
