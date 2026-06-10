@@ -1,9 +1,7 @@
 import { ShieldCheck, MapPin } from "lucide-react";
-import enterpriseAsset from "@/assets/env-enterprise.png.asset.json";
-import energyAsset from "@/assets/env-energy.png.asset.json";
+import enterpriseImg from "@/assets/env-enterprise.jpg";
+import energyImg from "@/assets/env-energy.jpg";
 import residentialImg from "@/assets/env-residential.jpg";
-const enterpriseImg = enterpriseAsset.url;
-const energyImg = energyAsset.url;
 
 type Card = { img: string; title: string; desc: string; badge: "shield" | "pin" };
 

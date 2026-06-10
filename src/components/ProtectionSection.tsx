@@ -1,23 +1,21 @@
 import { useState } from "react";
-import riskAsset from "@/assets/risk-protection-overlay.png.asset.json";
-import retailIcon from "@/assets/icon-retail.png.asset.json";
-import warehouseIcon from "@/assets/icon-warehouse.png.asset.json";
-import smeIcon from "@/assets/icon-sme.png.asset.json";
-import residentialIcon from "@/assets/icon-residential.png.asset.json";
-import financialIcon from "@/assets/icon-financial.png.asset.json";
-import cannabisIcon from "@/assets/icon-cannabis.png.asset.json";
-
-const riskImg = riskAsset.url;
+import riskImg from "@/assets/risk-protection-overlay.png";
+import retailIcon from "@/assets/Icon1.png";
+import warehouseIcon from "@/assets/Icon2.png";
+import smeIcon from "@/assets/Icon3-.png";
+import residentialIcon from "@/assets/Icon4.png";
+import financialIcon from "@/assets/Icon5.png";
+import cannabisIcon from "@/assets/Icon6.png";
 
 type Row = { icon: string; title: string; desc: string };
 
 const rows: Row[] = [
-  { icon: retailIcon.url, title: "Retail & Jewellery", desc: "Eliminate smash-and-grab theft by removing visibility instantly — making it impossible for intruders to locate or access valuables." },
-  { icon: warehouseIcon.url, title: "Warehousing & Logistics", desc: "Stop high-volume product theft before stock leaves the floor." },
-  { icon: smeIcon.url, title: "SME & Office Spaces", desc: "Protect equipment, IP, and staff areas from after-hours intrusion." },
-  { icon: residentialIcon.url, title: "Residential Protection", desc: "Give your home an active response that stops intruders on contact." },
-  { icon: financialIcon.url, title: "Financial Institutions", desc: "Add a physical deterrent layer to existing alarm and CCTV systems." },
-  { icon: cannabisIcon.url, title: "Cannabis & Restricted Goods", desc: "Secure regulated product storage with instant visibility denial." },
+  { icon: retailIcon, title: "Retail & Jewellery", desc: "Eliminate smash-and-grab theft by removing visibility instantly — making it impossible for intruders to locate or access valuables." },
+  { icon: warehouseIcon, title: "Warehousing & Logistics", desc: "Stop high-volume product theft before stock leaves the floor." },
+  { icon: smeIcon, title: "SME & Office Spaces", desc: "Protect equipment, IP, and staff areas from after-hours intrusion." },
+  { icon: residentialIcon, title: "Residential Protection", desc: "Give your home an active response that stops intruders on contact." },
+  { icon: financialIcon, title: "Financial Institutions", desc: "Add a physical deterrent layer to existing alarm and CCTV systems." },
+  { icon: cannabisIcon, title: "Cannabis & Restricted Goods", desc: "Secure regulated product storage with instant visibility denial." },
 ];
 
 const ProtectionSection = () => {

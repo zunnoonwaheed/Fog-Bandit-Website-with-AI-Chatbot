@@ -1,6 +1,6 @@
-import fogStore from "@/assets/testimonial-featured.png.asset.json";
-import quoteIconOpening from "@/assets/icon-quote.png.asset.json";
-import quoteIconClosing from "@/assets/icon-quote-closing.png.asset.json";
+import fogStore from "@/assets/testimonial-featured.png";
+import quoteIconOpening from "@/assets/Icon.png";
+import quoteIconClosing from "@/assets/Icon (1).png";
 
 const side = [
   { name: "Frank", role: "Elk Fish Robotics WA",
@@ -15,7 +15,7 @@ const featured = {
 };
 
 const QuoteIcon = ({ className = "", isClosing = false }: { className?: string; isClosing?: boolean }) => (
-  <img src={isClosing ? quoteIconClosing.url : quoteIconOpening.url} alt="" aria-hidden className={`h-6 w-6 ${className}`} />
+  <img src={isClosing ? quoteIconClosing : quoteIconOpening} alt="" aria-hidden className={`h-6 w-6 ${className}`} />
 );
 
 const SideCard = ({ t, heightClass = "" }: { t: (typeof side)[number]; heightClass?: string }) => (
@@ -30,7 +30,7 @@ const SideCard = ({ t, heightClass = "" }: { t: (typeof side)[number]; heightCla
 
 const FeaturedCard = ({ heightClass = "" }: { heightClass?: string }) => (
   <article className={`relative overflow-hidden rounded-2xl bg-[#0a0a0a] ${heightClass || "min-h-[480px]"}`}>
-    <img src={fogStore.url} alt={`${featured.name}, ${featured.role}: ${featured.quote}`} loading="lazy"
+    <img src={fogStore} alt={`${featured.name}, ${featured.role}: ${featured.quote}`} loading="lazy"
          className="absolute inset-0 h-full w-full object-contain object-center" />
     <span className="sr-only">{featured.name} — {featured.role}. {featured.quote}</span>
   </article>

@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import iconJewellery from "@/assets/icon-jewellery.svg.asset.json";
-import iconRetail from "@/assets/icon-retail.svg.asset.json";
-import iconWarehouses from "@/assets/icon-warehouses.svg.asset.json";
-import iconAutomotive from "@/assets/icon-automotive.svg.asset.json";
-import iconCommercial from "@/assets/icon-commercial.svg.asset.json";
-import iconResidential from "@/assets/icon-residential-env.svg.asset.json";
+import iconJewellery from "@/assets/Icon (7).svg";
+import iconRetail from "@/assets/Icon (8).svg";
+import iconWarehouses from "@/assets/Icon (9).svg";
+import iconAutomotive from "@/assets/Icon (10).svg";
+import iconCommercial from "@/assets/Icon (11).svg";
+import iconResidential from "@/assets/Icon (12).svg";
 
 type Environment = {
   icon: string;
@@ -14,32 +14,32 @@ type Environment = {
 
 const environments: Environment[] = [
   {
-    icon: iconJewellery.url,
+    icon: iconJewellery,
     title: "Jewellery Stores",
     description: "Protect high-value inventory from smash-and-grab attempts with instant asset obscuration.",
   },
   {
-    icon: iconRetail.url,
+    icon: iconRetail,
     title: "Retail Stores",
     description: "Secure electronics, designer apparel, and stockrooms with localized fog zones.",
   },
   {
-    icon: iconWarehouses.url,
+    icon: iconWarehouses,
     title: "Warehouses",
     description: "Scalable protection for large logistics spaces and distribution centers.",
   },
   {
-    icon: iconAutomotive.url,
+    icon: iconAutomotive,
     title: "Automotive",
     description: "Defend high-performance vehicles and specialized tools in showrooms and workshops.",
   },
   {
-    icon: iconCommercial.url,
+    icon: iconCommercial,
     title: "Commercial Offices",
     description: "Safeguard critical IT infrastructure, server rooms, and intellectual property.",
   },
   {
-    icon: iconResidential.url,
+    icon: iconResidential,
     title: "Residential",
     description: "Premium protection for private estates, safes, and high-value domestic assets.",
   },
