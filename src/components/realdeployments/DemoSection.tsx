@@ -39,6 +39,7 @@ const DemoSection = () => {
               className="w-full h-full object-cover"
               playsInline
               preload="none"
+              loading="lazy"
               onPause={handleVideoPause}
               onEnded={() => setIsPlaying(false)}
               controls={isPlaying}
@@ -57,6 +58,7 @@ const DemoSection = () => {
               className="w-full h-full object-cover"
               playsInline
               preload="none"
+              loading="lazy"
               onPause={handleVideoPause}
               onEnded={() => setIsPlaying(false)}
               controls={isPlaying}

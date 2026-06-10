@@ -54,6 +54,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
             autoPlay
             className="w-full h-full object-cover"
             playsInline
+            preload="auto"
             onEnded={() => setIsPlaying(false)}
             onPause={handleVideoPause}
           >

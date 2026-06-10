@@ -62,6 +62,7 @@ const PerformanceTests = () => {
                         className="w-full h-full object-cover"
                         onEnded={() => setPlayingVideo(null)}
                         onPause={handleVideoPause}
+                        preload="auto"
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -72,13 +73,15 @@ const PerformanceTests = () => {
                           className="w-full h-full object-cover"
                           muted
                           playsInline
+                          preload="metadata"
+                          loading="lazy"
                         />
                         <button
                           onClick={() => handlePlayClick(test.id)}
                           className="absolute inset-0 flex items-center justify-center transition-transform duration-200 hover:scale-110"
                           aria-label={`Play ${test.title}`}
                         >
-                          <img src="/assets/play-icon.svg" alt="Play" className="w-12 h-12" />
+                          <img src="/assets/play-icon.svg" alt="Play" className="w-12 h-12" loading="lazy" />
                         </button>
                       </>
                     )}
@@ -101,6 +104,7 @@ const PerformanceTests = () => {
                   className="w-full h-full object-cover"
                   onEnded={() => setPlayingVideo(null)}
                   onPause={handleVideoPause}
+                  preload="auto"
                 >
                   Your browser does not support the video tag.
                 </video>
@@ -111,6 +115,8 @@ const PerformanceTests = () => {
                     className="w-full h-full object-cover"
                     muted
                     playsInline
+                    preload="metadata"
+                    loading="lazy"
                   />
                   <button
                     onClick={() => handlePlayClick(featuredTest.id)}
@@ -119,7 +125,7 @@ const PerformanceTests = () => {
                   />
                   <div className="absolute bottom-6 left-6 pointer-events-none">
                     <div className="flex items-center gap-2 mb-1">
-                      <img src="/assets/play-icon.svg" alt="" className="w-8 h-8" />
+                      <img src="/assets/play-icon.svg" alt="" className="w-8 h-8" loading="lazy" />
                       <h3 className="font-dm-sans text-white font-semibold text-[16px]">
                         {featuredTest.title}
                       </h3>

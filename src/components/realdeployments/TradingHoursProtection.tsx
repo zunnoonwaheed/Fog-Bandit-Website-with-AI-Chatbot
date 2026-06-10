@@ -50,6 +50,7 @@ const TradingHoursProtection = () => {
                 autoPlay
                 className="w-full h-full object-cover"
                 playsInline
+                preload="auto"
                 onEnded={() => setIsPlaying(false)}
                 onPause={handleVideoPause}
               >
@@ -75,7 +76,7 @@ const TradingHoursProtection = () => {
           <div className="space-y-5">
             {features.map((feature) => (
               <div key={feature.title} className="flex items-start gap-4">
-                <img src={feature.icon} alt="" className="shrink-0 h-[27px]" />
+                <img src={feature.icon} alt="" className="shrink-0 h-[27px]" loading="lazy" />
                 <div>
                   <h3 className="font-inter text-[17px] font-semibold text-[#1A1A1A] leading-snug">
                     {feature.title}
@@ -102,7 +103,7 @@ const TradingHoursProtection = () => {
             <div className="space-y-6">
               {features.map((feature) => (
                 <div key={feature.title} className="flex items-start gap-4">
-                  <img src={feature.icon} alt="" className="shrink-0 h-[27px]" />
+                  <img src={feature.icon} alt="" className="shrink-0 h-[27px]" loading="lazy" />
                   <div>
                     <h3 className="font-inter text-[18px] font-semibold text-[#1A1A1A] leading-snug">
                       {feature.title}
@@ -125,6 +126,7 @@ const TradingHoursProtection = () => {
                 autoPlay
                 className="w-full h-full object-cover"
                 playsInline
+                preload="auto"
                 onEnded={() => setIsPlaying(false)}
                 onPause={handleVideoPause}
               >
