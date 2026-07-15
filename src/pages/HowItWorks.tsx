@@ -16,7 +16,7 @@ const HowItWorks = () => {
       <Navbar activeLink="how it works" />
 
       {/* Page hero */}
-      <section className="relative pt-[140px] lg:pt-[210px] pb-10 lg:pb-[60px]">
+      <section className="page-hero relative pt-[140px] lg:pt-[210px] pb-12 lg:pb-[72px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-primary/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
             The world leader in security fogging

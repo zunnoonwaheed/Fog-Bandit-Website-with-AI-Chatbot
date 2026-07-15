@@ -19,7 +19,7 @@ const QuoteIcon = ({ className = "", isClosing = false }: { className?: string; 
 );
 
 const SideCard = ({ t, heightClass = "" }: { t: (typeof side)[number]; heightClass?: string }) => (
-  <article className={`rounded-2xl border border-border bg-background p-6 flex flex-col ${heightClass}`}>
+  <article className={`premium-card rounded-2xl p-6 flex flex-col ${heightClass}`}>
     <h3 className="font-heading text-[18px] font-bold text-secondary">{t.name}</h3>
     <p className="text-[13px] text-muted-foreground mt-1">{t.role}</p>
     <QuoteIcon className="mt-5" />
@@ -29,7 +29,7 @@ const SideCard = ({ t, heightClass = "" }: { t: (typeof side)[number]; heightCla
 );
 
 const FeaturedCard = ({ heightClass = "" }: { heightClass?: string }) => (
-  <article className={`relative overflow-hidden rounded-2xl bg-[#0a0a0a] ${heightClass || "min-h-[480px]"}`}>
+  <article className={`premium-media relative overflow-hidden rounded-2xl bg-[#0a0a0a] ring-1 ring-black/[0.05] ${heightClass || "min-h-[480px]"}`}>
     <img src={fogStore} alt={`${featured.name}, ${featured.role}: ${featured.quote}`} loading="lazy"
          className="absolute inset-0 h-full w-full object-contain object-center" />
     <span className="sr-only">{featured.name} — {featured.role}. {featured.quote}</span>

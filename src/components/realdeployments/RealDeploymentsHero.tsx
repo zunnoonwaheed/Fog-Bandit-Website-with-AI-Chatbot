@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const RealDeploymentsHero = () => {
   return (
-    <section className="pt-[152px] sm:pt-[168px] md:pt-[176px] lg:pt-[188px] xl:pt-[196px] pb-12 bg-[#FFFFFF]">
+    <section className="page-hero pt-[152px] sm:pt-[168px] md:pt-[176px] lg:pt-[188px] xl:pt-[196px] pb-14 bg-[#FFFFFF]">
       <div className="container mx-auto px-4 text-center">
         <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-primary/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
           The world leader in security fogging

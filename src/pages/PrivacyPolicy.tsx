@@ -7,13 +7,13 @@ const PrivacyPolicy = () => {
       <Navbar mobileMode="cta" />
 
       <main>
-        <section className="pt-28 pb-10 md:pt-[140px] lg:pt-[190px] md:pb-14">
+        <section className="page-hero pt-28 pb-10 md:pt-[140px] lg:pt-[190px] md:pb-14">
           <div className="container mx-auto px-4">
             <header className="max-w-4xl mx-auto text-center">
               <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-primary/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
                 Privacy &amp; Data Protection
               </p>
-              <h1 className="font-inter text-[28px] md:text-[40px] font-semibold text-foreground leading-tight mb-3 md:mb-4">
+              <h1 className="font-inter text-[28px] md:text-[40px] lg:text-[44px] font-semibold tracking-[-0.035em] text-foreground leading-[1.12] mb-3 md:mb-4">
                 Privacy Policy
               </h1>
               <p className="font-dm-sans text-[16px] md:text-[20px] font-semibold text-foreground mb-5">
@@ -28,7 +28,7 @@ const PrivacyPolicy = () => {
 
         <section className="pb-16 md:pb-24">
           <div className="container mx-auto px-4">
-            <article className="max-w-4xl mx-auto bg-white border border-border rounded-2xl px-5 py-7 sm:px-8 md:px-12 md:py-12 shadow-sm">
+            <article className="premium-card max-w-4xl mx-auto rounded-2xl px-5 py-7 sm:px-8 md:px-12 md:py-12">
               <div className="space-y-9 md:space-y-11">
                 <section>
                   <h2 className="font-inter text-[19px] md:text-[23px] font-semibold text-foreground mb-3">

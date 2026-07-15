@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 const SolutionsHero = () => {
   return (
-    <section className="pt-28 pb-10 md:pt-[140px] lg:pt-[210px] md:pb-12">
+    <section className="page-hero pt-28 pb-12 md:pt-[140px] lg:pt-[210px] md:pb-14">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-5xl mx-auto mb-10 md:mb-12">
           <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-primary/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
             The world leader in security fogging
           </p>
-          <h1 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground leading-tight mb-3 md:mb-4">
+          <h1 className="font-inter text-[28px] md:text-[36px] lg:text-[42px] font-semibold tracking-[-0.035em] text-foreground leading-[1.12] mb-4 md:mb-5">
             <span className="md:hidden">Smart Protection For The People Who Matter Most</span>
             <span className="hidden md:inline">Smart protection for the people who matter most</span>
           </h1>

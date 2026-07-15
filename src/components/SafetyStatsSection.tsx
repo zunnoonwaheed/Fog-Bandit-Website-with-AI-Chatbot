@@ -106,7 +106,7 @@ const SafetyStatsSection = () => {
           </p>
         </div>
 
-        <div className="mt-8 md:mt-10 bg-background border border-border rounded-2xl p-6 md:p-10">
+        <div className="premium-card mt-8 md:mt-10 rounded-2xl p-6 md:p-10">
           <div className="hidden sm:flex flex-wrap justify-around items-start gap-8 lg:gap-12">
             {stats.map((s) => (
               <StatCircle key={s.label} {...s} />

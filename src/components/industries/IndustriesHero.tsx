@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 const IndustriesHero = () => {
   return (
-    <section className="pt-28 pb-10 md:pt-[140px] lg:pt-[210px] md:pb-[80px]">
+    <section className="page-hero pt-28 pb-12 md:pt-[140px] lg:pt-[210px] md:pb-[80px]">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto">
           <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-primary/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
             The world leader in security fogging
           </p>
-          <h1 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground leading-tight mb-3 md:mb-4">
+          <h1 className="font-inter text-[28px] md:text-[36px] lg:text-[42px] font-semibold tracking-[-0.035em] text-foreground leading-[1.12] mb-4 md:mb-5">
             Protect your revenue, not just your premises
           </h1>
           <p className="font-dm-sans text-[14px] md:text-[18px] font-medium text-muted-foreground leading-relaxed mb-5 md:mb-6 mx-auto">

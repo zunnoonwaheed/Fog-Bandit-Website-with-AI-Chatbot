@@ -25,7 +25,7 @@
     --secondary-foreground: 0 0% 100%;
 
     --muted: 220 14% 96%;
-    --muted-foreground: 0 0% 0%;
+    --muted-foreground: 215 16% 43%;
 
     --accent: 215 25% 27%;
     --accent-foreground: 0 0% 100%;
@@ -39,7 +39,7 @@
     --input: 220 13% 91%;
     --ring: 349 96% 48.4%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --navy: 215 25% 27%;
     --navy-light: 215 25% 27%;
@@ -79,15 +79,28 @@
     @apply bg-background font-body antialiased;
     color: #475569;
     overflow-x: hidden;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     color: #000000;
+    text-wrap: balance;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.16);
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
   }
 
   /* Prevent video and image flickering/glitching */
@@ -111,25 +124,29 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:opacity-90 whitespace-nowrap;
+    @apply inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 hover:brightness-95 whitespace-nowrap;
+    box-shadow: 0 10px 24px -12px hsl(var(--primary) / 0.7);
   }
   .btn-secondary-outline {
-    @apply inline-flex items-center gap-2 border-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:opacity-90 whitespace-nowrap;
+    @apply inline-flex items-center gap-2 border-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 whitespace-nowrap;
     background-color: hsl(var(--brand-blue));
     border-color: hsl(var(--brand-blue));
     color: hsl(var(--secondary-foreground));
+    box-shadow: 0 10px 24px -14px hsl(var(--brand-blue) / 0.7);
   }
   .btn-outline-red {
-    @apply inline-flex items-center gap-2 border-2 border-primary text-primary px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:bg-primary hover:text-primary-foreground whitespace-nowrap;
+    @apply inline-flex items-center gap-2 border-2 border-primary text-primary px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground whitespace-nowrap;
   }
   .section-heading {
-    @apply font-inter text-[20px] md:text-[28px] leading-tight tracking-tight;
+    @apply font-inter text-[24px] md:text-[32px] lg:text-[36px] leading-[1.15] tracking-[-0.035em];
     font-weight: 600;
     color: #000000;
+    text-wrap: balance;
   }
   .section-subtext {
-    @apply font-dm-sans text-[14px] md:text-[18px] font-medium leading-relaxed max-w-2xl mx-auto;
-    color: #000000;
+    @apply font-dm-sans text-[14px] md:text-[17px] font-normal leading-[1.7] max-w-2xl mx-auto;
+    color: hsl(var(--muted-foreground));
+    text-wrap: pretty;
   }
   .icon-circle {
     @apply w-12 h-12 rounded-xl flex items-center justify-center;
@@ -141,6 +158,62 @@
   .icon-circle-red {
     @apply icon-circle bg-primary text-primary-foreground;
   }
+
+  .premium-card {
+    @apply border border-border bg-background;
+    box-shadow: 0 1px 2px hsl(220 30% 10% / 0.03), 0 14px 34px -26px hsl(220 35% 20% / 0.35);
+    transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+  }
+
+  .premium-card:hover {
+    border-color: hsl(var(--brand-blue) / 0.2);
+    box-shadow: 0 2px 4px hsl(220 30% 10% / 0.04), 0 22px 46px -28px hsl(220 35% 20% / 0.42);
+  }
+
+  .premium-card.group:hover {
+    transform: translateY(-2px);
+  }
+
+  .premium-media {
+    box-shadow: 0 24px 60px -38px hsl(220 35% 20% / 0.55);
+  }
+}
+
+/* Give repeated site surfaces consistent depth without changing their colour palette. */
+:where(main, section) :where(.rounded-xl, .rounded-2xl).border[class~="border-border"] {
+  border-color: hsl(var(--border) / 0.92);
+  box-shadow: 0 1px 2px hsl(220 30% 10% / 0.025), 0 12px 30px -28px hsl(220 35% 20% / 0.32);
+}
+
+:where(main, section) :where(article, a, button, .group).rounded-xl.border,
+:where(main, section) :where(article, a, button, .group).rounded-2xl.border {
+  transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+}
+
+@media (hover: hover) {
+  :where(main, section) :where(article, a, .group).rounded-xl.border:hover,
+  :where(main, section) :where(article, a, .group).rounded-2xl.border:hover {
+    border-color: hsl(var(--brand-blue) / 0.18);
+    box-shadow: 0 18px 44px -30px hsl(220 35% 20% / 0.45);
+    transform: translateY(-2px);
+  }
+}
+
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 12%, hsl(var(--primary) / 0.035), transparent 30rem),
+    radial-gradient(circle at 82% 0%, hsl(var(--brand-blue) / 0.035), transparent 34rem);
 }
 
 @keyframes marquee {

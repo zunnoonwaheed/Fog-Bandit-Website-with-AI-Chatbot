@@ -8,7 +8,7 @@ const ContactSection = () => {
   const [form, setForm] = useState({ firstName: "", lastName: "", company: "", email: "", requirements: "" });
 
   return (
-    <section id="contact" className="bg-white pt-[100px] lg:pt-[120px] pb-0">
+    <section id="contact" className="bg-white pt-[100px] lg:pt-[120px] pb-[100px] lg:pb-[120px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left */}
@@ -32,7 +32,7 @@ const ContactSection = () => {
           </div>
 
           {/* Right - Form */}
-          <div className="lg:col-span-7 space-y-5">
+          <div className="premium-card lg:col-span-7 space-y-5 rounded-2xl p-5 sm:p-6 md:p-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
               <div>
                 <label className="text-[13px] font-bold text-foreground block">First Name<span className="text-primary">*</span></label>

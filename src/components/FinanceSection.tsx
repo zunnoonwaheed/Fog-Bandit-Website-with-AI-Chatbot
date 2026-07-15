@@ -38,8 +38,8 @@ const FinanceSection = () => {
 
             <div className="mt-10 flex-1 flex flex-col gap-4">
               {features.map((f) => (
-                <div key={f.title} className="bg-background border border-border rounded-xl p-5 flex items-start gap-4 flex-1">
-                  <img src={f.icon} alt="" className="w-8 h-8 shrink-0" />
+                <div key={f.title} className="premium-card group rounded-xl p-5 flex items-start gap-4 flex-1">
+                  <img src={f.icon} alt="" className="w-8 h-8 shrink-0 transition-transform duration-300 group-hover:scale-105" />
                   <div>
                     <h4 className="font-heading font-bold text-secondary text-base">{f.title}</h4>
                     <p className="text-muted-foreground text-sm mt-1">{f.desc}</p>
@@ -51,7 +51,7 @@ const FinanceSection = () => {
 
           {/* Right - Image + benefits */}
           <div>
-            <div className="rounded-3xl overflow-hidden w-full">
+            <div className="premium-media rounded-3xl overflow-hidden w-full ring-1 ring-black/[0.04]">
               <img
                 src={financeMeeting}
                 alt="Finance assistance"

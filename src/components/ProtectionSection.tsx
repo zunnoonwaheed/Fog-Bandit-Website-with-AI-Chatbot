@@ -39,7 +39,7 @@ const ProtectionSection = () => {
                 <button
                   key={r.title}
                   onClick={() => setActive(i)}
-                  className={`w-full rounded-xl border bg-background px-5 py-4 text-left transition-all lg:flex-1 ${open ? "border-[#021373] shadow-sm" : "border-border hover:border-foreground/20"}`}
+                  className={`w-full rounded-xl border bg-background px-5 py-4 text-left transition-all duration-300 lg:flex-1 ${open ? "border-[#021373]/45 bg-[#021373]/[0.025] shadow-[0_12px_28px_-24px_rgba(2,19,115,0.65)]" : "border-border hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-sm"}`}
                   aria-expanded={open}
                 >
                   <div className="flex items-center justify-between gap-4">
@@ -51,7 +51,7 @@ const ProtectionSection = () => {
               );
             })}
           </div>
-          <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl min-h-[420px] lg:min-h-[655px] bg-[#0a0a0a]">
+          <div className="premium-media order-1 lg:order-2 relative overflow-hidden rounded-2xl min-h-[420px] lg:min-h-[655px] bg-[#0a0a0a] ring-1 ring-black/[0.05]">
             <img src={riskImg} alt="Jewellery store filling with security fog" loading="lazy" className="h-full w-full object-contain" />
           </div>
         </div>

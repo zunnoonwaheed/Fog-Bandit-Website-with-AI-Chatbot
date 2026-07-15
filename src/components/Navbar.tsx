@@ -69,10 +69,10 @@ const Navbar = (_props: NavbarProps = {}) => {
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-0">
         <div
           className={cn(
-            "flex h-[56px] w-full min-w-0 items-center px-4 sm:h-[60px] sm:px-5 lg:h-20 lg:px-[30px] rounded-2xl border backdrop-blur-md",
+            "flex h-[56px] w-full min-w-0 items-center px-4 sm:h-[60px] sm:px-5 lg:h-20 lg:px-[30px] rounded-2xl border backdrop-blur-xl transition-shadow duration-300",
             isLightPage
-              ? "border-border bg-white/95 shadow-sm"
-              : "border-white/20 bg-white/30",
+              ? "border-white/80 bg-white/95 shadow-[0_14px_40px_-24px_rgba(15,23,42,0.28)]"
+              : "border-white/20 bg-white/25 shadow-[0_16px_44px_-26px_rgba(0,0,0,0.45)]",
           )}
         >
           <Link
@@ -98,14 +98,14 @@ const Navbar = (_props: NavbarProps = {}) => {
                   to={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={cn(
-                    "shrink-0 text-[15px] font-semibold tracking-[-0.01em] transition-colors",
+                    "relative shrink-0 py-2 text-[15px] font-semibold tracking-[-0.01em] transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:mx-auto after:h-0.5 after:rounded-full after:transition-all after:duration-300",
                     isLightPage
                       ? active
-                        ? "text-primary"
-                        : "text-[#475569] hover:text-primary"
+                        ? "text-primary after:w-full after:bg-primary"
+                        : "text-[#475569] after:w-0 after:bg-primary hover:text-primary hover:after:w-full"
                       : active
-                        ? "text-white"
-                        : "text-white/90 hover:text-white",
+                        ? "text-white after:w-full after:bg-white"
+                        : "text-white/90 after:w-0 after:bg-white hover:text-white hover:after:w-full",
                   )}
                 >
                   {link.label}
@@ -160,7 +160,7 @@ const Navbar = (_props: NavbarProps = {}) => {
         </div>
 
         {mobileOpen && (
-          <div className="mt-2 rounded-xl border border-border bg-background/95 shadow-sm backdrop-blur-md lg:hidden">
+          <div className="mt-2 overflow-hidden rounded-2xl border border-white/80 bg-background/95 shadow-[0_20px_50px_-24px_rgba(15,23,42,0.35)] backdrop-blur-xl lg:hidden">
             <div className="px-6 py-5 space-y-3">
               {navLinks.map((link) => (
                 <Link
@@ -168,10 +168,10 @@ const Navbar = (_props: NavbarProps = {}) => {
                   to={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={cn(
-                    "block py-1 text-base font-medium transition-colors",
+                    "block rounded-lg px-3 py-2 text-[15px] font-semibold transition-colors",
                     isActive(link.label, link.href)
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground",
+                      ? "bg-primary/[0.06] text-primary"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground",
                   )}
                 >
                   {link.label}

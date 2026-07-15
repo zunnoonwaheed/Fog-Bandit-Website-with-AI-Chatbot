@@ -38,12 +38,12 @@ const FAQSection = () => {
           </p>
         </div>
 
-        <div className="mt-10 bg-background rounded-2xl overflow-hidden px-6 py-2">
+        <div className="premium-card mt-10 rounded-2xl overflow-hidden px-5 py-2 md:px-7">
           {faqs.map((faq, index) => (
-            <div key={index}>
+            <div key={index} className="border-b border-border/70 last:border-b-0">
               <button
                 onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                className="w-full flex items-center justify-between py-4 text-left"
+                className="w-full flex items-center justify-between py-5 text-left transition-colors hover:text-primary"
               >
                 <span className="font-heading font-bold text-secondary text-[15px] pr-4">{faq.question}</span>
                 <div className="w-7 h-7 rounded-full bg-[hsl(var(--brand-blue))] flex items-center justify-center shrink-0">

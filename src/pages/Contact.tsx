@@ -12,10 +12,10 @@ const Contact = () => {
       <Navbar activeLink="Contact" mobileMode="cta" />
 
       <main>
-        <section className="pt-28 pb-12 md:pt-[140px] lg:pt-[210px] md:pb-16">
+        <section className="page-hero pt-28 pb-12 md:pt-[140px] lg:pt-[210px] md:pb-16">
             <div className="container mx-auto px-4">
               <header className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
-                <h1 className="font-inter text-[24px] md:text-[32px] font-bold text-[#111827] leading-tight mb-3 md:mb-4">
+                <h1 className="font-inter text-[28px] md:text-[36px] lg:text-[42px] font-semibold tracking-[-0.035em] text-[#111827] leading-[1.12] mb-4 md:mb-5">
                   Speak to a security expert
                 </h1>
                 <p className="font-dm-sans text-[14px] md:text-[16px] text-[#6B7280] leading-[1.6] mx-auto max-w-2xl">
@@ -64,7 +64,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div id="contact-form" className="order-1 md:order-2">
+                <div id="contact-form" className="premium-card order-1 rounded-2xl p-5 sm:p-6 md:order-2 md:p-8">
                   <form className="space-y-5" noValidate>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div>

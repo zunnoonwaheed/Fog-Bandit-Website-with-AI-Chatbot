@@ -117,7 +117,7 @@ const SocialProofSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Ratings card */}
-        <div className="mt-12 bg-background border border-border rounded-2xl p-6 lg:p-8">
+        <div className="premium-card mt-12 rounded-2xl p-6 lg:p-8">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-0 divide-y lg:divide-y-0 divide-border">
             {/* Stars & rating */}
             <div className="w-full lg:w-auto lg:border-r lg:border-border lg:pr-12 pb-8 lg:pb-0">

@@ -26,7 +26,7 @@ const HowItWorksSection = () => {
 
 
         {/* Image - responsive fog room images */}
-        <div className="mt-10 lg:mt-12 rounded-2xl overflow-hidden relative w-full aspect-[366/511] lg:aspect-[1240/541]">
+        <div className="premium-media mt-10 lg:mt-12 rounded-2xl overflow-hidden relative w-full aspect-[366/511] lg:aspect-[1240/541] ring-1 ring-black/[0.04]">
           {/* Mobile fog room image */}
           <img
             src={fogRoomMobile}
@@ -45,8 +45,8 @@ const HowItWorksSection = () => {
 
         <div className="mt-6 lg:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {features.map((f) => (
-            <div key={f.title} className="bg-background border border-border rounded-xl p-5">
-              <img src={f.icon} alt="" className="w-10 h-10" />
+            <div key={f.title} className="premium-card group rounded-xl p-5 md:p-6">
+              <img src={f.icon} alt="" className="w-10 h-10 transition-transform duration-300 group-hover:scale-105" />
               <h3 className="font-heading font-bold text-secondary mt-4 text-[15px]">{f.title}</h3>
               <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{f.desc}</p>
             </div>

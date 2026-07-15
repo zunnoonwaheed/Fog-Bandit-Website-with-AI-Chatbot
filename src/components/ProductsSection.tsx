@@ -6,7 +6,7 @@ import homeTallRight from "@/assets/home-bento-tall-right.png";
 import product240DbExtended from "@/assets/product-240db-extended.png";
 import product240DbNarrow from "@/assets/product-240db-narrow.png";
 
-const productShotClass = "absolute inset-0 h-full w-full object-cover object-center";
+const productShotClass = "absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.025]";
 
 const ProductsSection = () => {
   const mobileScrollRef = useRef<HTMLDivElement>(null);
@@ -49,7 +49,7 @@ const ProductsSection = () => {
               <div
                 key={p.title}
                 data-card
-                className="snap-start shrink-0 rounded-2xl relative overflow-hidden"
+                className="premium-media group snap-start shrink-0 rounded-2xl relative overflow-hidden ring-1 ring-black/[0.05]"
                 style={{ width: "366px", height: "700px", maxWidth: "calc(100vw - 2rem)" }}
               >
                 <Link to="/products" className="absolute inset-0 z-0 block" aria-label={p.title}>
@@ -77,7 +77,7 @@ const ProductsSection = () => {
           <Link
             to="/products"
             aria-label="Fog Bandit 320 Vertical Mount"
-            className="md:col-start-1 md:row-start-1 md:row-span-2 h-full min-h-0 rounded-2xl relative overflow-hidden block"
+            className="premium-media group md:col-start-1 md:row-start-1 md:row-span-2 h-full min-h-0 rounded-2xl relative overflow-hidden block ring-1 ring-black/[0.05]"
           >
             <img src={product320VVertical} alt="" className={productShotClass} loading="lazy" />
             <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
@@ -88,7 +88,7 @@ const ProductsSection = () => {
             </div>
           </Link>
 
-          <Link to="/products" className="md:col-start-2 md:row-start-1 h-full min-h-0 rounded-2xl relative overflow-hidden block">
+          <Link to="/products" className="premium-media group md:col-start-2 md:row-start-1 h-full min-h-0 rounded-2xl relative overflow-hidden block ring-1 ring-black/[0.05]">
             <img src={product240DbNarrow} alt="Fog Bandit 240 DB Extended Nozzle" className={productShotClass} loading="lazy" />
             <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
               <h3 className="text-white font-heading font-bold text-[15px] leading-tight max-w-[180px]">Fog Bandit 240 DB<br />Extended Nozzle</h3>
@@ -98,7 +98,7 @@ const ProductsSection = () => {
             </div>
           </Link>
 
-          <Link to="/products" className="md:col-start-2 md:row-start-2 h-full min-h-0 rounded-2xl relative overflow-hidden block">
+          <Link to="/products" className="premium-media group md:col-start-2 md:row-start-2 h-full min-h-0 rounded-2xl relative overflow-hidden block ring-1 ring-black/[0.05]">
             <img src={product240DbExtended} alt="Fog Bandit 240 DB Narrow Nozzle" className={productShotClass} loading="lazy" />
             <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
               <h3 className="text-white font-heading font-bold text-[15px] leading-tight max-w-[180px]">Fog Bandit 240 DB<br />Narrow Nozzle</h3>
@@ -111,7 +111,7 @@ const ProductsSection = () => {
           <Link
             to="/products"
             aria-label="Fog Bandit 320 Ceiling Mount"
-            className="md:col-start-3 md:row-start-1 md:row-span-2 h-full min-h-0 rounded-2xl relative overflow-hidden block"
+            className="premium-media group md:col-start-3 md:row-start-1 md:row-span-2 h-full min-h-0 rounded-2xl relative overflow-hidden block ring-1 ring-black/[0.05]"
           >
             <img src={homeTallRight} alt="" className={productShotClass} loading="lazy" />
             <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">

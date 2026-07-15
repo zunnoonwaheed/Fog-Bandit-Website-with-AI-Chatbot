@@ -8,7 +8,7 @@ const ProductsHero = () => {
     <section className="pt-[120px] pb-10 lg:pt-[160px] lg:pb-[60px]">
       <div className="container mx-auto px-4">
         <div
-          className="relative mx-auto overflow-hidden rounded-2xl w-full"
+          className="premium-media relative mx-auto overflow-hidden rounded-2xl w-full ring-1 ring-black/[0.05]"
         >
           {/* Frame sizing: mobile 366x511, desktop full width 550h */}
           <div className="relative w-full aspect-[366/511] md:aspect-[1240/550]">
@@ -30,7 +30,7 @@ const ProductsHero = () => {
                 <p className="font-dm-sans text-[11px] md:text-[12px] font-semibold text-white/70 tracking-[0.15em] uppercase mb-3 md:mb-4">
                   The world leader in security fogging
                 </p>
-                <h1 className="font-inter text-[22px] md:text-[36px] font-semibold text-white leading-tight mb-3 md:mb-4">
+                <h1 className="font-inter text-[28px] md:text-[40px] lg:text-[44px] font-semibold tracking-[-0.035em] text-white leading-[1.12] mb-4 md:mb-5">
                   Stop Intruders in Their Tracks.
                 </h1>
                 <p className="font-dm-sans text-[13px] md:text-[16px] font-medium text-white/85 leading-relaxed mb-5 md:mb-7 max-w-2xl mx-auto">

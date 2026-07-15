@@ -26,8 +26,8 @@ const PlugNSecureSection = () => {
         {/* Feature cards */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
           {features.map((f) => (
-            <div key={f.title} className="bg-background border border-border rounded-xl p-6">
-              <img src={f.icon} alt="" className="w-10 h-10" />
+            <div key={f.title} className="premium-card group rounded-xl p-6">
+              <img src={f.icon} alt="" className="w-10 h-10 transition-transform duration-300 group-hover:scale-105" />
               <h3 className="font-heading font-bold text-secondary mt-4 text-lg">{f.title}</h3>
               <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{f.desc}</p>
             </div>
@@ -35,7 +35,7 @@ const PlugNSecureSection = () => {
         </div>
 
         {/* Residential Transit */}
-        <div className="mt-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        <div className="premium-card mt-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 rounded-2xl p-6 md:p-8">
           <div>
             <h3 className="font-heading font-bold text-secondary text-xl">Residential Transit</h3>
             <p className="text-muted-foreground text-sm mt-2 max-w-md">

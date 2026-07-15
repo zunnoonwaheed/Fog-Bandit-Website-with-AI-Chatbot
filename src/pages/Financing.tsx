@@ -27,10 +27,10 @@ const Financing = () => {
       <Navbar mobileMode="cta" />
 
       <main>
-        <section className="pt-28 pb-12 md:pt-[140px] lg:pt-[210px] md:pb-16">
+        <section className="page-hero pt-28 pb-12 md:pt-[140px] lg:pt-[210px] md:pb-16">
           <div className="container mx-auto px-4">
             <header className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
-              <h1 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground leading-tight mb-3 md:mb-4">
+              <h1 className="font-inter text-[28px] md:text-[36px] lg:text-[42px] font-semibold tracking-[-0.035em] text-foreground leading-[1.12] mb-4 md:mb-5">
                 Apply for Fog Bandit Financing
               </h1>
               <p className="md:hidden font-dm-sans text-[14px] font-medium text-muted-foreground leading-relaxed mx-auto max-w-[300px]">
@@ -101,7 +101,7 @@ const Financing = () => {
                 </div>
               </div>
 
-              <div id="financing-form" className="order-1 md:order-2">
+              <div id="financing-form" className="premium-card order-1 rounded-2xl p-5 sm:p-6 md:order-2 md:p-8">
                 <form className="space-y-5" noValidate>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                     <div>
