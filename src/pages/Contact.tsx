@@ -38,7 +38,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <p className="text-[12px] text-[#6B7280] mb-1">Call Us</p>
-                        <p className="text-[15px] md:text-[16px] font-semibold text-[#111827]">+61 482 795 786</p>
+                        <p className="text-[15px] md:text-[16px] font-semibold text-[#111827]">1300 385 358</p>
                       </div>
                     </div>
 
@@ -164,7 +164,7 @@ const Contact = () => {
                         </p>
                         <p className="flex items-start gap-2">
                           <Phone className="h-4 w-4 mt-0.5 text-[#111827]" />
-                          +61 482 795 786
+                          1300 385 358
                         </p>
                         <p className="flex items-start gap-2">
                           <Mail className="h-4 w-4 mt-0.5 text-[#111827]" />
@@ -182,7 +182,7 @@ const Contact = () => {
                         </p>
                         <p className="flex items-start gap-2">
                           <Phone className="h-4 w-4 mt-0.5 text-[#111827]" />
-                          +61 482 795 786
+                          1300 385 358
                         </p>
                         <p className="flex items-start gap-2">
                           <Mail className="h-4 w-4 mt-0.5 text-[#111827]" />
@@ -218,7 +218,7 @@ const Contact = () => {
                         </p>
                         <p className="flex items-start gap-2">
                           <Phone className="h-4 w-4 mt-0.5 text-[#111827]" />
-                          +61 482 795 786
+                          1300 385 358
                         </p>
                         <p className="flex items-start gap-2">
                           <Mail className="h-4 w-4 mt-0.5 text-[#111827]" />
@@ -236,7 +236,7 @@ const Contact = () => {
                         </p>
                         <p className="flex items-start gap-2">
                           <Phone className="h-4 w-4 mt-0.5 text-[#111827]" />
-                          +61 482 795 786
+                          1300 385 358
                         </p>
                         <p className="flex items-start gap-2">
                           <Mail className="h-4 w-4 mt-0.5 text-[#111827]" />

@@ -68,7 +68,7 @@ const Financing = () => {
                       </div>
                       <div>
                         <p className="text-[12px] text-muted-foreground">Call Us</p>
-                        <p className="text-[14px] md:text-[15px] font-semibold text-foreground">+61 482 795 786</p>
+                        <p className="text-[14px] md:text-[15px] font-semibold text-foreground">1300 385 358</p>
                       </div>
                     </div>
 
