@@ -115,6 +115,21 @@ const partnersData: StatePartners[] = [
         phone: "1300 797 732",
         email: "info@qaelectrical.com.au",
         website: "www.qaelectrical.com.au"
+      },
+      {
+        name: "EXODUS Integrated Security",
+        address: "26 Trumpeter Dr, TARNEIT, VIC, 3029",
+        phone: "03 9749 7243",
+        mobile: "0451 197 339",
+        email: "info@exodussecurity.com.au",
+        website: "exodussecurity.com.au/"
+      },
+      {
+        name: "State Guard",
+        address: "99 Hope St, BRUNSWICK, VIC, 3056",
+        phone: "1300 723 887",
+        email: "domenic@stateguard.com.au",
+        website: "stateguard.com.au"
       }
     ]
   },
@@ -174,14 +189,6 @@ const partnersData: StatePartners[] = [
         phone: "07 3865 6642",
         email: "robert@back2base.net.au",
         website: "www.back2base.net.au"
-      },
-      {
-        name: "Sunshine Security & Surveillance",
-        address: "U4, 68 Parramatta Road, Underwood QLD 4119",
-        phone: "1300 022 880",
-        mobile: "0420 996 923",
-        email: "mushir@sunshinesecurity.com.au",
-        website: "www.sunshinesecurity.com.au"
       },
       {
         name: "Asset Security Concepts Pty Ltd",

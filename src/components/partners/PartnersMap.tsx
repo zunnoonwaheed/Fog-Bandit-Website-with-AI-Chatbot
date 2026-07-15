@@ -4,9 +4,9 @@ const locations = [
   { state: "WA", name: "Western Australia", count: 2, color: "bg-blue-500" },
   { state: "NT", name: "Northern Territory", count: 1, color: "bg-orange-500" },
   { state: "SA", name: "South Australia", count: 1, color: "bg-rose-500" },
-  { state: "QLD", name: "Queensland", count: 2, color: "bg-amber-500" },
+  { state: "QLD", name: "Queensland", count: 1, color: "bg-amber-500" },
   { state: "NSW", name: "New South Wales", count: 5, color: "bg-cyan-500" },
-  { state: "VIC", name: "Victoria", count: 4, color: "bg-indigo-500" },
+  { state: "VIC", name: "Victoria", count: 6, color: "bg-indigo-500" },
 ];
 
 const PartnersMap = () => {
