@@ -67,7 +67,16 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-[hsl(220,13%,91%)] pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-dm-sans text-[11px] md:text-[12px] text-[hsl(220,10%,46%)]">© 2026 Fog Bandit Security Systems. All rights reserved.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className="font-dm-sans text-[11px] md:text-[12px] text-[hsl(220,10%,46%)]">© 2026 Fog Bandit Security Systems. All rights reserved.</p>
+            <span className="hidden sm:block h-3 w-px bg-[hsl(220,13%,85%)]" aria-hidden="true" />
+            <Link
+              to="/privacy-policy"
+              className="font-dm-sans text-[11px] md:text-[12px] text-[hsl(220,10%,46%)] hover:text-[hsl(220,20%,10%)] transition-colors"
+            >
+              Privacy Policy
+            </Link>
+          </div>
 
           <div className="flex items-center gap-4">
             <a href="https://www.instagram.com/fogbanditanz/" target="_blank" rel="noopener noreferrer" className="text-[hsl(220,10%,46%)] hover:text-[hsl(220,20%,10%)] transition-colors" aria-label="Instagram">
