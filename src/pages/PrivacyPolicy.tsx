@@ -3,57 +3,57 @@ import Footer from "@/components/Footer";
 
 const policySections = [
   {
-    title: "2. Information We Collect",
+    title: "1. Information We Collect",
     content:
       "We may collect names, business details, email addresses, phone numbers, postal addresses, product and warranty information, purchase history, technical support information, website usage information and other information required to provide our products and services.",
   },
   {
-    title: "3. How We Use Personal Information",
+    title: "2. How We Use Personal Information",
     content:
       "We use personal information to provide products and services, process orders, manage warranties, provide customer support, communicate with customers, comply with legal obligations and improve our services.",
   },
   {
-    title: "4. Marketing Communications",
+    title: "3. Marketing Communications",
     content:
       "We may send marketing communications by email, telephone or post. Individuals may opt out of marketing communications at any time.",
   },
   {
-    title: "5. Cookies and Analytics",
+    title: "4. Cookies and Analytics",
     content:
       "Our website may use essential, analytics and marketing cookies. These technologies help us understand website usage, improve functionality and measure the effectiveness of our communications. Users can manage cookie preferences through their browser settings.",
   },
   {
-    title: "6. Disclosure of Information",
+    title: "5. Disclosure of Information",
     content:
       "We do not sell personal information. Information may be disclosed to trusted service providers, professional advisers, regulators or authorities where required by law or where necessary to provide our services.",
   },
   {
-    title: "7. Overseas Disclosure",
+    title: "6. Overseas Disclosure",
     content:
       "Some service providers may store or process information outside Australia. Where this occurs, reasonable steps will be taken to ensure information is protected in accordance with applicable privacy laws.",
   },
   {
-    title: "8. Data Retention",
+    title: "7. Data Retention",
     content:
       "Personal information is retained only for as long as necessary to fulfil the purposes for which it was collected, satisfy legal requirements, resolve disputes and enforce agreements.",
   },
   {
-    title: "9. Security",
+    title: "8. Security",
     content:
       "We implement appropriate technical, administrative and organisational safeguards to protect personal information against unauthorised access, disclosure, alteration or destruction.",
   },
   {
-    title: "10. Access and Correction",
+    title: "9. Access and Correction",
     content:
       "You may request access to or correction of personal information held by Fog Bandit ANZ by contacting us.",
   },
   {
-    title: "11. Privacy Complaints",
+    title: "10. Privacy Complaints",
     content:
       "If you believe your privacy has been breached, please contact Fog Bandit ANZ in writing. We will investigate your complaint and respond within a reasonable timeframe. If you are not satisfied with our response, you may contact the Office of the Australian Information Commissioner (OAIC).",
   },
   {
-    title: "12. Changes to this Policy",
+    title: "11. Changes to this Policy",
     content:
       "This Privacy Policy may be updated from time to time. The latest version will be published on our website.",
   },
