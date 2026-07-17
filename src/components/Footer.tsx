@@ -12,6 +12,7 @@ const resourceLinks = [
   { label: "Blog / Insights", href: "/blog" },
   { label: "FAQ", href: "/#faq" },
   { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Sales Policy", href: "/sales-service-conditions" },
 ];
 
 const productLinks = [

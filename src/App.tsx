@@ -17,6 +17,7 @@ import Financing from "./pages/Financing.tsx";
 import StrategicPartners from "./pages/StrategicPartners.tsx";
 import RealDeployments from "./pages/RealDeployments.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
+import SalesServiceConditions from "./pages/SalesServiceConditions.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
 import { ChatWidgetProvider } from "./context/ChatWidgetContext.tsx";
 import ScrollAnimator from "./components/ScrollAnimator.tsx";
@@ -49,6 +50,7 @@ const App = () => (
             <Route path="/strategic-partners" element={<StrategicPartners />} />
             <Route path="/real-deployments" element={<RealDeployments />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/sales-service-conditions" element={<SalesServiceConditions />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ChatWidget />
