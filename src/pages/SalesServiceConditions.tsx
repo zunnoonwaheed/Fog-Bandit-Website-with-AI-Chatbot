@@ -208,17 +208,6 @@ const SalesServiceConditions = () => {
               <div className="font-dm-sans text-[14px] md:text-[16px] text-muted-foreground leading-relaxed">
                 <p className="font-semibold text-foreground">Fog Bandit ANZ</p>
                 <p>Penta Services Australia Pty Ltd</p>
-                <p>
-                  Website:{" "}
-                  <a
-                    href="https://banditanz.com.au"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-primary underline underline-offset-4 transition-colors hover:text-primary/80"
-                  >
-                    banditanz.com.au
-                  </a>
-                </p>
               </div>
             </header>
           </div>
