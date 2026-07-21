@@ -14,7 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: { id: string; full_name: string; company: string; phone: string; location: string; marketing_consent: boolean; created_at: string; updated_at: string }
+        Insert: { id: string; full_name?: string; company?: string; phone?: string; location?: string; marketing_consent?: boolean; created_at?: string; updated_at?: string }
+        Update: { full_name?: string; company?: string; phone?: string; location?: string; marketing_consent?: boolean; updated_at?: string }
+        Relationships: []
+      }
+      enquiries: {
+        Row: { id: string; user_id: string; type: string; status: string; subject: string; message: string; submitted_at: string }
+        Insert: { id?: string; user_id: string; type: string; status?: string; subject?: string; message?: string; submitted_at?: string }
+        Update: { type?: string; status?: string; subject?: string; message?: string }
+        Relationships: []
+      }
+      registered_systems: {
+        Row: { id: string; user_id: string; product_name: string; serial_number: string; installation_date: string | null; warranty_expiry: string | null; installer_name: string; created_at: string }
+        Insert: { id?: string; user_id: string; product_name: string; serial_number: string; installation_date?: string | null; warranty_expiry?: string | null; installer_name?: string; created_at?: string }
+        Update: { product_name?: string; serial_number?: string; installation_date?: string | null; warranty_expiry?: string | null; installer_name?: string }
+        Relationships: []
+      }
+      support_requests: {
+        Row: { id: string; user_id: string; subject: string; message: string; status: string; created_at: string; updated_at: string }
+        Insert: { id?: string; user_id: string; subject: string; message: string; status?: string; created_at?: string; updated_at?: string }
+        Update: { subject?: string; message?: string; status?: string; updated_at?: string }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
