@@ -41,7 +41,16 @@ const SignUp = () => {
     setIsSubmitting(false);
 
     if (error) {
-      toast.error(error.message);
+      const emailRateLimited =
+        error.status === 429 ||
+        error.code === "over_email_send_rate_limit" ||
+        /rate limit/i.test(error.message);
+
+      toast.error(
+        emailRateLimited
+          ? "Confirmation emails are temporarily unavailable. Please try again later or contact Fog Bandit ANZ."
+          : error.message,
+      );
       return;
     }
 
