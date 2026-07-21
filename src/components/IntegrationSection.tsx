@@ -45,7 +45,7 @@ const IntegrationSection = () => {
           </Link>
         </Button>
 
-        {/* Mobile: horizontal snap carousel — one card per view with L/R inset */}
+        {/* Mobile: horizontal snap carousel - one card per view with L/R inset */}
         <div className="md:hidden -mx-4 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide">
           <div className="flex gap-4 px-6 pb-2">
             {integrations.map((item, i) => (

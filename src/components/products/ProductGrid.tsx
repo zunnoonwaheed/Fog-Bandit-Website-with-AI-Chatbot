@@ -244,7 +244,7 @@ const bottomProducts = [
   },
   {
     image: productPltFlashFogPill,
-    title: "Fog Bandit 320 – Flash Fog Enabled (Complete Kit)",
+    title: "Fog Bandit 320 - Flash Fog Enabled (Complete Kit)",
     description: "Quality Flash unit with 6 LEDs for effect.",
     features: [
       "Totally dustproof, maintenance free design",

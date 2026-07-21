@@ -6,10 +6,10 @@ import iconEyeOff from "@/assets/icon-howitworks-eyeoff.svg";
 import iconBell from "@/assets/icon-howitworks-bell.svg";
 
 const features = [
-  { icon: iconTrigger, title: "Immediate trigger", desc: "Activates the moment your alarm detects intrusion — no delay, no gap." },
+  { icon: iconTrigger, title: "Immediate trigger", desc: "Activates the moment your alarm detects intrusion - no delay, no gap." },
   { icon: iconDeploy, title: "Instant fog deployment", desc: "Fills the space within seconds, removing visibility and control." },
   { icon: iconEyeOff, title: "Disorientation effect", desc: "Intruders lose their sense of direction, awareness, and ability to act, leaving them with no option but to flee the area." },
-  { icon: iconBell, title: "Theft prevention", desc: "Stops incidents before assets are touched — not after loss is recorded." },
+  { icon: iconBell, title: "Theft prevention", desc: "Stops incidents before assets are touched - not after loss is recorded." },
 ];
 
 const HowItWorksSection = () => {

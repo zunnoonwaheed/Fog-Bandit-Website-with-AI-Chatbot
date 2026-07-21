@@ -51,7 +51,7 @@ const Contact = () => {
                   Speak to a security expert
                 </h1>
                 <p className="font-dm-sans text-[14px] md:text-[16px] text-[#6B7280] leading-[1.6] mx-auto max-w-2xl">
-                  Every environment is different — and so is every risk. Our team will help you design a Fog Bandit solution tailored to your space, your assets, and your level of protection.
+                  Every environment is different - and so is every risk. Our team will help you design a Fog Bandit solution tailored to your space, your assets, and your level of protection.
                 </p>
               </header>
 
@@ -79,7 +79,7 @@ const Contact = () => {
                         <MapPin className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <p className="text-[12px] text-[#6B7280] mb-1">Head Office – Australia</p>
+                        <p className="text-[12px] text-[#6B7280] mb-1">Head Office - Australia</p>
                         <p className="text-[14px] md:text-[15px] font-semibold text-[#111827]">3/8 Royal Street, Kenwick WA 6107</p>
                       </div>
                     </div>
@@ -171,7 +171,7 @@ const Contact = () => {
                   <div className="grid md:grid-cols-2 gap-8 md:gap-12">
                     {/* Office locations */}
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Sydney</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ - Sydney</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
                           <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />
@@ -189,7 +189,7 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Darwin</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ - Darwin</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
                           <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />
@@ -207,7 +207,7 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Melbourne</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ - Melbourne</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
                           <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />
@@ -225,7 +225,7 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit – South Pacific Region</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit - South Pacific Region</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
                           <MapPin className="h-4 w-4 min-h-[16px] min-w-[16px] shrink-0 mt-0.5 text-[#111827]" />
@@ -243,7 +243,7 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Adelaide</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ - Adelaide</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
                           <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />
@@ -261,7 +261,7 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Brisbane</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ - Brisbane</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
                           <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />
@@ -279,7 +279,7 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ – Auckland Office</h3>
+                      <h3 className="text-[15px] font-semibold text-[#111827] mb-3">Fog Bandit ANZ - Auckland Office</h3>
                       <div className="space-y-2 text-[13px] text-[#4B5563]">
                         <p className="flex items-start gap-2">
                           <MapPin className="h-4 w-4 mt-0.5 text-[#111827]" />

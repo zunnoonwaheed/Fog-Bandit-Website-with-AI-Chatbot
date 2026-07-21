@@ -36,7 +36,7 @@ const BlogNewsletter = () => {
               Stay ahead of security threats
             </h2>
             <p className="text-white/80 text-[13px] md:text-[14px] leading-relaxed mb-5">
-              Get practical security advice, prevention strategies, and product insights delivered occasionally — only when they matter.
+              Get practical security advice, prevention strategies, and product insights delivered occasionally - only when they matter.
             </p>
             <form onSubmit={handleSubmit} className="flex gap-3 w-full mx-auto mb-3">
               <Input

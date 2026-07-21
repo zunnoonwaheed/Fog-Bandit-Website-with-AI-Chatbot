@@ -10,7 +10,7 @@ import cannabisIcon from "@/assets/Icon6.png";
 type Row = { icon: string; title: string; desc: string };
 
 const rows: Row[] = [
-  { icon: retailIcon, title: "Retail & Jewellery", desc: "Eliminate smash-and-grab theft by removing visibility instantly — making it impossible for intruders to locate or access valuables." },
+  { icon: retailIcon, title: "Retail & Jewellery", desc: "Eliminate smash-and-grab theft by removing visibility instantly - making it impossible for intruders to locate or access valuables." },
   { icon: warehouseIcon, title: "Warehousing & Logistics", desc: "Stop high-volume product theft before stock leaves the floor." },
   { icon: smeIcon, title: "SME & Office Spaces", desc: "Protect equipment, IP, and staff areas from after-hours intrusion." },
   { icon: residentialIcon, title: "Residential Protection", desc: "Give your home an active response that stops intruders on contact." },
@@ -28,7 +28,7 @@ const ProtectionSection = () => {
             Protection Designed Around <span className="text-[#021373]">Your Risk</span>
           </h2>
           <p className="section-subtext mt-4">
-            Every industry faces different threats. Fog Bandit adapts to each environment — delivering immediate response and eliminating opportunity for theft.
+            Every industry faces different threats. Fog Bandit adapts to each environment - delivering immediate response and eliminating opportunity for theft.
           </p>
         </div>
         <div className="mt-10 grid grid-cols-1 gap-5 lg:mt-12 lg:grid-cols-2 lg:gap-6">

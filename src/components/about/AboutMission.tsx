@@ -10,7 +10,7 @@ const AboutMission = () => {
             <img src={boltRed} alt="" className="h-7 w-auto mb-3" />
             <h3 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground mb-3">Our Mission</h3>
             <p className="font-dm-sans text-[14px] md:text-[20px] font-medium text-muted-foreground leading-relaxed">
-              To redefine security across Australia and New Zealand by delivering systems that actively prevent crime — ensuring every space we protect is secured within seconds, not minutes.
+              To redefine security across Australia and New Zealand by delivering systems that actively prevent crime - ensuring every space we protect is secured within seconds, not minutes.
             </p>
           </div>
 

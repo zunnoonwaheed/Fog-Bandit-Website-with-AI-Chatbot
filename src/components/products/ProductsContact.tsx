@@ -16,7 +16,7 @@ const ProductsContact = () => {
               <span className="hidden md:inline">Upgrade from detection to prevention</span>
             </h2>
             <p className="font-dm-sans text-[14px] md:text-[20px] font-medium text-muted-foreground mb-5 leading-relaxed">
-              <span className="md:hidden">Talk to our team and get a Fog Bandit solution tailored to your space. No guesswork — just proven protection that works when it matters most.</span>
+              <span className="md:hidden">Talk to our team and get a Fog Bandit solution tailored to your space. No guesswork - just proven protection that works when it matters most.</span>
               <span className="hidden md:inline">Traditional systems tell you something went wrong. Fog Bandit ensures it doesn't. Speak with our team to get a system tailored to your space and risk level.</span>
             </p>
             <h3 className="font-inter font-semibold text-foreground mb-1.5 text-[15px] md:text-[18px]">Or phone us</h3>

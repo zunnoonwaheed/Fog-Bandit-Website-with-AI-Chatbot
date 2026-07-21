@@ -14,7 +14,7 @@ const IndustriesHero = () => {
             Protect your revenue, not just your premises
           </h1>
           <p className="font-dm-sans text-[14px] md:text-[18px] font-medium text-muted-foreground leading-relaxed mb-5 md:mb-6 mx-auto">
-            Break-ins don't just cost inventory — they disrupt operations, damage trust, and impact your bottom line. Fog Bandit stops intrusions instantly, before any loss occurs.
+            Break-ins don't just cost inventory - they disrupt operations, damage trust, and impact your bottom line. Fog Bandit stops intrusions instantly, before any loss occurs.
           </p>
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 md:px-6 h-10 md:h-11 text-[13px] md:text-[14px] font-semibold gap-2">
             <Link to="/contact">

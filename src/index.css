@@ -345,7 +345,7 @@ section video.fb-in-view {
   color: #fff !important;
 }
 
-/* Below lg: lead copy may wrap; title never wraps — width-based font-size above scales it down instead */
+/* Below lg: lead copy may wrap; title never wraps - width-based font-size above scales it down instead */
 @media (max-width: 1023px) {
   [data-hero-home] .hero-home-lead-line {
     white-space: normal !important;

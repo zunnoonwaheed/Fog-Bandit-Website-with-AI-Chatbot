@@ -102,7 +102,7 @@ const SafetyStatsSection = () => {
           </h2>
           <p className="mt-3 text-[13px] md:text-[15px] text-muted-foreground leading-relaxed">
             Across Australia and New Zealand, retailers, warehouses, and high-risk facilities rely on Fog Bandit to
-            stop theft in real time — not just record it after the damage is done.
+            stop theft in real time - not just record it after the damage is done.
           </p>
         </div>
 

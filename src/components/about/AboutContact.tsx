@@ -14,7 +14,7 @@ const AboutContact = () => {
               Built by experts. Trusted in the real world.
             </h2>
             <p className="font-dm-sans text-[14px] md:text-[20px] font-medium text-muted-foreground mb-5 leading-relaxed">
-              We design, deploy, and support security systems that are proven under real pressure — not just in theory.
+              We design, deploy, and support security systems that are proven under real pressure - not just in theory.
             </p>
             <h3 className="font-inter font-semibold text-foreground mb-1.5 text-[15px] md:text-[18px]">Or phone us</h3>
             <p className="font-dm-sans text-[14px] md:text-[16px] text-foreground">1800 BANDIT (226348)</p>

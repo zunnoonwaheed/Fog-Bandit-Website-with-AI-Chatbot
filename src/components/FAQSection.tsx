@@ -33,7 +33,7 @@ const FAQSection = () => {
         <div className="text-center">
           <h2 className="section-heading">Everything You Need To Know</h2>
           <p className="section-subtext mt-4">
-            Clear answers to the most common questions about Fog Bandit — from how it
+            Clear answers to the most common questions about Fog Bandit - from how it
             works to how it protects your space in real-world situations.
           </p>
         </div>

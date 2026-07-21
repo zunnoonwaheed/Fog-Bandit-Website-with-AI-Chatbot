@@ -21,7 +21,7 @@ const partnersData: StatePartners[] = [
     stateCode: "WA",
     partners: [
       {
-        name: "PMT Security Systems – Perth",
+        name: "PMT Security Systems - Perth",
         address: "Unit 7/8 Booth Place Balcatta, WA 6021",
         phone: "1300 853 686",
         email: "Cindy.Coetzee@pmtsecurity.com.au",
@@ -40,28 +40,28 @@ const partnersData: StatePartners[] = [
     stateCode: "VIC",
     partners: [
       {
-        name: "PMT Security Systems – Melbourne",
+        name: "PMT Security Systems - Melbourne",
         address: "Level 1, 5 Tullamarine Park Rd, Tullamarine VIC 3043",
         phone: "1300 853 686",
         email: "kane@pmtsecurity.com.au",
         website: "www.pmtsecurity.com.au"
       },
       {
-        name: "Omnivision – Melbourne",
+        name: "Omnivision - Melbourne",
         address: "3, 3-5 Gilda Ct, Mulgrave VIC 3170",
         phone: "1300 688 788",
         email: "vishr@omnivision.net.au",
         website: "www.omnivision.net.au"
       },
       {
-        name: "Auspro Security Services – Melbourne",
+        name: "Auspro Security Services - Melbourne",
         address: "PO BOX 2005, Werribee VIC 3030",
         phone: "03 9360 8077",
         mobile: "0413 422 216",
         email: "info@ausprosecurity.com.au"
       },
       {
-        name: "Look Video Surveillance – Bendigo",
+        name: "Look Video Surveillance - Bendigo",
         address: "245 Lloyd Street, East Bendigo VIC 3550",
         mobile: "0438 436 199",
         email: "info@looksecurity.com.au",
@@ -108,7 +108,7 @@ const partnersData: StatePartners[] = [
         website: "www.omnivision.net.au"
       },
       {
-        name: "PMT Security Systems – Sydney",
+        name: "PMT Security Systems - Sydney",
         address: "Unit 1&2, 7 Tucks Rd Seven Hills NSW 2147",
         phone: "1300 853 686",
         email: "michael@pmtsecurity.com.au",
@@ -128,7 +128,7 @@ const partnersData: StatePartners[] = [
     stateCode: "QLD",
     partners: [
       {
-        name: "Back 2 Base Monitoring – Brisbane",
+        name: "Back 2 Base Monitoring - Brisbane",
         address: "43 Flinders Parade, North Lakes QLD 4035",
         phone: "07 3865 6642",
         email: "robert@back2base.net.au",

@@ -28,14 +28,14 @@ const IndustriesThreeSecond = () => {
               <img src={iconStopwatch} alt="" className="h-6 w-5 mb-3" />
               <h3 className="font-inter text-[14px] md:text-[15px] font-bold text-foreground mb-1">Instant Obscuration</h3>
               <p className="font-dm-sans text-[12px] md:text-[13px] text-muted-foreground leading-snug">
-                Visibility drops to near zero within seconds — making it impossible to locate or access assets.
+                Visibility drops to near zero within seconds - making it impossible to locate or access assets.
               </p>
             </div>
             <div className="bg-muted rounded-xl p-4 md:p-5">
               <img src={iconBroom} alt="" className="h-6 w-5 mb-3" />
               <h3 className="font-inter text-[14px] md:text-[15px] font-bold text-foreground mb-1">Zero-Residue Technology</h3>
               <p className="font-dm-sans text-[12px] md:text-[13px] text-muted-foreground leading-snug">
-                Safe for electronics, stock, and interiors — with no cleanup, no damage, and no downtime.
+                Safe for electronics, stock, and interiors - with no cleanup, no damage, and no downtime.
               </p>
             </div>
           </div>

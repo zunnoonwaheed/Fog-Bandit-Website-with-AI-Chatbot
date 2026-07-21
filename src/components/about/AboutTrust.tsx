@@ -43,7 +43,7 @@ const AboutTrust = () => {
               Why businesses trust Fog Bandit ANZ
             </h2>
             <p className="font-dm-sans text-[14px] md:text-[20px] font-medium text-muted-foreground mb-4 md:mb-5">
-              More than a product — a proven security partner.
+              More than a product - a proven security partner.
             </p>
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 h-10 text-[13px] font-semibold gap-2 mb-5 md:mb-6">
               <Link to="/industries">

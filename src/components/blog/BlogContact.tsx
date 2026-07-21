@@ -15,7 +15,7 @@ const BlogContact = () => {
               <span className="hidden md:inline">Know your risk before it becomes a loss</span>
             </h2>
             <p className="text-muted-foreground mb-5 leading-relaxed text-[13px] md:text-sm">
-              <span className="md:hidden">Talk to our team and get a Fog Bandit solution tailored to your space. No guesswork — just proven protection that works when it matters most.</span>
+              <span className="md:hidden">Talk to our team and get a Fog Bandit solution tailored to your space. No guesswork - just proven protection that works when it matters most.</span>
               <span className="hidden md:inline">Get a tailored security assessment for your business. Our team will evaluate your space and recommend a solution designed to stop theft before it impacts your operations.</span>
             </p>
             <h3 className="font-semibold text-foreground mb-1.5 text-[13px] md:text-sm">Or phone us</h3>

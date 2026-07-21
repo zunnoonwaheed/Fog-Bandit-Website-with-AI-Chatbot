@@ -17,7 +17,7 @@ const items = [
   {
     icon: iconClock,
     title: "Stay open. Stay operational.",
-    desc: "A single break-in can shut down operations for days. Fog Bandit stops the incident before damage occurs — so your business can continue without interruption.",
+    desc: "A single break-in can shut down operations for days. Fog Bandit stops the incident before damage occurs - so your business can continue without interruption.",
     image: operationalImg,
     imageAlt: "Bicycle warehouse stay operational",
     reverse: true,
@@ -41,7 +41,7 @@ const IndustriesBreakIn = () => {
             A break-in costs more than what's stolen
           </h2>
           <p className="font-dm-sans text-[14px] md:text-[20px] font-medium text-muted-foreground leading-relaxed max-w-xl mx-auto">
-            The real cost of theft goes beyond inventory — it impacts staff safety, operations, and your brand reputation. Fog Bandit prevents the incident entirely, eliminating downstream losses.
+            The real cost of theft goes beyond inventory - it impacts staff safety, operations, and your brand reputation. Fog Bandit prevents the incident entirely, eliminating downstream losses.
           </p>
         </div>
 

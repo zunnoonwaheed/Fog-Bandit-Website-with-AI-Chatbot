@@ -82,7 +82,7 @@ const SolutionsProtect = () => {
             </div>
           </div>
 
-          {/* Tested & certified safe — desktop only */}
+          {/* Tested & certified safe - desktop only */}
           <div className="hidden md:grid md:col-span-2 rounded-2xl bg-background border border-border overflow-hidden grid-cols-1 md:grid-cols-[1fr_240px]">
             <div className="p-5 md:p-7">
               <h3 className="font-inter text-[16px] md:text-[20px] font-bold text-foreground mb-2">Tested and certified safe</h3>

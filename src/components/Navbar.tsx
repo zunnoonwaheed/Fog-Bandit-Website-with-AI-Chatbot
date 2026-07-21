@@ -83,7 +83,7 @@ const Navbar = (_props: NavbarProps = {}) => {
             href="/"
             data-no-animate
             className="relative z-10 flex h-full min-w-[119px] shrink-0 cursor-pointer items-center overflow-visible pointer-events-auto"
-            aria-label="Fog Bandit ANZ — home"
+            aria-label="Fog Bandit ANZ - home"
           >
             <img
               src={newLogo}

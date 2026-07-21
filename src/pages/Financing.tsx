@@ -66,7 +66,7 @@ const Financing = () => {
                 Flexible installments so you can deploy professional protection today.
               </p>
               <p className="hidden md:block font-dm-sans text-[18px] font-medium text-muted-foreground leading-relaxed mx-auto">
-                Spread the cost of full Fog Bandit protection with our Finance Assistance program. Low monthly installments, fixed rates, and rapid approval — designed for business owners who need security now, not later.
+                Spread the cost of full Fog Bandit protection with our Finance Assistance program. Low monthly installments, fixed rates, and rapid approval - designed for business owners who need security now, not later.
               </p>
             </header>
 

@@ -29,7 +29,7 @@ const ProductsSection = () => {
             Engineered To <span className="text-[#021373]">Stop Theft</span>, Not Just Report It
           </h2>
           <p className="section-subtext mt-4">
-            Every Fog Bandit system is built for speed, reliability, and real-world performance — delivering
+            Every Fog Bandit system is built for speed, reliability, and real-world performance - delivering
             instant protection when alarms alone aren't enough.
           </p>
           <Link to="/products" className="btn-primary mt-6 inline-flex">

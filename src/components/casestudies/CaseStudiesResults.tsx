@@ -14,7 +14,7 @@ const CaseStudiesResults = () => {
             Results Across Every Industry
           </h2>
           <p className="font-dm-sans text-muted-foreground text-[14px] md:text-[18px] font-medium leading-relaxed">
-            Fog Bandit delivers measurable, documented outcomes — not promises.
+            Fog Bandit delivers measurable, documented outcomes - not promises.
           </p>
         </div>
 

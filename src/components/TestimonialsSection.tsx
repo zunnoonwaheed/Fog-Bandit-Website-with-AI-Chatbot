@@ -32,7 +32,7 @@ const FeaturedCard = ({ heightClass = "" }: { heightClass?: string }) => (
   <article className={`premium-media relative overflow-hidden rounded-2xl bg-[#0a0a0a] ring-1 ring-black/[0.05] ${heightClass || "min-h-[480px]"}`}>
     <img src={fogStore} alt={`${featured.name}, ${featured.role}: ${featured.quote}`} loading="lazy"
          className="absolute inset-0 h-full w-full object-contain object-center" />
-    <span className="sr-only">{featured.name} — {featured.role}. {featured.quote}</span>
+    <span className="sr-only">{featured.name} - {featured.role}. {featured.quote}</span>
   </article>
 );
 

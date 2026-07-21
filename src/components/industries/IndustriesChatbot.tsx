@@ -28,7 +28,7 @@ const IndustriesChatbot = () => {
     },
     {
       role: "assistant",
-      content: "To get started — what type of business are you looking to protect?"
+      content: "To get started - what type of business are you looking to protect?"
     }
   ]);
   const [isLoading, setIsLoading] = useState(false);
@@ -103,7 +103,7 @@ const IndustriesChatbot = () => {
       },
       {
         role: "assistant",
-        content: "To get started — what type of business are you looking to protect?"
+        content: "To get started - what type of business are you looking to protect?"
       }
     ]);
     setInput("");
@@ -124,7 +124,7 @@ const IndustriesChatbot = () => {
             Fog Bandit AI Security Deployment Assistant
           </h1>
           <p className="font-dm-sans text-[14px] md:text-[20px] font-medium text-muted-foreground leading-relaxed">
-            The ultimate active defense system. When seconds matter, Sentinel deploys a high-density security fog that eliminates visibility instantly—neutralizing threats without harm.
+            The ultimate active defense system. When seconds matter, Sentinel deploys a high-density security fog that eliminates visibility instantly-neutralizing threats without harm.
           </p>
         </div>
 
@@ -142,7 +142,7 @@ const IndustriesChatbot = () => {
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
                   <span className="text-[10px] md:text-[11px] text-green-600 font-medium">
-                    Online — typically responds instantly
+                    Online - typically responds instantly
                   </span>
                 </div>
               </div>

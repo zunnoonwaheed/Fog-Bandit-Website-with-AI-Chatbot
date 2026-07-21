@@ -25,7 +25,7 @@ const CardBlock = ({ card, className = "" }: { card: Card; className?: string })
 
 const enterprise: Card = { img: enterpriseImg, title: "Enterprise Security", desc: "Secure large-scale operations with a system that reacts instantly, preventing loss, downtime, and operational disruption.", badge: "shield" };
 const energy: Card = { img: energyImg, title: "Energy & Infrastructure", desc: "Protect critical infrastructure and restricted sites with security that eliminates access the moment a threat is detected.", badge: "shield" };
-const residential: Card = { img: residentialImg, title: "Residential Protection", desc: "Give your home more than an alarm — give it the ability to actively stop intruders and protect what matters most.", badge: "pin" };
+const residential: Card = { img: residentialImg, title: "Residential Protection", desc: "Give your home more than an alarm - give it the ability to actively stop intruders and protect what matters most.", badge: "pin" };
 
 const EnvironmentsSection = () => (
   <section className="pt-[100px] lg:pt-[120px] pb-0">
@@ -35,7 +35,7 @@ const EnvironmentsSection = () => (
           Built For <span className="text-[#021373]">Environments</span> Where Failure Isn&apos;t An Option
         </h2>
         <p className="section-subtext mt-4">
-          Fog Bandit is designed for one outcome — stopping intruders before they reach your assets, no matter the environment.
+          Fog Bandit is designed for one outcome - stopping intruders before they reach your assets, no matter the environment.
         </p>
       </div>
       <div className="mt-10 grid grid-cols-1 gap-4 md:mt-12 md:grid-cols-2 md:grid-rows-2 md:h-[692px]">

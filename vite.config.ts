@@ -105,7 +105,7 @@ function anthropicChatApi(): Plugin {
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    // Always this URL: http://127.0.0.1:8080 — no port hopping. If busy: npm run kill-ports
+    // Always this URL: http://127.0.0.1:8080 - no port hopping. If busy: npm run kill-ports
     host: "127.0.0.1",
     port: 8080,
     strictPort: true,

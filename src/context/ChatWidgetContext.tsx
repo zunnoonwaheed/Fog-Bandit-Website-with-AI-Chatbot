@@ -21,7 +21,7 @@ export function useChatWidget() {
   return ctx;
 }
 
-/** Navbar and other chrome that may sit outside the provider in tests — treat missing context as closed. */
+/** Navbar and other chrome that may sit outside the provider in tests - treat missing context as closed. */
 export function useChatWidgetOptional() {
   return useContext(ChatWidgetContext);
 }

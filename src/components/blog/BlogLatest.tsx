@@ -37,7 +37,7 @@ const articles = [
     img: tacticsImg,
     category: "SECURITY AWARENESS",
     title: "Modern Theft Tactics",
-    desc: "Understand how criminals target businesses today — and how to respond.",
+    desc: "Understand how criminals target businesses today - and how to respond.",
     date: "Jan 30, 2025",
     readTime: "5 min",
   },

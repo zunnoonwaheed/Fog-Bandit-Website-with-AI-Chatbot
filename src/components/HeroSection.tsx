@@ -32,7 +32,7 @@ const HeroSection = () => {
           </h1>
           <div className="hero-home-lead mt-4 md:mt-5 lg:mt-[22px] xl:mt-6">
             <p className="hero-home-lead-line">
-              Fog Bandit doesn&apos;t just detect intruders —
+              Fog Bandit doesn&apos;t just detect intruders -
             </p>
             <p className="hero-home-lead-line">
               it shuts them down instantly. Within seconds,{" "}

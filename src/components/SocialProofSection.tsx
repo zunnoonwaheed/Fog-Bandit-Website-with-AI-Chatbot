@@ -96,7 +96,7 @@ const SocialProofSection = () => {
           <h2 className="section-heading">When seconds matter, businesses choose certainty</h2>
           <p className="section-subtext mt-4 lg:mx-auto lg:max-w-none lg:[text-wrap:balance]">
             <span className="lg:block">Across Australia and New Zealand, retailers, warehouses, and high-risk facilities</span>
-            <span className="lg:block">rely on Fog Bandit to stop theft in real time – not just record it after the damage is done.</span>
+            <span className="lg:block">rely on Fog Bandit to stop theft in real time - not just record it after the damage is done.</span>
           </p>
           <Link to="/case-studies" className="btn-primary mt-6 inline-flex">
             See Customer Results <ArrowDown className="w-4 h-4" />
