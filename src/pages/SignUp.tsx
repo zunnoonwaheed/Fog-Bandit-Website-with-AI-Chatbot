@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, LockKeyhole, Mail, UserRound } from "lucide-react";
 import { toast } from "sonner";
 import AuthShell from "@/components/auth/AuthShell";
@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -27,12 +28,14 @@ const SignUp = () => {
     }
 
     setIsSubmitting(true);
+    const email = String(data.get("email") || "").trim();
+    const fullName = String(data.get("fullName") || "").trim();
     const { data: result, error } = await supabase.auth.signUp({
-      email: String(data.get("email") || "").trim(),
+      email,
       password,
       options: {
-        data: { full_name: String(data.get("fullName") || "").trim() },
-        emailRedirectTo: `${window.location.origin}/account`,
+        data: { full_name: fullName },
+        emailRedirectTo: `${window.location.origin}/login`,
       },
     });
     setIsSubmitting(false);
@@ -43,11 +46,13 @@ const SignUp = () => {
     }
 
     if (result.session) {
-      toast.success("Your account is ready.");
-      navigate("/account", { replace: true });
+      toast.success(`Welcome, ${fullName || email.split("@")[0]}!`);
+      const destination = typeof location.state?.from === "string" ? location.state.from : "/account";
+      navigate(destination, { replace: true });
     } else {
+      localStorage.setItem("fogBanditPendingWelcome", JSON.stringify({ email, name: fullName }));
       toast.success("Check your email to confirm your account.");
-      navigate("/login", { replace: true });
+      navigate("/login", { replace: true, state: location.state });
     }
   };
 
@@ -96,7 +101,7 @@ const SignUp = () => {
         </Button>
       </form>
       <p className="mt-6 text-center text-sm text-muted-foreground">
-        Already have an account? <Link to="/login" className="font-semibold text-primary hover:underline">Sign in</Link>
+        Already have an account? <Link to="/login" state={location.state} className="font-semibold text-primary hover:underline">Sign in</Link>
       </p>
     </AuthShell>
   );
