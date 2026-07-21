@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { useChatWidgetOptional } from "@/context/ChatWidgetContext";
 import newLogo from "@/assets/image 40.svg";
 import { homeNavLinks, innerNavLinks } from "@/constants/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 interface NavbarProps {
   activeLink?: string;
@@ -14,8 +15,11 @@ interface NavbarProps {
 const Navbar = (_props: NavbarProps = {}) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const chatWidget = useChatWidgetOptional();
-  const { pathname, hash } = useLocation();
+  const location = useLocation();
+  const { pathname, hash } = location;
   const activeLink = _props.activeLink?.toLowerCase();
+  const { user, loading: authLoading } = useAuth();
+  const returnTo = `${pathname}${location.search}${hash}`;
 
   // Use a light navbar on inner pages where the hero background is light
   const isLightPage = pathname !== "/";
@@ -115,6 +119,18 @@ const Navbar = (_props: NavbarProps = {}) => {
           </div>
 
           <div className="hidden shrink-0 items-center gap-5 lg:flex">
+            {!authLoading && (
+              <Link
+                to={user ? "/account" : "/login"}
+                state={user ? undefined : { from: returnTo }}
+                className={cn(
+                  "text-[15px] font-semibold tracking-[-0.01em] transition-colors",
+                  isLightPage ? "text-[#475569] hover:text-primary" : "text-white/90 hover:text-white",
+                )}
+              >
+                {user ? "My Account" : "Sign In"}
+              </Link>
+            )}
             {pathname === "/" && (
               <Link
                 to="/contact"
@@ -180,6 +196,15 @@ const Navbar = (_props: NavbarProps = {}) => {
               {pathname === "/" && (
                 <Link to="/contact" className="block py-1 text-base font-medium text-muted-foreground transition-colors hover:text-foreground">
                   Contact Us
+                </Link>
+              )}
+              {!authLoading && (
+                <Link
+                  to={user ? "/account" : "/login"}
+                  state={user ? undefined : { from: returnTo }}
+                  className="block rounded-lg px-3 py-2 text-[15px] font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                >
+                  {user ? "My Account" : "Sign In"}
                 </Link>
               )}
               <Link to="/contact" className="btn-primary mt-3 w-full justify-center">
