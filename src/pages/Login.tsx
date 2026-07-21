@@ -22,8 +22,9 @@ const Login = () => {
 
     const data = new FormData(event.currentTarget);
     setIsSubmitting(true);
-    const { error } = await supabase.auth.signInWithPassword({
-      email: String(data.get("email") || "").trim(),
+    const email = String(data.get("email") || "").trim();
+    const { data: result, error } = await supabase.auth.signInWithPassword({
+      email,
       password: String(data.get("password") || ""),
     });
     setIsSubmitting(false);
@@ -33,7 +34,23 @@ const Login = () => {
       return;
     }
 
-    toast.success("Welcome back.");
+    const savedSignup = localStorage.getItem("fogBanditPendingWelcome");
+    let isNewAccount = false;
+    let savedName = "";
+    if (savedSignup) {
+      try {
+        const pending = JSON.parse(savedSignup) as { email?: string; name?: string };
+        if (pending.email === email) {
+          isNewAccount = true;
+          savedName = pending.name || "";
+          localStorage.removeItem("fogBanditPendingWelcome");
+        }
+      } catch {
+        localStorage.removeItem("fogBanditPendingWelcome");
+      }
+    }
+    const displayName = savedName || String(result.user?.user_metadata?.full_name || "").trim() || email.split("@")[0];
+    toast.success(`${isNewAccount ? "Welcome" : "Welcome back"}, ${displayName}!`);
     const destination = typeof location.state?.from === "string" ? location.state.from : "/account";
     navigate(destination, { replace: true });
   };
@@ -71,7 +88,7 @@ const Login = () => {
         </Button>
       </form>
       <p className="mt-6 text-center text-sm text-muted-foreground">
-        New to Fog Bandit? <Link to="/signup" className="font-semibold text-primary hover:underline">Create an account</Link>
+        New to Fog Bandit? <Link to="/signup" state={location.state} className="font-semibold text-primary hover:underline">Create an account</Link>
       </p>
     </AuthShell>
   );
