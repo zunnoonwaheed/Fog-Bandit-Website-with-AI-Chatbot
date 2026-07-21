@@ -18,6 +18,18 @@ import StrategicPartners from "./pages/StrategicPartners.tsx";
 import RealDeployments from "./pages/RealDeployments.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import SalesServiceConditions from "./pages/SalesServiceConditions.tsx";
+import Login from "./pages/Login.tsx";
+import SignUp from "./pages/SignUp.tsx";
+import ForgotPassword from "./pages/ForgotPassword.tsx";
+import ResetPassword from "./pages/ResetPassword.tsx";
+import Account from "./pages/Account.tsx";
+import AccountProfile from "./pages/AccountProfile.tsx";
+import AccountEnquiries from "./pages/AccountEnquiries.tsx";
+import AccountSystems from "./pages/AccountSystems.tsx";
+import AccountSupport from "./pages/AccountSupport.tsx";
+import AccountLayout from "./components/auth/AccountLayout.tsx";
+import RequireAuth from "./components/auth/RequireAuth.tsx";
+import { AuthProvider } from "./context/AuthContext.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
 import { ChatWidgetProvider } from "./context/ChatWidgetContext.tsx";
 import ScrollAnimator from "./components/ScrollAnimator.tsx";
@@ -33,6 +45,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ChatWidgetProvider>
+          <AuthProvider>
           <ScrollToTop />
           <ScrollAnimator />
           <GsapAnimator />
@@ -51,9 +64,23 @@ const App = () => (
             <Route path="/real-deployments" element={<RealDeployments />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/sales-service-conditions" element={<SalesServiceConditions />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route element={<RequireAuth />}>
+              <Route path="/account" element={<AccountLayout />}>
+                <Route index element={<Account />} />
+                <Route path="enquiries" element={<AccountEnquiries />} />
+                <Route path="systems" element={<AccountSystems />} />
+                <Route path="support" element={<AccountSupport />} />
+                <Route path="profile" element={<AccountProfile />} />
+              </Route>
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ChatWidget />
+          </AuthProvider>
         </ChatWidgetProvider>
       </BrowserRouter>
     </TooltipProvider>
