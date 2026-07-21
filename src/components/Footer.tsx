@@ -5,6 +5,7 @@ const quickLinks = [
   { label: "About Us", href: "/about" },
   { label: "Financial Assistance", href: "/financing" },
   { label: "Certifications and Accreditations", href: "/#certifications" },
+  { label: "Customer Login", href: "/login" },
 ];
 
 const resourceLinks = [
