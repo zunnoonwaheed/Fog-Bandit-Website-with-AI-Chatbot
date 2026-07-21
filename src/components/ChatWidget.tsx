@@ -13,6 +13,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useChatWidget } from "@/context/ChatWidgetContext";
 import { homeNavLinks, innerNavLinks } from "@/constants/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 const businessTypes = [
   { label: "Retail Store", icon: "🏬" },
@@ -43,12 +44,19 @@ const INITIAL_MESSAGES: Msg[] = [
 
 const ChatWidget = () => {
   const { isChatOpen: open, setChatOpen: setOpen } = useChatWidget();
+  const { user } = useAuth();
   const { pathname, hash } = useLocation();
   const [chatHeaderMobileOpen, setChatHeaderMobileOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Msg[]>(INITIAL_MESSAGES);
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  const saveConversation = (nextMessages: Msg[]) => {
+    if (!user) return;
+    localStorage.setItem(`fogBanditChat:${user.id}`, JSON.stringify(nextMessages.slice(-60)));
+    window.dispatchEvent(new CustomEvent("fog-bandit-chat-updated"));
+  };
 
   const navLinks = pathname === "/" ? homeNavLinks : innerNavLinks;
 
@@ -93,6 +101,25 @@ const ChatWidget = () => {
   }, [open]);
 
   useEffect(() => {
+    if (!user) {
+      setMessages(INITIAL_MESSAGES);
+      return;
+    }
+    const saved = localStorage.getItem(`fogBanditChat:${user.id}`);
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved) as Msg[];
+        const valid = parsed.filter((message): message is Msg =>
+          Boolean(message && (message.role === "assistant" || message.role === "user") && typeof message.content === "string"),
+        );
+        setMessages(valid.length > 0 ? valid : INITIAL_MESSAGES);
+      } catch {
+        setMessages(INITIAL_MESSAGES);
+      }
+    }
+  }, [user]);
+
+  useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
@@ -104,6 +131,7 @@ const ChatWidget = () => {
 
     const next: Msg[] = [...messages, { role: "user", content: trimmed }];
     setMessages(next);
+    saveConversation(next);
     setInput("");
     setLoading(true);
 
@@ -116,7 +144,11 @@ const ChatWidget = () => {
       const data = (await res.json()) as { reply?: string; error?: string };
       if (!res.ok) throw new Error(data?.error || `Chat failed (${res.status})`);
       const reply = data?.reply ?? "Sorry, no response.";
-      setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+      setMessages((prev) => {
+        const updated: Msg[] = [...prev, { role: "assistant", content: reply }];
+        saveConversation(updated);
+        return updated;
+      });
     } catch (e: unknown) {
       console.error(e);
       toast({
@@ -138,6 +170,7 @@ const ChatWidget = () => {
 
   const resetChat = () => {
     setMessages(INITIAL_MESSAGES);
+    saveConversation(INITIAL_MESSAGES);
     setInput("");
   };
 

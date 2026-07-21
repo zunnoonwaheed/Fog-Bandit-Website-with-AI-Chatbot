@@ -23,10 +23,6 @@ import SignUp from "./pages/SignUp.tsx";
 import ForgotPassword from "./pages/ForgotPassword.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
 import Account from "./pages/Account.tsx";
-import AccountProfile from "./pages/AccountProfile.tsx";
-import AccountEnquiries from "./pages/AccountEnquiries.tsx";
-import AccountSystems from "./pages/AccountSystems.tsx";
-import AccountSupport from "./pages/AccountSupport.tsx";
 import AccountLayout from "./components/auth/AccountLayout.tsx";
 import RequireAuth from "./components/auth/RequireAuth.tsx";
 import { AuthProvider } from "./context/AuthContext.tsx";
@@ -71,10 +67,6 @@ const App = () => (
             <Route element={<RequireAuth />}>
               <Route path="/account" element={<AccountLayout />}>
                 <Route index element={<Account />} />
-                <Route path="enquiries" element={<AccountEnquiries />} />
-                <Route path="systems" element={<AccountSystems />} />
-                <Route path="support" element={<AccountSupport />} />
-                <Route path="profile" element={<AccountProfile />} />
               </Route>
             </Route>
             <Route path="*" element={<NotFound />} />

@@ -1,20 +1,11 @@
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
-import { FileText, Headphones, LayoutDashboard, LogOut, MonitorCog, UserRound } from "lucide-react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { LogOut } from "lucide-react";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
-import { cn } from "@/lib/utils";
-
-const links = [
-  { to: "/account", label: "Overview", icon: LayoutDashboard, end: true },
-  { to: "/account/enquiries", label: "Enquiries", icon: FileText },
-  { to: "/account/systems", label: "Registered systems", icon: MonitorCog },
-  { to: "/account/support", label: "Support", icon: Headphones },
-  { to: "/account/profile", label: "Profile & preferences", icon: UserRound },
-];
 
 const AccountLayout = () => {
   const { user } = useAuth();
@@ -39,18 +30,7 @@ const AccountLayout = () => {
             <Button variant="outline" onClick={signOut} className="h-10 self-start rounded-xl bg-white sm:self-auto"><LogOut className="mr-2 h-4 w-4" /> Sign out</Button>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)]">
-            <aside className="premium-card h-fit rounded-2xl p-3">
-              <nav className="flex gap-2 overflow-x-auto lg:flex-col" aria-label="Customer account">
-                {links.map(({ to, label, icon: Icon, end }) => (
-                  <NavLink key={to} to={to} end={end} className={({ isActive }) => cn("flex shrink-0 items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-colors", isActive ? "bg-[#021373] text-white" : "text-muted-foreground hover:bg-muted hover:text-foreground")}>
-                    <Icon className="h-4 w-4" /> {label}
-                  </NavLink>
-                ))}
-              </nav>
-            </aside>
-            <section className="min-w-0"><Outlet /></section>
-          </div>
+          <section className="min-w-0"><Outlet /></section>
         </div>
       </main>
       <Footer />
