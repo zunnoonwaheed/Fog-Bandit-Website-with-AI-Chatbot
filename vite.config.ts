@@ -3,7 +3,9 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import dotenv from "dotenv";
 
-// Load .env file
+// Load the same local secrets file used for Vercel setup. Vite only exposes
+// variables prefixed with VITE_ to browser code; server credentials stay private.
+dotenv.config({ path: path.resolve(__dirname, ".env.vercel") });
 dotenv.config();
 
 function attachAnthropicChatMiddleware(middlewares: Connect.Server): void {
