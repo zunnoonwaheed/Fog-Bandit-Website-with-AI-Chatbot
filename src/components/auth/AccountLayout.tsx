@@ -1,11 +1,17 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import { LogOut } from "lucide-react";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Bot, FileText, LogOut } from "lucide-react";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { cn } from "@/lib/utils";
+
+const accountLinks = [
+  { to: "/account", label: "Chat history", icon: Bot, end: true },
+  { to: "/account/enquiries", label: "Previous enquiries", icon: FileText, end: false },
+];
 
 const AccountLayout = () => {
   const { user } = useAuth();
@@ -29,6 +35,22 @@ const AccountLayout = () => {
             </div>
             <Button variant="outline" onClick={signOut} className="h-10 self-start rounded-xl bg-white sm:self-auto"><LogOut className="mr-2 h-4 w-4" /> Sign out</Button>
           </div>
+
+          <nav className="mb-6 flex gap-2 overflow-x-auto" aria-label="Customer account">
+            {accountLinks.map(({ to, label, icon: Icon, end }) => (
+              <NavLink
+                key={to}
+                to={to}
+                end={end}
+                className={({ isActive }) => cn(
+                  "inline-flex shrink-0 items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors",
+                  isActive ? "border-[#021373] bg-[#021373] text-white" : "border-border bg-white text-muted-foreground hover:text-foreground",
+                )}
+              >
+                <Icon className="h-4 w-4" /> {label}
+              </NavLink>
+            ))}
+          </nav>
 
           <section className="min-w-0"><Outlet /></section>
         </div>

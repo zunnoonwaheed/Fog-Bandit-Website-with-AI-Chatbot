@@ -23,6 +23,7 @@ import SignUp from "./pages/SignUp.tsx";
 import ForgotPassword from "./pages/ForgotPassword.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
 import Account from "./pages/Account.tsx";
+import AccountEnquiries from "./pages/AccountEnquiries.tsx";
 import AccountLayout from "./components/auth/AccountLayout.tsx";
 import RequireAuth from "./components/auth/RequireAuth.tsx";
 import { AuthProvider } from "./context/AuthContext.tsx";
@@ -67,6 +68,7 @@ const App = () => (
             <Route element={<RequireAuth />}>
               <Route path="/account" element={<AccountLayout />}>
                 <Route index element={<Account />} />
+                <Route path="enquiries" element={<AccountEnquiries />} />
               </Route>
             </Route>
             <Route path="*" element={<NotFound />} />

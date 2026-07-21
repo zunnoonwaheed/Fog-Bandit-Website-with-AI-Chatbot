@@ -38,11 +38,21 @@ export async function submitLead(lead: LeadSubmission): Promise<void> {
       const subject = lead.type === "Newsletter Signup"
         ? "Newsletter subscription"
         : lead.areaToSecure || lead.company || `${lead.type} submitted`;
+      const message = [
+        lead.name && `Name: ${lead.name}`,
+        `Email: ${lead.email}`,
+        lead.phone && `Phone: ${lead.phone}`,
+        lead.company && `Company: ${lead.company}`,
+        lead.location && `Location: ${lead.location}`,
+        lead.areaToSecure && `Area to secure: ${lead.areaToSecure}`,
+        lead.message && `Message: ${lead.message}`,
+        `Marketing consent: ${lead.marketingConsent ? "Yes" : "No"}`,
+      ].filter(Boolean).join("\n");
       const { error } = await supabase.from("enquiries").insert({
         user_id: data.session.user.id,
         type: lead.type,
         subject,
-        message: lead.message || "",
+        message,
       });
       if (error) console.error("Unable to add enquiry to customer portal", error.message);
     }
