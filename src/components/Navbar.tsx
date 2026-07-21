@@ -79,19 +79,19 @@ const Navbar = (_props: NavbarProps = {}) => {
               : "border-white/20 bg-white/25 shadow-[0_16px_44px_-26px_rgba(0,0,0,0.45)]",
           )}
         >
-          <Link
-            to="/"
+          <a
+            href="/"
             data-no-animate
-            className="flex shrink-0 items-center gap-0 overflow-visible"
+            className="relative z-10 flex h-full min-w-[119px] shrink-0 cursor-pointer items-center overflow-visible pointer-events-auto"
             aria-label="Fog Bandit ANZ — home"
           >
             <img
               src={newLogo}
               alt=""
               aria-hidden
-              className="h-12 w-auto max-h-14 max-w-[calc(100vw-10rem)] shrink-0 object-contain object-left sm:h-14 lg:h-[56px] lg:max-w-none"
+              className="pointer-events-none h-12 w-auto max-h-14 max-w-[calc(100vw-10rem)] shrink-0 object-contain object-left sm:h-14 lg:h-[56px] lg:max-w-none"
             />
-          </Link>
+          </a>
 
           <div className="hidden min-w-0 flex-1 justify-center gap-8 px-4 lg:flex">
             {navLinks.map((link) => {
