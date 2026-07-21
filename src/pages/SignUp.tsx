@@ -90,7 +90,13 @@ const SignUp = () => {
         </div>
         <div>
           <label htmlFor="signup-confirm" className="mb-2 block text-sm font-semibold text-foreground">Confirm password</label>
-          <Input id="signup-confirm" name="confirmPassword" type={showPassword ? "text" : "password"} autoComplete="new-password" required minLength={8} placeholder="Repeat your password" className="h-12 rounded-xl" />
+          <div className="relative">
+            <LockKeyhole className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input id="signup-confirm" name="confirmPassword" type={showPassword ? "text" : "password"} autoComplete="new-password" required minLength={8} placeholder="Repeat your password" className="h-12 rounded-xl px-10" />
+            <button type="button" onClick={() => setShowPassword((value) => !value)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground" aria-label={showPassword ? "Hide confirmed password" : "Show confirmed password"}>
+              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
         </div>
         <label className="flex items-start gap-3 text-xs leading-5 text-muted-foreground">
           <input name="terms" type="checkbox" required className="mt-1 h-4 w-4 rounded border-border accent-[#021373]" />
