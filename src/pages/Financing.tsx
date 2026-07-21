@@ -1,10 +1,13 @@
+import { useState, type FormEvent } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import contactMap from "@/assets/contact-map-new.svg";
+import { submitLead } from "@/lib/leads";
 
 const australiaRegions = [
   "NSW: Sydney, Newcastle, Wollongong",
@@ -22,6 +25,32 @@ const nzRegions = [
 ];
 
 const Financing = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setIsSubmitting(true);
+
+    try {
+      await submitLead({
+        type: "Finance Application",
+        name: `${data.get("firstName") || ""} ${data.get("lastName") || ""}`.trim(),
+        email: String(data.get("email") || ""),
+        company: String(data.get("company") || ""),
+        message: String(data.get("message") || ""),
+        website: String(data.get("website") || ""),
+      });
+      form.reset();
+      toast.success("Thanks! Our finance team will be in touch shortly.");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Unable to submit the form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#F9F9F9] relative">
       <Navbar mobileMode="cta" />
@@ -102,19 +131,20 @@ const Financing = () => {
               </div>
 
               <div id="financing-form" className="premium-card order-1 rounded-2xl p-5 sm:p-6 md:order-2 md:p-8">
-                <form className="space-y-5" noValidate>
+                <form className="space-y-5" onSubmit={handleSubmit}>
+                  <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                     <div>
                       <label className="text-[13px] font-bold text-foreground mb-2 block">
                         First Name<span className="text-primary">*</span>
                       </label>
-                      <Input placeholder="Enter your first name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
+                      <Input name="firstName" required placeholder="Enter your first name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                     <div>
                       <label className="text-[13px] font-bold text-foreground mb-2 block">
                         Last Name<span className="text-primary">*</span>
                       </label>
-                      <Input placeholder="Enter your last name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
+                      <Input name="lastName" required placeholder="Enter your last name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                   </div>
 
@@ -123,23 +153,23 @@ const Financing = () => {
                       <label className="text-[13px] font-bold text-foreground mb-2 block">
                         Company<span className="text-primary">*</span>
                       </label>
-                      <Input placeholder="Enter your company name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
+                      <Input name="company" required placeholder="Enter your company name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                     <div>
                       <label className="text-[13px] font-bold text-foreground mb-2 block">
                         Email<span className="text-primary">*</span>
                       </label>
-                      <Input type="email" placeholder="Enter your email" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
+                      <Input name="email" required type="email" placeholder="Enter your email" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                   </div>
 
                   <div>
                     <label className="text-[13px] font-bold text-foreground mb-2 block">Financing Requirements</label>
-                    <Textarea placeholder="Tell us about your business, the system you're after, and your preferred monthly budget" className="min-h-[120px] rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
+                    <Textarea name="message" placeholder="Tell us about your business, the system you're after, and your preferred monthly budget" className="min-h-[120px] rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                   </div>
 
-                  <Button className="w-full h-12 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 text-[14px] font-semibold">
-                    Apply for financing
+                  <Button type="submit" disabled={isSubmitting} className="w-full h-12 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 text-[14px] font-semibold">
+                    {isSubmitting ? "Submitting…" : "Apply for financing"}
                   </Button>
                 </form>
               </div>

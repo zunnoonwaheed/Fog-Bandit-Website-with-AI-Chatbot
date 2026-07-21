@@ -1,11 +1,37 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import banditLogo from "@/assets/footer-logo.svg";
+import { submitLead } from "@/lib/leads";
 
 const inputClass = "mt-2 w-full h-12 px-4 rounded-lg border-0 bg-[#F9F9F9] text-[13px] text-secondary placeholder:text-[#94A3B8] shadow-none focus:outline-none focus:ring-1 focus:ring-secondary transition-colors";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ firstName: "", lastName: "", company: "", email: "", requirements: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!form.firstName || !form.email || !form.company) {
+      toast.error("Please fill in your name, company and email.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await submitLead({
+        type: "Quote Request",
+        name: `${form.firstName} ${form.lastName}`.trim(),
+        email: form.email,
+        company: form.company,
+        message: form.requirements,
+      });
+      toast.success("Thanks! Our team will be in touch shortly.");
+      setForm({ firstName: "", lastName: "", company: "", email: "", requirements: "" });
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Unable to submit the form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="bg-white pt-[100px] lg:pt-[120px] pb-[100px] lg:pb-[120px]">
@@ -88,18 +114,12 @@ const ContactSection = () => {
               />
             </div>
             <button
-              onClick={() => {
-                if (!form.firstName || !form.email || !form.company) {
-                  toast.error("Please fill in your name, company and email.");
-                  return;
-                }
-                toast.success("Thanks! Our team will be in touch shortly.");
-                setForm({ firstName: "", lastName: "", company: "", email: "", requirements: "" });
-              }}
+              onClick={handleSubmit}
+              disabled={isSubmitting}
               className="w-full h-12 text-white rounded-lg font-semibold text-[14px] hover:opacity-90 transition-opacity"
               style={{ backgroundColor: "#021373" }}
             >
-              Get a Quote
+              {isSubmitting ? "Submitting…" : "Get a Quote"}
             </button>
           </div>
         </div>

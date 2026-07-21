@@ -1,8 +1,28 @@
+import { useState, type FormEvent } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import bgImg from "@/assets/blog-newsletter-bg.png";
+import { submitLead } from "@/lib/leads";
 
 const BlogNewsletter = () => {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    try {
+      await submitLead({ type: "Newsletter Signup", email, marketingConsent: true });
+      setEmail("");
+      toast.success("Thanks! You're subscribed.");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Unable to subscribe. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="pt-8 md:pt-12 pb-[120px]">
       <div className="container mx-auto px-4">
@@ -18,15 +38,19 @@ const BlogNewsletter = () => {
             <p className="text-white/80 text-[13px] md:text-[14px] leading-relaxed mb-5">
               Get practical security advice, prevention strategies, and product insights delivered occasionally — only when they matter.
             </p>
-            <div className="flex gap-3 w-full mx-auto mb-3">
+            <form onSubmit={handleSubmit} className="flex gap-3 w-full mx-auto mb-3">
               <Input
+                type="email"
+                required
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
                 placeholder="Enter your business email"
                 className="rounded-lg h-11 text-[13px] bg-white/10 border-white/20 text-white placeholder:text-white/60 flex-1 px-4"
               />
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 h-11 text-[13px] font-semibold whitespace-nowrap">
-                Subscribe
+              <Button type="submit" disabled={isSubmitting} className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 h-11 text-[13px] font-semibold whitespace-nowrap">
+                {isSubmitting ? "Submitting…" : "Subscribe"}
               </Button>
-            </div>
+            </form>
             <p className="text-white/60 text-[11px] italic">
               Join 3,000+ security professionals across ANZ. Unsubscribe anytime.
             </p>
