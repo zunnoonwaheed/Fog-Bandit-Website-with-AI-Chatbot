@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ArrowRight, Bookmark } from "lucide-react";
-import { toast } from "sonner";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useChatWidgetOptional } from "@/context/ChatWidgetContext";
 import newLogo from "@/assets/image 40.svg";
 import { homeNavLinks, innerNavLinks } from "@/constants/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { supabase } from "@/integrations/supabase/client";
 
 interface NavbarProps {
   activeLink?: string;
@@ -22,30 +20,6 @@ const Navbar = (_props: NavbarProps = {}) => {
   const activeLink = _props.activeLink?.toLowerCase();
   const { user, loading: authLoading } = useAuth();
   const returnTo = `${pathname}${location.search}${hash}`;
-  const canSave = Boolean(user && !pathname.startsWith("/account") && !["/login", "/signup", "/forgot-password", "/reset-password"].includes(pathname));
-
-  const saveCurrentContent = async () => {
-    if (!user || !supabase) return;
-    const existing = Array.isArray(user.user_metadata.saved_content) ? user.user_metadata.saved_content : [];
-    const currentHash = window.location.hash || hash;
-    const currentHref = `${pathname}${location.search}${currentHash}`;
-    const sectionName = currentHash
-      ? currentHash.slice(1).replace(/[-_]+/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase())
-      : "";
-    const pageName = pathname === "/"
-      ? "Home"
-      : pathname.slice(1).replace(/[-/]+/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
-    const item = {
-      href: currentHref,
-      title: sectionName || pageName,
-      page: pageName,
-      saved_at: new Date().toISOString(),
-    };
-    const savedContent = [item, ...existing.filter((saved: { href?: string }) => saved?.href !== currentHref)].slice(0, 20);
-    const { error } = await supabase.auth.updateUser({ data: { saved_content: savedContent } });
-    if (error) return toast.error("Unable to save this page right now.");
-    toast.success(sectionName ? "Section saved to My Account." : "Page saved to My Account.");
-  };
 
   // Use a light navbar on inner pages where the hero background is light
   const isLightPage = pathname !== "/";
@@ -145,15 +119,6 @@ const Navbar = (_props: NavbarProps = {}) => {
           </div>
 
           <div className="hidden shrink-0 items-center gap-5 lg:flex">
-            {canSave && (
-              <button
-                type="button"
-                onClick={saveCurrentContent}
-                className={cn("inline-flex items-center gap-1.5 text-[15px] font-semibold transition-colors", isLightPage ? "text-[#475569] hover:text-primary" : "text-white/90 hover:text-white")}
-              >
-                <Bookmark className="h-4 w-4" /> Save
-              </button>
-            )}
             {!authLoading && (
               <Link
                 to={user ? "/account" : "/login"}
@@ -241,18 +206,6 @@ const Navbar = (_props: NavbarProps = {}) => {
                 >
                   {user ? "My Account" : "Sign In"}
                 </Link>
-              )}
-              {canSave && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    void saveCurrentContent();
-                    setMobileOpen(false);
-                  }}
-                  className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-[15px] font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                >
-                  <Bookmark className="h-4 w-4" /> Save this page
-                </button>
               )}
               <Link to="/contact" className="btn-primary mt-3 w-full justify-center">
                 Get a quote <ArrowRight className="w-4 h-4" />
