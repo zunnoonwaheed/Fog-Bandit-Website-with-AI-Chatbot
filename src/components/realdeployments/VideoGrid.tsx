@@ -4,6 +4,7 @@ interface VideoItem {
   id: string;
   title: string;
   src: string;
+  poster: string;
   duration?: string;
 }
 
@@ -15,30 +16,35 @@ const VideoGrid = () => {
       id: "1",
       title: "Fog Bandit Protection",
       src: "/assets/videos/real-deployments/1.mp4",
+      poster: "/assets/videos/real-deployments/poster-1.png",
       duration: "0:12",
     },
     {
       id: "2",
       title: "Real Deployment",
       src: "/assets/videos/real-deployments/2.mp4",
+      poster: "/assets/videos/real-deployments/poster-2.png",
       duration: "0:09",
     },
     {
       id: "3",
       title: "Fog Bandit in Action",
       src: "/assets/videos/real-deployments/3.mp4",
+      poster: "/assets/videos/real-deployments/poster-3.png",
       duration: "0:11",
     },
     {
       id: "4",
       title: "Security Demo",
       src: "/assets/videos/real-deployments/4.mp4",
+      poster: "/assets/videos/real-deployments/poster-4.png",
       duration: "0:09",
     },
     {
       id: "5",
       title: "Live Activation",
       src: "/assets/videos/real-deployments/5.mp4",
+      poster: "/assets/videos/real-deployments/poster-5.png",
       duration: "0:09",
     },
   ];
@@ -73,6 +79,7 @@ const VideoGrid = () => {
                 {playingVideo === video.id ? (
                   <video
                     src={video.src}
+                    poster={video.poster}
                     controls
                     autoPlay
                     className="w-full h-full object-cover"
@@ -86,6 +93,7 @@ const VideoGrid = () => {
                   <>
                     <video
                       src={video.src}
+                      poster={video.poster}
                       className="w-full h-full object-cover"
                       muted
                       playsInline
@@ -136,6 +144,7 @@ const VideoGrid = () => {
               {playingVideo === video.id ? (
                 <video
                   src={video.src}
+                  poster={video.poster}
                   controls
                   autoPlay
                   className="w-full h-full object-cover"
@@ -149,6 +158,7 @@ const VideoGrid = () => {
                 <>
                   <video
                     src={video.src}
+                    poster={video.poster}
                     className="w-full h-full object-cover"
                     muted
                     playsInline
@@ -200,6 +210,7 @@ const VideoGrid = () => {
                   {playingVideo === video.id ? (
                     <video
                       src={video.src}
+                      poster={video.poster}
                       controls
                       autoPlay
                       className="w-full h-full object-cover"
@@ -213,6 +224,7 @@ const VideoGrid = () => {
                     <>
                       <video
                         src={video.src}
+                        poster={video.poster}
                         className="w-full h-full object-cover"
                         muted
                         playsInline
