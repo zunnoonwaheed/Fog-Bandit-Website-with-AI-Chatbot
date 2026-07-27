@@ -14,32 +14,32 @@ const VideoGrid = () => {
     {
       id: "1",
       title: "Fog Bandit Protection",
-      src: "/assets/videos/left-second-video.mp4",
-      duration: "2:00",
+      src: "/assets/videos/real-deployments/1.mp4",
+      duration: "0:12",
     },
     {
       id: "2",
       title: "Real Deployment",
-      src: "/assets/videos/left-first-video.mov",
-      duration: "2:00",
+      src: "/assets/videos/real-deployments/2.mp4",
+      duration: "0:09",
     },
     {
       id: "3",
       title: "Fog Bandit in Action",
-      src: "/assets/videos/central-video.mp4",
-      duration: "2:00",
+      src: "/assets/videos/real-deployments/3.mp4",
+      duration: "0:11",
     },
     {
       id: "4",
       title: "Security Demo",
-      src: "/assets/videos/right-first-video.mp4",
-      duration: "2:00",
+      src: "/assets/videos/real-deployments/4.mp4",
+      duration: "0:09",
     },
     {
       id: "5",
       title: "Live Activation",
-      src: "/assets/videos/right-second-video.mp4",
-      duration: "2:00",
+      src: "/assets/videos/real-deployments/5.mp4",
+      duration: "0:09",
     },
   ];
 
