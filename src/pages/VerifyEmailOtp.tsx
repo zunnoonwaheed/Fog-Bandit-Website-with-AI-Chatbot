@@ -28,7 +28,9 @@ const VerifyEmailOtp = () => {
   const challenge = useMemo(() => ({ ...getStoredChallenge(), ...(location.state as Challenge | null) }), [location.state]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const requestedMode = new URLSearchParams(location.search).get("mode");
-  const mode = challenge.mode || (requestedMode === "recovery" ? "recovery" : undefined);
+  // A recovery link must take precedence over a previous signup challenge that may
+  // still be present in local storage from an earlier attempt.
+  const mode = requestedMode === "recovery" ? "recovery" : challenge.mode;
   const recovery = mode === "recovery";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -48,12 +50,19 @@ const VerifyEmailOtp = () => {
     }
 
     setIsSubmitting(true);
-    const { error } = await supabase.auth.verifyOtp({
-      email,
-      token,
-      type: recovery ? "recovery" : "email",
-    });
-    setIsSubmitting(false);
+    let error: { message: string } | null = null;
+    try {
+      const result = await supabase.auth.verifyOtp({
+        email,
+        token,
+        type: recovery ? "recovery" : "email",
+      });
+      error = result.error;
+    } catch {
+      error = { message: "We couldn't reach the secure verification service. Check your connection, disable any ad or privacy blocker for this page, then try again." };
+    } finally {
+      setIsSubmitting(false);
+    }
 
     if (error) {
       toast.error(error.message);
