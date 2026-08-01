@@ -27,17 +27,21 @@ const VerifyEmailOtp = () => {
   const navigate = useNavigate();
   const challenge = useMemo(() => ({ ...getStoredChallenge(), ...(location.state as Challenge | null) }), [location.state]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const recovery = challenge.mode === "recovery";
+  const requestedMode = new URLSearchParams(location.search).get("mode");
+  const mode = challenge.mode || (requestedMode === "recovery" ? "recovery" : undefined);
+  const recovery = mode === "recovery";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!supabase || !challenge.email || !challenge.mode) {
+    const data = new FormData(event.currentTarget);
+    const email = String(data.get("email") || challenge.email || "").trim();
+    if (!supabase || !email || !mode) {
       toast.error("Your verification request has expired. Please start again.");
       navigate(recovery ? "/forgot-password" : "/signup", { replace: true });
       return;
     }
 
-    const token = String(new FormData(event.currentTarget).get("code") || "").replace(/\D/g, "");
+    const token = String(data.get("code") || "").replace(/\D/g, "");
     if (token.length !== 6) {
       toast.error("Enter the six-digit code from your email.");
       return;
@@ -45,7 +49,7 @@ const VerifyEmailOtp = () => {
 
     setIsSubmitting(true);
     const { error } = await supabase.auth.verifyOtp({
-      email: challenge.email,
+      email,
       token,
       type: recovery ? "recovery" : "email",
     });
@@ -63,11 +67,11 @@ const VerifyEmailOtp = () => {
       return;
     }
 
-    toast.success(`Welcome, ${challenge.fullName || challenge.email.split("@")[0]}!`);
+    toast.success(`Welcome, ${challenge.fullName || email.split("@")[0]}!`);
     navigate(challenge.destination || "/account", { replace: true });
   };
 
-  if (!challenge.email || !challenge.mode) {
+  if (!challenge.email && !recovery) {
     return (
       <AuthShell eyebrow="Verification" title="Start a new request" description="We need your email address before we can send a verification code.">
         <Link to="/signup" className="btn-primary w-full justify-center">Create an account</Link>
@@ -80,9 +84,15 @@ const VerifyEmailOtp = () => {
     <AuthShell
       eyebrow={recovery ? "Account recovery" : "Confirm your account"}
       title="Enter your verification code"
-      description={`We sent a six-digit code to ${challenge.email}. It expires shortly.`}
+      description={challenge.email ? `We sent a six-digit code to ${challenge.email}. It expires shortly.` : "Enter the email address and six-digit reset code you received."}
     >
       <form onSubmit={handleSubmit} className="space-y-5">
+        {!challenge.email && (
+          <div>
+            <label htmlFor="verification-email" className="mb-2 block text-sm font-semibold text-foreground">Email address</label>
+            <Input id="verification-email" name="email" type="email" autoComplete="email" required placeholder="you@company.com" className="h-12 rounded-xl" />
+          </div>
+        )}
         <div>
           <label htmlFor="verification-code" className="mb-2 block text-sm font-semibold text-foreground">Six-digit code</label>
           <div className="relative">
@@ -95,7 +105,7 @@ const VerifyEmailOtp = () => {
         </Button>
       </form>
       <p className="mt-5 flex items-center gap-2 text-xs leading-5 text-muted-foreground"><Mail className="h-4 w-4 shrink-0" /> Check your inbox and spam folder. You can request a new code after one minute.</p>
-      <Link to={recovery ? "/forgot-password" : "/signup"} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#021373] hover:underline"><ArrowLeft className="h-4 w-4" /> Use a different email</Link>
+      <Link to={recovery ? "/forgot-password" : "/signup"} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#021373] hover:underline"><ArrowLeft className="h-4 w-4" /> {recovery ? "Request a new code" : "Use a different email"}</Link>
     </AuthShell>
   );
 };

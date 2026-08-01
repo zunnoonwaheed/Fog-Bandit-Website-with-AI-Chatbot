@@ -44,8 +44,9 @@ const ForgotPassword = () => {
           <Button type="submit" disabled={isSubmitting || !supabase} className="h-12 w-full rounded-xl bg-[#021373] text-white hover:bg-[#021373]/90">
             {isSubmitting ? "Sending…" : "Send reset code"}
           </Button>
-      </form>
+        </form>
       <Link to="/login" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#021373] hover:underline"><ArrowLeft className="h-4 w-4" /> Back to sign in</Link>
+      <Link to="/verify-email?mode=recovery" className="mt-4 block text-sm font-semibold text-[#021373] hover:underline">Already have a reset code? Enter it here</Link>
     </AuthShell>
   );
 };
