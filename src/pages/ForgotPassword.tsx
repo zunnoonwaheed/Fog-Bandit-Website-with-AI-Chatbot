@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Mail } from "lucide-react";
 import { toast } from "sonner";
 import AuthShell from "@/components/auth/AuthShell";
@@ -8,8 +8,8 @@ import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 
 const ForgotPassword = () => {
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [sent, setSent] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -18,26 +18,22 @@ const ForgotPassword = () => {
       return;
     }
     const data = new FormData(event.currentTarget);
+    const email = String(data.get("email") || "").trim();
     setIsSubmitting(true);
-    const { error } = await supabase.auth.resetPasswordForEmail(String(data.get("email") || "").trim(), {
-      redirectTo: `${window.location.origin}/reset-password`,
-    });
+    const { error } = await supabase.auth.resetPasswordForEmail(email);
     setIsSubmitting(false);
     if (error) {
       toast.error(error.message);
       return;
     }
-    setSent(true);
+    localStorage.setItem("fogBanditOtpChallenge", JSON.stringify({ email, mode: "recovery" }));
+    toast.success("If an account exists for that email, we sent a six-digit reset code.");
+    navigate("/verify-email", { replace: true, state: { email, mode: "recovery" } });
   };
 
   return (
-    <AuthShell eyebrow="Account recovery" title="Reset your password" description="Enter your account email and we’ll send you a secure reset link.">
-      {sent ? (
-        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 text-sm leading-6 text-emerald-900">
-          If an account exists for that address, a password reset email has been sent.
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-5">
+    <AuthShell eyebrow="Account recovery" title="Reset your password" description="Enter your account email and we’ll send you a six-digit reset code.">
+      <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label htmlFor="recovery-email" className="mb-2 block text-sm font-semibold text-foreground">Email address</label>
             <div className="relative">
@@ -46,10 +42,9 @@ const ForgotPassword = () => {
             </div>
           </div>
           <Button type="submit" disabled={isSubmitting || !supabase} className="h-12 w-full rounded-xl bg-[#021373] text-white hover:bg-[#021373]/90">
-            {isSubmitting ? "Sending…" : "Send reset link"}
+            {isSubmitting ? "Sending…" : "Send reset code"}
           </Button>
-        </form>
-      )}
+      </form>
       <Link to="/login" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#021373] hover:underline"><ArrowLeft className="h-4 w-4" /> Back to sign in</Link>
     </AuthShell>
   );

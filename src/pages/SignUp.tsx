@@ -59,9 +59,10 @@ const SignUp = () => {
       const destination = typeof location.state?.from === "string" ? location.state.from : "/account";
       navigate(destination, { replace: true });
     } else {
-      localStorage.setItem("fogBanditPendingWelcome", JSON.stringify({ email, name: fullName }));
-      toast.success("Check your email to confirm your account.");
-      navigate("/login", { replace: true, state: location.state });
+      const destination = typeof location.state?.from === "string" ? location.state.from : "/account";
+      localStorage.setItem("fogBanditOtpChallenge", JSON.stringify({ email, fullName, mode: "signup", destination }));
+      toast.success("We sent a six-digit confirmation code to your email.");
+      navigate("/verify-email", { replace: true, state: { email, fullName, mode: "signup", destination } });
     }
   };
 
