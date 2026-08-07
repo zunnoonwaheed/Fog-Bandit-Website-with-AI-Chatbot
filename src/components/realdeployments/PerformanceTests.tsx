@@ -4,19 +4,19 @@ const PerformanceTests = () => {
   const [playingVideo, setPlayingVideo] = useState<string | null>(null);
 
   const smallTests = [
-    { id: "1", title: "Retail Store Test", video: "/assets/videos/fog-bandit-demo.mp4" },
-    { id: "2", title: "Warehouse Test", video: "/assets/videos/domestic-demo.mp4" },
-    { id: "3", title: "Automotive Workshop", video: "/assets/videos/right-first-video.mp4" },
-    { id: "4", title: "Small Footprint Test", video: "/assets/videos/deployment-3.mov" },
-    { id: "5", title: "Enterprise Test", video: "/assets/videos/deployment-2.mp4" },
-    { id: "6", title: "Narrow Space Test", video: "/assets/videos/left-second-video.mp4" },
+    { id: "1", title: "Retail Store Test", video: "/assets/videos/performance-tests/retail-store.mp4" },
+    { id: "2", title: "Warehouse Test", video: "/assets/videos/performance-tests/warehouse.mp4" },
+    { id: "3", title: "Smash & Grab Protection", video: "/assets/videos/performance-tests/smash-and-grab-protection.mp4" },
+    { id: "4", title: "Retail Theft Protection", video: "/assets/videos/performance-tests/retail-theft-protection.mp4" },
+    { id: "5", title: "Cigarette Gantry Protection", video: "/assets/videos/performance-tests/cigarette-gantry.mp4" },
+    { id: "6", title: "Home & Personal Property", video: "/assets/videos/performance-tests/home-and-personal-property.mp4" },
   ];
 
   const featuredTest = {
     id: "featured",
     title: "Jewellery Store Test",
-    subtitle: "Full Sequence: Detection to Obscuration (2:45)",
-    video: "/assets/videos/central-video.mp4",
+    subtitle: "Full Sequence: Detection to Obscuration",
+    video: "/assets/videos/performance-tests/jewellery-shop.mp4",
   };
 
   const handlePlayClick = (videoId: string) => {

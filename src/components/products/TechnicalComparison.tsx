@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 
 const models = [
   {
-    model: "Bandit 240 DB / DB/A",
-    performance: "30 m³/sec",
+    model: "Bandit 240 Series",
+    variants: "Standard / Narrow / Vertical / Extended",
+    performance: "50 m³/sec",
     bestUse: "Small to Large spaces, narrow spaces, high ceiling spaces and hidden installs",
     visibility: "< 30 cm (zero visibility), Dense Fog",
     certs: [
@@ -20,7 +21,8 @@ const models = [
     note: "(World's only Security Fogging Device to achieve the highest NF&A2P Security Level 3 Shields)",
   },
   {
-    model: "Bandit 320 Compact",
+    model: "Bandit 320 Series",
+    variants: "V / H / C / BC / S / FV",
     performance: "50 m³/sec",
     bestUse: "Small to Medium spaces, narrow spaces, high ceiling spaces, Split spaces and hidden installs",
     visibility: "< 30 cm (zero visibility), Dense Fog",
@@ -66,7 +68,10 @@ const TechnicalComparison = () => {
             <tbody>
               {models.map((m, i) => (
                 <tr key={i} className={i < models.length - 1 ? "border-b border-[#E5E7EB]" : ""}>
-                  <td className="py-8 pr-6 text-[14px] font-bold text-[#111827] align-top">{m.model}</td>
+                  <td className="py-8 pr-6 align-top">
+                    <p className="text-[14px] font-bold text-[#111827]">{m.model}</p>
+                    <p className="text-[12px] text-[#6B7280] mt-1">{m.variants}</p>
+                  </td>
                   <td className="py-8 pr-6 text-[14px] text-[#374151] align-top">{m.performance}</td>
                   <td className="py-8 pr-6 text-[13px] text-[#4B5563] leading-[1.6] max-w-[280px] align-top">{m.bestUse}</td>
                   <td className="py-8 pr-6 text-[13px] text-[#374151] align-top">{m.visibility}</td>
@@ -103,7 +108,8 @@ const TechnicalComparison = () => {
         <div className="md:hidden bg-white border border-[#E5E7EB] rounded-[16px] p-5 space-y-4 shadow-sm">
           {models.map((m, i) => (
             <div key={i} className={`pb-4 ${i < models.length - 1 ? "border-b border-[#E5E7EB]" : ""}`}>
-              <p className="text-[14px] font-bold text-[#111827] mb-2">{m.model}</p>
+              <p className="text-[14px] font-bold text-[#111827] mb-1">{m.model}</p>
+              <p className="text-[11px] text-[#6B7280] mb-2">{m.variants}</p>
               <p className="text-[12px] text-[#6B7280] mb-3">{m.bestUse}</p>
               <div className="flex gap-1.5 flex-wrap">
                 {m.certs.slice(0, 4).map((c, j) => (

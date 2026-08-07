@@ -8,6 +8,7 @@ interface Partner {
   mobile?: string;
   email: string;
   website?: string;
+  website2?: string;
 }
 
 interface StatePartners {
@@ -54,6 +55,14 @@ const partnersData: StatePartners[] = [
         phone: "300 613 260",
         email: "info@hitechsecurity.com.au",
         website: "www.hitechsecurity.com.au"
+      },
+      {
+        name: "Descom Constructions",
+        address: "1/30 Marriot Street, Cannington WA 6107",
+        phone: "(08) 9468 3575",
+        email: "info@descomconstructions.au",
+        website: "descomconsultant.com.au",
+        website2: "descomconstructions.au"
       }
     ]
   },
@@ -346,6 +355,20 @@ const PartnerCard = ({ partner }: { partner: Partner }) => {
                 className="font-dm-sans text-[13px] md:text-[14px] text-primary hover:text-primary/80 transition-colors font-medium"
               >
                 {partner.website}
+              </a>
+            </div>
+          )}
+
+          {partner.website2 && (
+            <div className="flex items-center gap-2.5">
+              <Globe className="h-4 w-4 text-primary/70 flex-shrink-0" />
+              <a
+                href={`https://${partner.website2}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-dm-sans text-[13px] md:text-[14px] text-primary hover:text-primary/80 transition-colors font-medium"
+              >
+                {partner.website2}
               </a>
             </div>
           )}

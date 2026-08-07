@@ -304,8 +304,8 @@ const ProductGrid = () => {
 
   return (
     <section className="pb-14 md:pb-[100px]">
-      <div className="container mx-auto px-4">
-        <div id="fog-generators" className="scroll-mt-24 md:hidden mb-8">
+      <div id="fog-generators" className="container mx-auto px-4 scroll-mt-24">
+        <div className="md:hidden mb-8">
           <div ref={primaryScrollRef} className={mobileScrollerClass}>
             {primaryMobileProducts.map((product, i) => (
               <div key={i} className={mobileCardClass}>
@@ -340,17 +340,15 @@ const ProductGrid = () => {
             </div>
           ))}
         </div>
-        <div id="bandit-320-split" className="scroll-mt-24">
-          <div className={`${desktopGridClass} md:grid-cols-3 md:gap-8 md:mb-[100px]`}>
-            {mainProducts.slice(2).map((product, i) => (
-              <div key={i}>
-                <ProductCard {...product} />
-              </div>
-            ))}
-          </div>
+        <div className={`${desktopGridClass} md:grid-cols-3 md:gap-8 md:mb-[100px]`}>
+          {mainProducts.slice(2).map((product, i) => (
+            <div key={i}>
+              <ProductCard {...product} />
+            </div>
+          ))}
         </div>
 
-        <div id="led-flash" className="text-center mb-8 md:mb-12 scroll-mt-24">
+        <div className="text-center mb-8 md:mb-12 scroll-mt-24">
           <h2 className="font-inter text-[24px] md:text-[32px] font-bold text-[#111827] mb-3">
             Expanded Product Range
           </h2>
@@ -397,7 +395,11 @@ const ProductGrid = () => {
 
         <div className={`${desktopGridClass} md:grid-cols-3 md:gap-8`}>
           {bottomProducts.map((product, i) => (
-            <div key={i}>
+            <div
+              key={i}
+              id={i === 0 ? "bandit-320-split" : i === 1 ? "led-flash" : undefined}
+              className={i === 0 || i === 1 ? "scroll-mt-24" : undefined}
+            >
               <ProductCard {...product} />
             </div>
           ))}
