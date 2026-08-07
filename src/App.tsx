@@ -29,6 +29,7 @@ import AccountLayout from "./components/auth/AccountLayout.tsx";
 import RequireAuth from "./components/auth/RequireAuth.tsx";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
+import JewelleryFairPopup from "./components/JewelleryFairPopup.tsx";
 import { ChatWidgetProvider } from "./context/ChatWidgetContext.tsx";
 import ScrollAnimator from "./components/ScrollAnimator.tsx";
 import GsapAnimator from "./components/GsapAnimator.tsx";
@@ -76,6 +77,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ChatWidget />
+          <JewelleryFairPopup />
           </AuthProvider>
         </ChatWidgetProvider>
       </BrowserRouter>
