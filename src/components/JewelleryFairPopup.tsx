@@ -40,7 +40,7 @@ const JewelleryFairPopup = () => {
       aria-label="International Jewellery Fair 2026 announcement"
     >
       <div
-        className="relative w-full max-w-[420px]"
+        className="relative w-full max-w-[360px]"
         onClick={(event) => event.stopPropagation()}
       >
         <button
@@ -50,11 +50,18 @@ const JewelleryFairPopup = () => {
         >
           <X className="h-5 w-5" />
         </button>
-        <img
-          src="/jewellery-fair-2026-promo.jpg"
-          alt="Fog Bandit ANZ at the International Jewellery Fair, Booth JS7 Security Zone, August 22-24 2026, ICC Sydney Darling Harbour"
-          className="w-full h-auto rounded-2xl shadow-2xl"
-        />
+        <a
+          href="https://jewelleryfair.com.au/ijf/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit the International Jewellery Fair website"
+        >
+          <img
+            src="/assets/popup.jpeg"
+            alt="See Fog Bandit at IJF 2026 - Come meet us at the International Jewellery Fair, 22-24 August, ICC Sydney"
+            className="w-full h-auto rounded-2xl shadow-2xl"
+          />
+        </a>
       </div>
     </div>
   );
