@@ -4,12 +4,12 @@ const PerformanceTests = () => {
   const [playingVideo, setPlayingVideo] = useState<string | null>(null);
 
   const smallTests = [
-    { id: "1", title: "Retail Store Test", video: "/assets/videos/performance-tests/retail-store.mp4" },
-    { id: "2", title: "Warehouse Test", video: "/assets/videos/performance-tests/warehouse.mp4" },
-    { id: "3", title: "Smash & Grab Protection", video: "/assets/videos/performance-tests/smash-and-grab-protection.mp4" },
-    { id: "4", title: "Retail Theft Protection", video: "/assets/videos/performance-tests/retail-theft-protection.mp4" },
-    { id: "5", title: "Cigarette Gantry Protection", video: "/assets/videos/performance-tests/cigarette-gantry.mp4" },
-    { id: "6", title: "Home & Personal Property", video: "/assets/videos/performance-tests/home-and-personal-property.mp4" },
+    { id: "1", title: "Retail Store Test", video: "/assets/videos/performance-tests/retail-store.mp4", poster: "/assets/videos/performance-tests/retail-store-poster.jpg" },
+    { id: "2", title: "Warehouse Test", video: "/assets/videos/performance-tests/warehouse.mp4", poster: "/assets/videos/performance-tests/warehouse-poster.jpg" },
+    { id: "3", title: "Smash & Grab Protection", video: "/assets/videos/performance-tests/smash-and-grab-protection.mp4", poster: "/assets/videos/performance-tests/smash-and-grab-protection-poster.jpg" },
+    { id: "4", title: "Retail Theft Protection", video: "/assets/videos/performance-tests/retail-theft-protection.mp4", poster: "/assets/videos/performance-tests/retail-theft-protection-poster.jpg" },
+    { id: "5", title: "Cigarette Gantry Protection", video: "/assets/videos/performance-tests/cigarette-gantry.mp4", poster: "/assets/videos/performance-tests/cigarette-gantry-poster.jpg" },
+    { id: "6", title: "Home & Personal Property", video: "/assets/videos/performance-tests/home-and-personal-property.mp4", poster: "/assets/videos/performance-tests/home-and-personal-property-poster.jpg" },
   ];
 
   const featuredTest = {
@@ -17,6 +17,7 @@ const PerformanceTests = () => {
     title: "Jewellery Store Test",
     subtitle: "Full Sequence: Detection to Obscuration",
     video: "/assets/videos/performance-tests/jewellery-shop.mp4",
+    poster: "/assets/videos/performance-tests/jewellery-shop-poster.jpg",
   };
 
   const handlePlayClick = (videoId: string) => {
@@ -70,6 +71,7 @@ const PerformanceTests = () => {
                       <>
                         <video
                           src={test.video}
+                          poster={test.poster}
                           className="w-full h-full object-cover"
                           muted
                           playsInline
@@ -112,6 +114,7 @@ const PerformanceTests = () => {
                 <>
                   <video
                     src={featuredTest.video}
+                    poster={featuredTest.poster}
                     className="w-full h-full object-cover"
                     muted
                     playsInline
