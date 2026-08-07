@@ -50,18 +50,11 @@ const JewelleryFairPopup = () => {
         >
           <X className="h-5 w-5" />
         </button>
-        <a
-          href="https://jewelleryfair.com.au/ijf/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit the International Jewellery Fair website"
-        >
-          <img
-            src="/assets/popup.jpeg"
-            alt="See Fog Bandit at IJF 2026 - Come meet us at the International Jewellery Fair, 22-24 August, ICC Sydney"
-            className="w-full h-auto rounded-2xl shadow-2xl"
-          />
-        </a>
+        <img
+          src="/assets/popup.jpeg"
+          alt="See Fog Bandit at IJF 2026 - Come meet us at the International Jewellery Fair, 22-24 August, ICC Sydney"
+          className="w-full h-auto rounded-2xl shadow-2xl"
+        />
       </div>
     </div>
   );
