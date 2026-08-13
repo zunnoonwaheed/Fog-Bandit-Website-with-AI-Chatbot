@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import IJFPromoBanner from "@/components/IJFPromoBanner";
 import SocialProofSection from "@/components/SocialProofSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ProductsSection from "@/components/ProductsSection";
@@ -18,6 +19,7 @@ const Index = () => {
     <div className="min-h-screen bg-[#F9F9F9]">
       <Navbar />
       <HeroSection />
+      <IJFPromoBanner />
       <SocialProofSection />
       <HowItWorksSection />
       <ProductsSection />

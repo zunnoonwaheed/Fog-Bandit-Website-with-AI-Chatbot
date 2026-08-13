@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { useEffect } from "react";
+import { ArrowRight, X } from "lucide-react";
+import { useIJFPopup } from "@/context/IJFPopupContext";
 
 const SHOWN_KEY = "jewellery-fair-2026-popup-shown";
 const SHOW_DELAY_MS = 8000;
+const IJF_REGISTRATION_URL =
+  "https://jewelleryfair.com.au/ijf/jewellery-safety-security-zone/";
 
 const JewelleryFairPopup = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, setIsOpen } = useIJFPopup();
 
   useEffect(() => {
     if (sessionStorage.getItem(SHOWN_KEY)) return;
@@ -40,7 +43,7 @@ const JewelleryFairPopup = () => {
       aria-label="International Jewellery Fair 2026 announcement"
     >
       <div
-        className="relative w-full max-w-[360px]"
+        className="relative w-full max-w-[600px]"
         onClick={(event) => event.stopPropagation()}
       >
         <button
@@ -50,11 +53,28 @@ const JewelleryFairPopup = () => {
         >
           <X className="h-5 w-5" />
         </button>
-        <img
-          src="/assets/popup.jpeg"
-          alt="See Fog Bandit at IJF 2026 - Come meet us at the International Jewellery Fair, 22-24 August, ICC Sydney"
-          className="w-full h-auto rounded-2xl shadow-2xl"
-        />
+        <a
+          href={IJF_REGISTRATION_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block overflow-hidden rounded-2xl shadow-2xl"
+        >
+          <img
+            src="/assets/ijf-2026-popup.jpeg"
+            alt="Fog Bandit at IJF 2026 - Stand JS7, Security Zone - August 22-24, 2026, ICC Sydney Darling Harbour"
+            className="w-full h-auto"
+          />
+        </a>
+        <div className="mt-3 rounded-2xl bg-white p-4 text-center shadow-2xl">
+          <a
+            href={IJF_REGISTRATION_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg transition-transform hover:scale-105"
+          >
+            Register to Visit Us <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     </div>
   );
