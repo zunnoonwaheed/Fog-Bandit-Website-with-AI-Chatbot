@@ -25,7 +25,7 @@ const Contact = () => {
         email: String(data.get("email") || ""),
         phone: String(data.get("phone") || ""),
         company: String(data.get("company") || ""),
-        location: String(data.get("location") || ""),
+        location: String(data.get("address") || ""),
         areaToSecure: String(data.get("areaToSecure") || ""),
         message: String(data.get("message") || ""),
         website: String(data.get("website") || ""),
@@ -102,15 +102,15 @@ const Contact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div>
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">
-                          Full Name<span className="text-[#DC2626]">*</span>
+                          Full name<span className="text-[#DC2626]">*</span>
                         </label>
-                        <Input name="name" required placeholder="Enter your Full Name" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
+                        <Input name="name" required autoComplete="name" placeholder="Enter your full name" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
                       </div>
                       <div>
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">
                           Email<span className="text-[#DC2626]">*</span>
                         </label>
-                        <Input name="email" required type="email" placeholder="Enter your email" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
+                        <Input name="email" required type="email" autoComplete="email" placeholder="Enter your email address" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
                       </div>
                     </div>
 
@@ -119,22 +119,22 @@ const Contact = () => {
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">
                           Phone<span className="text-[#DC2626]">*</span>
                         </label>
-                        <Input name="phone" required type="tel" placeholder="Enter your Phone Number" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
+                        <Input name="phone" required type="tel" autoComplete="tel" placeholder="Enter your phone number" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
                       </div>
                       <div>
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">
-                          Location
+                          Address
                         </label>
-                        <Input name="location" placeholder="Enter your location" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
+                        <Input name="address" autoComplete="street-address" placeholder="Enter your address" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div>
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">
-                          Company Name
+                          Company <span className="font-normal text-[#6B7280]">(if applicable)</span>
                         </label>
-                        <Input name="company" placeholder="Enter your company name" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
+                        <Input name="company" autoComplete="organization" placeholder="Enter your company name" className="h-12 rounded-[10px] border border-[#E5E7EB] bg-white text-[14px] shadow-none placeholder:text-[#9CA3AF] focus-visible:ring-1 focus-visible:ring-[#021373]" />
                       </div>
                       <div>
                         <label className="text-[13px] font-semibold text-[#111827] mb-2 block">

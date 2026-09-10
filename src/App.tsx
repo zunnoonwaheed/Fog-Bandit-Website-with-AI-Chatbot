@@ -28,9 +28,7 @@ import AccountEnquiries from "./pages/AccountEnquiries.tsx";
 import AccountLayout from "./components/auth/AccountLayout.tsx";
 import RequireAuth from "./components/auth/RequireAuth.tsx";
 import { AuthProvider } from "./context/AuthContext.tsx";
-import { IJFPopupProvider } from "./context/IJFPopupContext.tsx";
 import ChatWidget from "./components/ChatWidget.tsx";
-import JewelleryFairPopup from "./components/JewelleryFairPopup.tsx";
 import { ChatWidgetProvider } from "./context/ChatWidgetContext.tsx";
 import ScrollAnimator from "./components/ScrollAnimator.tsx";
 import GsapAnimator from "./components/GsapAnimator.tsx";
@@ -46,7 +44,6 @@ const App = () => (
       <BrowserRouter>
         <ChatWidgetProvider>
           <AuthProvider>
-          <IJFPopupProvider>
           <ScrollToTop />
           <ScrollAnimator />
           <GsapAnimator />
@@ -79,8 +76,6 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ChatWidget />
-          <JewelleryFairPopup />
-          </IJFPopupProvider>
           </AuthProvider>
         </ChatWidgetProvider>
       </BrowserRouter>

@@ -28,7 +28,7 @@ const HeroSection = () => {
             The world leader in security fogging
           </p>
           <h1 className="hero-home-title font-inter">
-            End the break-in before it begins
+            Stop robberies before they happen!
           </h1>
           <div className="hero-home-lead mt-4 md:mt-5 lg:mt-[22px] xl:mt-6">
             <p className="hero-home-lead-line">

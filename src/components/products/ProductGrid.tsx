@@ -16,10 +16,10 @@ const mainProducts = [
   {
     image: product240ExtendedCard,
     imageAspectClass: "aspect-[604/350]",
-    title: "Fog Bandit 240 DB Standard Tri Nozzle (Complete Kit)",
+    title: "Fog Bandit 240 DB Extended Nozzle Hidden (Complete Kit)",
     description: "Designed as a general-purpose unit",
     features: [
-      "Produces 28 cubic metres of fog per second with visibility range reduced to just 30cm",
+      "Produces 30 cubic metres of fog per second with visibility range reduced to just 30cm",
       "Programable for room sizes ranging from 50m³ to 500m³",
       "24/7 self-diagnostics instantly reports stats changes to the alarm panel",
       "Error LED provides quick identification of the failure for rapid resolution.",
@@ -32,7 +32,7 @@ const mainProducts = [
     ],
     specifications: [
       "Coverage: 50m³ - 500m³",
-      "Fog output: 28m³/sec",
+      "Fog output: 30m³/sec",
       "Visibility reduction: <30cm",
     ],
   },
@@ -42,7 +42,7 @@ const mainProducts = [
     title: "Fog Bandit 240 DB Narrow Nozzle (Complete Kit)",
     description: "Designed for long corridors or narrow rooms",
     features: [
-      "Produces 28 cubic metres of fog per second with visibility range reduced to just 30cm",
+      "Produces 30 cubic metres of fog per second with visibility range reduced to just 30cm",
       "Programable for room sizes ranging from 50m³ to 500m³",
       "24/7 self-diagnostics instantly reports stats changes to the alarm panel",
       "Error LED quickly identifies failures for resolution.",
@@ -55,15 +55,16 @@ const mainProducts = [
     ],
     specifications: [
       "Coverage: 50m³ - 500m³",
-      "Fog output: 28m³/sec",
+      "Fog output: 30m³/sec",
       "Projection: 10m in 2 seconds",
     ],
   },
   {
-    image: productPlt320Covert,
+    image: productPltSideMount,
     title: "Fog Bandit 320 Bc / Hidden / Ceiling / Cabinet (Complete Kit)",
     description: "Designed for room sizes of 40 to 200 cubic metres",
     features: [
+      "Produces 50 cubic metres of fog per second for rapid room protection.",
       "Totally dustproof, maintenance free design",
       "Bandit 320 systems are verified to fully comply with the EN50131-8 European Standard.",
       "Can be covertly mounted above suspended ceilings, behind plaster walls.",
@@ -77,6 +78,7 @@ const mainProducts = [
     ],
     specifications: [
       "Coverage: 40m³ - 200m³",
+      "Fog output: 50m³/sec",
       "Mounting: Any position",
       "System diagnostics: 24/7",
     ],
@@ -86,6 +88,7 @@ const mainProducts = [
     title: "Fog Bandit 320 Vertical Mount (Complete Kit)",
     description: "Designed for room sizes of 40 to 200 cubic metres",
     features: [
+      "Produces 50 cubic metres of fog per second for rapid room protection.",
       "Totally dustproof, maintenance free design",
       "Cartridges are available and after use cartridges are easily replaced and empties",
       "Patented on-board electronics perform 24/7 system diagnostics.",
@@ -99,6 +102,7 @@ const mainProducts = [
     ],
     specifications: [
       "Coverage: 60m³ - 300m³",
+      "Fog output: 50m³/sec",
       "Mounting: Wall/vertical",
       "Residue-free fog",
     ],
@@ -108,6 +112,7 @@ const mainProducts = [
     title: "Fog Bandit 320 Horizontal White (Complete Kit)",
     description: "Designed for room sizes of 40 to 200 cubic metres",
     features: [
+      "Produces 50 cubic metres of fog per second for rapid room protection.",
       "Totally dustproof, maintenance free design",
       "These are room-size specific to deliver maximum protection without residue.",
       "Patented on-board electronics perform 24/7 system diagnostics.",
@@ -121,6 +126,7 @@ const mainProducts = [
     ],
     specifications: [
       "Coverage: 40m³ - 300m³",
+      "Fog output: 50m³/sec",
       "Color: White finish",
       "ATEX certified",
     ],
@@ -133,7 +139,7 @@ const expandedProducts = [
     title: "Fog Bandit 240 DB Standard Tri Nozzle (Complete Kit)",
     description: "Designed as a general-purpose unit",
     features: [
-      "Produces 28 cubic metres of fog per second with visibility range reduced to just 30cm",
+      "Produces 30 cubic metres of fog per second with visibility range reduced to just 30cm",
       "Programable for room sizes ranging from 50m³ to 500m³",
       "24/7 self-diagnostics instantly reports stats changes to the alarm panel",
       "Error LED provides quick identification of the failure for rapid resolution.",
@@ -146,16 +152,16 @@ const expandedProducts = [
     ],
     specifications: [
       "Coverage: 50m³ - 500m³",
-      "Fog output: 28m³/sec",
+      "Fog output: 30m³/sec",
       "Nozzle: Tri-directional",
     ],
   },
   {
-    image: productPlt240PerspectiveB,
+    image: productPlt240PerspectiveA,
     title: "Fog Bandit 240 DB Downward Nozzle (Complete Kit)",
     description: "Designed for high ceilings, warehouse applications",
     features: [
-      "Produces 28 cubic metres of fog per second with visibility range reduced to just 30cm",
+      "Produces 30 cubic metres of fog per second with visibility range reduced to just 30cm",
       "Programable for room sizes ranging from 50m³ to 500m³",
       "24/7 self-diagnostics instantly reports stats changes to the alarm panel",
       "Error LED provides quick identification of the failure for rapid resolution.",
@@ -168,17 +174,17 @@ const expandedProducts = [
     ],
     specifications: [
       "Coverage: 50m³ - 500m³",
-      "Fog output: 28m³/sec",
+      "Fog output: 30m³/sec",
       "Direction: Downward",
     ],
   },
   {
-    image: productPlt240PerspectiveA,
+    image: productPlt240PerspectiveB,
     imageNoZoom: true,
     title: "Fog Bandit 240 DB Narrow Nozzle (Complete Kit)",
     description: "Designed for long corridors or narrow rooms",
     features: [
-      "Produces 28 cubic metres of fog per second with visibility range reduced to just 30cm",
+      "Produces 30 cubic metres of fog per second with visibility range reduced to just 30cm",
       "Programable for room sizes ranging from 50m³ to 500m³",
       "24/7 self-diagnostics instantly reports stats changes to the alarm panel",
       "Error LED quickly identifies failures for resolution.",
@@ -191,7 +197,7 @@ const expandedProducts = [
     ],
     specifications: [
       "Coverage: 50m³ - 500m³",
-      "Fog output: 28m³/sec",
+      "Fog output: 30m³/sec",
       "Projection: 10m in 2sec",
     ],
   },
@@ -199,10 +205,11 @@ const expandedProducts = [
 
 const bottomProducts = [
   {
-    image: productPltSideMount,
+    image: productPlt320Covert,
     title: "Fog Bandit 320 Splitter Option (Complete Kit)",
     description: "This unit mounts on a wall with two fog nozzles.",
     features: [
+      "Produces 50 cubic metres of fog per second for rapid room protection.",
       "Totally dustproof, maintenance free design",
       "Uses patented cartridges for residue-free protection. Fog cartridges are replaceable.",
       "Bandit 320 systems comply with EN50131-8.",
@@ -215,6 +222,7 @@ const bottomProducts = [
       "Flexible installations",
     ],
     specifications: [
+      "Fog output: 50m³/sec",
       "Mounting: Wall with splitter",
       "Nozzles: Dual output",
       "EN50131-8 compliant",
@@ -247,6 +255,7 @@ const bottomProducts = [
     title: "Fog Bandit 320 - Flash Fog Enabled (Complete Kit)",
     description: "Quality Flash unit with 6 LEDs for effect.",
     features: [
+      "Produces 50 cubic metres of fog per second for rapid room protection.",
       "Totally dustproof, maintenance free design",
       "Sealed cartridges protect without residue. Various sizes available, easily replaced.",
       "Bandit 320 systems comply with EN50131-8 Standard.",
@@ -259,6 +268,7 @@ const bottomProducts = [
       "Maximum deterrent effect",
     ],
     specifications: [
+      "Fog output: 50m³/sec",
       "LEDs: 6 high-intensity",
       "EN50131-8 compliant",
       "Mounting: Any position",
