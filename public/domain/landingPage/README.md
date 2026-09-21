@@ -1,6 +1,6 @@
 # Fog Bandit Jewellery Landing Page
 
-**Current release: V2 — jewellery-specific PAS landing page with real incident video, sticky CTA, popup CTA, responsive mobile/desktop layout, and Calendly booking path.**
+**Current release: V2 — jewellery-specific PAS landing page with Fog Bandit video, sticky CTA, popup CTA, responsive mobile/desktop layout, and Calendly booking path.**
 
 V2 jewellery-store landing page for Fog Bandit ANZ, built around PAS and shortened for paid-traffic conversion.
 
@@ -8,7 +8,7 @@ V2 jewellery-store landing page for Fog Bandit ANZ, built around PAS and shorten
 1. Thin top CTA banner
 2. Jewellery-specific hero
 3. Problem + response-gap visual
-4. Actual Fog Bandit jewellery robbery video as the solution centerpiece
+4. Fog Bandit jewellery video as the solution centerpiece
 5. Three-step mechanism
 6. Compact day/night use cases
 7. Jewellery proof/testimonial
@@ -39,7 +39,7 @@ All booking CTAs use the Fog Bandit ANZ Calendly event URL in the `CALENDLY_URL`
 
 ## V2 conversion changes
 - Short jewellery-only PAS flow
-- Real Glasgow Argyll Arcade jewellery robbery video in the solution section
+- Fog Bandit jewellery video in the solution section
 - Top red CTA banner
 - Scroll-aware sticky CTA for desktop and mobile
 - Scroll-depth / exit-intent assessment popup
