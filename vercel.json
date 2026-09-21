@@ -12,7 +12,11 @@
   },
   "rewrites": [
     {
-      "source": "/((?!api/.*).*)",
+      "source": "/landingpage",
+      "destination": "/landingpage/index.html"
+    },
+    {
+      "source": "/((?!api/.*|landingpage(?:/.*)?).*)",
       "destination": "/index.html"
     }
   ]

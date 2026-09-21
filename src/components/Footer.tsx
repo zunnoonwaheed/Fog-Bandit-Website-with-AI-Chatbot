@@ -9,7 +9,7 @@ const quickLinks = [
 ];
 
 const resourceLinks = [
-  { label: "Jewellery Store Security", href: "/domain/landingPage/" },
+  { label: "Jewellery Store Security", href: "/landingpage" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Blog / Insights", href: "/blog" },
   { label: "FAQ", href: "/#faq" },

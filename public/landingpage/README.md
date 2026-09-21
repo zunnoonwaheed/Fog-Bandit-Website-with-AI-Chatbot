@@ -25,7 +25,7 @@ V2 jewellery-store landing page for Fog Bandit ANZ, built around PAS and shorten
 ```bash
 python3 -m http.server 4173
 ```
-Open `http://localhost:4173/domain/landingPage/`.
+Open `http://localhost:4173/landingpage`.
 
 ## Sources used for factual product copy
 - https://www.banditanz.com.au/
