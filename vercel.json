@@ -12,6 +12,10 @@
   },
   "rewrites": [
     {
+      "source": "/landingpage/v1",
+      "destination": "/landingpage/index.html"
+    },
+    {
       "source": "/landingpage",
       "destination": "/landingpage/index.html"
     },

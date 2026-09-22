@@ -46,3 +46,13 @@
 .site-footer-bottom a{font-size:12px}
 @media(max-width:900px){.site-footer-grid{grid-template-columns:repeat(2,1fr);gap:32px}}
 @media(max-width:600px){.site-footer-inner{width:calc(100% - 30px)}.site-footer-grid{grid-template-columns:1fr;gap:26px;margin-bottom:32px}.site-footer-bottom{align-items:flex-start;flex-direction:column}}
+/* Landing page v1 refinements */
+.hero-media{background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=86&w=2200')!important}
+.hero-media:before,.hero-media:after{content:'';position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;opacity:0;animation:heroStoreSlider 15s infinite}
+.hero-media:before{background-image:url('https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=86&w=2200');animation-delay:5s}
+.hero-media:after{background-image:url('https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&q=86&w=2200');animation-delay:10s}
+@keyframes heroStoreSlider{0%,30%{opacity:0}38%,62%{opacity:1}70%,100%{opacity:0}}
+.mode-tag{display:none}
+.deployment-videos{margin-top:64px}.deployment-videos>h3{font-size:28px;margin-bottom:24px}.deployment-video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.deployment-video-grid article{color:#fff}.deployment-video-grid .video-frame{margin:0 0 14px;border-radius:10px}.deployment-video-grid strong{display:block;font:700 17px/1.25 var(--display)}.deployment-video-grid span{display:block;margin-top:6px;font-size:12px;color:#777;line-height:1.45}
+.clients{background:#f7f6f3}.clients-inner>h2{text-align:center;font-size:clamp(38px,4vw,58px);margin-bottom:42px}.client-logos{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.client-logos span{display:grid;place-items:center;min-height:84px;border:1px solid #dedbd5;background:#fff;border-radius:10px;font:800 20px/1 var(--display);letter-spacing:-.04em;color:#222}.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}.review-grid blockquote{margin:0;padding:26px;background:#fff;border:1px solid #e4e0d9;border-radius:12px;font:600 18px/1.4 var(--display)}.review-grid cite{display:block;margin-top:18px;font:500 11px/1.3 var(--body);color:#777}
+@media(max-width:740px){.deployment-video-grid,.review-grid{grid-template-columns:1fr}.client-logos{grid-template-columns:repeat(2,1fr)}.client-logos span:last-child{grid-column:1/-1}}
