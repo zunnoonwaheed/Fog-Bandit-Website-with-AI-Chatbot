@@ -304,6 +304,75 @@ document.querySelectorAll('[data-calendly]').forEach((link) => {
   });
 });
 
+const getScrollPercentage = () => {
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  return scrollableHeight > 0 ? Math.min(100, Math.round((window.scrollY / scrollableHeight) * 100)) : 0;
+};
+
+const trackMetaEvent = (eventName, params = {}, standard = false) => {
+  if (typeof window.fbq !== 'function') return;
+  window.fbq(standard ? 'track' : 'trackCustom', eventName, params);
+};
+
+const getCtaPlacement = (element) => {
+  if (element.closest('#sticky-cta')) return 'sticky';
+  if (element.closest('#assessment-popup')) return 'popup';
+  if (element.closest('.site-header')) return 'header';
+  if (element.closest('.hero')) return 'hero';
+  if (element.closest('#assessment')) return 'assessment';
+  if (element.closest('.top-banner')) return 'top_banner';
+  return 'page';
+};
+
+document.addEventListener('click', (event) => {
+  const clicked = event.target instanceof Element ? event.target.closest('a, button') : null;
+  if (!clicked || !/^speak with us/i.test(clicked.textContent?.trim() || '')) return;
+
+  const placement = getCtaPlacement(clicked);
+  const scrollPercentage = getScrollPercentage();
+  trackMetaEvent('Contact', {
+    content_name: 'Speak with Us',
+    cta_placement: placement,
+    scroll_percentage: scrollPercentage,
+  }, true);
+
+  if (placement === 'sticky') {
+    trackMetaEvent('ScrollCTAUsed', { scroll_percentage: scrollPercentage });
+  }
+}, true);
+
+document.querySelectorAll('.site-footer a').forEach((link) => {
+  link.addEventListener('click', () => {
+    trackMetaEvent('FooterEngagement', {
+      link_text: link.textContent?.trim() || link.getAttribute('aria-label') || 'Footer link',
+      link_url: link.href,
+    });
+  });
+});
+
+const scrollMilestones = [25, 50, 75, 100];
+let nextScrollMilestone = 0;
+let scrollTrackingScheduled = false;
+window.addEventListener('scroll', () => {
+  if (scrollTrackingScheduled) return;
+  scrollTrackingScheduled = true;
+  window.requestAnimationFrame(() => {
+    const percentage = getScrollPercentage();
+    while (nextScrollMilestone < scrollMilestones.length && percentage >= scrollMilestones[nextScrollMilestone]) {
+      trackMetaEvent('LandingPageScrollDepth', { scroll_percentage: scrollMilestones[nextScrollMilestone] });
+      nextScrollMilestone += 1;
+    }
+    scrollTrackingScheduled = false;
+  });
+}, { passive: true });
+
+window.addEventListener('message', (event) => {
+  if (event.origin !== 'https://calendly.com' || event.source !== calendlyFrame?.contentWindow) return;
+  if (event.data?.event === 'calendly.event_scheduled') {
+    trackMetaEvent('Schedule', { content_name: 'Fog Bandit 30-minute meeting' }, true);
+  }
+});
+
 let scrollTriggered = false;
 window.addEventListener('scroll', () => {
   if (!CALENDLY_URL || popupShown || scrollTriggered) return;
