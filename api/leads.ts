@@ -117,7 +117,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   try {
     const accessToken = await getAccessToken(clientEmail, privateKey);
     const safeTabName = tabName.replace(/'/g, "''");
-    const range = encodeURIComponent(`'${safeTabName}'!A:N`);
+    const range = encodeURIComponent(`'${safeTabName}'!A:N`).replace(/[!'()*]/g, (character) =>
+      `%${character.charCodeAt(0).toString(16).toUpperCase()}`,
+    );
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}/values/${range}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`;
     const row = [
       new Date().toISOString(),
