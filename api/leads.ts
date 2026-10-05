@@ -107,7 +107,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
   const sheetId = process.env.GOOGLE_SHEET_ID;
-  const tabName = process.env.GOOGLE_SHEET_TAB || "Website Leads";
+  const tabName = process.env.GOOGLE_SHEET_TAB || "Contact Form - Website";
 
   if (!clientEmail || !privateKey || !sheetId) {
     res.status(500).json({ error: "Lead storage is not configured" });
