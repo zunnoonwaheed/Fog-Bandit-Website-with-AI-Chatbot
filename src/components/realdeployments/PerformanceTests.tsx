@@ -60,6 +60,7 @@ const PerformanceTests = () => {
                         src={test.video}
                         controls
                         autoPlay
+                        muted
                         className="w-full h-full object-cover"
                         onEnded={() => setPlayingVideo(null)}
                         onPause={handleVideoPause}
@@ -103,6 +104,7 @@ const PerformanceTests = () => {
                   src={featuredTest.video}
                   controls
                   autoPlay
+                  muted
                   className="w-full h-full object-cover"
                   onEnded={() => setPlayingVideo(null)}
                   onPause={handleVideoPause}
