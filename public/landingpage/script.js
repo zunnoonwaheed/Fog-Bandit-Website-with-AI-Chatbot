@@ -366,11 +366,17 @@ window.addEventListener('scroll', () => {
   });
 }, { passive: true });
 
+let calendlyBookingTracked = false;
 window.addEventListener('message', (event) => {
-  if (event.origin !== 'https://calendly.com' || event.source !== calendlyFrame?.contentWindow) return;
-  if (event.data?.event === 'calendly.event_scheduled') {
-    trackMetaEvent('Schedule', { content_name: 'Fog Bandit 30-minute meeting' }, true);
-  }
+  // Calendly sends the booking confirmation from its embedded frame. Do not
+  // require a specific frame window: Calendly can replace it during its flow.
+  if (event.origin !== 'https://calendly.com') return;
+  if (event.data?.event !== 'calendly.event_scheduled' || calendlyBookingTracked) return;
+
+  calendlyBookingTracked = true;
+  trackMetaEvent('Schedule', {
+    content_name: 'Fog Bandit 30-minute meeting',
+  }, true);
 });
 
 let scrollTriggered = false;
