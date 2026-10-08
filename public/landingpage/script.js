@@ -227,7 +227,7 @@ if (popup) {
         <span>Fog Bandit jewellery security</span>
       </div>
       <div class="calendly-frame-wrap">
-        <iframe class="calendly-frame" title="Book a Fog Bandit consultation" loading="lazy" allow="payment"></iframe>
+        <div class="calendly-frame" aria-label="Book a Fog Bandit consultation"></div>
       </div>
     </div>`;
 
@@ -240,6 +240,8 @@ if (popup) {
     .calendly-modal-head>span{font-size:10px;color:#777;white-space:nowrap;padding-bottom:3px}
     .calendly-frame-wrap{height:min(680px,78vh);background:#fff}
     .calendly-frame{width:100%;height:100%;border:0;display:block;background:#fff}
+    .calendly-load-error{padding:32px;color:#555;font-size:14px;line-height:1.5}
+    .calendly-load-error a{color:#b80d0d;font-weight:700;text-decoration:underline}
     @media(max-width:740px){
       .popup-backdrop{padding:8px}
       .calendly-modal{width:100%;max-height:94svh;border-radius:14px}
@@ -255,6 +257,35 @@ if (popup) {
 
 const popupClose = popup?.querySelector('.popup-close');
 const calendlyFrame = popup?.querySelector('.calendly-frame');
+let calendlyWidgetLoaded;
+let calendlyWidgetInitialised = false;
+
+const loadCalendlyWidget = () => {
+  if (window.Calendly?.initInlineWidget) return Promise.resolve(window.Calendly);
+  if (calendlyWidgetLoaded) return calendlyWidgetLoaded;
+
+  calendlyWidgetLoaded = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    script.onload = () => window.Calendly?.initInlineWidget
+      ? resolve(window.Calendly)
+      : reject(new Error('Calendly widget did not load'));
+    script.onerror = () => reject(new Error('Calendly widget could not load'));
+    document.head.appendChild(script);
+  });
+
+  return calendlyWidgetLoaded;
+};
+
+const getCalendlyUrl = () => {
+  const url = new URL(CALENDLY_URL);
+  url.searchParams.set('hide_gdpr_banner', '1');
+  url.searchParams.set('background_color', 'ffffff');
+  url.searchParams.set('text_color', '111111');
+  url.searchParams.set('primary_color', 'd41414');
+  return url.toString();
+};
 
 const closePopup = () => {
   if (!popup) return;
@@ -277,9 +308,19 @@ const openCalendlyPopup = ({ automatic = false } = {}) => {
     sessionStorage.setItem('fogbanditCalendlyPopup', '1');
   }
 
-  if (calendlyFrame && !calendlyFrame.src) {
-    const separator = CALENDLY_URL.includes('?') ? '&' : '?';
-    calendlyFrame.src = `${CALENDLY_URL}${separator}hide_gdpr_banner=1&background_color=ffffff&text_color=111111&primary_color=d41414`;
+  if (calendlyFrame && !calendlyWidgetInitialised) {
+    loadCalendlyWidget()
+      .then((Calendly) => {
+        if (calendlyWidgetInitialised) return;
+        Calendly.initInlineWidget({
+          url: getCalendlyUrl(),
+          parentElement: calendlyFrame,
+        });
+        calendlyWidgetInitialised = true;
+      })
+      .catch(() => {
+        calendlyFrame.innerHTML = '<p class="calendly-load-error">Unable to load the booking calendar. <a href="https://calendly.com/fogbanditleads/30min" target="_blank" rel="noopener">Open Calendly</a></p>';
+      });
   }
 
   popup.classList.add('open');
