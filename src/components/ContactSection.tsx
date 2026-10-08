@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import banditLogo from "@/assets/footer-logo.svg";
 import { submitLead } from "@/lib/leads";
+import { trackMetaEvent } from "@/lib/metaPixel";
 
 const inputClass = "mt-2 w-full h-12 px-4 rounded-lg border-0 bg-[#F9F9F9] text-[13px] text-secondary placeholder:text-[#94A3B8] shadow-none focus:outline-none focus:ring-1 focus:ring-secondary transition-colors";
 
@@ -20,6 +21,14 @@ const ContactSection = () => {
         company: form.company.trim(),
         message: form.requirements.trim(),
       });
+      if (window.location.pathname === "/") {
+        trackMetaEvent("Lead", {
+          content_name: "Homepage quote form",
+          page_name: "Homepage",
+          page_path: "/",
+          form_location: "homepage",
+        });
+      }
       toast.success("Thanks! Our team will be in touch shortly.");
       setForm({ fullName: "", company: "", email: "", requirements: "" });
     } catch (error) {

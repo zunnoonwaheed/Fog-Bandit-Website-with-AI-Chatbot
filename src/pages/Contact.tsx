@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import contactMap from "@/assets/contact-map-anz-region.png";
 import { submitLead } from "@/lib/leads";
+import { trackMetaEvent } from "@/lib/metaPixel";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,6 +30,12 @@ const Contact = () => {
         areaToSecure: String(data.get("areaToSecure") || ""),
         message: String(data.get("message") || ""),
         website: String(data.get("website") || ""),
+      });
+      trackMetaEvent("Lead", {
+        content_name: "Contact us form",
+        page_name: "Contact us",
+        page_path: "/contact",
+        form_location: "contact_us",
       });
       form.reset();
       toast.success("Thanks! Our team will be in touch shortly.");

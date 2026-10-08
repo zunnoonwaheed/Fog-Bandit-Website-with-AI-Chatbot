@@ -33,6 +33,7 @@ import { ChatWidgetProvider } from "./context/ChatWidgetContext.tsx";
 import ScrollAnimator from "./components/ScrollAnimator.tsx";
 import GsapAnimator from "./components/GsapAnimator.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
+import MetaPageTracker from "./components/MetaPageTracker.tsx";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
         <ChatWidgetProvider>
           <AuthProvider>
           <ScrollToTop />
+          <MetaPageTracker />
           <ScrollAnimator />
           <GsapAnimator />
           <Routes>

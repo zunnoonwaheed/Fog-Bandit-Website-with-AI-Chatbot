@@ -417,6 +417,8 @@ window.addEventListener('message', (event) => {
   calendlyBookingTracked = true;
   trackMetaEvent('Schedule', {
     content_name: 'Fog Bandit 30-minute meeting',
+    page_name: 'Jewellery landing page',
+    page_path: '/landingpage/v1',
   }, true);
 });
 
