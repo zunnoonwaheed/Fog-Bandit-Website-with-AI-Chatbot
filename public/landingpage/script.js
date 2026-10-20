@@ -68,6 +68,28 @@ const error = document.getElementById('form-error');
 const formPanel = document.getElementById('lead-form-panel');
 const successPanel = document.getElementById('lead-success');
 
+const getAttribution = () => {
+  const params = new URLSearchParams(window.location.search);
+  const value = (name) => params.get(name) || '';
+  return {
+    utmSource: value('utm_source'),
+    utmMedium: value('utm_medium'),
+    utmCampaign: value('utm_campaign'),
+    utmContent: value('utm_content'),
+    utmTerm: value('utm_term'),
+    utmId: value('utm_id'),
+    fbclid: value('fbclid'),
+    gclid: value('gclid'),
+    msclkid: value('msclkid'),
+    ttclid: value('ttclid'),
+    liFatId: value('li_fat_id'),
+    twclid: value('twclid'),
+    dclid: value('dclid'),
+    wbraid: value('wbraid'),
+    gbraid: value('gbraid'),
+  };
+};
+
 const validationMessages = {
   name: 'Please enter your full name.',
   company: 'Please enter your business name.',
@@ -139,6 +161,7 @@ form?.addEventListener('submit', async (event) => {
     areaToSecure: `Business type: ${businessType}`,
     message: String(formData.get('message') || '').trim(),
     sourcePage: `${window.location.pathname}${window.location.search}`,
+    ...getAttribution(),
   };
   if (error) error.hidden = true;
   if (button) { button.disabled = true; button.textContent = 'Sending…'; }

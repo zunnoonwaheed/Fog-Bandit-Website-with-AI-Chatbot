@@ -12,10 +12,26 @@ type LeadPayload = {
   message?: string;
   sourcePage?: string;
   marketingConsent?: boolean;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmContent?: string;
+  utmTerm?: string;
+  utmId?: string;
+  fbclid?: string;
+  gclid?: string;
+  msclkid?: string;
+  ttclid?: string;
+  liFatId?: string;
+  twclid?: string;
+  dclid?: string;
+  wbraid?: string;
+  gbraid?: string;
 };
 
 const MAX_FIELD_LENGTH = 5_000;
 const ALLOWED_TYPES = new Set(["Quote Request", "Contact Enquiry", "Finance Application", "Newsletter Signup"]);
+const ATTRIBUTION_HEADERS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id", "fbclid", "gclid", "msclkid", "ttclid", "li_fat_id", "twclid", "dclid", "wbraid", "gbraid"];
 
 const base64Url = (value: string | Buffer) => Buffer.from(value).toString("base64url");
 
@@ -71,6 +87,24 @@ const getAccessToken = async (clientEmail: string, privateKey: string) => {
   }
 
   return result.access_token;
+};
+
+const sheetRange = (tabName: string, range: string) => encodeURIComponent(`'${tabName.replace(/'/g, "''")}'!${range}`).replace(/[!'()*]/g, (character) =>
+  `%${character.charCodeAt(0).toString(16).toUpperCase()}`,
+);
+
+const ensureAttributionHeaders = async (accessToken: string, sheetId: string, tabName: string) => {
+  const range = sheetRange(tabName, "O1:AC1");
+  const baseUrl = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}/values/${range}`;
+  const existing = await fetch(baseUrl, { headers: { Authorization: `Bearer ${accessToken}` } });
+  const existingValues = existing.ok ? await existing.json() as { values?: string[][] } : {};
+  if (existingValues.values?.[0]?.some((value) => value)) return;
+  const update = await fetch(`${baseUrl}?valueInputOption=RAW`, {
+    method: "PUT",
+    headers: { Authorization: `Bearer ${accessToken}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ values: [ATTRIBUTION_HEADERS] }),
+  });
+  if (!update.ok) console.error("Unable to add attribution headers", update.status);
 };
 
 const sendConfirmationEmail = async (email: string, name: string) => {
@@ -133,10 +167,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
 
   try {
     const accessToken = await getAccessToken(clientEmail, privateKey);
-    const safeTabName = tabName.replace(/'/g, "''");
-    const range = encodeURIComponent(`'${safeTabName}'!A:N`).replace(/[!'()*]/g, (character) =>
-      `%${character.charCodeAt(0).toString(16).toUpperCase()}`,
-    );
+    await ensureAttributionHeaders(accessToken, sheetId, tabName);
+    const range = sheetRange(tabName, "A:AC");
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}/values/${range}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`;
     const row = [
       new Date().toISOString(),
@@ -153,6 +185,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
       body.marketingConsent === true ? "Yes" : "No",
       "",
       "",
+      cleanCell(body.utmSource, 500),
+      cleanCell(body.utmMedium, 500),
+      cleanCell(body.utmCampaign, 500),
+      cleanCell(body.utmContent, 500),
+      cleanCell(body.utmTerm, 500),
+      cleanCell(body.utmId, 500),
+      cleanCell(body.fbclid, 2_000),
+      cleanCell(body.gclid, 2_000),
+      cleanCell(body.msclkid, 2_000),
+      cleanCell(body.ttclid, 2_000),
+      cleanCell(body.liFatId, 2_000),
+      cleanCell(body.twclid, 2_000),
+      cleanCell(body.dclid, 2_000),
+      cleanCell(body.wbraid, 2_000),
+      cleanCell(body.gbraid, 2_000),
     ];
 
     const sheetsResponse = await fetch(url, {
