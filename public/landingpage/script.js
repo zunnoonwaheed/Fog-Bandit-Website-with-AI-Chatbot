@@ -68,9 +68,38 @@ const error = document.getElementById('form-error');
 const formPanel = document.getElementById('lead-form-panel');
 const successPanel = document.getElementById('lead-success');
 
+const validationMessages = {
+  name: 'Please enter your full name.',
+  company: 'Please enter your business name.',
+  email: 'Please enter a valid business email address.',
+  phone: 'Please enter your phone number.',
+  location: 'Please enter your store location or postcode.',
+  businessType: 'Please select your business type.',
+};
+
+const validateAssessmentForm = () => {
+  if (!form) return false;
+  const invalidField = [...form.querySelectorAll('[required]')].find((field) => !field.validity.valid);
+  form.querySelectorAll('[required]').forEach((field) => field.setAttribute('aria-invalid', String(field === invalidField)));
+  if (!invalidField) return true;
+  if (error) {
+    error.textContent = invalidField.name === 'email' && invalidField.validity.typeMismatch
+      ? validationMessages.email
+      : validationMessages[invalidField.name] || 'Please complete this required field.';
+    error.hidden = false;
+  }
+  invalidField.focus();
+  return false;
+};
+
+form?.querySelectorAll('[required]').forEach((field) => field.addEventListener('input', () => {
+  field.removeAttribute('aria-invalid');
+  if (error) error.hidden = true;
+}));
+
 form?.addEventListener('submit', async (event) => {
   event.preventDefault();
-  if (!form.reportValidity()) return;
+  if (!validateAssessmentForm()) return;
   const button = form.querySelector('button[type="submit"]');
   const formData = new FormData(form);
   const businessType = String(formData.get('businessType') || '');
@@ -100,7 +129,7 @@ form?.addEventListener('submit', async (event) => {
   } catch (submissionError) {
     if (error) { error.textContent = submissionError instanceof Error ? submissionError.message : 'Unable to submit your request. Please try again.'; error.hidden = false; }
   } finally {
-    if (button) { button.disabled = false; button.textContent = 'Request My Free Assessment'; }
+    if (button) { button.disabled = false; button.textContent = 'Request My Free Security Assessment'; }
   }
 });
 
