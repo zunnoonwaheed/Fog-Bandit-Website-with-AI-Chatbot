@@ -12,6 +12,7 @@
 /* Final conversion and accessibility refinements. */
 .shell{width:min(1280px,calc(100% - 48px))}.site-header{padding-inline:max(24px,calc((100vw - 1280px)/2))}@media(min-width:651px){.hero h1{font-size:clamp(52px,4.25vw,60px)}}
 :focus-visible{outline:3px solid #ff7168;outline-offset:3px}.lead-card [aria-invalid="true"]{border-color:#a80d0d;background:#fff6f5}.btn:disabled{cursor:wait;opacity:.72;transform:none}
+.lead-card input,.lead-card select,.lead-card textarea{font-weight:400}
 
 /* Compact premium assessment form. */
 .hero-grid{grid-template-columns:1fr 1fr;gap:52px}.lead-card{padding:32px;border-radius:18px;box-shadow:0 16px 40px #0004}.lead-card .kicker{font-size:12px}.lead-card h2{margin:7px 0 8px;font-size:28px;line-height:1.12}.lead-card>div>p{margin:0;color:#626262;font-size:14px;line-height:1.5}.form-grid{gap:14px 16px}.lead-card label{margin-top:14px;font-size:12px;font-weight:700}.lead-card .form-grid label{margin-top:0}.lead-card input,.lead-card select,.lead-card textarea{margin-top:6px;padding:12px;border-radius:8px;background:#fff;font-size:15px}.lead-card input,.lead-card select{height:49px}.lead-card textarea{height:70px;min-height:70px;resize:vertical}.lead-card form .btn{min-height:52px;margin-top:16px;border-radius:9px;font-size:12px}.lead-card form>small{margin-top:10px;color:#626262;font-size:12px;line-height:1.45}.form-error{margin:12px 0 0}.field-error{display:block;margin-top:5px;color:#a80d0d;font-size:11px;font-weight:600;line-height:1.35}.lead-card [aria-invalid="true"]{border-color:#a80d0d;background:#fff6f5}
