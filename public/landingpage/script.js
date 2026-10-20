@@ -160,7 +160,10 @@ form?.addEventListener('submit', async (event) => {
 
 let calendlyBookingTracked = false;
 window.addEventListener('message', (event) => {
-  if (event.origin !== 'https://calendly.com' || event.data?.event !== 'calendly.event_scheduled' || calendlyBookingTracked) return;
+  const calendlyFrame = popup?.querySelector('.calendly-frame iframe');
+  const isCalendlyOrigin = event.origin === 'https://calendly.com';
+  const isCalendlyFrame = Boolean(calendlyFrame && event.source === calendlyFrame.contentWindow);
+  if ((!isCalendlyOrigin && !isCalendlyFrame) || event.data?.event !== 'calendly.event_scheduled' || calendlyBookingTracked) return;
   calendlyBookingTracked = true;
   trackMetaEvent('Schedule', { content_name: 'Fog Bandit meeting', page_name: 'Jewellery and luxury watch landing page', page_path: '/landingpage/v1' }, true);
 });
