@@ -1,281 +1,17 @@
-// One change updates every "Book a call" CTA and the embedded booking popup.
 const CALENDLY_URL = 'https://calendly.com/fogbanditleads/30min';
 
-// First-screen mobile composition.
-// Banner + header + hero + jewellery trust strip fit inside one phone viewport.
-// Hero content remains vertically centered.
-const mobileHeroStyles = document.createElement('style');
-mobileHeroStyles.textContent = `
-  @media (max-width:740px){
-    :root{
-      --mobile-banner-h:40px;
-      --mobile-header-h:58px;
-      --mobile-trust-h:96px;
-    }
-
-    .top-banner{
-      height:var(--mobile-banner-h)!important;
-      min-height:var(--mobile-banner-h)!important;
-      padding:6px 10px!important;
-    }
-    .site-header{
-      height:var(--mobile-header-h)!important;
-      min-height:var(--mobile-header-h)!important;
-      padding:0 15px!important;
-    }
-    .hero{
-      min-height:0!important;
-      height:calc(100vh - var(--mobile-banner-h) - var(--mobile-header-h) - var(--mobile-trust-h))!important;
-      height:calc(100svh - var(--mobile-banner-h) - var(--mobile-header-h) - var(--mobile-trust-h))!important;
-      max-height:none;
-    }
-    .hero-inner{
-      min-height:0!important;
-      height:100%;
-      align-items:center;
-    }
-    .hero-copy{
-      width:100%;
-      padding-top:clamp(12px,2svh,20px);
-      padding-bottom:clamp(12px,2svh,20px);
-    }
-    .eyebrow{font-size:clamp(8px,1.15svh,9px);gap:8px}
-    .eyebrow span{width:20px}
-    h1{
-      font-size:clamp(38px,min(12.2vw,6.25svh),56px);
-      line-height:.94;
-      margin-top:clamp(10px,1.35svh,15px);
-    }
-    .hero-lede{
-      max-width:95%;
-      font-size:clamp(12px,1.62svh,14px);
-      line-height:1.45;
-      margin-top:clamp(11px,1.5svh,16px);
-    }
-    .hero-actions{
-      margin-top:clamp(13px,1.8svh,18px);
-      gap:clamp(8px,1.1svh,11px);
-    }
-    .hero-actions .btn{
-      min-height:clamp(42px,5svh,47px);
-      padding:0 16px;
-      font-size:10px;
-    }
-    .hero-actions .text-link{font-size:10px;line-height:1.2}
-    .hero-proof{
-      grid-template-columns:repeat(3,minmax(0,1fr))!important;
-      gap:8px!important;
-      margin-top:clamp(13px,1.8svh,19px);
-      padding-top:clamp(10px,1.4svh,14px);
-    }
-    .hero-proof div,.hero-proof div:nth-child(3){
-      grid-column:auto;
-      border:0;
-      padding:0;
-      min-width:0;
-    }
-    .hero-proof strong{
-      font-size:clamp(10px,1.45svh,12px);
-      white-space:nowrap;
-    }
-    .hero-proof span{
-      font-size:clamp(7px,.95svh,8px);
-      line-height:1.25;
-    }
-    .hero-media{background-position:66% center}
-
-    /* Pull the four jewellery-use labels into the same first-screen composition. */
-    .trust-strip{
-      height:var(--mobile-trust-h)!important;
-      min-height:var(--mobile-trust-h)!important;
-      margin:0!important;
-    }
-    .trust-grid{
-      width:100%!important;
-      height:100%!important;
-      grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    }
-    .trust-grid div{
-      height:auto!important;
-      min-height:0!important;
-      padding:0 8px!important;
-      font-size:8px!important;
-      line-height:1.25!important;
-      text-align:center;
-    }
-  }
-
-  @media (max-width:740px) and (max-height:760px){
-    :root{
-      --mobile-banner-h:36px;
-      --mobile-header-h:54px;
-      --mobile-trust-h:88px;
-    }
-    h1{font-size:clamp(36px,min(11.5vw,6.1svh),48px)}
-    .hero-lede{font-size:12px;line-height:1.38}
-    .hero-actions .btn{min-height:40px}
-    .hero-proof{margin-top:10px;padding-top:9px}
-  }
-
-  @media (max-width:740px) and (max-height:680px){
-    :root{--mobile-trust-h:80px}
-    .hero-watch{display:none}
-    .hero-proof span{display:none}
-    .hero-copy{padding-top:8px;padding-bottom:8px}
-  }
-`;
-document.head.appendChild(mobileHeroStyles);
-
-// Later bug fixes that do not alter the first-screen hero composition.
-const mobileFixStyles = document.createElement('style');
-mobileFixStyles.textContent = `
-  html,body{max-width:100%;overflow-x:hidden}
-
-  @media (max-width:740px){
-    .site-header .brand-logo-img{
-      width:auto!important;
-      height:39px!important;
-      max-width:160px!important;
-      object-fit:contain;
-    }
-    .footer-brand .brand-logo-img{
-      width:auto!important;
-      height:38px!important;
-      max-width:160px!important;
-    }
-
-    .day-night{padding-bottom:28px!important}
-    .proof{padding-top:38px!important}
-    .mode-grid{margin-bottom:0!important}
-    .proof-grid{gap:22px!important}
-
-    body{padding-bottom:calc(80px + env(safe-area-inset-bottom))!important}
-    .sticky-inner{
-      min-height:80px!important;
-      padding:9px 11px max(9px,env(safe-area-inset-bottom))!important;
-    }
-    .sticky-inner>.sticky-copy{display:none!important}
-    .sticky-inner>.sticky-actions{
-      display:grid!important;
-      width:100%!important;
-      grid-template-columns:.72fr 1.28fr!important;
-      gap:8px!important;
-      align-items:stretch!important;
-    }
-    .sticky-actions .sticky-call,
-    .sticky-actions .sticky-assessment-btn{
-      min-width:0!important;
-      min-height:52px!important;
-    }
-    .sticky-actions .sticky-call{
-      display:flex!important;
-      align-items:center!important;
-      justify-content:center!important;
-      padding:0 8px!important;
-      font-size:10px!important;
-      white-space:nowrap;
-    }
-    .sticky-actions .sticky-assessment-btn{
-      width:100%!important;
-      padding:0 9px!important;
-      font-size:9px!important;
-      line-height:1.15!important;
-      white-space:nowrap;
-    }
-  }
-`;
-document.head.appendChild(mobileFixStyles);
-
-const sticky = document.getElementById('sticky-cta');
-const hero = document.querySelector('.hero');
-const assessment = document.getElementById('assessment');
-if (sticky && hero && assessment && 'IntersectionObserver' in window) {
-  let heroVisible = true;
-  let assessmentVisible = false;
-  const syncSticky = () => {
-    const shouldShow = !heroVisible && !assessmentVisible;
-    sticky.classList.toggle('visible', shouldShow);
-    sticky.setAttribute('aria-hidden', String(!shouldShow));
-  };
-
-  new IntersectionObserver(([entry]) => {
-    heroVisible = entry.isIntersecting;
-    syncSticky();
-  }, { threshold: 0.08 }).observe(hero);
-
-  new IntersectionObserver(([entry]) => {
-    assessmentVisible = entry.isIntersecting;
-    syncSticky();
-  }, { threshold: 0.1 }).observe(assessment);
-
-  syncSticky();
-}
+const trackMetaEvent = (eventName, params = {}, standard = false) => {
+  if (typeof window.fbq === 'function') window.fbq(standard ? 'track' : 'trackCustom', eventName, params);
+};
 
 const popup = document.getElementById('assessment-popup');
-let popupShown = sessionStorage.getItem('fogbanditCalendlyPopup') === '1';
-
-if (popup) {
-  popup.setAttribute('aria-labelledby', 'calendly-popup-title');
-  popup.innerHTML = `
-    <div class="popup-card calendly-modal" role="document">
-      <button class="popup-close" type="button" aria-label="Close booking calendar">×</button>
-      <div class="calendly-modal-head">
-        <div>
-          <div class="section-kicker">BOOK A 15-MIN CALL</div>
-          <h2 id="calendly-popup-title">Choose a time that works for you.</h2>
-        </div>
-        <span>Fog Bandit jewellery security</span>
-      </div>
-      <div class="calendly-frame-wrap">
-        <div class="calendly-frame" aria-label="Book a Fog Bandit consultation"></div>
-      </div>
-    </div>`;
-
-  const modalStyles = document.createElement('style');
-  modalStyles.textContent = `
-    .calendly-modal{width:min(940px,calc(100vw - 36px));padding:0;overflow:hidden;background:#f7f6f3;border-radius:18px}
-    .calendly-modal .popup-close{z-index:2;top:14px;right:16px;background:#111;color:#fff;border-radius:50%;font-size:21px;line-height:1}
-    .calendly-modal-head{padding:24px 62px 20px 26px;background:#fff;border-bottom:1px solid #e5e1da;display:flex;align-items:end;justify-content:space-between;gap:24px}
-    .calendly-modal-head h2{font-size:28px;line-height:1.05;margin:8px 0 0}
-    .calendly-modal-head>span{font-size:10px;color:#777;white-space:nowrap;padding-bottom:3px}
-    .calendly-frame-wrap{height:min(680px,78vh);background:#fff}
-    .calendly-frame{width:100%;height:100%;border:0;display:block;background:#fff}
-    .calendly-load-error{padding:32px;color:#555;font-size:14px;line-height:1.5}
-    .calendly-load-error a{color:#b80d0d;font-weight:700;text-decoration:underline}
-    @media(max-width:740px){
-      .popup-backdrop{padding:8px}
-      .calendly-modal{width:100%;max-height:94svh;border-radius:14px}
-      .calendly-modal-head{padding:18px 52px 15px 18px;align-items:flex-start;flex-direction:column;gap:4px}
-      .calendly-modal-head h2{font-size:22px}
-      .calendly-modal-head>span{display:none}
-      .calendly-frame-wrap{height:76svh}
-      .calendly-modal .popup-close{top:10px;right:10px}
-    }
-  `;
-  document.head.appendChild(modalStyles);
-}
-
-const popupClose = popup?.querySelector('.popup-close');
-const calendlyFrame = popup?.querySelector('.calendly-frame');
 let calendlyWidgetLoaded;
 let calendlyWidgetInitialised = false;
 
-const loadCalendlyWidget = () => {
-  if (window.Calendly?.initInlineWidget) return Promise.resolve(window.Calendly);
-  if (calendlyWidgetLoaded) return calendlyWidgetLoaded;
-
-  calendlyWidgetLoaded = new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    script.onload = () => window.Calendly?.initInlineWidget
-      ? resolve(window.Calendly)
-      : reject(new Error('Calendly widget did not load'));
-    script.onerror = () => reject(new Error('Calendly widget could not load'));
-    document.head.appendChild(script);
-  });
-
-  return calendlyWidgetLoaded;
+const closePopup = () => {
+  popup?.classList.remove('open');
+  popup?.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
 };
 
 const getCalendlyUrl = () => {
@@ -287,157 +23,96 @@ const getCalendlyUrl = () => {
   return url.toString();
 };
 
-const closePopup = () => {
-  if (!popup) return;
-  popup.classList.remove('open');
-  popup.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
+const loadCalendlyWidget = () => {
+  if (window.Calendly?.initInlineWidget) return Promise.resolve(window.Calendly);
+  if (calendlyWidgetLoaded) return calendlyWidgetLoaded;
+  calendlyWidgetLoaded = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    script.onload = () => window.Calendly?.initInlineWidget ? resolve(window.Calendly) : reject(new Error('Calendly unavailable'));
+    script.onerror = () => reject(new Error('Calendly unavailable'));
+    document.head.appendChild(script);
+  });
+  return calendlyWidgetLoaded;
 };
 
-const openCalendlyPopup = ({ automatic = false } = {}) => {
-  if (!popup || !CALENDLY_URL) {
-    if (!automatic) {
-      window.location.href = '/contact';
-    }
-    return;
+const openCalendlyPopup = () => {
+  if (!popup) return;
+  if (!popup.innerHTML) {
+    popup.innerHTML = `<div class="calendly-modal" role="dialog" aria-modal="true" aria-labelledby="calendly-title"><button class="popup-close" type="button" aria-label="Close booking calendar">×</button><div class="calendly-modal-head"><p class="kicker">Prefer to book a call?</p><h2 id="calendly-title">Choose a time that works for you.</h2></div><div class="calendly-frame"></div></div>`;
+    popup.querySelector('.popup-close')?.addEventListener('click', closePopup);
   }
-
-  if (automatic) {
-    if (popupShown) return;
-    popupShown = true;
-    sessionStorage.setItem('fogbanditCalendlyPopup', '1');
-  }
-
-  if (calendlyFrame && !calendlyWidgetInitialised) {
-    loadCalendlyWidget()
-      .then((Calendly) => {
-        if (calendlyWidgetInitialised) return;
-        Calendly.initInlineWidget({
-          url: getCalendlyUrl(),
-          parentElement: calendlyFrame,
-        });
-        calendlyWidgetInitialised = true;
-      })
-      .catch(() => {
-        calendlyFrame.innerHTML = '<p class="calendly-load-error">Unable to load the booking calendar. <a href="https://calendly.com/fogbanditleads/30min" target="_blank" rel="noopener">Open Calendly</a></p>';
-      });
-  }
-
   popup.classList.add('open');
   popup.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-};
-
-popupClose?.addEventListener('click', closePopup);
-popup?.addEventListener('click', (event) => {
-  if (event.target === popup) closePopup();
-});
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') closePopup();
-});
-
-document.querySelectorAll('[data-calendly]').forEach((link) => {
-  link.removeAttribute('target');
-  link.removeAttribute('rel');
-  link.addEventListener('click', (event) => {
-    event.preventDefault();
-    openCalendlyPopup();
-  });
-});
-
-const getScrollPercentage = () => {
-  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-  return scrollableHeight > 0 ? Math.min(100, Math.round((window.scrollY / scrollableHeight) * 100)) : 0;
-};
-
-const trackMetaEvent = (eventName, params = {}, standard = false) => {
-  if (typeof window.fbq !== 'function') return;
-  window.fbq(standard ? 'track' : 'trackCustom', eventName, params);
-};
-
-const getCtaPlacement = (element) => {
-  if (element.closest('#sticky-cta')) return 'sticky';
-  if (element.closest('#assessment-popup')) return 'popup';
-  if (element.closest('.site-header')) return 'header';
-  if (element.closest('.hero')) return 'hero';
-  if (element.closest('#assessment')) return 'assessment';
-  if (element.closest('.top-banner')) return 'top_banner';
-  return 'page';
-};
-
-document.addEventListener('click', (event) => {
-  const clicked = event.target instanceof Element ? event.target.closest('a, button') : null;
-  if (!clicked || !/^speak with us/i.test(clicked.textContent?.trim() || '')) return;
-
-  const placement = getCtaPlacement(clicked);
-  const scrollPercentage = getScrollPercentage();
-  trackMetaEvent('Contact', {
-    content_name: 'Speak with Us',
-    cta_placement: placement,
-    scroll_percentage: scrollPercentage,
-  }, true);
-
-  if (placement === 'sticky') {
-    trackMetaEvent('ScrollCTAUsed', { scroll_percentage: scrollPercentage });
-  }
-}, true);
-
-document.querySelectorAll('.site-footer a').forEach((link) => {
-  link.addEventListener('click', () => {
-    trackMetaEvent('FooterEngagement', {
-      link_text: link.textContent?.trim() || link.getAttribute('aria-label') || 'Footer link',
-      link_url: link.href,
+  document.body.classList.add('modal-open');
+  const frame = popup.querySelector('.calendly-frame');
+  if (frame && !calendlyWidgetInitialised) {
+    loadCalendlyWidget().then((Calendly) => {
+      if (!calendlyWidgetInitialised) {
+        Calendly.initInlineWidget({ url: getCalendlyUrl(), parentElement: frame });
+        calendlyWidgetInitialised = true;
+      }
+    }).catch(() => {
+      frame.innerHTML = '<p class="calendly-load-error">Unable to load the booking calendar. <a href="https://calendly.com/fogbanditleads/30min" target="_blank" rel="noopener">Open Calendly</a></p>';
     });
-  });
-});
+  }
+};
 
-const scrollMilestones = [25, 50, 75, 100];
-let nextScrollMilestone = 0;
-let scrollTrackingScheduled = false;
-window.addEventListener('scroll', () => {
-  if (scrollTrackingScheduled) return;
-  scrollTrackingScheduled = true;
-  window.requestAnimationFrame(() => {
-    const percentage = getScrollPercentage();
-    while (nextScrollMilestone < scrollMilestones.length && percentage >= scrollMilestones[nextScrollMilestone]) {
-      trackMetaEvent('LandingPageScrollDepth', { scroll_percentage: scrollMilestones[nextScrollMilestone] });
-      nextScrollMilestone += 1;
+document.querySelectorAll('[data-calendly]').forEach((button) => button.addEventListener('click', openCalendlyPopup));
+popup?.addEventListener('click', (event) => { if (event.target === popup) closePopup(); });
+document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closePopup(); });
+
+const form = document.getElementById('assessment-form');
+const error = document.getElementById('form-error');
+const formPanel = document.getElementById('lead-form-panel');
+const successPanel = document.getElementById('lead-success');
+
+form?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (!form.reportValidity()) return;
+  const button = form.querySelector('button[type="submit"]');
+  const formData = new FormData(form);
+  const businessType = String(formData.get('businessType') || '');
+  const payload = {
+    type: 'Quote Request',
+    name: String(formData.get('name') || '').trim(),
+    company: String(formData.get('company') || '').trim(),
+    email: String(formData.get('email') || '').trim(),
+    phone: String(formData.get('phone') || '').trim(),
+    location: String(formData.get('location') || '').trim(),
+    areaToSecure: `Business type: ${businessType}`,
+    message: String(formData.get('message') || '').trim(),
+    website: String(formData.get('website') || ''),
+    sourcePage: `${window.location.pathname}${window.location.search}`,
+  };
+  if (error) error.hidden = true;
+  if (button) { button.disabled = true; button.textContent = 'Sending…'; }
+  try {
+    const response = await fetch('/api/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    if (!response.ok) {
+      const result = await response.json().catch(() => ({}));
+      throw new Error(result.error || 'Unable to submit your request. Please try again.');
     }
-    scrollTrackingScheduled = false;
-  });
-}, { passive: true });
+    trackMetaEvent('Lead', { content_name: 'Free store security assessment', page_name: 'Jewellery and luxury watch landing page', page_path: '/landingpage/v1', form_location: 'hero' }, true);
+    formPanel.hidden = true;
+    successPanel.hidden = false;
+  } catch (submissionError) {
+    if (error) { error.textContent = submissionError instanceof Error ? submissionError.message : 'Unable to submit your request. Please try again.'; error.hidden = false; }
+  } finally {
+    if (button) { button.disabled = false; button.textContent = 'Request My Free Assessment'; }
+  }
+});
 
 let calendlyBookingTracked = false;
 window.addEventListener('message', (event) => {
-  // Calendly sends the booking confirmation from its embedded frame. Do not
-  // require a specific frame window: Calendly can replace it during its flow.
-  if (event.origin !== 'https://calendly.com') return;
-  if (event.data?.event !== 'calendly.event_scheduled' || calendlyBookingTracked) return;
-
+  if (event.origin !== 'https://calendly.com' || event.data?.event !== 'calendly.event_scheduled' || calendlyBookingTracked) return;
   calendlyBookingTracked = true;
-  trackMetaEvent('Schedule', {
-    content_name: 'Fog Bandit 30-minute meeting',
-    page_name: 'Jewellery landing page',
-    page_path: '/landingpage/v1',
-  }, true);
+  trackMetaEvent('Schedule', { content_name: 'Fog Bandit meeting', page_name: 'Jewellery and luxury watch landing page', page_path: '/landingpage/v1' }, true);
 });
 
-let scrollTriggered = false;
-window.addEventListener('scroll', () => {
-  if (!CALENDLY_URL || popupShown || scrollTriggered) return;
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  if (maxScroll <= 0) return;
-  const depth = window.scrollY / maxScroll;
-  const threshold = window.matchMedia('(max-width: 740px)').matches ? 0.66 : 0.56;
-  if (depth >= threshold) {
-    scrollTriggered = true;
-    openCalendlyPopup({ automatic: true });
-  }
-}, { passive: true });
-
-document.addEventListener('mouseout', (event) => {
-  if (!CALENDLY_URL || window.matchMedia('(max-width: 740px)').matches || popupShown) return;
-  if (event.clientY <= 0 && !event.relatedTarget) {
-    openCalendlyPopup({ automatic: true });
-  }
-});
+const sticky = document.getElementById('sticky-cta');
+const assessment = document.getElementById('assessment');
+if (sticky && assessment && 'IntersectionObserver' in window) {
+  new IntersectionObserver(([entry]) => sticky.classList.toggle('visible', !entry.isIntersecting), { threshold: 0.15 }).observe(assessment);
+}

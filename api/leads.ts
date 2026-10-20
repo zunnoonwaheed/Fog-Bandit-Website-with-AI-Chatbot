@@ -74,6 +74,30 @@ const getAccessToken = async (clientEmail: string, privateKey: string) => {
   return result.access_token;
 };
 
+const sendConfirmationEmail = async (email: string, name: string) => {
+  const resendApiKey = process.env.RESEND_API_KEY;
+  if (!resendApiKey) return;
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${resendApiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: process.env.RESEND_FROM_EMAIL || "Fog Bandit ANZ <security@banditanz.com.au>",
+      to: [email],
+      subject: "We've received your Fog Bandit security assessment request",
+      text: `Hi ${name || "there"},\n\nThanks for requesting a free Fog Bandit store security assessment. Our team will get back to you within 1–2 business days to discuss your store's security needs.\n\nRegards,\nFog Bandit ANZ`,
+    }),
+  });
+
+  if (!response.ok) {
+    const details = await response.text();
+    throw new Error(`Confirmation email failed: ${response.status} ${details.slice(0, 300)}`);
+  }
+};
+
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
   res.setHeader("Content-Type", "application/json");
 
@@ -151,6 +175,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
       const details = await sheetsResponse.text();
       console.error("Google Sheets append failed", sheetsResponse.status, details.slice(0, 500));
       throw new Error("Unable to save lead");
+    }
+
+    // Confirmation email is best-effort: a successfully stored enquiry must
+    // never fail just because the email provider is unavailable.
+    try {
+      await sendConfirmationEmail(email, name);
+    } catch (emailError) {
+      console.error(emailError instanceof Error ? emailError.message : "Confirmation email failed");
     }
 
     res.status(201).json({ ok: true });
