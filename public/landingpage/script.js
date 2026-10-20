@@ -77,15 +77,37 @@ const validationMessages = {
   businessType: 'Please select your business type.',
 };
 
+const clearFieldErrors = () => {
+  form?.querySelectorAll('.field-error').forEach((message) => message.remove());
+  form?.querySelectorAll('[required]').forEach((field) => {
+    field.removeAttribute('aria-invalid');
+    field.removeAttribute('aria-describedby');
+  });
+};
+
+const showFieldError = (field, message) => {
+  const id = `${field.name}-error`;
+  const errorMessage = document.createElement('span');
+  errorMessage.className = 'field-error';
+  errorMessage.id = id;
+  errorMessage.setAttribute('role', 'alert');
+  errorMessage.textContent = message;
+  field.setAttribute('aria-invalid', 'true');
+  field.setAttribute('aria-describedby', id);
+  field.closest('label')?.append(errorMessage);
+};
+
 const validateAssessmentForm = () => {
   if (!form) return false;
   const invalidField = [...form.querySelectorAll('[required]')].find((field) => !field.validity.valid);
-  form.querySelectorAll('[required]').forEach((field) => field.setAttribute('aria-invalid', String(field === invalidField)));
+  clearFieldErrors();
   if (!invalidField) return true;
+  const message = invalidField.name === 'email' && invalidField.validity.typeMismatch
+    ? validationMessages.email
+    : validationMessages[invalidField.name] || 'Please complete this required field.';
+  showFieldError(invalidField, message);
   if (error) {
-    error.textContent = invalidField.name === 'email' && invalidField.validity.typeMismatch
-      ? validationMessages.email
-      : validationMessages[invalidField.name] || 'Please complete this required field.';
+    error.textContent = message;
     error.hidden = false;
   }
   invalidField.focus();
@@ -93,7 +115,11 @@ const validateAssessmentForm = () => {
 };
 
 form?.querySelectorAll('[required]').forEach((field) => field.addEventListener('input', () => {
-  field.removeAttribute('aria-invalid');
+  clearFieldErrors();
+  if (error) error.hidden = true;
+}));
+form?.querySelectorAll('select[required]').forEach((field) => field.addEventListener('change', () => {
+  clearFieldErrors();
   if (error) error.hidden = true;
 }));
 
