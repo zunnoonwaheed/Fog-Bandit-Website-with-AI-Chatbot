@@ -138,7 +138,6 @@ form?.addEventListener('submit', async (event) => {
     location: String(formData.get('location') || '').trim(),
     areaToSecure: `Business type: ${businessType}`,
     message: String(formData.get('message') || '').trim(),
-    website: String(formData.get('website') || ''),
     sourcePage: `${window.location.pathname}${window.location.search}`,
   };
   if (error) error.hidden = true;

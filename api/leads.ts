@@ -12,7 +12,6 @@ type LeadPayload = {
   message?: string;
   sourcePage?: string;
   marketingConsent?: boolean;
-  website?: string;
 };
 
 const MAX_FIELD_LENGTH = 5_000;
@@ -108,12 +107,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   }
 
   const body = parseBody(req);
-
-  // Honeypot: bots commonly fill hidden fields. Return success without storing it.
-  if (body.website) {
-    res.status(200).json({ ok: true });
-    return;
-  }
 
   const type = cleanCell(body.type, 100);
   const email = cleanCell(body.email, 320).toLowerCase();
