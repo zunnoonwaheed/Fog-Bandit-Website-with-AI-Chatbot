@@ -10,7 +10,9 @@ async function request(body: object) {
   await handler({ method: 'POST', body } as never, res as never);
   return res;
 }
-function setup(failSave = false, failEmail = false) {
+function setup(failSave = false, failEmail = false, initialColumns = 30) {
+  let columns = initialColumns;
+  const expansions: object[] = [];
   vi.stubEnv('GOOGLE_SERVICE_ACCOUNT_EMAIL', 'service@example.com');
   vi.stubEnv('GOOGLE_PRIVATE_KEY', String(key));
   vi.stubEnv('GOOGLE_SHEET_ID', 'qa-sheet');
@@ -20,6 +22,14 @@ function setup(failSave = false, failEmail = false) {
   const rows: unknown[][] = [], emails: { to: string[]; text: string }[] = [];
   vi.stubGlobal('fetch', vi.fn(async (url: string, options?: RequestInit) => {
     if (url.includes('oauth2')) return Response.json({ access_token: 'qa-token' });
+    if (url.includes('?fields=sheets.properties')) return Response.json({ sheets: [{ properties: { sheetId: 42, title: 'Contact Form - Website', gridProperties: { columnCount: columns } } }] });
+    if (url.includes(':batchUpdate')) {
+      const expansion = JSON.parse(String(options?.body)).requests[0].appendDimension;
+      expansions.push(expansion);
+      columns += expansion.length;
+      return Response.json({});
+    }
+    if (url.includes('AD1') && columns < 30) return Response.json({ error: { message: 'Range exceeds grid limits' } }, { status: 400 });
     if (url.includes(':append')) {
       rows.push(JSON.parse(String(options?.body)).values[0]);
       return Response.json({}, { status: failSave ? 500 : 200 });
@@ -30,10 +40,24 @@ function setup(failSave = false, failEmail = false) {
     }
     return Response.json({ values: [] });
   }));
-  return { rows, emails };
+  return { rows, emails, expansions };
 }
 afterEach(() => { vi.unstubAllEnvs(); vi.unstubAllGlobals(); vi.restoreAllMocks(); });
 describe('enquiry storage and delivery boundaries', () => {
+  it('expands the existing 29-column worksheet before checking AD and saving finance enquiries', async () => {
+    const { rows, expansions } = setup(false, false, 29);
+    const res = await request({ ...lead, type: 'Finance Application' });
+    expect(res.status).toHaveBeenCalledWith(201);
+    expect(expansions).toEqual([{ sheetId: 42, dimension: 'COLUMNS', length: 1 }]);
+    expect(rows[0]).toHaveLength(30);
+    expect(rows[0][1]).toBe('Finance Application');
+  });
+  it('leaves existing column dimensions unchanged when AD already exists', async () => {
+    const { expansions } = setup();
+    const res = await request(lead);
+    expect(res.status).toHaveBeenCalledWith(201);
+    expect(expansions).toEqual([]);
+  });
   it('rejects missing required assessment fields before storage', async () => {
     setup();
     const res = await request({ ...lead, phone: '' });

@@ -94,6 +94,23 @@ const sheetRange = (tabName: string, range: string) => encodeURIComponent(`'${ta
 );
 
 const ensureAttributionHeaders = async (accessToken: string, sheetId: string, tabName: string) => {
+  const spreadsheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}`;
+  const authHeaders = { Authorization: `Bearer ${accessToken}` };
+  const metadataResponse = await fetch(`${spreadsheetUrl}?fields=sheets.properties`, { headers: authHeaders });
+  if (!metadataResponse.ok) throw new Error("Unable to check lead sheet dimensions");
+  const metadata = await metadataResponse.json() as { sheets?: Array<{ properties: { sheetId: number; title: string; gridProperties?: { columnCount?: number } } }> };
+  const sheet = metadata.sheets?.find(item => item.properties.title === tabName)?.properties;
+  if (!sheet?.gridProperties?.columnCount) throw new Error("Configured lead worksheet was not found");
+  // A range read does not create columns. Older sheets stop at AC (29 columns).
+  // Append only the missing columns; never shrink or replace existing data.
+  if (sheet.gridProperties.columnCount < 30) {
+    const expanded = await fetch(`${spreadsheetUrl}:batchUpdate`, {
+      method: "POST",
+      headers: { ...authHeaders, "Content-Type": "application/json" },
+      body: JSON.stringify({ requests: [{ appendDimension: { sheetId: sheet.sheetId, dimension: "COLUMNS", length: 30 - sheet.gridProperties.columnCount } }] }),
+    });
+    if (!expanded.ok) throw new Error("Unable to expand lead sheet for contact key");
+  }
   const contactUrl = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}/values/${sheetRange(tabName, "AD1")}`;
   const contactHeader = await fetch(contactUrl, { headers: { Authorization: `Bearer ${accessToken}` } });
   if (!contactHeader.ok) throw new Error("Unable to check contact key column");
