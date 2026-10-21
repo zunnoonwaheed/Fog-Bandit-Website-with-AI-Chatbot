@@ -30,3 +30,4 @@ dist-ssr
 
 # Local handoff screenshots and generated review artifacts
 /handoff/
+/handoff.zip
