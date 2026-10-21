@@ -1,4 +1,4 @@
-import { createSign } from "node:crypto";
+import { createHash, createSign } from "node:crypto";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 type LeadPayload = {
@@ -94,6 +94,16 @@ const sheetRange = (tabName: string, range: string) => encodeURIComponent(`'${ta
 );
 
 const ensureAttributionHeaders = async (accessToken: string, sheetId: string, tabName: string) => {
+  const contactUrl = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}/values/${sheetRange(tabName, "AD1")}`;
+  const contactHeader = await fetch(contactUrl, { headers: { Authorization: `Bearer ${accessToken}` } });
+  if (!contactHeader.ok) throw new Error("Unable to check contact key column");
+  const contactValues = await contactHeader.json() as { values?: string[][] };
+  const contactLabel = contactValues.values?.[0]?.[0];
+  if (contactLabel && contactLabel !== "Contact Key") throw new Error("Column AD must be reserved for Contact Key before saving enquiries");
+  if (!contactLabel) {
+    const update = await fetch(`${contactUrl}?valueInputOption=RAW`, { method: "PUT", headers: { Authorization: `Bearer ${accessToken}`, "Content-Type": "application/json" }, body: JSON.stringify({ values: [["Contact Key"]] }) });
+    if (!update.ok) throw new Error("Unable to label contact key column");
+  }
   const range = sheetRange(tabName, "O1:AC1");
   const baseUrl = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}/values/${range}`;
   const existing = await fetch(baseUrl, { headers: { Authorization: `Bearer ${accessToken}` } });
@@ -107,28 +117,32 @@ const ensureAttributionHeaders = async (accessToken: string, sheetId: string, ta
   if (!update.ok) console.error("Unable to add attribution headers", update.status);
 };
 
-const sendConfirmationEmail = async (email: string, name: string) => {
-  const resendApiKey = process.env.RESEND_API_KEY;
-  if (!resendApiKey) return;
-
+const sendEmail = async (to: string[], subject: string, text: string) => {
+  if (!process.env.RESEND_API_KEY || !to.length) return false;
   const response = await fetch("https://api.resend.com/emails", {
+    signal: AbortSignal.timeout(8000),
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${resendApiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: process.env.RESEND_FROM_EMAIL || "Fog Bandit ANZ <security@banditanz.com.au>",
-      to: [email],
-      subject: "We've received your Fog Bandit security assessment request",
-      text: `Hi ${name || "there"},\n\nThanks for requesting a free Fog Bandit store security assessment. Our team will get back to you within 1–2 business days to discuss your store's security needs.\n\nRegards,\nFog Bandit ANZ`,
-    }),
+    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from: process.env.RESEND_FROM_EMAIL || "Fog Bandit ANZ <security@banditanz.com.au>", to, subject, text }),
   });
+  if (!response.ok) throw new Error(`Email provider rejected message: ${response.status}`);
+  return true;
+};
 
-  if (!response.ok) {
-    const details = await response.text();
-    throw new Error(`Confirmation email failed: ${response.status} ${details.slice(0, 300)}`);
-  }
+const notifyLead = async (type: string, email: string, name: string, company: string, contactKey: string) => {
+  const finance = type === "Finance Application";
+  const recipients = (finance ? process.env.FINANCE_NOTIFICATION_EMAILS : process.env.LEAD_NOTIFICATION_EMAILS) || process.env.LEAD_NOTIFICATION_EMAILS || "";
+  // Both notifications are independent; one failure must not suppress the other.
+  const results = await Promise.allSettled([
+    sendEmail([email], finance ? "We've received your Fog Bandit financing enquiry" : "We've received your Fog Bandit enquiry",
+      `Hi ${name || "there"},\n\n${finance ? "Thanks for your financing enquiry. Our team will contact you to discuss available options. This acknowledgement is not finance approval." : type === "Quote Request" ? "Thanks for requesting a free Fog Bandit store security assessment. Our team will get back to you within 1–2 business days to discuss your store's security needs." : "Thanks for contacting Fog Bandit. Our team has received your enquiry."}\n\nRegards,\nFog Bandit ANZ`),
+    sendEmail(recipients.split(",").map(value => value.trim()).filter(Boolean), `New Fog Bandit ${type}`,
+      `A new ${type} has been saved in the website leads sheet.\nName: ${name}\nBusiness: ${company}\nEmail: ${email}\nContact key: ${contactKey}\n\nReview the sheet for enquiry details. Financing enquiries are not approved finance.`),
+  ]);
+  results.forEach((result, index) => {
+    if (result.status === "rejected") console.error(index ? "Team notification failed" : "Acknowledgement failed", result.reason instanceof Error ? result.reason.message : "Email error");
+    else if (!result.value) console.error(index ? "Team notification not configured" : "Acknowledgement not configured");
+  });
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
@@ -155,6 +169,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     return;
   }
 
+  if (type === "Quote Request" && /^\/landingpage(?:\/|\?|$)/.test(body.sourcePage || "") && [body.phone, body.company, body.location, body.areaToSecure].some(value => typeof value !== "string" || !value.trim())) {
+    res.status(400).json({ error: "Phone, business name, location and business type or area to secure are required" });
+    return;
+  }
+  if (type === "Finance Application" && (typeof body.company !== "string" || !body.company.trim())) {
+    res.status(400).json({ error: "Business name is required" });
+    return;
+  }
+  const contactKey = createHash("sha256").update(email).digest("hex");
+
   const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
   const sheetId = process.env.GOOGLE_SHEET_ID;
@@ -168,7 +192,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   try {
     const accessToken = await getAccessToken(clientEmail, privateKey);
     await ensureAttributionHeaders(accessToken, sheetId, tabName);
-    const range = sheetRange(tabName, "A:AC");
+    const range = sheetRange(tabName, "A:AD");
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}/values/${range}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`;
     const row = [
       new Date().toISOString(),
@@ -200,6 +224,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
       cleanCell(body.dclid, 2_000),
       cleanCell(body.wbraid, 2_000),
       cleanCell(body.gbraid, 2_000),
+      contactKey,
     ];
 
     const sheetsResponse = await fetch(url, {
@@ -220,7 +245,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     // Confirmation email is best-effort: a successfully stored enquiry must
     // never fail just because the email provider is unavailable.
     try {
-      await sendConfirmationEmail(email, name);
+      await notifyLead(type, email, name, cleanCell(body.company, 300), contactKey);
     } catch (emailError) {
       console.error(emailError instanceof Error ? emailError.message : "Confirmation email failed");
     }

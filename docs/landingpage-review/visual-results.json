@@ -1,0 +1,57 @@
+{
+  "note": "Actual local pages and product video; Meta network blocked to avoid campaign pollution. External YouTube availability depends on the network.",
+  "checks": [
+    {
+      "width": 390,
+      "video": {
+        "readyState": 4,
+        "playbackRate": 1,
+        "currentTime": 0.019857
+      },
+      "links": [
+        {
+          "href": "/",
+          "status": 200
+        },
+        {
+          "href": "/privacy-policy",
+          "status": 200
+        },
+        {
+          "href": "/products",
+          "status": 200
+        },
+        {
+          "href": "/sales-service-conditions",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "video": {
+        "readyState": 4,
+        "playbackRate": 1,
+        "currentTime": 0.02
+      },
+      "links": [
+        {
+          "href": "/",
+          "status": 200
+        },
+        {
+          "href": "/privacy-policy",
+          "status": 200
+        },
+        {
+          "href": "/products",
+          "status": 200
+        },
+        {
+          "href": "/sales-service-conditions",
+          "status": 200
+        }
+      ]
+    }
+  ]
+}

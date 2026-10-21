@@ -26,9 +26,11 @@ const nzRegions = [
 
 const Financing = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (isSubmitting) return;
     const form = event.currentTarget;
     const data = new FormData(form);
     setIsSubmitting(true);
@@ -43,6 +45,7 @@ const Financing = () => {
         website: String(data.get("website") || ""),
       });
       form.reset();
+      setSubmitted(true);
       toast.success("Thanks! Our finance team will be in touch shortly.");
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Unable to submit the form. Please try again.");
@@ -66,7 +69,7 @@ const Financing = () => {
                 Flexible installments so you can deploy professional protection today.
               </p>
               <p className="hidden md:block font-dm-sans text-[18px] font-medium text-muted-foreground leading-relaxed mx-auto">
-                Spread the cost of full Fog Bandit protection with our Finance Assistance program. Low monthly installments, fixed rates, and rapid approval - designed for business owners who need security now, not later.
+                Spread the cost of full Fog Bandit protection with our Finance Assistance program. Eligible businesses may be able to spread the cost through monthly instalments, subject to approval. Our team can explain available options and application requirements.
               </p>
             </header>
 
@@ -117,9 +120,9 @@ const Financing = () => {
                   <p className="text-[13px] text-muted-foreground mb-4">Financing benefits</p>
                   <ul className="space-y-2.5">
                     {[
-                      "Low monthly installments",
-                      "Fixed rates, no hidden fees",
-                      "Rapid approval for business owners",
+                      "Monthly instalments may be available",
+                      "Terms and fees explained before you decide",
+                      "Subject to eligibility and approval",
                     ].map((item) => (
                       <li key={item} className="flex items-center gap-3 text-[14px] md:text-[15px] font-semibold text-foreground">
                         <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -131,57 +134,58 @@ const Financing = () => {
               </div>
 
               <div id="financing-form" className="premium-card order-1 rounded-2xl p-5 sm:p-6 md:order-2 md:p-8">
-                <form className="space-y-5" onSubmit={handleSubmit}>
+                {submitted ? <div role="status" className="space-y-4 py-8"><h2 className="text-2xl font-semibold">Thanks! We've Received Your Financing Enquiry.</h2><p>Our team will contact you to discuss available options. This confirmation is not finance approval.</p></div> : <form className="space-y-5" onSubmit={handleSubmit}>
                   <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                     <div>
-                      <label className="text-[13px] font-bold text-foreground mb-2 block">
+                      <label htmlFor="finance-firstName" className="text-[13px] font-bold text-foreground mb-2 block">
                         First Name<span className="text-primary">*</span>
                       </label>
-                      <Input name="firstName" required placeholder="Enter your first name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
+                      <Input id="finance-firstName" autoComplete="given-name" name="firstName" required placeholder="Enter your first name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                     <div>
-                      <label className="text-[13px] font-bold text-foreground mb-2 block">
+                      <label htmlFor="finance-lastName" className="text-[13px] font-bold text-foreground mb-2 block">
                         Last Name<span className="text-primary">*</span>
                       </label>
-                      <Input name="lastName" required placeholder="Enter your last name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
+                      <Input id="finance-lastName" autoComplete="family-name" name="lastName" required placeholder="Enter your last name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                     <div>
-                      <label className="text-[13px] font-bold text-foreground mb-2 block">
+                      <label htmlFor="finance-company" className="text-[13px] font-bold text-foreground mb-2 block">
                         Company<span className="text-primary">*</span>
                       </label>
-                      <Input name="company" required placeholder="Enter your company name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
+                      <Input id="finance-company" autoComplete="organization" name="company" required placeholder="Enter your company name" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                     <div>
-                      <label className="text-[13px] font-bold text-foreground mb-2 block">
+                      <label htmlFor="finance-email" className="text-[13px] font-bold text-foreground mb-2 block">
                         Email<span className="text-primary">*</span>
                       </label>
-                      <Input name="email" required type="email" placeholder="Enter your email" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
+                      <Input id="finance-email" autoComplete="email" name="email" required type="email" placeholder="Enter your email" className="h-12 rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                     </div>
                   </div>
 
                   <div>
-                    <label className="text-[13px] font-bold text-foreground mb-2 block">Financing Requirements</label>
-                    <Textarea name="message" placeholder="Tell us about your business, the system you're after, and your preferred monthly budget" className="min-h-[120px] rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
+                    <label htmlFor="finance-message" className="text-[13px] font-bold text-foreground mb-2 block">Financing Requirements</label>
+                    <Textarea id="finance-message" name="message" placeholder="Tell us about your business, the system you're after, and your preferred monthly budget" className="min-h-[120px] rounded-lg border-0 bg-[#F9F9F9] text-[13px] shadow-none placeholder:text-[#94A3B8] focus-visible:ring-1" />
                   </div>
 
+                  <p className="text-sm text-muted-foreground">Submitting an enquiry is not finance approval. Finance is subject to eligibility, provider terms and approval. See our <a className="underline" href="/privacy-policy">Privacy Policy</a>.</p>
                   <Button type="submit" disabled={isSubmitting} className="w-full h-12 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 text-[14px] font-semibold">
                     {isSubmitting ? "Submitting…" : "Apply for financing"}
                   </Button>
-                </form>
+                </form>}
               </div>
             </div>
 
             <section className="hidden md:grid md:grid-cols-[1.15fr_0.85fr] gap-8 md:gap-10 items-start">
               <div>
                 <h2 className="font-inter text-[20px] md:text-[28px] font-semibold text-foreground mb-3 leading-tight">
-                  Financing Available Across ANZ
+                  Financing Enquiries Across ANZ
                 </h2>
                 <p className="font-dm-sans text-muted-foreground text-[14px] md:text-[18px] font-medium leading-relaxed max-w-2xl mb-6 md:mb-7">
-                  We partner with leading industrial financiers across Australia and New Zealand so you get fast approvals and local support, wherever you operate.
+                  We welcome financing enquiries from businesses across Australia and New Zealand. Our team will confirm provider availability, eligibility and terms for your location.
                 </p>
 
                 <div className="grid grid-cols-2 gap-6 md:gap-10">

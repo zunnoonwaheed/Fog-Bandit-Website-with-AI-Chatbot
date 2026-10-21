@@ -1,0 +1,49 @@
+{
+  "note": "Local browser tests with mocked API, Meta library, YouTube frame and Calendly widget. No real leads, emails or bookings created.",
+  "reports": [
+    {
+      "width": 320,
+      "overflow": false,
+      "assessmentValidation": "passed",
+      "failedStorageDoesNotConvert": "passed",
+      "assessmentSuccess": "passed",
+      "refreshDoesNotConvert": "passed",
+      "scheduleOriginSourceAndDedup": "passed",
+      "financeSuccessAndFailure": "passed",
+      "attributionAcrossPages": "passed"
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "assessmentValidation": "passed",
+      "failedStorageDoesNotConvert": "passed",
+      "assessmentSuccess": "passed",
+      "refreshDoesNotConvert": "passed",
+      "scheduleOriginSourceAndDedup": "passed",
+      "financeSuccessAndFailure": "passed",
+      "attributionAcrossPages": "passed"
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "assessmentValidation": "passed",
+      "failedStorageDoesNotConvert": "passed",
+      "assessmentSuccess": "passed",
+      "refreshDoesNotConvert": "passed",
+      "scheduleOriginSourceAndDedup": "passed",
+      "financeSuccessAndFailure": "passed",
+      "attributionAcrossPages": "passed"
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "assessmentValidation": "passed",
+      "failedStorageDoesNotConvert": "passed",
+      "assessmentSuccess": "passed",
+      "refreshDoesNotConvert": "passed",
+      "scheduleOriginSourceAndDedup": "passed",
+      "financeSuccessAndFailure": "passed",
+      "attributionAcrossPages": "passed"
+    }
+  ]
+}

@@ -8,15 +8,17 @@ const popup = document.getElementById('assessment-popup');
 let calendlyWidgetLoaded;
 let calendlyWidgetInitialised = false;
 
+let previousFocus;
 const closePopup = () => {
   popup?.classList.remove('open');
   popup?.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('modal-open');
+  previousFocus?.focus();
 };
 
 const getCalendlyUrl = () => {
   const url = new URL(CALENDLY_URL);
-  url.searchParams.set('hide_gdpr_banner', '1');
+  Object.entries(window.fogAttribution || {}).forEach(([key, value]) => { if (key.startsWith('utm_')) url.searchParams.set(key, value); });
   url.searchParams.set('background_color', 'ffffff');
   url.searchParams.set('text_color', '111111');
   url.searchParams.set('primary_color', 'd41414');
@@ -43,9 +45,11 @@ const openCalendlyPopup = () => {
     popup.innerHTML = `<div class="calendly-modal" role="dialog" aria-modal="true" aria-labelledby="calendly-title"><button class="popup-close" type="button" aria-label="Close booking calendar">×</button><div class="calendly-modal-head"><p class="kicker">Prefer to book a call?</p><h2 id="calendly-title">Choose a time that works for you.</h2></div><div class="calendly-frame"></div></div>`;
     popup.querySelector('.popup-close')?.addEventListener('click', closePopup);
   }
+  previousFocus = document.activeElement;
   popup.classList.add('open');
   popup.setAttribute('aria-hidden', 'false');
   document.body.classList.add('modal-open');
+  popup.querySelector('.popup-close')?.focus();
   const frame = popup.querySelector('.calendly-frame');
   if (frame && !calendlyWidgetInitialised) {
     loadCalendlyWidget().then((Calendly) => {
@@ -69,7 +73,7 @@ const formPanel = document.getElementById('lead-form-panel');
 const successPanel = document.getElementById('lead-success');
 
 const getAttribution = () => {
-  const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.fogAttribution || window.location.search);
   const value = (name) => params.get(name) || '';
   return {
     utmSource: value('utm_source'),
@@ -121,7 +125,7 @@ const showFieldError = (field, message) => {
 
 const validateAssessmentForm = () => {
   if (!form) return false;
-  const invalidField = [...form.querySelectorAll('[required]')].find((field) => !field.validity.valid);
+  const invalidField = [...form.querySelectorAll('[required]')].find((field) => !field.validity.valid || !field.value.trim());
   clearFieldErrors();
   if (!invalidField) return true;
   const message = invalidField.name === 'email' && invalidField.validity.typeMismatch
@@ -147,7 +151,8 @@ form?.querySelectorAll('select[required]').forEach((field) => field.addEventList
 
 form?.addEventListener('submit', async (event) => {
   event.preventDefault();
-  if (!validateAssessmentForm()) return;
+  if (form.dataset.submitting === 'true' || !validateAssessmentForm()) return;
+  form.dataset.submitting = 'true';
   const button = form.querySelector('button[type="submit"]');
   const formData = new FormData(form);
   const businessType = String(formData.get('businessType') || '');
@@ -171,12 +176,15 @@ form?.addEventListener('submit', async (event) => {
       const result = await response.json().catch(() => ({}));
       throw new Error(result.error || 'Unable to submit your request. Please try again.');
     }
+    const result = await response.json();
+    if (result.ok !== true) throw new Error('Unable to confirm your request. Please try again.');
     trackMetaEvent('Lead', { content_name: 'Free store security assessment', page_name: 'Jewellery and luxury watch landing page', page_path: '/landingpage/v1', form_location: 'hero' }, true);
     formPanel.hidden = true;
     successPanel.hidden = false;
   } catch (submissionError) {
     if (error) { error.textContent = submissionError instanceof Error ? submissionError.message : 'Unable to submit your request. Please try again.'; error.hidden = false; }
   } finally {
+    form.dataset.submitting = 'false';
     if (button) { button.disabled = false; button.textContent = 'Request My Free Security Assessment'; }
   }
 });
@@ -186,7 +194,7 @@ window.addEventListener('message', (event) => {
   const calendlyFrame = popup?.querySelector('.calendly-frame iframe');
   const isCalendlyOrigin = event.origin === 'https://calendly.com';
   const isCalendlyFrame = Boolean(calendlyFrame && event.source === calendlyFrame.contentWindow);
-  if ((!isCalendlyOrigin && !isCalendlyFrame) || event.data?.event !== 'calendly.event_scheduled' || calendlyBookingTracked) return;
+  if ((!isCalendlyOrigin || !isCalendlyFrame) || event.data?.event !== 'calendly.event_scheduled' || calendlyBookingTracked) return;
   calendlyBookingTracked = true;
   trackMetaEvent('Schedule', { content_name: 'Fog Bandit meeting', page_name: 'Jewellery and luxury watch landing page', page_path: '/landingpage/v1' }, true);
 });
@@ -196,3 +204,19 @@ const assessment = document.getElementById('assessment');
 if (sticky && assessment && 'IntersectionObserver' in window) {
   new IntersectionObserver(([entry]) => sticky.classList.toggle('visible', !entry.isIntersecting), { threshold: 0.15 }).observe(assessment);
 }
+
+// Load the third-party player only when the visitor chooses to watch.
+document.querySelectorAll('[data-youtube]').forEach((button) => {
+  button.querySelector('img')?.addEventListener('error', (event) => {
+    if (!event.target.src.endsWith('/assets/jewellery-store-poster.png')) event.target.src = '/assets/jewellery-store-poster.png';
+  });
+  button.addEventListener('click', () => {
+    const frame = document.createElement('iframe');
+    frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(button.dataset.youtube)}?rel=0&autoplay=1`;
+    frame.title = 'Fog Bandit jewellery environment footage';
+    frame.allow = 'autoplay; fullscreen; picture-in-picture';
+    frame.allowFullscreen = true;
+    button.replaceWith(frame);
+    frame.focus();
+  });
+});

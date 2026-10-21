@@ -5,6 +5,7 @@ import { trackMetaEvent } from "@/lib/metaPixel";
 const pageNames: Record<string, string> = {
   "/": "Homepage",
   "/contact": "Contact us",
+  "/financing": "Financing enquiries",
 };
 
 const MetaPageTracker = () => {
