@@ -51,3 +51,15 @@ Reproduce with `npm test`, `npm run build`, `npm run dev`, then `node scripts/la
 10. Standalone app TypeScript checking reports pre-existing errors: unsupported className on TestimonialsSection from CaseStudiesTestimonials, and invalid loading attributes on video elements in realdeployments/DemoSection, PerformanceTests and VideoGrid. No new errors from the changed application files appeared in that check. The Vite production build succeeds. These unrelated components have not been changed.
 11. Local Vite provides page rendering but does not mount the production /api/leads serverless handler. Browser QA intercepts this endpoint deliberately; use the deployed preview for real integration tests. Privacy/Sales Policy pages return HTTP 200 locally; production link availability still needs confirmation.
 12. Scope is staged for review, not production launch. Content usage is client-approved; delivery and tracking verification remain separate technical checks.
+
+## Local handoff folder
+
+Screenshots are stored in the root `handoff/` folder, which is ignored by Git. Future browser checks write screenshots and generated reports there. The screenshots were removed from current Git tracking; earlier commits still contain historical copies.
+
+Use `handoff/landingpage-real-1440.png`, `handoff/landingpage-real-390.png`, `handoff/financing-real-1440.png` and `handoff/financing-real-390.png` for the desktop/mobile handoff. Other images document mocked browser submission tests.
+
+Production storage repair: commit `8d90911` creates required worksheet columns before reading AD. The live sheet was expanded from 29 to 30 columns; a labelled financing test returned HTTP 201 and was verified in the sheet with a Contact Key. Nine automated tests pass.
+
+## Calendly loading improvement
+
+The landing page now warms the Calendly SDK during browser idle time and prepares the widget as a booking CTA approaches the viewport, on pointer/focus/touch intent, or after an assessment submission succeeds. Opening the popup reuses the prepared widget. The popup includes a loading status and an attribution-preserving direct booking link. Failed script downloads can be retried. Preparing or opening the widget does not fire Schedule; completed booking messages retain origin/source validation. External network latency can still affect Calendly.

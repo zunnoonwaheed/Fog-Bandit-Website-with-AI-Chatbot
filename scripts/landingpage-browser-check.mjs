@@ -2,7 +2,7 @@ import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 const root = 'http://127.0.0.1:8080';
-const out = 'docs/landingpage-review';
+const out = 'handoff';
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', args: ['--no-proxy-server'] });
 if (process.argv.includes('--visual')) {

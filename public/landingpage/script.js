@@ -30,40 +30,69 @@ const loadCalendlyWidget = () => {
   if (calendlyWidgetLoaded) return calendlyWidgetLoaded;
   calendlyWidgetLoaded = new Promise((resolve, reject) => {
     const script = document.createElement('script');
+    const fail = () => { script.remove(); calendlyWidgetLoaded = undefined; reject(new Error('Calendly unavailable')); };
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
-    script.onload = () => window.Calendly?.initInlineWidget ? resolve(window.Calendly) : reject(new Error('Calendly unavailable'));
-    script.onerror = () => reject(new Error('Calendly unavailable'));
+    script.onload = () => window.Calendly?.initInlineWidget ? resolve(window.Calendly) : fail();
+    script.onerror = fail;
     document.head.appendChild(script);
   });
   return calendlyWidgetLoaded;
 };
 
+let calendlyPreparation;
+const prepareCalendly = () => {
+  if (!popup) return Promise.resolve();
+  if (!popup.innerHTML) {
+    popup.innerHTML = `<div class="calendly-modal" role="dialog" aria-modal="true" aria-labelledby="calendly-title"><button class="popup-close" type="button" aria-label="Close booking calendar">×</button><div class="calendly-modal-head"><p class="kicker">Prefer to book a call?</p><h2 id="calendly-title">Choose a time that works for you.</h2><p class="calendar-status" role="status">Loading available times…</p><a class="calendar-direct" target="_blank" rel="noopener">Open Calendly directly ↗</a></div><div class="calendly-frame"></div></div>`;
+    popup.querySelector('.popup-close')?.addEventListener('click', closePopup);
+    popup.querySelector('.calendar-direct').href = getCalendlyUrl();
+  }
+  if (calendlyPreparation) return calendlyPreparation;
+  const frame = popup.querySelector('.calendly-frame');
+  calendlyPreparation = loadCalendlyWidget().then((Calendly) => {
+    if (!calendlyWidgetInitialised) {
+      Calendly.initInlineWidget({ url: getCalendlyUrl(), parentElement: frame });
+      calendlyWidgetInitialised = true;
+      frame.querySelector('iframe')?.addEventListener('load', () => {
+        popup.querySelector('.calendar-status').hidden = true;
+      }, { once: true });
+    }
+  }).catch(() => {
+    calendlyPreparation = undefined;
+    popup.querySelector('.calendar-status').textContent = 'Calendar is unavailable. Use the direct link to book.';
+  });
+  return calendlyPreparation;
+};
+
 const openCalendlyPopup = () => {
   if (!popup) return;
-  if (!popup.innerHTML) {
-    popup.innerHTML = `<div class="calendly-modal" role="dialog" aria-modal="true" aria-labelledby="calendly-title"><button class="popup-close" type="button" aria-label="Close booking calendar">×</button><div class="calendly-modal-head"><p class="kicker">Prefer to book a call?</p><h2 id="calendly-title">Choose a time that works for you.</h2></div><div class="calendly-frame"></div></div>`;
-    popup.querySelector('.popup-close')?.addEventListener('click', closePopup);
-  }
+  prepareCalendly();
   previousFocus = document.activeElement;
   popup.classList.add('open');
   popup.setAttribute('aria-hidden', 'false');
   document.body.classList.add('modal-open');
   popup.querySelector('.popup-close')?.focus();
-  const frame = popup.querySelector('.calendly-frame');
-  if (frame && !calendlyWidgetInitialised) {
-    loadCalendlyWidget().then((Calendly) => {
-      if (!calendlyWidgetInitialised) {
-        Calendly.initInlineWidget({ url: getCalendlyUrl(), parentElement: frame });
-        calendlyWidgetInitialised = true;
-      }
-    }).catch(() => {
-      frame.innerHTML = '<p class="calendly-load-error">Unable to load the booking calendar. <a href="https://calendly.com/fogbanditleads/30min" target="_blank" rel="noopener">Open Calendly</a></p>';
-    });
-  }
 };
 
-document.querySelectorAll('[data-calendly]').forEach((button) => button.addEventListener('click', openCalendlyPopup));
+const bookingButtons = document.querySelectorAll('[data-calendly]');
+bookingButtons.forEach((button) => {
+  button.addEventListener('click', openCalendlyPopup);
+  ['pointerenter', 'focus', 'touchstart'].forEach(name => button.addEventListener(name, prepareCalendly, { once: true, passive: true }));
+});
+// Warm up the SDK without blocking the initial page; prepare the calendar when
+// a booking button approaches the viewport, before the visitor clicks it.
+const warmCalendly = () => loadCalendlyWidget().catch(() => {});
+if ('requestIdleCallback' in window) window.requestIdleCallback(warmCalendly, { timeout: 2500 });
+else window.setTimeout(warmCalendly, 1500);
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { prepareCalendly(); observer.unobserve(entry.target); }
+    });
+  }, { rootMargin: '300px' });
+  bookingButtons.forEach(button => observer.observe(button));
+}
 popup?.addEventListener('click', (event) => { if (event.target === popup) closePopup(); });
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closePopup(); });
 
@@ -181,6 +210,7 @@ form?.addEventListener('submit', async (event) => {
     trackMetaEvent('Lead', { content_name: 'Free store security assessment', page_name: 'Jewellery and luxury watch landing page', page_path: '/landingpage/v1', form_location: 'hero' }, true);
     formPanel.hidden = true;
     successPanel.hidden = false;
+    prepareCalendly();
   } catch (submissionError) {
     if (error) { error.textContent = submissionError instanceof Error ? submissionError.message : 'Unable to submit your request. Please try again.'; error.hidden = false; }
   } finally {
