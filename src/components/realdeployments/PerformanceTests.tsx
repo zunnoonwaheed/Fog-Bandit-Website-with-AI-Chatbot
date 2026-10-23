@@ -1,22 +1,29 @@
-import { useState } from "react";
+import { useState, type SyntheticEvent } from "react";
+
+const seekPreviewFrame = (event: SyntheticEvent<HTMLVideoElement>) => {
+  const video = event.currentTarget;
+  if (Number.isFinite(video.duration) && video.duration > 0) {
+    video.currentTime = Math.min(2, Math.max(0, video.duration - 0.1));
+  }
+};
 
 const PerformanceTests = () => {
   const [playingVideo, setPlayingVideo] = useState<string | null>(null);
 
   const smallTests = [
-    { id: "1", title: "Retail Store Test", video: "/assets/videos/performance-tests/retail-store.mp4", poster: "/assets/videos/performance-tests/retail-store-poster.jpg" },
-    { id: "2", title: "Warehouse Test", video: "/assets/videos/performance-tests/warehouse.mp4", poster: "/assets/videos/performance-tests/warehouse-poster.jpg" },
-    { id: "3", title: "Smash & Grab Protection", video: "/assets/videos/performance-tests/smash-and-grab-protection.mp4", poster: "/assets/videos/performance-tests/smash-and-grab-protection-poster.jpg" },
-    { id: "4", title: "Retail Theft Protection", video: "/assets/videos/performance-tests/retail-theft-protection.mp4", poster: "/assets/videos/performance-tests/retail-theft-protection-poster.jpg" },
+    { id: "1", title: "High-End Retail Store", video: "/assets/videos/high-end-retail-store.mp4", poster: "/assets/videos/performance-tests/retail-store-poster.jpg" },
+    { id: "2", title: "Active Warehouse Protection", video: "/assets/videos/active-warehouse-protection.mp4", poster: "/assets/videos/performance-tests/warehouse-poster.jpg" },
+    { id: "3", title: "Large Electronic Store", video: "/assets/videos/large-electronic-store.mp4", poster: "/assets/videos/performance-tests/smash-and-grab-protection-poster.jpg" },
+    { id: "4", title: "Dispensary Break-In Attempt", video: "/assets/videos/dispensary-break-in-attempt.mp4", poster: "/assets/videos/performance-tests/retail-theft-protection-poster.jpg" },
     { id: "5", title: "Cigarette Gantry Protection", video: "/assets/videos/performance-tests/cigarette-gantry.mp4", poster: "/assets/videos/performance-tests/cigarette-gantry-poster.jpg" },
-    { id: "6", title: "Home & Personal Property", video: "/assets/videos/performance-tests/home-and-personal-property.mp4", poster: "/assets/videos/performance-tests/home-and-personal-property-poster.jpg" },
+    { id: "6", title: "Luxury Goods Store", video: "/assets/videos/luxury-goods-store.mp4", poster: "/assets/videos/performance-tests/home-and-personal-property-poster.jpg" },
   ];
 
   const featuredTest = {
     id: "featured",
-    title: "Jewellery Store Test",
-    subtitle: "Full Sequence: Detection to Obscuration",
-    video: "/assets/videos/performance-tests/jewellery-shop.mp4",
+    title: "Jewellers Robbery",
+    subtitle: "Real-time activation disrupts a robbery attempt",
+    video: "/assets/videos/jewellers-robbery.mp4",
     poster: "/assets/videos/performance-tests/jewellery-shop-poster.jpg",
   };
 
@@ -36,7 +43,7 @@ const PerformanceTests = () => {
             Real-Time Performance Tests
           </h2>
           <p className="font-dm-sans text-foreground text-[16px]">
-            Rigorous field testing across various vertical markets to ensure maximum protection effectiveness.
+            Real activation footage from warehouse, retail and jewellery settings, including robbery attempts disrupted by Fog Bandit.
           </p>
         </div>
 
@@ -47,7 +54,7 @@ const PerformanceTests = () => {
                 Real-Time Performance Tests
               </h2>
               <p className="font-dm-sans text-foreground text-[16px]">
-                Rigorous field testing across various vertical markets to ensure maximum protection effectiveness.
+                Real activation footage from warehouse, retail and jewellery settings, including robbery attempts disrupted by Fog Bandit.
               </p>
             </div>
 
@@ -76,6 +83,7 @@ const PerformanceTests = () => {
                           className="w-full h-full object-cover"
                           muted
                           playsInline
+                          onLoadedData={test.id === "5" ? undefined : seekPreviewFrame}
                           preload="metadata"
                           loading="lazy"
                         />
@@ -120,6 +128,7 @@ const PerformanceTests = () => {
                     className="w-full h-full object-cover"
                     muted
                     playsInline
+                    onLoadedData={seekPreviewFrame}
                     preload="metadata"
                     loading="lazy"
                   />
