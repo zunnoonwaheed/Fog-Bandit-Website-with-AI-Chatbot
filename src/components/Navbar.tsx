@@ -93,7 +93,7 @@ const Navbar = (_props: NavbarProps = {}) => {
             />
           </a>
 
-          <div className="hidden min-w-0 flex-1 justify-center gap-8 px-4 lg:flex">
+          <div className="hidden min-w-0 flex-1 justify-center gap-8 px-4 xl:flex">
             {navLinks.map((link) => {
               const active = isActive(link.label, link.href);
               return (
@@ -118,7 +118,7 @@ const Navbar = (_props: NavbarProps = {}) => {
             })}
           </div>
 
-          <div className="hidden shrink-0 items-center gap-5 lg:flex">
+          <div className="hidden shrink-0 items-center gap-5 xl:flex">
             {!authLoading && (
               <Link
                 to={user ? "/account" : "/login"}
@@ -149,7 +149,7 @@ const Navbar = (_props: NavbarProps = {}) => {
             </Link>
           </div>
 
-          <div className="ml-auto flex shrink-0 items-center gap-1.5 min-[390px]:gap-2 lg:hidden">
+          <div className="ml-auto flex shrink-0 items-center gap-1.5 min-[390px]:gap-2 xl:hidden">
             {pathname === "/" && (
               <Link
                 to="/contact"
@@ -176,7 +176,7 @@ const Navbar = (_props: NavbarProps = {}) => {
         </div>
 
         {mobileOpen && (
-          <div className="mt-2 overflow-hidden rounded-2xl border border-white/80 bg-background/95 shadow-[0_20px_50px_-24px_rgba(15,23,42,0.35)] backdrop-blur-xl lg:hidden">
+          <div className="mt-2 overflow-hidden rounded-2xl border border-white/80 bg-background/95 shadow-[0_20px_50px_-24px_rgba(15,23,42,0.35)] backdrop-blur-xl xl:hidden">
             <div className="px-6 py-5 space-y-3">
               {navLinks.map((link) => (
                 <Link
