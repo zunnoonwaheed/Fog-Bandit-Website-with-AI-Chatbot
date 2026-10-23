@@ -37,6 +37,7 @@ const DemoSection = () => {
               src="/assets/videos/office-protection-demo.mp4"
               poster="/assets/video-poster.png"
               className="w-full h-full object-cover"
+              muted
               playsInline
               preload="none"
               loading="lazy"
@@ -56,6 +57,7 @@ const DemoSection = () => {
               src="/assets/videos/office-protection-demo.mp4"
               poster="/assets/demo-background-mobile.png"
               className="w-full h-full object-cover"
+              muted
               playsInline
               preload="none"
               loading="lazy"

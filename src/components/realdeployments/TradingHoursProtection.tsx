@@ -48,6 +48,7 @@ const TradingHoursProtection = () => {
                 src="/assets/videos/panic-button-demo.mp4"
                 controls
                 autoPlay
+                muted
                 className="w-full h-full object-cover"
                 playsInline
                 preload="auto"
@@ -124,6 +125,7 @@ const TradingHoursProtection = () => {
                 src="/assets/videos/panic-button-demo.mp4"
                 controls
                 autoPlay
+                muted
                 className="w-full h-full object-cover"
                 playsInline
                 preload="auto"

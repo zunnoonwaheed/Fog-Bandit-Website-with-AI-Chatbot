@@ -82,6 +82,7 @@ const VideoGrid = () => {
                     poster={video.poster}
                     controls
                     autoPlay
+                    muted
                     className="w-full h-full object-cover"
                     onEnded={() => setPlayingVideo(null)}
                     onPause={handleVideoPause}
@@ -147,6 +148,7 @@ const VideoGrid = () => {
                   poster={video.poster}
                   controls
                   autoPlay
+                  muted
                   className="w-full h-full object-cover"
                   onEnded={() => setPlayingVideo(null)}
                   onPause={handleVideoPause}
@@ -213,6 +215,7 @@ const VideoGrid = () => {
                       poster={video.poster}
                       controls
                       autoPlay
+                      muted
                       className="w-full h-full object-cover"
                       onEnded={() => setPlayingVideo(null)}
                       onPause={handleVideoPause}
