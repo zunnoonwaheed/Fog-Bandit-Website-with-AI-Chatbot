@@ -12,7 +12,7 @@ const RealDeploymentsHero = () => {
           See Fog Bandit in Action
         </h1>
         <p className="section-subtext max-w-3xl mx-auto px-4 mb-7 md:mb-8">
-          Watch real deployments, controlled demonstrations, and<br className="hidden md:inline" /> live activations to understand how Fog Bandit protects businesses within seconds.
+          Watch real robbery attempts interrupted by Fog Bandit, alongside demonstrations and<br className="hidden md:inline" /> live activations that show how security fog disrupts a crime in progress.
         </p>
         <div className="flex flex-col md:flex-row gap-3 justify-center items-center mx-auto px-4 w-full md:w-auto max-w-[540px] md:max-w-none">
           <Link to="/contact" className="w-full md:w-auto">

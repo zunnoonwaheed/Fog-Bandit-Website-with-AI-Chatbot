@@ -1,18 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 
 const traditionalItems = [
-  "Only records the incident",
-  "Evidence provided after loss",
-  "Zero deterrent for masked intruders",
+  "Records footage after an incident",
+  "Evidence comes after a loss",
+  "Does not disrupt a robbery in progress",
 ];
 
 const fogBanditItems = [
-  "Activates instantly on trigger",
-  "Removes visibility in seconds",
-  "Stops the attempt immediately",
+  "Activates as an attempted robbery unfolds",
+  "Fills the area with dense fog in seconds",
+  "Disrupts the attempt before offenders can reach stock",
 ];
-
-const DEMO_VIDEO = "/assets/videos/fog-bandit-demo.mp4";
 
 function RedXCircle() {
   return (
@@ -39,14 +37,14 @@ function WhiteCheckCircle() {
 type VideoTileProps = {
   id: string;
   title: string;
+  src: string;
   poster: string;
-  thumbTime?: number;
   playingId: string | null;
   onPlay: (id: string) => void;
   onEnd: () => void;
 };
 
-function VideoTile({ id, title, poster, thumbTime = 0, playingId, onPlay, onEnd }: VideoTileProps) {
+function VideoTile({ id, title, src, poster, playingId, onPlay, onEnd }: VideoTileProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isPlaying = playingId === id;
 
@@ -56,7 +54,7 @@ function VideoTile({ id, title, poster, thumbTime = 0, playingId, onPlay, onEnd 
     if (!video || isPlaying) return;
 
     const setThumb = () => {
-      video.currentTime = thumbTime;
+      video.currentTime = Math.min(2, Math.max(0, video.duration - 0.1));
       video.pause();
     };
 
@@ -66,7 +64,7 @@ function VideoTile({ id, title, poster, thumbTime = 0, playingId, onPlay, onEnd 
       video.addEventListener("loadeddata", setThumb, { once: true });
       return () => video.removeEventListener("loadeddata", setThumb);
     }
-  }, [thumbTime, isPlaying]);
+  }, [isPlaying]);
 
   const handleVideoPause = () => {
     onEnd();
@@ -77,9 +75,10 @@ function VideoTile({ id, title, poster, thumbTime = 0, playingId, onPlay, onEnd 
       {isPlaying ? (
         <video
           ref={videoRef}
-          src={DEMO_VIDEO}
+          src={src}
           controls
           autoPlay
+          muted
           className="absolute inset-0 w-full h-full object-cover"
           playsInline
           onEnded={onEnd}
@@ -89,11 +88,15 @@ function VideoTile({ id, title, poster, thumbTime = 0, playingId, onPlay, onEnd 
         </video>
       ) : (
         <>
-          <img
-            src={poster}
-            alt=""
+          <video
+            ref={videoRef}
+            src={src}
+            poster={poster}
             className="absolute inset-0 w-full h-full object-contain"
-            loading="lazy"
+            muted
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
           />
           <button
             type="button"
@@ -115,10 +118,10 @@ const ComparisonSection = () => {
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center pt-2 md:pt-0">
           <h2 className="section-heading">
-            The Difference Between Watching and Stopping
+            Real Robbery Attempts Interrupted in Progress
           </h2>
           <p className="font-dm-sans text-[14px] md:text-[16px] text-[#666666] font-medium leading-relaxed mt-3 md:mt-4 max-w-[720px] mx-auto">
-            Passive security records the crime. Active security ends it.
+            See real break-in footage where Fog Bandit fog disrupted robbery attempts before offenders could reach the stock.
           </p>
         </div>
 
@@ -198,7 +201,8 @@ const ComparisonSection = () => {
         <div className="hidden md:grid mt-4 md:mt-6 grid-cols-2 gap-4 md:gap-6">
           <VideoTile
             id="before"
-            title="Before Fog Bandit"
+            title="Dispensary Break-In Attempt Foiled"
+            src="/assets/videos/YTDown.com_YouTube_Media_4SNGiXt1yfw_Dispensary-Break-In-Attempt-Foiled-by-BANDIT-Fog-Barrier_001_1080p.mp4"
             poster="/assets/before-fog-bandit.png"
             playingId={playingId}
             onPlay={setPlayingId}
@@ -206,9 +210,9 @@ const ComparisonSection = () => {
           />
           <VideoTile
             id="after"
-            title="After Fog Bandit"
+            title="CCTV Robbery Attempt Foiled"
+            src="/assets/videos/YTDown.com_YouTube_Media_demI-X6j4rQ_Real-CCTV-Robbery-Attempt-Foiled-by-BANDIT-Active-Fog-Security_001_360p.mp4"
             poster="/assets/after-fog-bandit.png"
-            thumbTime={95}
             playingId={playingId}
             onPlay={setPlayingId}
             onEnd={() => setPlayingId(null)}
@@ -221,7 +225,8 @@ const ComparisonSection = () => {
             <div className="min-w-[90vw] snap-center">
               <VideoTile
                 id="before"
-                title="Before Fog Bandit"
+                title="Dispensary Break-In Attempt Foiled"
+                src="/assets/videos/YTDown.com_YouTube_Media_4SNGiXt1yfw_Dispensary-Break-In-Attempt-Foiled-by-BANDIT-Fog-Barrier_001_1080p.mp4"
                 poster="/assets/before-fog-bandit.png"
                 playingId={playingId}
                 onPlay={setPlayingId}
@@ -231,9 +236,9 @@ const ComparisonSection = () => {
             <div className="min-w-[90vw] snap-center mr-8">
               <VideoTile
                 id="after"
-                title="After Fog Bandit"
+                title="CCTV Robbery Attempt Foiled"
+                src="/assets/videos/YTDown.com_YouTube_Media_demI-X6j4rQ_Real-CCTV-Robbery-Attempt-Foiled-by-BANDIT-Active-Fog-Security_001_360p.mp4"
                 poster="/assets/after-fog-bandit.png"
-                thumbTime={95}
                 playingId={playingId}
                 onPlay={setPlayingId}
                 onEnd={() => setPlayingId(null)}
