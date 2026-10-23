@@ -80,7 +80,6 @@ const VideoGrid = () => {
                   <video
                     src={video.src}
                     poster={video.poster}
-                    controls
                     autoPlay
                     muted
                     className="w-full h-full object-cover"
@@ -146,7 +145,6 @@ const VideoGrid = () => {
                 <video
                   src={video.src}
                   poster={video.poster}
-                  controls
                   autoPlay
                   muted
                   className="w-full h-full object-cover"
@@ -213,7 +211,6 @@ const VideoGrid = () => {
                     <video
                       src={video.src}
                       poster={video.poster}
-                      controls
                       autoPlay
                       muted
                       className="w-full h-full object-cover"

@@ -76,7 +76,6 @@ function VideoTile({ id, title, src, poster, playingId, onPlay, onEnd }: VideoTi
         <video
           ref={videoRef}
           src={src}
-          controls
           autoPlay
           muted
           className="absolute inset-0 w-full h-full object-cover"

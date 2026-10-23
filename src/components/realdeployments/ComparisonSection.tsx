@@ -52,7 +52,6 @@ const ComparisonSection = () => {
             {isPlaying ? (
               <video
                 src="/assets/videos/panic-button-demo.mp4"
-                controls
                 autoPlay
                 muted
                 className="absolute inset-0 w-full h-full object-cover"

@@ -1,18 +1,17 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 
 const DemoSection = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
-  const handlePlayClick = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
+  const handlePlayClick = (video: HTMLVideoElement | null) => {
+    if (!video) return;
+    if (video.paused) {
+      if (video.ended) video.currentTime = 0;
+      void video.play();
+    } else {
+      video.pause();
     }
-  };
-
-  const handleVideoPause = () => {
-    setIsPlaying(false);
   };
 
   return (
@@ -30,7 +29,7 @@ const DemoSection = () => {
         <div className="w-full">
           <div
             className="hidden md:block relative overflow-hidden rounded-[20px] cursor-pointer group"
-            onClick={handlePlayClick}
+            onClick={() => handlePlayClick(videoRef.current)}
           >
             <video
               ref={videoRef}
@@ -41,9 +40,6 @@ const DemoSection = () => {
               playsInline
               preload="none"
               loading="lazy"
-              onPause={handleVideoPause}
-              onEnded={() => setIsPlaying(false)}
-              controls={isPlaying}
             >
               Your browser does not support the video tag.
             </video>
@@ -51,9 +47,10 @@ const DemoSection = () => {
 
           <div
             className="md:hidden relative overflow-hidden rounded-[20px] cursor-pointer group"
-            onClick={handlePlayClick}
+            onClick={() => handlePlayClick(mobileVideoRef.current)}
           >
             <video
+              ref={mobileVideoRef}
               src="/assets/videos/office-protection-demo.mp4"
               poster="/assets/demo-background-mobile.png"
               className="w-full h-full object-cover"
@@ -61,9 +58,6 @@ const DemoSection = () => {
               playsInline
               preload="none"
               loading="lazy"
-              onPause={handleVideoPause}
-              onEnded={() => setIsPlaying(false)}
-              controls={isPlaying}
             >
               Your browser does not support the video tag.
             </video>

@@ -65,7 +65,6 @@ const PerformanceTests = () => {
                     {playingVideo === test.id ? (
                       <video
                         src={test.video}
-                        controls
                         autoPlay
                         muted
                         className="w-full h-full object-cover"
@@ -110,7 +109,6 @@ const PerformanceTests = () => {
               {playingVideo === featuredTest.id ? (
                 <video
                   src={featuredTest.video}
-                  controls
                   autoPlay
                   muted
                   className="w-full h-full object-cover"

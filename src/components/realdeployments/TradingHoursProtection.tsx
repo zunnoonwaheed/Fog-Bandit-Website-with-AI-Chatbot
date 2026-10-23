@@ -46,7 +46,6 @@ const TradingHoursProtection = () => {
               <video
                 ref={videoRef}
                 src="/assets/videos/panic-button-demo.mp4"
-                controls
                 autoPlay
                 muted
                 className="w-full h-full object-cover"
@@ -123,7 +122,6 @@ const TradingHoursProtection = () => {
               <video
                 ref={videoRef}
                 src="/assets/videos/panic-button-demo.mp4"
-                controls
                 autoPlay
                 muted
                 className="w-full h-full object-cover"
