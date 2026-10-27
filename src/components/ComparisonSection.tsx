@@ -180,10 +180,10 @@ const ComparisonSection = () => {
         {/* Desktop: Videos in grid */}
         <div className="hidden md:grid mt-4 md:mt-6 grid-cols-2 gap-4 md:gap-6">
           <VideoTile
-            id="before-desktop"
-            title="Dispensary Break-In Attempt Foiled"
+            id="deployment-proof-desktop"
+            title="Real Deployment Proof: Dispensary Break-In Attempt"
             src="/assets/videos/YTDown.com_YouTube_Media_4SNGiXt1yfw_Dispensary-Break-In-Attempt-Foiled-by-BANDIT-Fog-Barrier_001_1080p.mp4"
-            poster="/assets/before-fog-bandit.png"
+            poster="/assets/dispensary-deployment-proof.jpg"
             playingId={playingId}
             onPlay={setPlayingId}
             onEnd={handleVideoEnd}
@@ -204,10 +204,10 @@ const ComparisonSection = () => {
           <div className="flex gap-4 snap-x snap-mandatory">
             <div className="min-w-[90vw] snap-center">
               <VideoTile
-                id="before-mobile"
-                title="Dispensary Break-In Attempt Foiled"
+                id="deployment-proof-mobile"
+                title="Real Deployment Proof: Dispensary Break-In Attempt"
                 src="/assets/videos/YTDown.com_YouTube_Media_4SNGiXt1yfw_Dispensary-Break-In-Attempt-Foiled-by-BANDIT-Fog-Barrier_001_1080p.mp4"
-                poster="/assets/before-fog-bandit.png"
+                poster="/assets/dispensary-deployment-proof.jpg"
                 playingId={playingId}
                 onPlay={setPlayingId}
                 onEnd={handleVideoEnd}
