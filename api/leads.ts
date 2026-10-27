@@ -146,7 +146,7 @@ const sendEmail = async (to: string[], subject: string, text: string) => {
   return true;
 };
 
-const notifyLead = async (type: string, email: string, name: string, company: string, contactKey: string) => {
+const notifyLead = async (type: string, email: string, name: string, company: string, tabName: string, contactKey: string) => {
   const finance = type === "Finance Application";
   const recipients = (finance ? process.env.FINANCE_NOTIFICATION_EMAILS : process.env.LEAD_NOTIFICATION_EMAILS) || process.env.LEAD_NOTIFICATION_EMAILS || "";
   // Both notifications are independent; one failure must not suppress the other.
@@ -154,7 +154,7 @@ const notifyLead = async (type: string, email: string, name: string, company: st
     sendEmail([email], finance ? "We've received your Fog Bandit financing enquiry" : "We've received your Fog Bandit enquiry",
       `Hi ${name || "there"},\n\n${finance ? "Thanks for your financing enquiry. Our team will contact you to discuss available options. This acknowledgement is not finance approval." : type === "Quote Request" ? "Thanks for requesting a free Fog Bandit store security assessment. Our team will get back to you within 1–2 business days to discuss your store's security needs." : "Thanks for contacting Fog Bandit. Our team has received your enquiry."}\n\nRegards,\nFog Bandit ANZ`),
     sendEmail(recipients.split(",").map(value => value.trim()).filter(Boolean), `New Fog Bandit ${type}`,
-      `A new ${type} has been saved in the website leads sheet.\nName: ${name}\nBusiness: ${company}\nEmail: ${email}\nContact key: ${contactKey}\n\nReview the sheet for enquiry details. Financing enquiries are not approved finance.`),
+      `A new ${type} has been saved in the website leads sheet.\nSheet tab: ${tabName}\nName: ${name}\nBusiness: ${company}\nEmail: ${email}\nContact key: ${contactKey}\n\nReview the sheet for enquiry details. Financing enquiries are not approved finance.`),
   ]);
   results.forEach((result, index) => {
     if (result.status === "rejected") console.error(index ? "Team notification failed" : "Acknowledgement failed", result.reason instanceof Error ? result.reason.message : "Email error");
@@ -262,7 +262,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     // Confirmation email is best-effort: a successfully stored enquiry must
     // never fail just because the email provider is unavailable.
     try {
-      await notifyLead(type, email, name, cleanCell(body.company, 300), contactKey);
+      await notifyLead(type, email, name, cleanCell(body.company, 300), tabName, contactKey);
     } catch (emailError) {
       console.error(emailError instanceof Error ? emailError.message : "Confirmation email failed");
     }

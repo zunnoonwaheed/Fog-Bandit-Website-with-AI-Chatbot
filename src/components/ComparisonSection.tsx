@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const traditionalItems = [
   "Records footage after an incident",
@@ -51,24 +51,9 @@ function VideoTile({ id, title, src, poster, playingId, onPlay, onEnd }: VideoTi
   // Set thumbnail when not playing
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || isPlaying) return;
-
-    const setThumb = () => {
-      video.currentTime = Math.min(2, Math.max(0, video.duration - 0.1));
-      video.pause();
-    };
-
-    if (video.readyState >= 2) {
-      setThumb();
-    } else {
-      video.addEventListener("loadeddata", setThumb, { once: true });
-      return () => video.removeEventListener("loadeddata", setThumb);
-    }
-  }, [isPlaying]);
-
-  const handleVideoPause = () => {
-    onEnd();
-  };
+    if (!video || !isPlaying) return;
+    void video.play().catch(onEnd);
+  }, [isPlaying, onEnd]);
 
   return (
     <div className="relative overflow-hidden rounded-[20px] group cursor-pointer aspect-[627/450]">
@@ -81,21 +66,16 @@ function VideoTile({ id, title, src, poster, playingId, onPlay, onEnd }: VideoTi
           className="absolute inset-0 w-full h-full object-cover"
           playsInline
           onEnded={onEnd}
-          onPause={handleVideoPause}
         >
           Your browser does not support the video tag.
         </video>
       ) : (
         <>
-          <video
-            ref={videoRef}
-            src={src}
-            poster={poster}
+          <img
+            src={poster}
+            alt=""
             className="absolute inset-0 w-full h-full object-contain"
-            muted
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
+            loading="lazy"
           />
           <button
             type="button"
@@ -111,6 +91,7 @@ function VideoTile({ id, title, src, poster, playingId, onPlay, onEnd }: VideoTi
 
 const ComparisonSection = () => {
   const [playingId, setPlayingId] = useState<string | null>(null);
+  const handleVideoEnd = useCallback(() => setPlayingId(null), []);
 
   return (
     <section className="pt-[100px] lg:pt-[120px] pb-0">
@@ -199,22 +180,22 @@ const ComparisonSection = () => {
         {/* Desktop: Videos in grid */}
         <div className="hidden md:grid mt-4 md:mt-6 grid-cols-2 gap-4 md:gap-6">
           <VideoTile
-            id="before"
+            id="before-desktop"
             title="Dispensary Break-In Attempt Foiled"
             src="/assets/videos/YTDown.com_YouTube_Media_4SNGiXt1yfw_Dispensary-Break-In-Attempt-Foiled-by-BANDIT-Fog-Barrier_001_1080p.mp4"
             poster="/assets/before-fog-bandit.png"
             playingId={playingId}
             onPlay={setPlayingId}
-            onEnd={() => setPlayingId(null)}
+            onEnd={handleVideoEnd}
           />
           <VideoTile
-            id="after"
+            id="after-desktop"
             title="CCTV Robbery Attempt Foiled"
             src="/assets/videos/YTDown.com_YouTube_Media_demI-X6j4rQ_Real-CCTV-Robbery-Attempt-Foiled-by-BANDIT-Active-Fog-Security_001_360p.mp4"
             poster="/assets/after-fog-bandit.png"
             playingId={playingId}
             onPlay={setPlayingId}
-            onEnd={() => setPlayingId(null)}
+            onEnd={handleVideoEnd}
           />
         </div>
 
@@ -223,24 +204,24 @@ const ComparisonSection = () => {
           <div className="flex gap-4 snap-x snap-mandatory">
             <div className="min-w-[90vw] snap-center">
               <VideoTile
-                id="before"
+                id="before-mobile"
                 title="Dispensary Break-In Attempt Foiled"
                 src="/assets/videos/YTDown.com_YouTube_Media_4SNGiXt1yfw_Dispensary-Break-In-Attempt-Foiled-by-BANDIT-Fog-Barrier_001_1080p.mp4"
                 poster="/assets/before-fog-bandit.png"
                 playingId={playingId}
                 onPlay={setPlayingId}
-                onEnd={() => setPlayingId(null)}
+                onEnd={handleVideoEnd}
               />
             </div>
             <div className="min-w-[90vw] snap-center mr-8">
               <VideoTile
-                id="after"
+                id="after-mobile"
                 title="CCTV Robbery Attempt Foiled"
                 src="/assets/videos/YTDown.com_YouTube_Media_demI-X6j4rQ_Real-CCTV-Robbery-Attempt-Foiled-by-BANDIT-Active-Fog-Security_001_360p.mp4"
                 poster="/assets/after-fog-bandit.png"
                 playingId={playingId}
                 onPlay={setPlayingId}
-                onEnd={() => setPlayingId(null)}
+                onEnd={handleVideoEnd}
               />
             </div>
           </div>

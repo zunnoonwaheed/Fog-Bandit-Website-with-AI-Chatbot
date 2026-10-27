@@ -70,6 +70,7 @@ describe('enquiry storage and delivery boundaries', () => {
     expect(res.status).toHaveBeenCalledWith(201);
     expect(rows[0][16]).toBe('qa');
     expect(emails.map(mail => mail.to[0])).toEqual(['qa@example.com', 'sales@example.com']);
+    expect(emails[1].text).toContain('Sheet tab: Contact Form - Website');
   });
   it('links both enquiry types with one contact key and uses finance-specific delivery', async () => {
     const { rows, emails } = setup();

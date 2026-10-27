@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface VideoItem {
   id: string;
@@ -9,7 +9,8 @@ interface VideoItem {
 }
 
 const VideoGrid = () => {
-  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+  const [playingVideo, setPlayingVideo] = useState<{ id: string; layout: "desktop" | "tablet" | "mobile" } | null>(null);
+  const activeVideoRef = useRef<HTMLVideoElement>(null);
 
   const videos: VideoItem[] = [
     {
@@ -49,13 +50,21 @@ const VideoGrid = () => {
     },
   ];
 
-  const handlePlayClick = (videoId: string) => {
-    setPlayingVideo(videoId);
+  const handlePlayClick = (videoId: string, layout: "desktop" | "tablet" | "mobile") => {
+    setPlayingVideo({ id: videoId, layout });
   };
 
-  const handleVideoPause = () => {
-    setPlayingVideo(null);
+  const isPlaying = (videoId: string, layout: "desktop" | "tablet" | "mobile") =>
+    playingVideo?.id === videoId && playingVideo.layout === layout;
+
+  const handleVideoEnd = (videoId: string, layout: "desktop" | "tablet" | "mobile") => {
+    setPlayingVideo((current) => current?.id === videoId && current.layout === layout ? null : current);
   };
+
+  useEffect(() => {
+    if (!playingVideo || !activeVideoRef.current) return;
+    void activeVideoRef.current.play().catch(() => handleVideoEnd(playingVideo.id, playingVideo.layout));
+  }, [playingVideo]);
 
   return (
     <section className="pb-0 bg-[#FFFFFF]">
@@ -76,33 +85,31 @@ const VideoGrid = () => {
                 key={video.id}
                 className={`relative group overflow-hidden rounded-[20px] ${heights[index as keyof typeof heights]}`}
               >
-                {playingVideo === video.id ? (
+                {isPlaying(video.id, "desktop") ? (
                   <video
+                    ref={activeVideoRef}
                     src={video.src}
                     poster={video.poster}
                     autoPlay
                     muted
                     className="w-full h-full object-cover"
-                    onEnded={() => setPlayingVideo(null)}
-                    onPause={handleVideoPause}
+                    playsInline
+                    onEnded={() => handleVideoEnd(video.id, "desktop")}
                     preload="auto"
                   >
                     Your browser does not support the video tag.
                   </video>
                 ) : (
                   <>
-                    <video
-                      src={video.src}
-                      poster={video.poster}
+                    <img
+                      src={video.poster}
+                      alt=""
                       className="w-full h-full object-cover"
-                      muted
-                      playsInline
-                      preload="metadata"
                       loading="lazy"
                     />
 
                     <button
-                      onClick={() => handlePlayClick(video.id)}
+                      onClick={() => handlePlayClick(video.id, "desktop")}
                       className="absolute inset-0 flex items-center justify-center"
                       aria-label={`Play ${video.title}`}
                     >
@@ -141,33 +148,31 @@ const VideoGrid = () => {
                 style={tabletStyles[index]}
                 className="relative group overflow-hidden rounded-[20px] flex-shrink-0"
               >
-              {playingVideo === video.id ? (
+              {isPlaying(video.id, "tablet") ? (
                 <video
+                  ref={activeVideoRef}
                   src={video.src}
                   poster={video.poster}
                   autoPlay
                   muted
                   className="w-full h-full object-cover"
-                  onEnded={() => setPlayingVideo(null)}
-                  onPause={handleVideoPause}
+                  playsInline
+                  onEnded={() => handleVideoEnd(video.id, "tablet")}
                   preload="auto"
                 >
                   Your browser does not support the video tag.
                 </video>
               ) : (
                 <>
-                  <video
-                    src={video.src}
-                    poster={video.poster}
+                  <img
+                    src={video.poster}
+                    alt=""
                     className="w-full h-full object-cover"
-                    muted
-                    playsInline
-                    preload="metadata"
                     loading="lazy"
                   />
 
                   <button
-                    onClick={() => handlePlayClick(video.id)}
+                    onClick={() => handlePlayClick(video.id, "tablet")}
                     className="absolute inset-0 flex items-center justify-center transition-transform duration-200 hover:scale-105"
                     aria-label={`Play ${video.title}`}
                   >
@@ -207,32 +212,30 @@ const VideoGrid = () => {
                   style={getStyle(index)}
                   className="relative overflow-hidden rounded-[16px]"
                 >
-                  {playingVideo === video.id ? (
+                  {isPlaying(video.id, "mobile") ? (
                     <video
+                      ref={activeVideoRef}
                       src={video.src}
                       poster={video.poster}
                       autoPlay
                       muted
                       className="w-full h-full object-cover"
-                      onEnded={() => setPlayingVideo(null)}
-                      onPause={handleVideoPause}
+                      playsInline
+                      onEnded={() => handleVideoEnd(video.id, "mobile")}
                       preload="auto"
                     >
                       Your browser does not support the video tag.
                     </video>
                   ) : (
                     <>
-                      <video
-                        src={video.src}
-                        poster={video.poster}
+                      <img
+                        src={video.poster}
+                        alt=""
                         className="w-full h-full object-cover"
-                        muted
-                        playsInline
-                        preload="metadata"
                         loading="lazy"
                       />
                       <button
-                        onClick={() => handlePlayClick(video.id)}
+                        onClick={() => handlePlayClick(video.id, "mobile")}
                         className="absolute inset-0 flex items-center justify-center"
                         aria-label={`Play ${video.title}`}
                       >

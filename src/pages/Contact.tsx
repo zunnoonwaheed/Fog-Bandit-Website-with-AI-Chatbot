@@ -60,6 +60,9 @@ const Contact = () => {
                 <p className="font-dm-sans text-[14px] md:text-[16px] text-[#6B7280] leading-[1.6] mx-auto max-w-2xl">
                   Every environment is different - and so is every risk. Our team will help you design a Fog Bandit solution tailored to your space, your assets, and your level of protection.
                 </p>
+                <p className="font-inter text-[15px] md:text-[17px] font-bold text-[#021373] leading-[1.5] mt-4">
+                  Stop robberies before they happen!
+                </p>
               </header>
 
               <div className="grid md:grid-cols-[0.9fr_1.1fr] gap-10 md:gap-16 items-start mb-12 md:mb-14">

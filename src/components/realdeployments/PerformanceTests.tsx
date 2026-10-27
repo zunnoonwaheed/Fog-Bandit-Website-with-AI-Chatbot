@@ -1,14 +1,8 @@
-import { useState, type SyntheticEvent } from "react";
-
-const seekPreviewFrame = (event: SyntheticEvent<HTMLVideoElement>) => {
-  const video = event.currentTarget;
-  if (Number.isFinite(video.duration) && video.duration > 0) {
-    video.currentTime = Math.min(2, Math.max(0, video.duration - 0.1));
-  }
-};
+import { useEffect, useRef, useState } from "react";
 
 const PerformanceTests = () => {
   const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+  const activeVideoRef = useRef<HTMLVideoElement>(null);
 
   const smallTests = [
     { id: "1", title: "High-End Retail Store", video: "/assets/videos/high-end-retail-store.mp4", poster: "/assets/videos/performance-tests/retail-store-poster.jpg" },
@@ -31,9 +25,10 @@ const PerformanceTests = () => {
     setPlayingVideo(videoId);
   };
 
-  const handleVideoPause = () => {
-    setPlayingVideo(null);
-  };
+  useEffect(() => {
+    if (!playingVideo || !activeVideoRef.current) return;
+    void activeVideoRef.current.play().catch(() => setPlayingVideo(null));
+  }, [playingVideo]);
 
   return (
     <section className="pt-[100px] lg:pt-[120px] pb-0 bg-[#FFFFFF]">
@@ -64,26 +59,23 @@ const PerformanceTests = () => {
                   <div className="relative overflow-hidden rounded-[16px] h-[167.44px] group cursor-pointer">
                     {playingVideo === test.id ? (
                       <video
+                        ref={activeVideoRef}
                         src={test.video}
                         autoPlay
                         muted
                         className="w-full h-full object-cover"
+                        playsInline
                         onEnded={() => setPlayingVideo(null)}
-                        onPause={handleVideoPause}
                         preload="auto"
                       >
                         Your browser does not support the video tag.
                       </video>
                     ) : (
                       <>
-                        <video
-                          src={test.video}
-                          poster={test.poster}
+                        <img
+                          src={test.poster}
+                          alt=""
                           className="w-full h-full object-cover"
-                          muted
-                          playsInline
-                          onLoadedData={test.id === "5" ? undefined : seekPreviewFrame}
-                          preload="metadata"
                           loading="lazy"
                         />
                         <button
@@ -108,26 +100,23 @@ const PerformanceTests = () => {
             <div className="relative overflow-hidden rounded-[20px] group cursor-pointer h-[232px] lg:h-[617.71px]">
               {playingVideo === featuredTest.id ? (
                 <video
+                  ref={activeVideoRef}
                   src={featuredTest.video}
                   autoPlay
                   muted
                   className="w-full h-full object-cover"
+                  playsInline
                   onEnded={() => setPlayingVideo(null)}
-                  onPause={handleVideoPause}
                   preload="auto"
                 >
                   Your browser does not support the video tag.
                 </video>
               ) : (
                 <>
-                  <video
-                    src={featuredTest.video}
-                    poster={featuredTest.poster}
+                  <img
+                    src={featuredTest.poster}
+                    alt=""
                     className="w-full h-full object-cover"
-                    muted
-                    playsInline
-                    onLoadedData={seekPreviewFrame}
-                    preload="metadata"
                     loading="lazy"
                   />
                   <button

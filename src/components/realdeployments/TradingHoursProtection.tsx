@@ -1,12 +1,10 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const TradingHoursProtection = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handleVideoPause = () => {
-    setIsPlaying(false);
-  };
+  const [playingLayout, setPlayingLayout] = useState<"mobile" | "desktop" | null>(null);
+  const videoId = "38YQrgknkAs";
+  const posterUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&playsinline=1&rel=0`;
 
   const features = [
     {
@@ -42,33 +40,29 @@ const TradingHoursProtection = () => {
           </div>
 
           <div className="relative overflow-hidden rounded-[20px] cursor-pointer mb-8 h-[206px]">
-            {isPlaying ? (
-              <video
-                ref={videoRef}
-                src="/assets/videos/panic-button-demo.mp4"
-                autoPlay
-                muted
-                className="w-full h-full object-cover"
-                playsInline
-                preload="auto"
-                onEnded={() => setIsPlaying(false)}
-                onPause={handleVideoPause}
-              >
-                Your browser does not support the video tag.
-              </video>
+            {playingLayout === "mobile" ? (
+              <iframe
+                src={embedUrl}
+                title="Trading Hours Protection demonstration"
+                className="w-full h-full border-0 object-cover"
+                allow="autoplay; encrypted-media"
+                referrerPolicy="strict-origin-when-cross-origin"
+                loading="lazy"
+              />
             ) : (
               <button
                 type="button"
-                onClick={() => setIsPlaying(true)}
-                className="w-full h-full"
-                aria-label="Play Panic Button Activation Demo"
+                onClick={() => setPlayingLayout("mobile")}
+                className="group relative w-full h-full"
+                aria-label="Play Trading Hours Protection video"
               >
                 <img
-                  src="/Container.png"
+                  src={posterUrl}
                   alt=""
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
+                <span aria-hidden="true" className="absolute inset-0 grid place-items-center bg-black/10 text-white text-5xl drop-shadow transition-colors group-hover:bg-black/20">▶</span>
               </button>
             )}
           </div>
@@ -118,33 +112,29 @@ const TradingHoursProtection = () => {
           </div>
 
           <div className="relative overflow-hidden rounded-[20px] cursor-pointer h-[500px]">
-            {isPlaying ? (
-              <video
-                ref={videoRef}
-                src="/assets/videos/panic-button-demo.mp4"
-                autoPlay
-                muted
-                className="w-full h-full object-cover"
-                playsInline
-                preload="auto"
-                onEnded={() => setIsPlaying(false)}
-                onPause={handleVideoPause}
-              >
-                Your browser does not support the video tag.
-              </video>
+            {playingLayout === "desktop" ? (
+              <iframe
+                src={embedUrl}
+                title="Trading Hours Protection demonstration"
+                className="w-full h-full border-0 object-cover"
+                allow="autoplay; encrypted-media"
+                referrerPolicy="strict-origin-when-cross-origin"
+                loading="lazy"
+              />
             ) : (
               <button
                 type="button"
-                onClick={() => setIsPlaying(true)}
-                className="w-full h-full"
-                aria-label="Play Panic Button Activation Demo"
+                onClick={() => setPlayingLayout("desktop")}
+                className="group relative w-full h-full"
+                aria-label="Play Trading Hours Protection video"
               >
                 <img
-                  src="/Container (7).png"
+                  src={posterUrl}
                   alt=""
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
+                <span aria-hidden="true" className="absolute inset-0 grid place-items-center bg-black/10 text-white text-5xl drop-shadow transition-colors group-hover:bg-black/20">▶</span>
               </button>
             )}
           </div>
