@@ -11,6 +11,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FinanceSection from "@/components/FinanceSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
+import SoroBlogSection from "@/components/SoroBlogSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -27,6 +28,7 @@ const Index = () => {
       <SafetyStatsSection />
       <TestimonialsSection />
       <FinanceSection />
+      <SoroBlogSection />
       <FAQSection />
       <ContactSection />
       <Footer />
